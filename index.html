@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aakarsh Sharma | AI Strategy Ã Legal Tech Ã Human Cognition</title>
+<meta name="description" content="Where law, cognition & prompts meet to build human-first AI decision systems. Prompt Engineer, Legal Tech Creator, AI Strategist.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0f1923;
+  --navy-light: #1a2a3a;
+  --teal: #2dd4a8;
+  --teal-dark: #1fb68e;
+  --gold: #d4a03c;
+  --gold-light: #f0c96b;
+  --cream: #f5f0eb;
+  --cream-dark: #e8e0d6;
+  --text: #e0e0e0;
+  --text-muted: #8899aa;
+  --white: #ffffff;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--navy);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* === NAV === */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(15, 25, 35, 0.92);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(45, 212, 168, 0.1);
+  padding: 0 2rem;
+  transition: all 0.3s;
+}
+nav .nav-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 70px;
+}
+nav .logo {
+  display: flex; align-items: center; gap: 12px;
+  text-decoration: none; color: var(--white);
+}
+nav .logo-mark {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: conic-gradient(from 180deg, var(--teal), var(--gold), var(--teal));
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 18px; color: var(--navy);
+}
+nav .logo-text { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; }
+nav .nav-links { display: flex; gap: 2rem; list-style: none; }
+nav .nav-links a {
+  color: var(--text-muted); text-decoration: none; font-size: 0.85rem;
+  font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase;
+  transition: color 0.3s; position: relative;
+}
+nav .nav-links a:hover, nav .nav-links a.active { color: var(--teal); }
+nav .nav-links a::after {
+  content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px;
+  background: var(--teal); transition: width 0.3s;
+}
+nav .nav-links a:hover::after { width: 100%; }
+.menu-toggle { display: none; background: none; border: none; color: var(--white); font-size: 1.5rem; cursor: pointer; }
+
+/* === HERO === */
+.hero {
+  min-height: 100vh; display: flex; align-items: center;
+  padding: 120px 2rem 80px;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(45, 212, 168, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(212, 160, 60, 0.06) 0%, transparent 50%),
+    var(--navy);
+}
+.hero-inner {
+  max-width: 1200px; margin: 0 auto; width: 100%;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(45, 212, 168, 0.1); border: 1px solid rgba(45, 212, 168, 0.2);
+  border-radius: 100px; padding: 6px 16px; margin-bottom: 1.5rem;
+  font-size: 0.8rem; color: var(--teal); font-weight: 500; letter-spacing: 0.05em;
+}
+.hero-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--teal); animation: pulse 2s infinite; }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+.hero h1 {
+  font-family: 'Playfair Display', serif; font-size: 3.5rem; line-height: 1.15;
+  color: var(--white); margin-bottom: 1.5rem;
+}
+.hero h1 .accent { color: var(--teal); }
+.hero h1 .gold { color: var(--gold); }
+.hero-sub {
+  font-size: 1.15rem; color: var(--text-muted); margin-bottom: 2rem;
+  max-width: 520px; line-height: 1.8;
+}
+.hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 28px; border-radius: 8px; font-size: 0.9rem;
+  font-weight: 600; text-decoration: none; transition: all 0.3s; cursor: pointer; border: none;
+}
+.btn-primary { background: var(--teal); color: var(--navy); }
+.btn-primary:hover { background: var(--teal-dark); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(45, 212, 168, 0.3); }
+.btn-outline { background: transparent; color: var(--teal); border: 1px solid rgba(45, 212, 168, 0.3); }
+.btn-outline:hover { border-color: var(--teal); background: rgba(45, 212, 168, 0.05); }
+
+.hero-visual {
+  display: flex; justify-content: center; align-items: center;
+  position: relative;
+}
+.hero-card {
+  background: var(--navy-light); border: 1px solid rgba(45, 212, 168, 0.15);
+  border-radius: 16px; padding: 2rem; width: 100%; max-width: 420px;
+  position: relative; overflow: hidden;
+}
+.hero-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--teal), var(--gold));
+}
+.hero-card .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1rem; }
+.stat { text-align: center; }
+.stat-num { font-size: 2rem; font-weight: 700; color: var(--teal); font-family: 'Playfair Display', serif; }
+.stat-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 4px; }
+.hero-card h3 { font-size: 0.9rem; color: var(--gold); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+.hero-card .tagline { font-size: 0.95rem; color: var(--text-muted); }
+
+/* === SECTIONS === */
+section { padding: 100px 2rem; }
+.section-inner { max-width: 1200px; margin: 0 auto; }
+.section-label {
+  font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em;
+  color: var(--teal); font-weight: 600; margin-bottom: 0.75rem;
+}
+.section-title {
+  font-family: 'Playfair Display', serif; font-size: 2.5rem;
+  color: var(--white); margin-bottom: 1rem;
+}
+.section-desc { color: var(--text-muted); max-width: 600px; margin-bottom: 3rem; font-size: 1.05rem; }
+
+/* === PORTFOLIO === */
+#portfolio { background: var(--navy); }
+.portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1.5rem; }
+.project-card {
+  background: var(--navy-light); border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px; padding: 2rem; transition: all 0.3s; position: relative; overflow: hidden;
+}
+.project-card:hover { border-color: rgba(45, 212, 168, 0.2); transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+.project-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--teal), transparent); opacity: 0; transition: opacity 0.3s;
+}
+.project-card:hover::before { opacity: 1; }
+.project-tag {
+  display: inline-block; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--gold); background: rgba(212, 160, 60, 0.1); padding: 4px 10px;
+  border-radius: 4px; margin-bottom: 1rem; font-weight: 600;
+}
+.project-card h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--white); margin-bottom: 0.75rem; }
+.project-card p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.25rem; line-height: 1.7; }
+.project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1rem; }
+.project-tags span {
+  font-size: 0.7rem; padding: 3px 8px; border-radius: 4px;
+  background: rgba(45, 212, 168, 0.08); color: var(--teal); border: 1px solid rgba(45, 212, 168, 0.15);
+}
+.project-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  color: var(--teal); text-decoration: none; font-size: 0.85rem; font-weight: 600;
+  transition: gap 0.3s;
+}
+.project-link:hover { gap: 10px; }
+
+/* === ABOUT === */
+#about {
+  background: linear-gradient(180deg, var(--navy) 0%, var(--navy-light) 100%);
+}
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+.about-content p { color: var(--text-muted); margin-bottom: 1.25rem; font-size: 1rem; line-height: 1.8; }
+.about-content .highlight { color: var(--white); font-weight: 500; }
+.about-sidebar {
+  background: var(--navy); border: 1px solid rgba(45, 212, 168, 0.1);
+  border-radius: 12px; padding: 2rem;
+}
+.about-sidebar h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--gold); margin-bottom: 1.5rem; }
+.credential { display: flex; gap: 12px; margin-bottom: 1.25rem; align-items: flex-start; }
+.credential-icon { width: 36px; height: 36px; border-radius: 8px; background: rgba(45, 212, 168, 0.1); display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+.credential-text .cred-title { font-size: 0.9rem; color: var(--white); font-weight: 600; }
+.credential-text .cred-detail { font-size: 0.8rem; color: var(--text-muted); }
+
+/* === SERVICES === */
+#services { background: var(--navy); }
+.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
+.service-card {
+  background: var(--navy-light); border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px; padding: 2.5rem; position: relative; transition: all 0.3s;
+}
+.service-card:hover { border-color: rgba(45, 212, 168, 0.2); }
+.service-card.featured { border-color: var(--teal); }
+.service-card.featured::before {
+  content: 'MOST POPULAR'; position: absolute; top: -12px; left: 2rem;
+  background: var(--teal); color: var(--navy); font-size: 0.65rem; font-weight: 700;
+  padding: 4px 12px; border-radius: 4px; letter-spacing: 0.1em;
+}
+.service-price { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--white); margin-bottom: 0.25rem; }
+.service-price .free { color: var(--teal); }
+.service-card h3 { font-size: 1.1rem; color: var(--gold); margin-bottom: 1rem; font-weight: 600; }
+.service-card p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.7; }
+.service-features { list-style: none; margin-bottom: 2rem; }
+.service-features li {
+  font-size: 0.85rem; color: var(--text); padding: 6px 0;
+  padding-left: 24px; position: relative;
+}
+.service-features li::before { content: '\2713'; position: absolute; left: 0; color: var(--teal); font-weight: 700; }
+
+/* === CONTACT === */
+#contact {
+  background: linear-gradient(180deg, var(--navy-light) 0%, var(--navy) 100%);
+}
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+.contact-info h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--white); margin-bottom: 1rem; }
+.contact-info p { color: var(--text-muted); margin-bottom: 2rem; }
+.contact-link {
+  display: flex; align-items: center; gap: 12px; padding: 12px 0;
+  text-decoration: none; color: var(--text); transition: color 0.3s;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.contact-link:hover { color: var(--teal); }
+.contact-link .link-icon {
+  width: 40px; height: 40px; border-radius: 8px; background: rgba(45, 212, 168, 0.1);
+  display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+}
+.contact-link .link-label { font-size: 0.8rem; color: var(--text-muted); }
+.contact-link .link-value { font-size: 0.95rem; font-weight: 500; }
+
+.social-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+.social-card {
+  background: var(--navy-light); border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 10px; padding: 1.25rem; text-decoration: none; color: var(--text);
+  transition: all 0.3s; display: flex; align-items: center; gap: 12px;
+}
+.social-card:hover { border-color: rgba(45, 212, 168, 0.2); transform: translateY(-2px); }
+.social-card .s-icon { font-size: 1.5rem; }
+.social-card .s-name { font-weight: 600; font-size: 0.9rem; }
+.social-card .s-handle { font-size: 0.75rem; color: var(--text-muted); }
+
+/* === FOOTER === */
+footer {
+  background: var(--navy); border-top: 1px solid rgba(255,255,255,0.05);
+  padding: 3rem 2rem; text-align: center;
+}
+footer p { font-size: 0.8rem; color: var(--text-muted); }
+footer .footer-tagline { font-family: 'Playfair Display', serif; font-style: italic; color: var(--gold); margin-bottom: 0.5rem; }
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .hero-inner, .about-grid, .contact-grid { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 2.5rem; }
+  .section-title { font-size: 2rem; }
+  .hero-visual { order: -1; }
+  nav .nav-links { display: none; }
+  .menu-toggle { display: block; }
+  nav .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 70px; left: 0; right: 0; background: var(--navy); padding: 1.5rem 2rem; border-bottom: 1px solid rgba(45,212,168,0.1); }
+  .portfolio-grid, .services-grid { grid-template-columns: 1fr; }
+  .social-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <div class="logo-mark">HL</div>
+      <span class="logo-text">Human Layer AI</span>
+    </a>
+    <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">&#9776;</button>
+    <ul class="nav-links">
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="https://medium.com/@humanlayerAI" target="_blank">Articles</a></li>
+      <li><a href="https://calendly.com/humanlayerai" target="_blank" class="btn btn-primary" style="padding:8px 20px;font-size:0.8rem;">Book a Call</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge">AI Strategy Consulting</div>
+      <h1>Where <span class="accent">law</span>, <span class="gold">cognition</span> &amp; prompts meet to build human-first AI.</h1>
+      <p class="hero-sub">I help professionals and organizations deploy AI systems that are psychologically informed, legally defensible, and genuinely human-centered.</p>
+      <div class="hero-ctas">
+        <a href="#portfolio" class="btn btn-primary">Explore My Work &darr;</a>
+        <a href="https://calendly.com/humanlayerai" target="_blank" class="btn btn-outline">Free Consultation &rarr;</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card">
+        <h3>Aakarsh Sharma</h3>
+        <p class="tagline">AI Systems &bull; Human Cognition &bull; Governance</p>
+        <div class="stat-grid">
+          <div class="stat"><div class="stat-num">556+</div><div class="stat-label">AI Sessions</div></div>
+          <div class="stat"><div class="stat-num">170+</div><div class="stat-label">Hours on Claude</div></div>
+          <div class="stat"><div class="stat-num">10K+</div><div class="stat-label">Article Reads</div></div>
+          <div class="stat"><div class="stat-num">1.1K</div><div class="stat-label">IG Followers</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="section-inner">
+    <div class="section-label">Portfolio</div>
+    <h2 class="section-title">Built at the Intersection</h2>
+    <p class="section-desc">AI artifacts, legal tech prototypes, and thought tools&mdash;each built using prompt engineering, behavioral psychology, and legal reasoning.</p>
+
+    <div class="portfolio-grid">
+      <div class="project-card">
+        <span class="project-tag">AI Artifact</span>
+        <h3>Council of Prominent Figures</h3>
+        <p>An adversarial deliberation tool that simulates a panel of historical thinkers to stress-test your decisions. Input your dilemma&mdash;career, product, ethics&mdash;and the Council attacks it from multiple cognitive lenses. Built to counter confirmation bias in high-stakes decisions.</p>
+        <div class="project-tags"><span>Prompt Engineering</span><span>Adversarial AI</span><span>Decision Science</span></div>
+        <a href="https://claude.ai" target="_blank" class="project-link">Try on Claude &rarr;</a>
+      </div>
+
+      <div class="project-card">
+        <span class="project-tag">Mental Health Tech</span>
+        <h3>Thought Reframer</h3>
+        <p>A CBT-based cognitive distortion analyzer. Paste your anxious thought, and it identifies the distortion pattern (catastrophizing, all-or-nothing, magnification) then generates a clinically-grounded reframe. Bridges the gap between therapy sessions.</p>
+        <div class="project-tags"><span>CBT</span><span>Psychology</span><span>Prompt Engineering</span></div>
+        <a href="https://claude.ai" target="_blank" class="project-link">Try on Claude &rarr;</a>
+      </div>
+
+      <div class="project-card">
+        <span class="project-tag">Legal Tech</span>
+        <h3>Patent Drafting &amp; Prosecution Framework</h3>
+        <p>A 5-module AI-assisted framework for Indian patent law. Prior art analysis, claims drafting, specification writing, prosecution strategy, and office action responses. Demonstrates how legal workflows can be augmented by AI.</p>
+        <div class="project-tags"><span>IP Law</span><span>India</span><span>No-Code</span><span>Legal Tech</span></div>
+        <a href="https://claude.ai" target="_blank" class="project-link">Explore Framework &rarr;</a>
+      </div>
+
+      <div class="project-card">
+        <span class="project-tag">Content</span>
+        <h3>Medium Writing Portfolio</h3>
+        <p>Published essays at the intersection of lived experience, AI systems, and behavioral psychology. From rationing meals as an AI workflow metaphor to building adversarial councils for de-biased decisions. 10,000+ reads.</p>
+        <div class="project-tags"><span>Writing</span><span>AI Ethics</span><span>Personal Essays</span></div>
+        <a href="https://medium.com/@humanlayerAI" target="_blank" class="project-link">Read on Medium &rarr;</a>
+      </div>
+
+      <div class="project-card">
+        <span class="project-tag">Video</span>
+        <h3>HumanLayer AI &mdash; YouTube</h3>
+        <p>Video content exploring human-centric AI, prompting techniques, and the Law &times; Psychology &times; AI intersection. Tutorials, breakdowns, and thought leadership for professionals navigating the AI transition.</p>
+        <div class="project-tags"><span>YouTube</span><span>AI Education</span><span>Tutorials</span></div>
+        <a href="https://www.youtube.com/@humanlayerAI" target="_blank" class="project-link">Watch on YouTube &rarr;</a>
+      </div>
+
+      <div class="project-card">
+        <span class="project-tag">Open Source</span>
+        <h3>GitHub Experiments</h3>
+        <p>Public repositories with prompt engineering experiments, automation workflows, and legal tech prototypes. A living lab for testing ideas at the intersection of law, psychology, and AI systems.</p>
+        <div class="project-tags"><span>GitHub</span><span>Automation</span><span>Experiments</span></div>
+        <a href="https://github.com/HumanLayerAI" target="_blank" class="project-link">View on GitHub &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-label">About</div>
+    <h2 class="section-title">Meet Aakarsh</h2>
+    <div class="about-grid">
+      <div class="about-content">
+        <p><span class="highlight">Law graduate turned AI strategist.</span> After 5 years in litigation and legal drafting&mdash;including clearing the Rajasthan Judicial Services Prelims and practicing at Chamber 205&mdash;I pivoted to the intersection of artificial intelligence, human psychology, and governance frameworks.</p>
+        <p>That pivot wasn&rsquo;t a leap of faith. It was a logical extension. <span class="highlight">Law taught me to think in structures</span>&mdash;precedent, burden of proof, adversarial testing. <span class="highlight">Psychology taught me why humans make irrational decisions</span> even when the evidence is clear. AI gave me a medium where both disciplines converge.</p>
+        <p>Through <span class="highlight">Human Layer AI</span>, I build systems that are psychologically informed, legally defensible, and genuinely human-centered. I design prompt architectures that account for cognitive bias, build AI artifacts that augment human judgment, and consult with organizations on responsible AI adoption.</p>
+        <p>Most AI consultants come from tech. I come from law and psychology. That&rsquo;s not a weakness&mdash;<span class="highlight">it&rsquo;s the moat.</span> I see failure modes that engineers miss: regulatory exposure, cognitive manipulation, governance gaps. I build systems that survive contact with reality, not just demo day.</p>
+      </div>
+      <div class="about-sidebar">
+        <h3>Credentials &amp; Proof</h3>
+        <div class="credential">
+          <div class="credential-icon">&#9878;</div>
+          <div class="credential-text"><div class="cred-title">BA LL.B. (Hons)</div><div class="cred-detail">5 years litigation &bull; RJS Prelims cleared</div></div>
+        </div>
+        <div class="credential">
+          <div class="credential-icon">&#9881;</div>
+          <div class="credential-text"><div class="cred-title">556+ Sessions on Claude</div><div class="cred-detail">10,171 minutes &bull; 170+ hours hands-on</div></div>
+        </div>
+        <div class="credential">
+          <div class="credential-icon">&#9998;</div>
+          <div class="credential-text"><div class="cred-title">10,000+ Article Reads</div><div class="cred-detail">3 published essays on Medium</div></div>
+        </div>
+        <div class="credential">
+          <div class="credential-icon">&#127760;</div>
+          <div class="credential-text"><div class="cred-title">IELTS 8.0</div><div class="cred-detail">Native-level English proficiency</div></div>
+        </div>
+        <div class="credential">
+          <div class="credential-icon">&#128248;</div>
+          <div class="credential-text"><div class="cred-title">1,100+ Instagram Followers</div><div class="cred-detail">@humanlayerai community</div></div>
+        </div>
+        <div class="credential">
+          <div class="credential-icon">&#129504;</div>
+          <div class="credential-text"><div class="cred-title">10,000+ Min Meditation</div><div class="cred-detail">Clear thinking requires a clear mind</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-inner">
+    <div class="section-label">Services</div>
+    <h2 class="section-title">Work With Me</h2>
+    <p class="section-desc">AI strategy grounded in legal rigor and behavioral insight. Not hype. Not demos. Working systems.</p>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-price"><span class="free">Free</span></div>
+        <h3>AI Strategy Discovery Call</h3>
+        <p>30-minute introductory session to understand your workflows, identify where AI adds value, and assess fit. No pitch, no pressure&mdash;just an honest conversation about what&rsquo;s possible.</p>
+        <ul class="service-features">
+          <li>30-minute video call</li>
+          <li>Workflow assessment</li>
+          <li>AI readiness evaluation</li>
+          <li>No-obligation, no fluff</li>
+        </ul>
+        <a href="https://calendly.com/humanlayerai" target="_blank" class="btn btn-outline" style="width:100%;justify-content:center;">Book Free Call &rarr;</a>
+      </div>
+
+      <div class="service-card featured">
+        <div class="service-price">&#8377;4,999</div>
+        <h3>AI Strategy Deep Dive</h3>
+        <p>90-minute comprehensive strategy session. We audit your current workflows, identify high-impact AI opportunities, and create a prioritized roadmap with governance considerations.</p>
+        <ul class="service-features">
+          <li>90-minute deep-dive (recorded)</li>
+          <li>Written strategy summary</li>
+          <li>AI governance checklist</li>
+          <li>30-day follow-up call</li>
+        </ul>
+        <a href="https://calendly.com/humanlayerai" target="_blank" class="btn btn-primary" style="width:100%;justify-content:center;">Book Deep Dive &rarr;</a>
+      </div>
+
+      <div class="service-card">
+        <div class="service-price">&#8377;14,999+</div>
+        <h3>Custom AI Artifact Build</h3>
+        <p>I design and build custom AI tools tailored to your use case&mdash;decision-support systems, legal drafting assistants, coaching tools&mdash;using the Law &times; Psychology &times; AI framework.</p>
+        <ul class="service-features">
+          <li>Discovery + requirements</li>
+          <li>Custom artifact build</li>
+          <li>Testing &amp; documentation</li>
+          <li>One revision cycle</li>
+        </ul>
+        <a href="https://calendly.com/humanlayerai" target="_blank" class="btn btn-outline" style="width:100%;justify-content:center;">Discuss Your Project &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-label">Contact</div>
+    <h2 class="section-title">Let&rsquo;s Connect</h2>
+    <p class="section-desc">Exploring AI strategy, want to collaborate on content, or just want to talk Law &times; Psychology &times; AI? I&rsquo;m here.</p>
+
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>Direct</h3>
+        <a href="mailto:adsandscotch@gmail.com" class="contact-link">
+          <div class="link-icon">&#9993;</div>
+          <div><div class="link-label">Email</div><div class="link-value">adsandscotch@gmail.com</div></div>
+        </a>
+        <a href="https://calendly.com/humanlayerai" target="_blank" class="contact-link">
+          <div class="link-icon">&#128197;</div>
+          <div><div class="link-label">Calendly</div><div class="link-value">Book a free consultation</div></div>
+        </a>
+        <a href="https://www.linkedin.com/in/aakarsh-sharma-ai/" target="_blank" class="contact-link">
+          <div class="link-icon">&#128188;</div>
+          <div><div class="link-label">LinkedIn</div><div class="link-value">aakarsh-sharma-ai</div></div>
+        </a>
+        <a href="https://x.com/HumanLayerHQ" target="_blank" class="contact-link">
+          <div class="link-icon">&#120143;</div>
+          <div><div class="link-label">X (Twitter)</div><div class="link-value">@HumanLayerHQ</div></div>
+        </a>
+      </div>
+      <div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--white);margin-bottom:1rem;">Platforms</h3>
+        <div class="social-grid">
+          <a href="https://www.youtube.com/@humanlayerAI" target="_blank" class="social-card">
+            <div class="s-icon">&#9654;</div>
+            <div><div class="s-name">YouTube</div><div class="s-handle">@humanlayerAI</div></div>
+          </a>
+          <a href="https://www.instagram.com/humanlayerai/" target="_blank" class="social-card">
+            <div class="s-icon">&#128247;</div>
+            <div><div class="s-name">Instagram</div><div class="s-handle">@humanlayerai</div></div>
+          </a>
+          <a href="https://medium.com/@humanlayerAI" target="_blank" class="social-card">
+            <div class="s-icon">&#9998;</div>
+            <div><div class="s-name">Medium</div><div class="s-handle">@humanlayerAI</div></div>
+          </a>
+          <a href="https://github.com/HumanLayerAI" target="_blank" class="social-card">
+            <div class="s-icon">&#128187;</div>
+            <div><div class="s-name">GitHub</div><div class="s-handle">HumanLayerAI</div></div>
+          </a>
+          <a href="https://linktr.ee/humanlayerAI" target="_blank" class="social-card">
+            <div class="s-icon">&#128279;</div>
+            <div><div class="s-name">Linktree</div><div class="s-handle">All links in one place</div></div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-tagline">"Pain from discipline is better than pain from regret."</div>
+  <p>&copy; 2026 Aakarsh Sharma &bull; Human Layer AI &bull; New Delhi</p>
+</footer>
+
+<script>
+// Smooth scroll for nav links
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    document.querySelector('.nav-links')?.classList.remove('open');
+  });
+});
+
+// Nav scroll effect
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('nav');
+  nav.style.borderBottomColor = window.scrollY > 50 ? 'rgba(45, 212, 168, 0.15)' : 'rgba(45, 212, 168, 0.1)';
+});
+</script>
+</body>
+</html>
