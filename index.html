@@ -289,9 +289,9 @@ footer .footer-tagline { font-family: 'Playfair Display', serif; font-style: ita
 
 /* === TRIAD HERO CSS === */
 #triad-svg { position:absolute; inset:0; z-index:3; pointer-events:none; }
-.triad-line { stroke-width:1.5; fill:none; opacity:0; transition:stroke-dashoffset 0.6s ease, opacity 0.3s ease; }
+.triad-line { stroke-width:1.5; fill:none; opacity:0; }
 
-.triad-node { position:absolute; z-index:5; display:flex; flex-direction:column; align-items:center; gap:8px; opacity:0; pointer-events:none; transition:opacity 0.5s ease-out, transform 0.5s ease-out; }
+.triad-node { position:absolute; z-index:5; display:flex; flex-direction:column; align-items:center; gap:8px; opacity:0; pointer-events:none; }
 
 .node-icon { width:64px; height:64px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.05); border:1.5px solid rgba(255,255,255,0.15); }
 .node-icon svg { width:32px; height:32px; }
@@ -306,10 +306,10 @@ footer .footer-tagline { font-family: 'Playfair Display', serif; font-style: ita
 .node-label { font-family:'Inter',sans-serif; font-size:0.75rem; font-weight:600; letter-spacing:0.15em; text-transform:uppercase; color:rgba(255,255,255,0.85); }
 .node-sub { font-size:0.65rem; color:var(--text-muted); letter-spacing:0.05em; }
 
-.intersection-icon { opacity:0; transition:opacity 0.35s ease; }
+.intersection-icon { opacity:0; }
 .intersection-icon circle { fill:rgba(255,255,255,0.03); stroke:rgba(255,255,255,0.1); stroke-width:1; }
 
-#triad-center { position:absolute; z-index:10; display:flex; flex-direction:column; align-items:center; justify-content:center; pointer-events:none; opacity:0; transition:opacity 0.5s ease-out, transform 0.5s ease-out; }
+#triad-center { position:absolute; z-index:10; display:flex; flex-direction:column; align-items:center; justify-content:center; pointer-events:none; opacity:0; }
 #triad-center h1 { font-family:'Playfair Display',serif; font-size:clamp(2.2rem,5.5vw,4.2rem); font-weight:700; color:var(--white); margin:0; line-height:1.1; }
 #triad-center .triad-subtitle { font-family:'Inter',sans-serif; font-size:clamp(0.85rem,1.8vw,1.1rem); color:var(--text-muted); font-style:italic; letter-spacing:0.03em; margin-top:12px; }
 
@@ -709,43 +709,50 @@ window.addEventListener('scroll', () => {
   function animateTriad(){
     if(animated) return;
     animated = true;
+
     var nodes = document.querySelectorAll('.triad-node');
     var lines = document.querySelectorAll('.triad-line');
     var ixIcons = document.querySelectorAll('.intersection-icon');
     var center = document.getElementById('triad-center');
 
-    /* Phase 1: Nodes fade in + scale up */
+    // Phase 1: Nodes appear (staggered)
     nodes.forEach(function(node, idx){
       setTimeout(function(){
+        node.style.transition = 'none';
         node.style.opacity = '1';
-        node.style.transform = node.style.transform.replace('scale(0.5)','scale(1)');
+        node.style.transform = node.style.transform.replace('scale(0.5)', 'scale(1)');
       }, idx * 150);
     });
 
-    /* Phase 2: Lines draw */
+    // Phase 2: Lines draw in
     setTimeout(function(){
       lines.forEach(function(line){
+        line.style.transition = 'none';
         line.style.opacity = '1';
         line.style.strokeDashoffset = '0';
       });
     }, 500);
 
-    /* Phase 3: Intersection icons */
+    // Phase 3: Intersection icons appear
     setTimeout(function(){
       ixIcons.forEach(function(icon, idx){
-        setTimeout(function(){ icon.style.opacity = '1'; }, idx * 120);
+        setTimeout(function(){
+          icon.style.transition = 'none';
+          icon.style.opacity = '1';
+        }, idx * 120);
       });
     }, 1000);
 
-    /* Phase 4: Center reveal */
+    // Phase 4: Center heading appears
     setTimeout(function(){
       if(center){
+        center.style.transition = 'none';
         center.style.opacity = '1';
         center.style.transform = 'translate(-50%,-50%) scale(1)';
       }
     }, 1500);
 
-    /* Phase 5: Glow pulse on icons */
+    // Phase 5: Enable glow pulse on node icons
     setTimeout(function(){
       document.querySelectorAll('.node-icon').forEach(function(icon){
         icon.classList.add('glow');
@@ -753,6 +760,7 @@ window.addEventListener('scroll', () => {
       });
     }, 2500);
   }
+
 
   /* Tagline rotator */
   var taglines = ['Where law meets cognition meets code','Psychologically informed. Legally defensible.','Every intelligent system needs a human layer','Structure. Empathy. Intelligence.','Law \u00d7 Psychology \u00d7 AI'];
