@@ -304,14 +304,15 @@ footer .footer-tagline { font-family: 'Playfair Display', serif; font-style: ita
 .node-icon.glow { animation:glow-pulse 2s ease-in-out infinite; }
 
 .node-label { font-family:'Inter',sans-serif; font-size:0.75rem; font-weight:600; letter-spacing:0.15em; text-transform:uppercase; color:rgba(255,255,255,0.85); }
-.node-sub { font-size:0.65rem; color:var(--text-muted); letter-spacing:0.05em; }
+.node-sub { font-size:0.65rem; color:var(--text-muted); letter-spacing:0.05em; opacity:0; }
 
 .intersection-icon { opacity:0; }
 .intersection-icon circle { fill:rgba(255,255,255,0.03); stroke:rgba(255,255,255,0.1); stroke-width:1; }
 
 #triad-center { position:absolute; z-index:10; display:flex; flex-direction:column; align-items:center; justify-content:center; pointer-events:none; opacity:0; }
 #triad-center h1 { font-family:'Playfair Display',serif; font-size:clamp(2.2rem,5.5vw,4.2rem); font-weight:700; color:var(--white); margin:0; line-height:1.1; }
-#triad-center .triad-subtitle { font-family:'Inter',sans-serif; font-size:clamp(0.85rem,1.8vw,1.1rem); color:var(--text-muted); font-style:italic; letter-spacing:0.03em; margin-top:12px; }
+#triad-center .triad-subtitle { font-family:'Inter',sans-serif; font-size:clamp(0.85rem,1.8vw,1.1rem); color:var(--text-muted); font-style:italic; letter-spacing:0.03em; margin-top:12px; opacity:0; }
+.triad-subtitle-2 { font-family:'Inter',sans-serif; font-size:clamp(0.8rem,1.5vw,1rem); color:var(--gold); font-weight:500; letter-spacing:0.08em; margin-top:8px; opacity:0; }
 
 #hero-particles { position:absolute; inset:0; z-index:1; }
 
@@ -402,13 +403,47 @@ footer .footer-tagline { font-family: 'Playfair Display', serif; font-style: ita
 <span class="node-sub">Systems &amp; Scale</span>
 </div>
 <div id="triad-center" style="top:50%;left:50%;transform:translate(-50%,-50%) scale(0.85);">
-<h1>Human Layer <span style="color:var(--teal);">AI</span></h1>
-<p class="triad-subtitle">every intelligent system needs a human layer.</p>
+  <h1>Human Layer <span style="color:var(--teal);">AI</span></h1>
+  <p class="triad-subtitle">Every Intelligent System Needs A Human Layer.</p>
+  <p class="triad-subtitle-2">Psychologically Informed, Legally Defensible.</p>
 </div>
 <div id="hero-tagline-bar">
 <p id="convergence-tagline"></p>
 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" style="opacity:0.4;"><path d="M10 14l-5-5h10l-5 5z" fill="#8899aa"/></svg>
 </div>
+</section>
+<!-- === VALUE PROPOSITION === -->
+<section id="value-prop" style="background:#060820;padding:100px 5% 80px;position:relative;">
+  <div style="max-width:960px;margin:0 auto;text-align:center;">
+    <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.8rem);color:#ffffff;font-weight:700;margin:0 0 16px;line-height:1.2;">Your AI Needs More Than Engineering</h2>
+    <p style="font-family:'Inter',sans-serif;font-size:clamp(0.9rem,1.6vw,1.1rem);color:#8899aa;max-width:640px;margin:0 auto 60px;line-height:1.7;">We audit, design, and deploy AI systems through the lens of law, psychology, and technology.</p>
+  </div>
+  <div style="max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:32px;">
+    <div style="background:rgba(100,155,255,0.04);border:1px solid rgba(100,155,255,0.15);border-radius:12px;padding:36px 28px;text-align:left;">
+      <div style="width:48px;height:48px;border-radius:50%;background:rgba(100,155,255,0.12);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2L4 7v5c0 5.25 3.4 10.2 8 11.6 4.6-1.4 8-6.35 8-11.6V7l-8-5z" stroke="#649BFF" stroke-width="1.5" fill="none"/><path d="M9 12l2 2 4-4" stroke="#649BFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h3 style="font-family:'Inter',sans-serif;font-size:1rem;font-weight:600;color:#649BFF;letter-spacing:0.05em;margin:0 0 12px;text-transform:uppercase;">Compliance &amp; Risk</h3>
+      <p style="font-family:'Inter',sans-serif;font-size:0.9rem;color:#8899aa;line-height:1.7;margin:0;">Navigate the regulatory landscape with confidence. From the EU AI Act to sector-specific mandates, we ensure your AI systems are legally defensible and audit-ready.</p>
+    </div>
+    <div style="background:rgba(255,175,55,0.04);border:1px solid rgba(255,175,55,0.15);border-radius:12px;padding:36px 28px;text-align:left;">
+      <div style="width:48px;height:48px;border-radius:50%;background:rgba(255,175,55,0.12);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2a7 7 0 0 1 7 7c0 2.8-1.6 5.2-4 6.3V17a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-1.7C6.6 14.2 5 11.8 5 9a7 7 0 0 1 7-7z" stroke="#FFAF37" stroke-width="1.5" fill="none"/><path d="M9 21h6M10 17v1M14 17v1" stroke="#FFAF37" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
+      <h3 style="font-family:'Inter',sans-serif;font-size:1rem;font-weight:600;color:#FFAF37;letter-spacing:0.05em;margin:0 0 12px;text-transform:uppercase;">Cognitive Architecture</h3>
+      <p style="font-family:'Inter',sans-serif;font-size:0.9rem;color:#8899aa;line-height:1.7;margin:0;">Design AI workflows that respect how humans actually think. We identify cognitive biases, decision fatigue risks, and friction points that erode trust in automated systems.</p>
+    </div>
+    <div style="background:rgba(0,225,175,0.04);border:1px solid rgba(0,225,175,0.15);border-radius:12px;padding:36px 28px;text-align:left;">
+      <div style="width:48px;height:48px;border-radius:50%;background:rgba(0,225,175,0.12);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" rx="1.5" stroke="#00E1AF" stroke-width="1.5" fill="none"/><rect x="14" y="3" width="7" height="7" rx="1.5" stroke="#00E1AF" stroke-width="1.5" fill="none"/><rect x="8.5" y="14" width="7" height="7" rx="1.5" stroke="#00E1AF" stroke-width="1.5" fill="none"/><path d="M10 6.5h4M6.5 10v4.5h5M17.5 10v4.5h-5" stroke="#00E1AF" stroke-width="1.2" stroke-linecap="round"/></svg>
+      </div>
+      <h3 style="font-family:'Inter',sans-serif;font-size:1rem;font-weight:600;color:#00E1AF;letter-spacing:0.05em;margin:0 0 12px;text-transform:uppercase;">Strategic Deployment</h3>
+      <p style="font-family:'Inter',sans-serif;font-size:0.9rem;color:#8899aa;line-height:1.7;margin:0;">Build AI that actually scales. We architect solutions that are robust, interpretable, and aligned with your business objectives, not just technically impressive.</p>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:56px;">
+    <a href="#contact" style="display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#2dd4a8,#1fb892);color:#0f1923;font-family:'Inter',sans-serif;font-size:0.9rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;border-radius:6px;">Book a Strategy Call</a>
+  </div>
 </section>
 
   
@@ -714,53 +749,97 @@ window.addEventListener('scroll', () => {
     var lines = document.querySelectorAll('.triad-line');
     var ixIcons = document.querySelectorAll('.intersection-icon');
     var center = document.getElementById('triad-center');
+    var subs = document.querySelectorAll('.node-sub');
 
-    // Phase 1: Nodes appear (staggered)
+    function animateEl(el, fromObj, toObj, dur, cb){
+      var anim = el.animate([fromObj, toObj], {duration:dur, easing:'ease-out', fill:'forwards'});
+      anim.onfinish = function(){
+        for(var k in toObj){ el.style[k] = toObj[k]; }
+        if(cb) cb();
+      };
+    }
+
+    function drawLine(line, duration){
+      var len = parseFloat(line.style.strokeDasharray) || line.getTotalLength();
+      var start = performance.now();
+      line.style.opacity = '1';
+      function step(now){
+        var t = Math.min((now - start) / duration, 1);
+        var eased = t * (2 - t);
+        line.style.strokeDashoffset = String(len * (1 - eased));
+        if(t < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
+    var transforms = {
+      'node-law': ['translate(-50%,-50%) scale(0.5)', 'translate(-50%,-50%) scale(1)'],
+      'node-psych': ['translate(-50%,50%) scale(0.5)', 'translate(-50%,50%) scale(1)'],
+      'node-ai': ['translate(50%,50%) scale(0.5)', 'translate(50%,50%) scale(1)']
+    };
+
+    /* Phase 1: Nodes appear staggered */
     nodes.forEach(function(node, idx){
+      var t = transforms[node.id] || ['scale(0.5)','scale(1)'];
       setTimeout(function(){
-        node.style.transition = 'none';
-        node.style.opacity = '1';
-        node.style.transform = node.style.transform.replace('scale(0.5)', 'scale(1)');
-      }, idx * 150);
+        animateEl(node, {opacity:'0', transform:t[0]}, {opacity:'1', transform:t[1]}, 500);
+      }, idx * 300);
     });
 
-    // Phase 2: Lines draw in
+    /* Phase 2: Node subtitles fade in */
     setTimeout(function(){
-      lines.forEach(function(line){
-        line.style.transition = 'none';
-        line.style.opacity = '1';
-        line.style.strokeDashoffset = '0';
+      subs.forEach(function(sub){
+        animateEl(sub, {opacity:'0'}, {opacity:'1'}, 300);
       });
-    }, 500);
+    }, 1100);
 
-    // Phase 3: Intersection icons appear
+    /* Phase 3: Lines draw one by one */
+    var lineOrder = ['line-lp','line-pa','line-al'];
+    lineOrder.forEach(function(id, idx){
+      setTimeout(function(){
+        var line = document.getElementById(id);
+        if(line) drawLine(line, 400);
+      }, 1500 + idx * 400);
+    });
+
+    /* Phase 4: Intersection icons */
     setTimeout(function(){
       ixIcons.forEach(function(icon, idx){
         setTimeout(function(){
-          icon.style.transition = 'none';
-          icon.style.opacity = '1';
-        }, idx * 120);
+          animateEl(icon, {opacity:'0'}, {opacity:'1'}, 300);
+        }, idx * 150);
       });
-    }, 1000);
+    }, 2800);
 
-    // Phase 4: Center heading appears
+    /* Phase 5: Center text */
     setTimeout(function(){
       if(center){
-        center.style.transition = 'none';
-        center.style.opacity = '1';
-        center.style.transform = 'translate(-50%,-50%) scale(1)';
+        animateEl(center,
+          {opacity:'0', transform:'translate(-50%,-50%) scale(0.85)'},
+          {opacity:'1', transform:'translate(-50%,-50%) scale(1)'},
+          600);
       }
-    }, 1500);
+    }, 3500);
 
-    // Phase 5: Enable glow pulse on node icons
+    /* Phase 6: Subtitles */
+    setTimeout(function(){
+      var sub1 = document.querySelector('.triad-subtitle');
+      if(sub1) animateEl(sub1, {opacity:'0'}, {opacity:'1'}, 400);
+    }, 4200);
+
+    setTimeout(function(){
+      var sub2 = document.querySelector('.triad-subtitle-2');
+      if(sub2) animateEl(sub2, {opacity:'0'}, {opacity:'1'}, 400);
+    }, 4600);
+
+    /* Phase 7: Glow pulse */
     setTimeout(function(){
       document.querySelectorAll('.node-icon').forEach(function(icon){
         icon.classList.add('glow');
         icon.style.animation = 'float-gentle 3s ease-in-out infinite';
       });
-    }, 2500);
+    }, 5200);
   }
-
 
   /* Tagline rotator */
   var taglines = ['Where law meets cognition meets code','Psychologically informed. Legally defensible.','Every intelligent system needs a human layer','Structure. Empathy. Intelligence.','Law \u00d7 Psychology \u00d7 AI'];
