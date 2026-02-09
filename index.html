@@ -315,7 +315,7 @@ footer .footer-tagline { font-family: 'Playfair Display', serif; font-style: ita
   <div id="convergence-canvas-wrap" style="position:absolute;inset:0;z-index:1;"></div>
   <div id="convergence-labels" style="position:absolute;inset:0;z-index:3;pointer-events:none;"></div>
   <div style="position:absolute;inset:0;<div style="position:absolute;inset:0;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none;"><h1 style="font-family:Playfair Display,Georgia,serif;font-size:clamp(2.8rem,7vw,5.5rem);font-weight:800;line-height:1.05;color:white;margin:0;text-shadow:0 0 80px rgba(100,165,255,0.15),0 2px 30px rgba(0,0,0,0.5);">Human Layer <span style="color:var(--teal);text-shadow:0 0 40px rgba(45,212,168,0.3);">AI</span></h1><p style="font-size:clamp(0.75rem,1.5vw,1rem);color:rgba(200,210,235,0.5);margin-top:1.2rem;letter-spacing:0.2em;text-transform:uppercase;font-weight:300;">Where Law Meets Cognition Meets Code</p></div>
-    hero-tagline-bar" style="position:absolute;bottom:0;left:0;right:0;z-index:10;text-align:center;padding:1.2rem 1rem;pointer-events:none;">
+    <div id="hero-tagline-bar" style="position:absolute;bottom:0;left:0;right:0;z-index:10;text-align:center;padding:1.2rem 1rem;pointer-events:none;">
     <p id="convergence-tagline" style="font-size:clamp(0.55rem,1vw,0.78rem);font-weight:300;letter-spacing:0.22em;color:rgba(200,210,235,0.45);text-transform:uppercase;margin:0 0 0.6rem 0;text-shadow:0 2px 12px rgba(0,0,0,0.6);transition:opacity 0.5s ease,transform 0.5s ease;"></p>
     <svg width="14" height="14" viewBox="0 0 16 16" fill="none" style="animation:hlfloat 2.5s ease-in-out infinite;opacity:0.4;"><path d="M8 2 L8 12 M4 9 L8 13 L12 9" stroke="rgba(220,225,240,0.5)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </div>
@@ -590,16 +590,9 @@ var STREAMS=[
 {id:"psych",label:"PSYCHOLOGY",sub:"Cognition & Bias",a:-0.785,c:[255,175,55]},
 {id:"ai",label:"AI",sub:"Systems & Scale",a:1.35,c:[0,225,175]}
 ];
-var WORDS=[
-{s:0,t:"Precedent"},{s:0,t:"Burden of Proof"},{s:0,t:"Governance"},
-{s:0,t:"Due Process"},{s:0,t:"Compliance"},{s:0,t:"Jurisdiction"},
-{s:1,t:"Anchoring"},{s:1,t:"Cognitive Load"},{s:1,t:"Framing"},
-{s:1,t:"Heuristics"},{s:1,t:"Choice Architecture"},{s:1,t:"Nudge"},
-{s:2,t:"Transformer"},{s:2,t:"Embeddings"},{s:2,t:"Attention"},
-{s:2,t:"Inference"},{s:2,t:"Token"},{s:2,t:"Fine-tuning"}
-];
+var WORDS=["Due Diligence","Risk Audit","Compliance","IP Protection","Regulatory","Policy Design","Cognitive Load","Decision Bias","Trust Design","User Behavior","Nudge Architecture","Persuasion Ethics","Prompt Design","RAG Systems","Fine-tuning","Guardrails","Evaluation","Alignment"];
 var TAGLINES=["Where law meets cognition meets code","Psychologically informed. Legally defensible.","Every intelligent system needs a human layer","Structure. Empathy. Intelligence.","Law \u00d7 Psychology \u00d7 AI"];
-var ZONES={"0,1":{label:"Law \u00d7 Psychology",phrases:["Cognitive Due Process","Bias-Aware Governance","Behavioral Compliance"]},"1,2":{label:"Psychology \u00d7 AI",phrases:["Empathic Prompt Design","Cognitive Architecture","Human-Centered AI"]},"0,2":{label:"Law \u00d7 AI",phrases:["Algorithmic Accountability","Regulatory Intelligence","AI Governance"]},"center":{label:"The Convergence",phrases:["Human Layer AI","Psycho-Legal Intelligence","The Complete Framework"]}};
+var ZONES={lp:{a1:-2.356,a2:-0.785,s:"AI policies designed around how people actually decide \u2014 not how they should."},pa:{a1:-0.785,a2:1.35,s:"Prompts built on cognitive science cut hallucinations and build real user trust."},la:{a1:-2.356,a2:1.35,s:"AI systems built to survive legal scrutiny \u2014 compliance baked in, not bolted on."},c:{a1:0,a2:0,s:"The rare strategist who stress-tests your AI through legal, cognitive, and technical lenses."}};
 function Particle(W,H,cx,cy){
 var si=Math.floor(Math.random()*3),s=STREAMS[si];
 var a=s.a+(Math.random()-0.5)*1.8;
