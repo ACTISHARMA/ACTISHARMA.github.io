@@ -741,7 +741,7 @@ window.addEventListener('scroll', () => {
     var center = document.getElementById('triad-center');
 
     nodes.forEach(function(node, idx){
-      setTimeout(function(){ node.classList.add('anim'); }, idx * 120);
+      setTimeout(function(){ node.classList.add('anim');node.style.opacity='1';node.style.transform=node.style.transform.replace('scale(0.5)','scale(1)'); }, idx * 120);
     });
 
     setTimeout(function(){
@@ -755,7 +755,7 @@ window.addEventListener('scroll', () => {
     }, 900);
 
     setTimeout(function(){
-      if(center) center.classList.add('anim');
+      if(center){center.classList.add('anim');center.style.opacity='1';center.style.transform=center.style.transform.replace('scale(0.85)','scale(1)');}
     }, 1400);
 
     setTimeout(function(){
