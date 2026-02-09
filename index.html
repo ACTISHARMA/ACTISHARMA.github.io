@@ -286,13 +286,12 @@ footer .footer-tagline { font-family: 'Playfair Display', serif; font-style: ita
   
 .hero-center{position:absolute;inset:0;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none;padding-top:71px;}
 
+
 /* === TRIAD HERO CSS === */
 #triad-svg { position:absolute; inset:0; z-index:3; pointer-events:none; }
-.triad-line { stroke-width:1.5; fill:none; opacity:0; }
-.triad-line.anim { opacity:1; stroke-dashoffset:0; transition: stroke-dashoffset 0.6s ease, opacity 0.3s ease; }
+.triad-line { stroke-width:1.5; fill:none; opacity:0; transition:stroke-dashoffset 0.6s ease, opacity 0.3s ease; }
 
-.triad-node { position:absolute; z-index:5; display:flex; flex-direction:column; align-items:center; gap:8px; opacity:0; transform:scale(0.5); pointer-events:none; }
-.triad-node.anim { opacity:1; transform:scale(1); transition: opacity 0.4s ease-out, transform 0.4s ease-out; }
+.triad-node { position:absolute; z-index:5; display:flex; flex-direction:column; align-items:center; gap:8px; opacity:0; pointer-events:none; transition:opacity 0.5s ease-out, transform 0.5s ease-out; }
 
 .node-icon { width:64px; height:64px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.05); border:1.5px solid rgba(255,255,255,0.15); }
 .node-icon svg { width:32px; height:32px; }
@@ -302,49 +301,38 @@ footer .footer-tagline { font-family: 'Playfair Display', serif; font-style: ita
 .node-icon--psych svg { fill:#FFAF37; }
 .node-icon--ai { box-shadow:0 0 20px rgba(0,225,175,0.3); border-color:rgba(0,225,175,0.4); }
 .node-icon--ai svg { fill:#00E1AF; }
-.node-icon.glow { animation: glow-pulse 2s ease-in-out infinite; }
+.node-icon.glow { animation:glow-pulse 2s ease-in-out infinite; }
 
 .node-label { font-family:'Inter',sans-serif; font-size:0.75rem; font-weight:600; letter-spacing:0.15em; text-transform:uppercase; color:rgba(255,255,255,0.85); }
 .node-sub { font-size:0.65rem; color:var(--text-muted); letter-spacing:0.05em; }
 
-.intersection-icon { opacity:0; }
-.intersection-icon.anim { opacity:1; transition: opacity 0.35s ease; }
+.intersection-icon { opacity:0; transition:opacity 0.35s ease; }
 .intersection-icon circle { fill:rgba(255,255,255,0.03); stroke:rgba(255,255,255,0.1); stroke-width:1; }
 
-#triad-center { position:absolute; z-index:10; display:flex; flex-direction:column; align-items:center; justify-content:center; pointer-events:none; opacity:0; transform:scale(0.85); }
-#triad-center.anim { opacity:1; transform:scale(1); transition: opacity 0.5s ease-out, transform 0.5s ease-out; }
+#triad-center { position:absolute; z-index:10; display:flex; flex-direction:column; align-items:center; justify-content:center; pointer-events:none; opacity:0; transition:opacity 0.5s ease-out, transform 0.5s ease-out; }
 #triad-center h1 { font-family:'Playfair Display',serif; font-size:clamp(2.2rem,5.5vw,4.2rem); font-weight:700; color:var(--white); margin:0; line-height:1.1; }
 #triad-center .triad-subtitle { font-family:'Inter',sans-serif; font-size:clamp(0.85rem,1.8vw,1.1rem); color:var(--text-muted); font-style:italic; letter-spacing:0.03em; margin-top:12px; }
 
 #hero-particles { position:absolute; inset:0; z-index:1; }
 
-@keyframes glow-pulse {
-  0%,100% { filter:brightness(1); }
-  50% { filter:brightness(1.4); }
-}
-@keyframes float-gentle {
-  0%,100% { transform:translateY(0); }
-  50% { transform:translateY(-4px); }
-}
-.triad-node.anim .node-icon { animation: float-gentle 3s ease-in-out infinite; }
-.triad-node:nth-child(2) .node-icon { animation-delay:0.5s; }
-.triad-node:nth-child(3) .node-icon { animation-delay:1s; }
+@keyframes glow-pulse { 0%,100%{filter:brightness(1);} 50%{filter:brightness(1.4);} }
+@keyframes float-gentle { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-4px);} }
 
 #hero-tagline-bar { position:absolute; bottom:0; left:0; right:0; z-index:10; text-align:center; padding:18px 0 24px; pointer-events:none; }
 #hero-tagline-bar p { font-family:'Inter',sans-serif; font-size:0.85rem; letter-spacing:0.08em; color:var(--text-muted); margin:0 0 10px; transition:opacity 0.5s ease; }
 #hero-tagline-bar svg { opacity:0.4; }
 
 @media(max-width:768px){
-  .node-icon { width:48px; height:48px; }
-  .node-icon svg { width:24px; height:24px; }
-  .node-label { font-size:0.65rem; }
-  .node-sub { display:none; }
+  .node-icon{width:48px;height:48px;}
+  .node-icon svg{width:24px;height:24px;}
+  .node-label{font-size:0.65rem;}
+  .node-sub{display:none;}
 }
 @media(max-width:480px){
-  .node-icon { width:40px; height:40px; }
-  .node-icon svg { width:20px; height:20px; }
-  #triad-center h1 { font-size:1.8rem; }
-  #triad-center .triad-subtitle { font-size:0.75rem; }
+  .node-icon{width:40px;height:40px;}
+  .node-icon svg{width:20px;height:20px;}
+  #triad-center h1{font-size:1.8rem;}
+  #triad-center .triad-subtitle{font-size:0.75rem;}
 }
 </style>
 </head>
@@ -684,8 +672,7 @@ window.addEventListener('scroll', () => {
 
   var canvas = document.getElementById('hero-particles');
   var ctx = canvas ? canvas.getContext('2d') : null;
-
-  var PARTICLE_COUNT = 35;
+  var PC = 35;
   var particles = [];
   var colors = [[100,155,255],[255,175,55],[0,225,175]];
 
@@ -694,44 +681,31 @@ window.addEventListener('scroll', () => {
     canvas.width = hero.offsetWidth;
     canvas.height = hero.offsetHeight;
   }
-
   function createParticles(){
     particles = [];
     if(!canvas) return;
-    for(var i=0; i<PARTICLE_COUNT; i++){
+    for(var i=0;i<PC;i++){
       var c = colors[Math.floor(Math.random()*3)];
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        r: Math.random() * 1.5 + 0.5,
-        vx: (Math.random() - 0.5) * 0.3,
-        vy: (Math.random() - 0.5) * 0.3,
-        a: Math.random() * 0.15 + 0.05,
-        c: c
-      });
+      particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*1.5+0.5,vx:(Math.random()-0.5)*0.3,vy:(Math.random()-0.5)*0.3,a:Math.random()*0.15+0.05,c:c});
     }
   }
-
   function drawParticles(){
     if(!ctx) return;
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    for(var i=0; i<particles.length; i++){
-      var p = particles[i];
-      p.x += p.vx; p.y += p.vy;
-      if(p.x < 0) p.x = canvas.width;
-      if(p.x > canvas.width) p.x = 0;
-      if(p.y < 0) p.y = canvas.height;
-      if(p.y > canvas.height) p.y = 0;
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(' + p.c[0] + ',' + p.c[1] + ',' + p.c[2] + ',' + p.a + ')';
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    for(var i=0;i<particles.length;i++){
+      var p=particles[i];
+      p.x+=p.vx; p.y+=p.vy;
+      if(p.x<0)p.x=canvas.width; if(p.x>canvas.width)p.x=0;
+      if(p.y<0)p.y=canvas.height; if(p.y>canvas.height)p.y=0;
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle='rgba('+p.c[0]+','+p.c[1]+','+p.c[2]+','+p.a+')';
       ctx.fill();
     }
     requestAnimationFrame(drawParticles);
   }
 
+  /* Animation - direct inline style setting (no CSS class toggling) */
   var animated = false;
-
   function animateTriad(){
     if(animated) return;
     animated = true;
@@ -740,73 +714,76 @@ window.addEventListener('scroll', () => {
     var ixIcons = document.querySelectorAll('.intersection-icon');
     var center = document.getElementById('triad-center');
 
+    /* Phase 1: Nodes fade in + scale up */
     nodes.forEach(function(node, idx){
-      setTimeout(function(){ node.classList.add('anim');node.style.opacity='1';node.style.transform=node.style.transform.replace('scale(0.5)','scale(1)'); }, idx * 120);
+      setTimeout(function(){
+        node.style.opacity = '1';
+        node.style.transform = node.style.transform.replace('scale(0.5)','scale(1)');
+      }, idx * 150);
     });
 
+    /* Phase 2: Lines draw */
     setTimeout(function(){
-      lines.forEach(function(line){ line.classList.add('anim'); });
-    }, 400);
+      lines.forEach(function(line){
+        line.style.opacity = '1';
+        line.style.strokeDashoffset = '0';
+      });
+    }, 500);
 
+    /* Phase 3: Intersection icons */
     setTimeout(function(){
       ixIcons.forEach(function(icon, idx){
-        setTimeout(function(){ icon.classList.add('anim'); }, idx * 100);
+        setTimeout(function(){ icon.style.opacity = '1'; }, idx * 120);
       });
-    }, 900);
+    }, 1000);
 
+    /* Phase 4: Center reveal */
     setTimeout(function(){
-      if(center){center.classList.add('anim');center.style.opacity='1';center.style.transform=center.style.transform.replace('scale(0.85)','scale(1)');}
-    }, 1400);
+      if(center){
+        center.style.opacity = '1';
+        center.style.transform = 'translate(-50%,-50%) scale(1)';
+      }
+    }, 1500);
 
+    /* Phase 5: Glow pulse on icons */
     setTimeout(function(){
       document.querySelectorAll('.node-icon').forEach(function(icon){
         icon.classList.add('glow');
+        icon.style.animation = 'float-gentle 3s ease-in-out infinite';
       });
-    }, 2400);
+    }, 2500);
   }
 
-  var taglines = [
-    'Where law meets cognition meets code',
-    'Psychologically informed. Legally defensible.',
-    'Every intelligent system needs a human layer',
-    'Structure. Empathy. Intelligence.',
-    'Law \u00d7 Psychology \u00d7 AI'
-  ];
+  /* Tagline rotator */
+  var taglines = ['Where law meets cognition meets code','Psychologically informed. Legally defensible.','Every intelligent system needs a human layer','Structure. Empathy. Intelligence.','Law \u00d7 Psychology \u00d7 AI'];
   var taglineEl = document.getElementById('convergence-tagline');
-  var taglineIdx = 0;
-
+  var tIdx = 0;
   function rotateTagline(){
     if(!taglineEl) return;
     taglineEl.style.opacity = '0';
     setTimeout(function(){
-      taglineIdx = (taglineIdx + 1) % taglines.length;
-      taglineEl.textContent = taglines[taglineIdx];
+      tIdx = (tIdx+1) % taglines.length;
+      taglineEl.textContent = taglines[tIdx];
       taglineEl.style.opacity = '1';
     }, 500);
   }
-  if(taglineEl){
-    taglineEl.textContent = taglines[0];
-    taglineEl.style.opacity = '1';
-    setInterval(rotateTagline, 4000);
-  }
+  if(taglineEl){ taglineEl.textContent = taglines[0]; taglineEl.style.opacity='1'; setInterval(rotateTagline, 4000); }
 
-  var observer = new IntersectionObserver(function(entries){
-    entries.forEach(function(entry){
-      if(entry.isIntersecting){ animateTriad(); observer.disconnect(); }
-    });
+  /* IntersectionObserver */
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ animateTriad(); obs.disconnect(); } });
   }, {threshold: 0.3});
-  observer.observe(hero);
+  obs.observe(hero);
 
-  initCanvas();
-  createParticles();
-  drawParticles();
+  /* Init */
+  initCanvas(); createParticles(); drawParticles();
   window.addEventListener('resize', function(){ initCanvas(); createParticles(); });
 
-  var svgLines = document.querySelectorAll('.triad-line');
-  svgLines.forEach(function(line){
-    var totalLength = line.getTotalLength();
-    line.style.strokeDasharray = totalLength;
-    line.style.strokeDashoffset = totalLength;
+  /* SVG line lengths */
+  document.querySelectorAll('.triad-line').forEach(function(line){
+    var len = line.getTotalLength();
+    line.style.strokeDasharray = len;
+    line.style.strokeDashoffset = len;
   });
 })();
 </script>
