@@ -288,7 +288,7 @@ footer .footer-tagline { font-family: 'Playfair Display', serif; font-style: ita
 
 
 /* === HERO LAYOUT === */
-.hero-content { position:relative; z-index:5; display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; padding:12vh 5% 8vh; box-sizing:border-box; }
+.hero-content { position:relative; z-index:5; display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; padding:12vh 5% 8vh; box-sizing:border-box; width:100%; }
 .icon-row { position:relative; display:flex; align-items:flex-start; justify-content:center; gap:60px; margin-top:48px; }
 .connecting-trace { position:absolute; top:50px; left:50%; transform:translateX(-50%); width:80%; max-width:500px; height:2px; z-index:0; pointer-events:none; opacity:0; }
 /* === NODE STYLING === */
@@ -826,7 +826,18 @@ window.addEventListener('scroll', () => {
     }, 3200);
     /* Phase 8: Tagline */
     setTimeout(function(){ if(tagbar) anim(tagbar, {opacity:'0'}, {opacity:'1'}, 400); }, 3500);
-  }
+  
+    /* Fallback: force visible after 5s if tab-throttled */
+    setTimeout(function(){
+      var els = [center, sub1, sub2, trace, tagbar];
+      els.forEach(function(el){ if(el){ el.style.transition='none'; el.style.opacity='1'; } });
+      if(center) center.style.transform = 'scale(1)';
+      nodes.forEach(function(n){ n.style.transition='none'; n.style.opacity='1'; n.style.transform='scale(1) translateY(0)'; });
+      subs.forEach(function(s){ s.style.transition='none'; s.style.opacity='1'; });
+      document.querySelectorAll('.law-beam,.law-pan-l,.law-pan-r,.synapse,.ai-node,.ai-edge').forEach(function(el){ el.classList.add('active'); });
+      document.querySelectorAll('.node-icon').forEach(function(el){ el.classList.add('glow'); });
+    }, 5000);
+}
 
   /* Tagline rotator */
   var taglines = ['Where law meets cognition meets code','Psychologically informed. Legally defensible.','Every intelligent system needs a human layer','Structure. Empathy. Intelligence.','Law \u00d7 Psychology \u00d7 AI'];
