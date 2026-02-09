@@ -308,32 +308,51 @@ footer .footer-tagline { font-family: 'Playfair Display', serif; font-style: ita
 </nav>
 
 <!-- HERO -->
-<section class="hero">
-  <div class="hero-inner">
-    <div class="hero-text">
-      <div class="hero-badge">AI Strategy Consulting</div>
-      <h1>Where <span class="accent">law</span>, <span class="gold">cognition</span> &amp; prompts meet to build human-first AI.</h1>
-      <p class="hero-sub">I help professionals and organizations deploy AI systems that are psychologically informed, legally defensible, and genuinely human-centered.</p>
-      <div class="hero-ctas">
-        <a href="#portfolio" class="btn btn-primary">Explore My Work &darr;</a>
-          <a href="https://calendly.com/humanlayerai" target="_blank" class="btn btn-outline" style="background:var(--gold);color:var(--navy);border:none;">&#127897; Be on My Podcast</a>
-        <a href="https://calendly.com/humanlayerai" target="_blank" class="btn btn-outline">Free Consultation &rarr;</a>
+
+
+  <section class="hero" style="position:relative;width:100%;height:100vh;min-height:600px;background:#030410;overflow:hidden;">
+  <div style="position:absolute;inset:0;z-index:2;opacity:0.02;pointer-events:none;background-size:200px 200px;mix-blend-mode:overlay;"></div>
+  <div id="convergence-canvas-wrap" style="position:absolute;inset:0;z-index:1;"></div>
+  <div id="convergence-labels" style="position:absolute;inset:0;z-index:3;pointer-events:none;"></div>
+  <div style="position:absolute;inset:0;z-index:10;display:flex;align-items:center;pointer-events:none;">
+    <div style="max-width:1200px;margin:0 auto;width:100%;padding:0 clamp(1.5rem,4vw,4rem);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:2rem;">
+      <div style="max-width:620px;pointer-events:auto;">
+        <div style="display:inline-flex;align-items:center;gap:0.5rem;background:rgba(45,212,168,0.08);border:1px solid rgba(45,212,168,0.2);border-radius:100px;padding:0.4rem 1rem;margin-bottom:1.5rem;">
+          <span style="width:6px;height:6px;border-radius:50%;background:var(--teal);"></span>
+          <span style="font-size:0.72rem;font-weight:600;letter-spacing:0.12em;color:var(--teal);text-transform:uppercase;">AI Strategy Consulting</span>
+        </div>
+        <h1 style="font-family:Playfair Display,Georgia,serif;font-size:clamp(2.2rem,5.5vw,4.2rem);font-weight:800;line-height:1.05;color:white;margin:0 0 0.4rem 0;text-shadow:0 0 80px rgba(100,165,255,0.15),0 2px 30px rgba(0,0,0,0.5);">
+          Human Layer <span style="color:var(--teal);text-shadow:0 0 40px rgba(45,212,168,0.3);">AI</span>
+        </h1>
+        <p style="font-size:clamp(1rem,2.2vw,1.55rem);font-weight:300;color:var(--text);line-height:1.5;margin:0.8rem 0 0.3rem 0;max-width:540px;">Where <strong style="color:var(--gold);">law</strong>, <strong style="color:var(--gold);">cognition</strong> &amp; prompts meet to build human-first AI.</p>
+        <p style="font-size:clamp(0.8rem,1.1vw,0.95rem);color:var(--text-muted);line-height:1.6;margin:0.6rem 0 1.8rem 0;max-width:480px;">I help professionals and organizations deploy AI systems that are psychologically informed, legally defensible, and genuinely human-centered.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:0.8rem;">
+          <a href="#portfolio" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.75rem 1.6rem;background:var(--teal);color:var(--navy);font-weight:600;font-size:0.85rem;border-radius:8px;text-decoration:none;transition:all 0.3s ease;">Explore My Work <span>&#8595;</span></a>
+          <a href="https://calendly.com/aakarshsharma" target="_blank" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.75rem 1.6rem;background:var(--gold);color:var(--navy);font-weight:600;font-size:0.85rem;border-radius:8px;text-decoration:none;transition:all 0.3s ease;">Be on My Podcast</a>
+        </div>
+        <a href="https://calendly.com/aakarshsharma" target="_blank" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.6rem 1.4rem;border:1px solid rgba(45,212,168,0.3);color:var(--teal);font-weight:500;font-size:0.82rem;border-radius:8px;text-decoration:none;margin-top:0.6rem;transition:all 0.3s ease;">Free Consultation <span>&#8594;</span></a>
       </div>
-    </div>
-    <div class="hero-visual">
-      <div class="hero-card">
-        <h3>Aakarsh Sharma</h3>
-        <p class="tagline">AI Systems &bull; Human Cognition &bull; Governance</p>
-        <div class="stat-grid">
-          <div class="stat"><div class="stat-num">556+</div><div class="stat-label">AI Sessions</div></div>
-          <div class="stat"><div class="stat-num">170+</div><div class="stat-label">Hours on Claude</div></div>
-          <div class="stat"><div class="stat-num">100+</div><div class="stat-label">Podcast Episodes</div></div>
-          <div class="stat"><div class="stat-num">~3K</div><div class="stat-label">LinkedIn Followers</div></div>
+      <div class="stats-card" style="pointer-events:auto;background:rgba(15,25,35,0.65);border:1px solid rgba(45,212,168,0.15);border-radius:16px;padding:clamp(1.2rem,2vw,2rem);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);min-width:280px;max-width:340px;">
+        <div style="width:60%;height:3px;background:linear-gradient(90deg,var(--teal),var(--gold));border-radius:2px;margin-bottom:1.2rem;"></div>
+        <h3 style="font-size:0.85rem;font-weight:700;letter-spacing:0.1em;color:var(--teal);text-transform:uppercase;margin:0 0 0.2rem 0;">AAKARSH SHARMA</h3>
+        <p style="font-size:0.75rem;color:var(--text-muted);margin:0 0 1.2rem 0;">AI Systems &#8226; Human Cognition &#8226; Governance</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+          <div style="text-align:center;"><div style="font-family:Playfair Display,serif;font-size:clamp(1.4rem,2vw,1.8rem);font-weight:700;color:var(--teal);">556+</div><div style="font-size:0.6rem;letter-spacing:0.1em;color:var(--text-muted);text-transform:uppercase;margin-top:0.2rem;">AI Sessions</div></div>
+          <div style="text-align:center;"><div style="font-family:Playfair Display,serif;font-size:clamp(1.4rem,2vw,1.8rem);font-weight:700;color:var(--teal);">170+</div><div style="font-size:0.6rem;letter-spacing:0.1em;color:var(--text-muted);text-transform:uppercase;margin-top:0.2rem;">Hours on Claude</div></div>
+          <div style="text-align:center;"><div style="font-family:Playfair Display,serif;font-size:clamp(1.4rem,2vw,1.8rem);font-weight:700;color:var(--teal);">100+</div><div style="font-size:0.6rem;letter-spacing:0.1em;color:var(--text-muted);text-transform:uppercase;margin-top:0.2rem;">Podcast Episodes</div></div>
+          <div style="text-align:center;"><div style="font-family:Playfair Display,serif;font-size:clamp(1.4rem,2vw,1.8rem);font-weight:700;color:var(--teal);">~3K</div><div style="font-size:0.6rem;letter-spacing:0.1em;color:var(--text-muted);text-transform:uppercase;margin-top:0.2rem;">LinkedIn Followers</div></div>
         </div>
       </div>
     </div>
   </div>
+  <div id="hero-tagline-bar" style="position:absolute;bottom:0;left:0;right:0;z-index:10;text-align:center;padding:1.2rem 1rem;pointer-events:none;">
+    <p id="convergence-tagline" style="font-size:clamp(0.55rem,1vw,0.78rem);font-weight:300;letter-spacing:0.22em;color:rgba(200,210,235,0.45);text-transform:uppercase;margin:0 0 0.6rem 0;text-shadow:0 2px 12px rgba(0,0,0,0.6);transition:opacity 0.5s ease,transform 0.5s ease;"></p>
+    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" style="animation:hlfloat 2.5s ease-in-out infinite;opacity:0.4;"><path d="M8 2 L8 12 M4 9 L8 13 L12 9" stroke="rgba(220,225,240,0.5)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+  <style>@keyframes hlfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}</style>
 </section>
+
+  
 
 <!-- PORTFOLIO -->
 <section id="portfolio">
@@ -561,20 +580,8 @@ footer .footer-tagline { font-family: 'Playfair Display', serif; font-style: ita
 
 <!-- FOOTER -->
 
-  <section id="convergence" style="position:relative;width:100%;height:70vh;min-height:500px;background:#030410;overflow:hidden;border-top:1px solid rgba(45,212,168,0.08);">
-    <div style="position:absolute;inset:0;z-index:2;opacity:0.02;pointer-events:none;background-size:200px 200px;mix-blend-mode:overlay;"></div>
-    <div id="convergence-canvas-wrap" style="position:absolute;inset:0;z-index:1;"></div>
-    <div id="convergence-labels" style="position:absolute;inset:0;z-index:3;pointer-events:none;"></div>
-    <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none;z-index:10;">
-      <h2 style="font-family:Playfair Display,Georgia,serif;font-size:clamp(1.8rem,4.5vw,3.5rem);font-weight:700;color:white;margin:0 0 0.3rem 0;text-align:center;text-shadow:0 0 60px rgba(100,165,255,0.15),0 2px 30px rgba(0,0,0,0.5);">The <span style="color:rgba(0,225,175,0.9);text-shadow:0 0 30px rgba(0,225,175,0.25);">Convergence</span></h2>
-      <p id="convergence-tagline" style="font-size:clamp(0.55rem,1.2vw,0.85rem);font-weight:300;letter-spacing:0.2em;color:rgba(200,210,235,0.55);text-transform:uppercase;margin-top:0.6rem;text-align:center;min-height:1.5em;text-shadow:0 2px 15px rgba(0,0,0,0.6);transition:opacity 0.5s ease,transform 0.5s ease;"></p>
-      <div style="position:absolute;bottom:clamp(1rem,3vh,2rem);display:flex;flex-direction:column;align-items:center;gap:0.4rem;">
-        <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:100px;padding:0.4rem 1.2rem;backdrop-filter:blur(6px);">
-          <span style="font-size:0.58rem;letter-spacing:0.18em;color:rgba(220,225,240,0.6);text-transform:uppercase;font-weight:400;">Click between disciplines to see what they create</span>
-        </div>
-      </div>
-    </div>
-  </section>
+
+  
 
   <footer>
   <div class="footer-tagline">"Every intelligent system needs a human layer."</div>
@@ -611,7 +618,7 @@ var PC=140,CON=80,MR=130,TL=4;
 var STREAMS=[
 {id:"law",label:"LAW",sub:"Logic & Structure",a:-2.356,c:[100,155,255]},
 {id:"psych",label:"PSYCHOLOGY",sub:"Cognition & Bias",a:-0.785,c:[255,175,55]},
-{id:"ai",label:"AI",sub:"Systems & Scale",a:1.5708,c:[0,225,175]}
+{id:"ai",label:"AI",sub:"Systems & Scale",a:1.35,c:[0,225,175]}
 ];
 var WORDS=[
 {s:0,t:"Precedent"},{s:0,t:"Burden of Proof"},{s:0,t:"Governance"},
@@ -702,7 +709,7 @@ mouse.x=t.clientX-rect.left;mouse.y=t.clientY-rect.top;}
 function onLeave(){mouse.x=-1e4;mouse.y=-1e4;}
 setInterval(function(){tagFade=false;setTimeout(function(){
 tagIdx=(tagIdx+1)%TAGLINES.length;tagFade=true;},400);},4000);
-setInterval(function(){if(kp.length<8)kp.push(new KWord(W,H,cx,cy,usedK));},2200);
+setInterval(function(){if(kp.length<8){if(usedK.size>12)usedK.clear();kp.push(new KWord(W,H,cx,cy,usedK));}},2200);
 function draw(){
 tick++;ctx.clearRect(0,0,W,H);var minD=Math.min(W,H);
 pp.forEach(function(p){p.update(tick,W,H,cx,cy,mouse.x,mouse.y);});
@@ -758,7 +765,7 @@ lbl.innerHTML='<div class="conv-label-main" style="color:rgb('+s.c.join(",")+')"
 overlay.appendChild(lbl);lbl._streamIdx=i;});}
 function posLabels(){if(!overlay)return;
 overlay.querySelectorAll(".conv-label").forEach(function(lbl){
-var i=lbl._streamIdx,s=STREAMS[i],r=Math.min(W,H)*0.44;
+var i=lbl._streamIdx,s=STREAMS[i],r=Math.min(W,H)*0.36;
 lbl.style.left=(cx+Math.cos(s.a)*r)+"px";lbl.style.top=(cy+Math.sin(s.a)*r)+"px";});}
 window.addEventListener("resize",function(){resize();posLabels();});
 canvas.addEventListener("mousemove",onMove);
