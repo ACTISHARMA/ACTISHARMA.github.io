@@ -134,14 +134,24 @@ section { padding: 100px 2rem; }
 .section-title { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--white); margin-bottom: 1rem; }
 .section-desc { color: var(--text-muted); max-width: 600px; margin-bottom: 3rem; font-size: 1.05rem; }
 
-/* === VALUE PROP === */
-#value-prop { background: var(--navy-deep); }
-.vp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px; }
-.vp-card { border-radius: 12px; padding: 36px 28px; text-align: left; transition: transform 0.3s, box-shadow 0.3s; }
-.vp-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.3); }
-.vp-icon { width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
-.vp-card h3 { font-size: 1rem; font-weight: 600; letter-spacing: 0.05em; margin: 0 0 12px; text-transform: uppercase; }
-.vp-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.7; }
+/* === PROBLEM PUNCH === */
+#problem-punch { background: var(--navy-deep); position: relative; overflow: hidden; }
+#problem-punch::before { content: ''; position: absolute; top: -50%; left: -10%; width: 120%; height: 200%; background: radial-gradient(ellipse at 50% 0%, rgba(45,212,168,0.04) 0%, transparent 60%); pointer-events: none; }
+.punch-headline { font-family: 'Playfair Display', serif; font-size: clamp(2.4rem, 5vw, 3.8rem); color: var(--white); line-height: 1.15; max-width: 800px; margin: 0 auto 20px; text-align: center; }
+.punch-headline em { font-style: italic; color: var(--red); }
+.punch-sub { font-size: 1.1rem; color: var(--text-muted); max-width: 580px; margin: 0 auto 72px; text-align: center; line-height: 1.7; }
+.punch-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; max-width: 1100px; margin: 0 auto; }
+.punch-item { padding: 48px 40px; position: relative; border-right: 1px solid rgba(255,255,255,0.06); }
+.punch-item:last-child { border-right: none; }
+.punch-number { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 20px; font-weight: 600; }
+.punch-problem { font-family: 'Playfair Display', serif; font-size: 1.35rem; color: var(--white); margin-bottom: 14px; line-height: 1.35; }
+.punch-fix { font-size: 0.9rem; color: var(--teal); font-weight: 500; line-height: 1.6; }
+.punch-cta { text-align: center; margin-top: 64px; }
+@media (max-width: 768px) {
+  .punch-grid { grid-template-columns: 1fr; gap: 0; }
+  .punch-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); padding: 36px 20px; }
+  .punch-item:last-child { border-bottom: none; }
+}
 
 /* === ARTIFACT SLIDER === */
 #demos { background: var(--navy); position: relative; }
@@ -358,38 +368,30 @@ footer .footer-tagline { font-family: 'Playfair Display', serif; font-style: ita
 </div>
 </section>
 
-<!-- VALUE PROPOSITION -->
-<section id="value-prop" style="background:var(--navy-deep);padding:100px 2rem;">
-  <div class="section-inner" style="text-align:center;">
-    <h2 class="section-title" style="max-width:700px;margin:0 auto 16px;">Your AI Needs More Than Engineering</h2>
-    <p class="section-desc" style="max-width:640px;margin:0 auto 60px;">Most AI outputs sound right but collapse under scrutiny. We design systems through the lens of law, psychology, and technology&mdash;so they hold up when it matters.</p>
-  </div>
+<!-- PROBLEM PUNCH -->
+<section id="problem-punch" style="padding:120px 2rem;">
   <div class="section-inner">
-    <div class="vp-grid">
-      <div class="vp-card" style="background:rgba(100,155,255,0.04);border:1px solid rgba(100,155,255,0.15);">
-        <div class="vp-icon" style="background:rgba(100,155,255,0.12);">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2L4 7v5c0 5.25 3.4 10.2 8 11.6 4.6-1.4 8-6.35 8-11.6V7l-8-5z" stroke="#649BFF" stroke-width="1.5" fill="none"/><path d="M9 12l2 2 4-4" stroke="#649BFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <h3 style="color:#649BFF;">Legal Architecture</h3>
-        <p>Every AI decision carries weight. I design systems with clear reasoning chains, documented logic, and structural accountability&mdash;so your AI can explain itself when it matters most.</p>
+    <h2 class="punch-headline">Your AI sounds smart.<br><em>It isn&rsquo;t.</em></h2>
+    <p class="punch-sub">It hallucinates. It contradicts itself. It crumbles the moment someone with domain expertise pushes back. I fix that.</p>
+    <div class="punch-grid">
+      <div class="punch-item">
+        <div class="punch-number">The Problem</div>
+        <div class="punch-problem">Your prompts have no reasoning chain.</div>
+        <div class="punch-fix">I bring legal logic&mdash;structured argumentation, burden of proof, chain of custody for every claim your AI makes.</div>
       </div>
-      <div class="vp-card" style="background:rgba(255,175,55,0.04);border:1px solid rgba(255,175,55,0.15);">
-        <div class="vp-icon" style="background:rgba(255,175,55,0.12);">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2a7 7 0 0 1 7 7c0 2.8-1.6 5.2-4 6.3V17a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-1.7C6.6 14.2 5 11.8 5 9a7 7 0 0 1 7-7z" stroke="#FFAF37" stroke-width="1.5" fill="none"/><path d="M9 21h6M10 17v1M14 17v1" stroke="#FFAF37" stroke-width="1.5" stroke-linecap="round"/></svg>
-        </div>
-        <h3 style="color:#FFAF37;">Cognitive Architecture</h3>
-        <p>AI workflows that respect how humans actually think. I identify cognitive biases, decision fatigue risks, and friction points that erode trust in automated systems.</p>
+      <div class="punch-item">
+        <div class="punch-number">The Blind Spot</div>
+        <div class="punch-problem">Your AI ignores how humans actually decide.</div>
+        <div class="punch-fix">I apply cognitive psychology&mdash;anchoring, framing, decision fatigue&mdash;so your AI persuades instead of confuses.</div>
       </div>
-      <div class="vp-card" style="background:rgba(0,225,175,0.04);border:1px solid rgba(0,225,175,0.15);">
-        <div class="vp-icon" style="background:rgba(0,225,175,0.12);">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" rx="1.5" stroke="#00E1AF" stroke-width="1.5" fill="none"/><rect x="14" y="3" width="7" height="7" rx="1.5" stroke="#00E1AF" stroke-width="1.5" fill="none"/><rect x="8.5" y="14" width="7" height="7" rx="1.5" stroke="#00E1AF" stroke-width="1.5" fill="none"/><path d="M10 6.5h4M6.5 10v4.5h5M17.5 10v4.5h-5" stroke="#00E1AF" stroke-width="1.2" stroke-linecap="round"/></svg>
-        </div>
-        <h3 style="color:#00E1AF;">Strategic Deployment</h3>
-        <p>AI that actually scales. Solutions that are robust, interpretable, and aligned with your business objectives&mdash;not just technically impressive demos.</p>
+      <div class="punch-item">
+        <div class="punch-number">The Gap</div>
+        <div class="punch-problem">Your &ldquo;AI strategy&rdquo; is just vibes.</div>
+        <div class="punch-fix">I build systems that survive cross-examination&mdash;auditable, explainable, and built to hold up under pressure.</div>
       </div>
     </div>
-    <div style="text-align:center;margin-top:56px;">
-      <a href="#demos" class="btn btn-primary">See Live Demos Below &darr;</a>
+    <div class="punch-cta">
+      <a href="#demos" class="btn btn-primary">See What I&rsquo;ve Built &darr;</a>
     </div>
   </div>
 </section>
