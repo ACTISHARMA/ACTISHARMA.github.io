@@ -76,22 +76,69 @@ nav .nav-links a:hover::after { width: 100%; }
 .btn-gold { background: var(--gold); color: var(--navy); }
 .btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); }
 
-/* === HERO === */
+/* === HERO VIDEO === */
 .hero { position: relative; width: 100%; height: 100vh; min-height: 600px; background: #030410; overflow: hidden; }
 .hero-video { position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; object-fit: cover; }
-.hero-overlay { position: absolute; inset: 0; z-index: 2; background: linear-gradient(180deg, rgba(3,4,16,0.45) 0%, rgba(3,4,16,0.25) 40%, rgba(3,4,16,0.5) 80%, rgba(15,25,35,1) 100%); }
-.hero-content { position: relative; z-index: 5; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; padding: 12vh 5% 8vh; width: 100%; }
-#triad-center { position: relative; z-index: 10; display: flex; flex-direction: column; align-items: center; text-align: center; animation: hero-fade-in 1.5s ease-out forwards; }
-#triad-center h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.4rem, 5.5vw, 4.5rem); font-weight: 700; color: var(--white); margin: 0; line-height: 1.1; text-shadow: 0 2px 40px rgba(0,0,0,0.6); }
-.triad-subtitle { font-size: clamp(0.9rem, 1.8vw, 1.15rem); color: rgba(255,255,255,0.85); font-style: italic; letter-spacing: 0.03em; margin-top: 18px; text-shadow: 0 1px 20px rgba(0,0,0,0.5); animation: hero-fade-in 1.5s ease-out 0.5s both; }
-.triad-subtitle-2 { font-size: clamp(0.8rem, 1.5vw, 1rem); color: var(--gold); font-weight: 500; letter-spacing: 0.08em; margin-top: 10px; text-shadow: 0 1px 20px rgba(0,0,0,0.5); animation: hero-fade-in 1.5s ease-out 1s both; }
-.hero-scroll-hint { position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%); z-index: 10; text-align: center; animation: hero-fade-in 1.5s ease-out 1.8s both; }
-.hero-scroll-hint p { font-size: 0.8rem; letter-spacing: 0.08em; color: var(--text-muted); margin: 0 0 8px; }
-.hero-scroll-hint svg { animation: bounce-down 2s ease-in-out infinite; }
-@keyframes hero-fade-in { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes bounce-down { 0%,100% { transform: translateY(0); } 50% { transform: translateY(8px); } }
+.hero-overlay { position: absolute; inset: 0; z-index: 2; background: linear-gradient(180deg, rgba(3,4,16,0.15) 0%, rgba(3,4,16,0.05) 40%, rgba(3,4,16,0.3) 75%, rgba(15,25,35,1) 100%); pointer-events: none; }
+.hero-bottom { position: absolute; bottom: 0; left: 0; right: 0; z-index: 5; padding: 0 5% 48px; display: flex; align-items: flex-end; justify-content: space-between; }
+.hero-brand { animation: hero-fade-in 1.2s ease-out 0.5s both; }
+.hero-brand h1 { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 3.5vw, 2.8rem); font-weight: 700; color: var(--white); margin: 0; line-height: 1.1; text-shadow: 0 2px 30px rgba(0,0,0,0.7); }
+.hero-brand p { font-size: clamp(0.75rem, 1.2vw, 0.9rem); color: var(--gold); font-weight: 500; letter-spacing: 0.1em; margin-top: 8px; text-shadow: 0 1px 15px rgba(0,0,0,0.6); }
+.hero-controls { display: flex; align-items: center; gap: 16px; animation: hero-fade-in 1.2s ease-out 1s both; }
+.hero-mute-btn { background: rgba(255,255,255,0.12); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.2); color: var(--white); width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s; font-size: 1.1rem; }
+.hero-mute-btn:hover { background: rgba(255,255,255,0.25); transform: scale(1.08); }
+.hero-scroll-cta { text-align: center; position: absolute; bottom: 48px; left: 50%; transform: translateX(-50%); z-index: 5; animation: hero-fade-in 1.2s ease-out 1.5s both; }
+.hero-scroll-cta p { font-size: 0.75rem; letter-spacing: 0.1em; color: rgba(255,255,255,0.5); margin: 0 0 6px; }
+.hero-scroll-cta svg { animation: bounce-down 2s ease-in-out infinite; }
+@keyframes hero-fade-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes bounce-down { 0%,100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
 
-/* (Hero animations now handled by video + CSS keyframes above) */
+/* === ANIMATED TRIAD SECTION === */
+#triad-section { background: var(--navy-deep); padding: 100px 2rem; overflow: hidden; }
+.triad-wrapper { display: flex; flex-direction: column; align-items: center; text-align: center; max-width: 900px; margin: 0 auto; }
+#triad-center { opacity: 0; }
+#triad-center h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 700; color: var(--white); margin: 0; line-height: 1.15; }
+.triad-subtitle { font-size: clamp(0.85rem, 1.5vw, 1.05rem); color: var(--text-muted); font-style: italic; letter-spacing: 0.03em; margin-top: 14px; opacity: 0; }
+.triad-subtitle-2 { font-size: clamp(0.8rem, 1.3vw, 0.95rem); color: var(--gold); font-weight: 500; letter-spacing: 0.08em; margin-top: 8px; opacity: 0; }
+.icon-row { position: relative; display: flex; align-items: flex-start; justify-content: center; gap: 60px; margin-top: 48px; }
+.connecting-trace { position: absolute; top: 50px; left: 50%; transform: translateX(-50%); width: 80%; max-width: 500px; height: 2px; z-index: 0; pointer-events: none; opacity: 0; }
+.triad-node { position: relative; z-index: 5; display: flex; flex-direction: column; align-items: center; gap: 10px; opacity: 0; }
+.node-icon { width: 100px; height: 100px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.03); border: 1.5px solid rgba(255,255,255,0.1); }
+.node-icon svg { width: 80px; height: 80px; overflow: visible; }
+.node-icon--law { box-shadow: 0 0 24px rgba(100,155,255,0.2); border-color: rgba(100,155,255,0.25); }
+.node-icon--psych { box-shadow: 0 0 24px rgba(255,175,55,0.2); border-color: rgba(255,175,55,0.25); }
+.node-icon--ai { box-shadow: 0 0 24px rgba(0,225,175,0.2); border-color: rgba(0,225,175,0.25); }
+.node-icon.glow { animation: glow-breathe 3s ease-in-out infinite; }
+.node-label { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.85); }
+.node-sub { font-size: 0.7rem; color: var(--text-muted); letter-spacing: 0.05em; opacity: 0; }
+/* Triad animations */
+.synapse { stroke-dasharray: 80; stroke-dashoffset: 80; opacity: 0.15; }
+.synapse.active { animation: synapse-fire 3s ease-in-out infinite; }
+.s1.active { animation-delay: 0s; } .s2.active { animation-delay: 0.5s; } .s3.active { animation-delay: 1.0s; } .s4.active { animation-delay: 1.5s; } .s5.active { animation-delay: 2.0s; }
+.ai-node { opacity: 0.3; } .ai-node.active { animation: node-pulse 2.5s ease-in-out infinite; }
+.ai-edge { opacity: 0.15; } .ai-edge.active { animation: edge-glow 4s ease-in-out infinite; }
+.law-beam { transform-origin: 40px 24px; } .law-beam.active { animation: scale-rock 4s ease-in-out infinite; }
+.law-pan-l { transform-origin: 14px 24px; } .law-pan-l.active { animation: pan-counter 4s ease-in-out infinite; }
+.law-pan-r { transform-origin: 66px 24px; } .law-pan-r.active { animation: pan-counter 4s ease-in-out infinite; }
+@keyframes scale-rock { 0%,100%{transform:rotate(0deg);} 30%{transform:rotate(3deg);} 70%{transform:rotate(-3deg);} }
+@keyframes pan-counter { 0%,100%{transform:rotate(0deg);} 30%{transform:rotate(-3deg);} 70%{transform:rotate(3deg);} }
+@keyframes synapse-fire { 0%{stroke-dashoffset:80;opacity:0.15;} 35%{stroke-dashoffset:0;opacity:1;} 65%{stroke-dashoffset:0;opacity:1;} 100%{stroke-dashoffset:-80;opacity:0.15;} }
+@keyframes node-pulse { 0%,100%{transform:scale(1);opacity:0.3;} 50%{transform:scale(1.5);opacity:1;} }
+@keyframes edge-glow { 0%,100%{opacity:0.15;} 50%{opacity:0.45;} }
+@keyframes glow-breathe { 0%,100%{filter:brightness(1);} 50%{filter:brightness(1.25);} }
+@media (max-width: 768px) {
+  .icon-row { gap: 36px; margin-top: 36px; }
+  .node-icon { width: 72px; height: 72px; }
+  .node-icon svg { width: 56px; height: 56px; }
+  .node-sub { display: none; }
+  .hero-bottom { flex-direction: column; align-items: flex-start; gap: 16px; }
+}
+@media (max-width: 480px) {
+  .icon-row { gap: 16px; margin-top: 24px; }
+  .node-icon { width: 56px; height: 56px; }
+  .node-icon svg { width: 44px; height: 44px; }
+  .node-label { font-size: 0.6rem; }
+}
 
 /* === SECTIONS === */
 section { padding: 100px 2rem; }
@@ -286,23 +333,60 @@ footer .footer-tagline { font-family: 'Playfair Display', serif; font-style: ita
   </div>
 </nav>
 
-<!-- HERO -->
+<!-- HERO VIDEO -->
 <section class="hero" id="hero">
-<video class="hero-video" autoplay muted loop playsinline preload="auto" poster="">
+<video class="hero-video" id="heroVideo" autoplay muted loop playsinline preload="auto">
   <source src="hero-web.mp4" type="video/mp4">
 </video>
 <div class="hero-overlay"></div>
-<div class="hero-content">
-<div id="triad-center">
-<h1>Human Layer <span style="color:var(--teal);">AI</span></h1>
-<p class="triad-subtitle">Every Intelligent System Needs A Human Layer.</p>
-<p class="triad-subtitle-2">Law &times; Psychology &times; AI</p>
+<div class="hero-bottom">
+  <div class="hero-brand">
+    <h1>Human Layer <span style="color:var(--teal);">AI</span></h1>
+    <p>Law &times; Psychology &times; AI</p>
+  </div>
+  <div class="hero-controls">
+    <button class="hero-mute-btn" id="muteBtn" onclick="toggleMute()" aria-label="Toggle sound">&#128263;</button>
+  </div>
 </div>
+<div class="hero-scroll-cta">
+  <p>Scroll</p>
+  <svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M10 14l-5-5h10l-5 5z" fill="rgba(255,255,255,0.4)"/></svg>
 </div>
-<div class="hero-scroll-hint">
-<p>Scroll to explore</p>
-<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 14l-5-5h10l-5 5z" fill="#8899aa"/></svg>
-</div>
+</section>
+
+<!-- ANIMATED TRIAD -->
+<section id="triad-section">
+  <div class="triad-wrapper">
+    <div id="triad-center">
+      <h2>Every Intelligent System Needs<br>A <span style="color:var(--teal);">Human</span> Layer.</h2>
+      <p class="triad-subtitle">Psychologically Informed. Legally Defensible.</p>
+      <p class="triad-subtitle-2">That&rsquo;s what I build.</p>
+    </div>
+    <div class="icon-row">
+      <svg class="connecting-trace" viewBox="0 0 600 2" preserveAspectRatio="none"><line x1="0" y1="1" x2="600" y2="1" stroke="rgba(255,255,255,0.12)" stroke-width="1" stroke-dasharray="4 8"/></svg>
+      <div class="triad-node" id="node-law">
+        <div class="node-icon node-icon--law">
+          <svg viewBox="0 0 80 80" fill="none"><line x1="40" y1="72" x2="40" y2="24" stroke="#649BFF" stroke-width="2" stroke-linecap="round"/><line x1="28" y1="72" x2="52" y2="72" stroke="#649BFF" stroke-width="2.5" stroke-linecap="round"/><circle cx="40" cy="24" r="2.5" fill="#649BFF"/><g class="law-beam"><line x1="14" y1="24" x2="66" y2="24" stroke="#649BFF" stroke-width="2" stroke-linecap="round"/><g class="law-pan-l"><line x1="14" y1="24" x2="14" y2="44" stroke="#649BFF" stroke-width="1" opacity="0.6"/><path d="M4,44 Q14,56 24,44" stroke="#649BFF" stroke-width="1.5" fill="none"/></g><g class="law-pan-r"><line x1="66" y1="24" x2="66" y2="44" stroke="#649BFF" stroke-width="1" opacity="0.6"/><path d="M56,44 Q66,56 76,44" stroke="#649BFF" stroke-width="1.5" fill="none"/></g></g></svg>
+        </div>
+        <span class="node-label">Law</span>
+        <span class="node-sub">Logic &amp; Structure</span>
+      </div>
+      <div class="triad-node" id="node-psych">
+        <div class="node-icon node-icon--psych">
+          <svg viewBox="0 0 80 80" fill="none"><path d="M40 10 C27 10 16 20 15 33 C14 42 18 50 24 56 C30 62 36 66 40 66 C44 66 50 62 56 56 C62 50 66 42 65 33 C64 20 53 10 40 10Z" stroke="#FFAF37" stroke-width="1.5" opacity="0.35"/><path class="synapse s1" d="M24 26 Q32 20 40 28 Q48 36 56 28" stroke="#FFAF37" stroke-width="1.5" stroke-linecap="round"/><path class="synapse s2" d="M20 36 Q28 28 38 38 Q48 48 58 38" stroke="#FFAF37" stroke-width="1.5" stroke-linecap="round"/><path class="synapse s3" d="M22 48 Q30 40 40 48 Q50 56 58 48" stroke="#FFAF37" stroke-width="1.5" stroke-linecap="round"/><path class="synapse s4" d="M30 18 Q34 28 30 38 Q26 48 32 58" stroke="#FFAF37" stroke-width="1.5" stroke-linecap="round"/><path class="synapse s5" d="M50 18 Q46 28 50 38 Q54 48 48 58" stroke="#FFAF37" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <span class="node-label">Psychology</span>
+        <span class="node-sub">Cognition &amp; Bias</span>
+      </div>
+      <div class="triad-node" id="node-ai">
+        <div class="node-icon node-icon--ai">
+          <svg viewBox="0 0 80 80" fill="none"><line class="ai-edge" x1="40" y1="14" x2="16" y2="32" stroke="#00E1AF" stroke-width="1"/><line class="ai-edge" x1="40" y1="14" x2="64" y2="32" stroke="#00E1AF" stroke-width="1"/><line class="ai-edge" x1="40" y1="14" x2="40" y2="42" stroke="#00E1AF" stroke-width="1"/><line class="ai-edge" x1="16" y1="32" x2="64" y2="32" stroke="#00E1AF" stroke-width="1"/><line class="ai-edge" x1="16" y1="32" x2="26" y2="56" stroke="#00E1AF" stroke-width="1"/><line class="ai-edge" x1="64" y1="32" x2="54" y2="56" stroke="#00E1AF" stroke-width="1"/><line class="ai-edge" x1="40" y1="42" x2="26" y2="56" stroke="#00E1AF" stroke-width="1"/><line class="ai-edge" x1="40" y1="42" x2="54" y2="56" stroke="#00E1AF" stroke-width="1"/><line class="ai-edge" x1="26" y1="56" x2="54" y2="56" stroke="#00E1AF" stroke-width="1"/><line class="ai-edge" x1="26" y1="56" x2="40" y2="70" stroke="#00E1AF" stroke-width="1"/><line class="ai-edge" x1="54" y1="56" x2="40" y2="70" stroke="#00E1AF" stroke-width="1"/><circle class="ai-node n1" cx="40" cy="14" r="4" fill="#00E1AF"/><circle class="ai-node n2" cx="16" cy="32" r="3.5" fill="#00E1AF"/><circle class="ai-node n3" cx="64" cy="32" r="3.5" fill="#00E1AF"/><circle class="ai-node n4" cx="40" cy="42" r="5" fill="#00E1AF"/><circle class="ai-node n5" cx="26" cy="56" r="3" fill="#00E1AF"/><circle class="ai-node n6" cx="54" cy="56" r="3" fill="#00E1AF"/><circle class="ai-node n7" cx="40" cy="70" r="3.5" fill="#00E1AF"/></svg>
+        </div>
+        <span class="node-label">AI</span>
+        <span class="node-sub">Systems &amp; Scale</span>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- PROBLEM PUNCH -->
@@ -764,15 +848,73 @@ const revealObs = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 
-// === LANDING BUG FIX: Always start at hero ===
+// === MUTE/UNMUTE TOGGLE ===
+function toggleMute() {
+  var v = document.getElementById('heroVideo');
+  var btn = document.getElementById('muteBtn');
+  if (!v) return;
+  v.muted = !v.muted;
+  btn.innerHTML = v.muted ? '&#128263;' : '&#128266;';
+}
+
+// === LANDING BUG FIX: Aggressive multi-hook scroll reset ===
 (function(){
-  // Force scroll to top on every page load, clear any hash
+  // Clear hash immediately
   if (window.location.hash) {
     window.history.replaceState(null, '', window.location.pathname);
   }
+  // Scroll to top at multiple timing points to defeat browser hash-scroll
   window.scrollTo(0, 0);
-  // Prevent iframes from stealing focus
-  document.querySelectorAll('iframe').forEach(function(f){ f.setAttribute('tabindex', '-1'); });
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
+  // After DOM is ready
+  document.addEventListener('DOMContentLoaded', function() {
+    window.scrollTo(0, 0);
+    // Prevent iframes from stealing focus
+    document.querySelectorAll('iframe').forEach(function(f){ f.setAttribute('tabindex', '-1'); });
+  });
+  // After full page load (images, video, etc.)
+  window.addEventListener('load', function() {
+    setTimeout(function(){ window.scrollTo({ top: 0, behavior: 'instant' }); }, 0);
+    setTimeout(function(){ window.scrollTo({ top: 0, behavior: 'instant' }); }, 100);
+    setTimeout(function(){ window.scrollTo({ top: 0, behavior: 'instant' }); }, 300);
+  });
+})();
+
+// === TRIAD ANIMATION (fires on scroll into view) ===
+(function(){
+  var section = document.getElementById('triad-section');
+  if (!section) return;
+  var animated = false;
+  function anim(el, from, to, dur) {
+    el.style.transition = 'none';
+    var a = el.animate([from, to], { duration: dur, easing: 'ease-out', fill: 'forwards' });
+    a.onfinish = function() { for (var k in to) { el.style[k] = to[k]; } };
+  }
+  function animateTriad() {
+    if (animated) return; animated = true;
+    var center = document.getElementById('triad-center');
+    var sub1 = section.querySelector('.triad-subtitle');
+    var sub2 = section.querySelector('.triad-subtitle-2');
+    var trace = section.querySelector('.connecting-trace');
+    var nodes = section.querySelectorAll('.triad-node');
+    var subs = section.querySelectorAll('.node-sub');
+    if (center) anim(center, {opacity:'0',transform:'scale(0.92)'}, {opacity:'1',transform:'scale(1)'}, 700);
+    setTimeout(function(){ if(sub1) anim(sub1,{opacity:'0'},{opacity:'1'},500); },500);
+    setTimeout(function(){ if(sub2) anim(sub2,{opacity:'0'},{opacity:'1'},500); },900);
+    setTimeout(function(){ if(trace) anim(trace,{opacity:'0'},{opacity:'1'},400); },1400);
+    nodes.forEach(function(node,idx){ setTimeout(function(){ anim(node,{opacity:'0',transform:'scale(0.6) translateY(16px)'},{opacity:'1',transform:'scale(1) translateY(0)'},550); },1600+idx*300); });
+    setTimeout(function(){ subs.forEach(function(sub){ anim(sub,{opacity:'0'},{opacity:'1'},350); }); },2800);
+    setTimeout(function(){
+      section.querySelectorAll('.law-beam,.law-pan-l,.law-pan-r').forEach(function(el){el.classList.add('active');});
+      section.querySelectorAll('.synapse').forEach(function(el){el.classList.add('active');});
+      section.querySelectorAll('.ai-node').forEach(function(el){el.classList.add('active');});
+      section.querySelectorAll('.ai-edge').forEach(function(el){el.classList.add('active');});
+      section.querySelectorAll('.node-icon').forEach(function(el){el.classList.add('glow');});
+    },3200);
+  }
+  var obs = new IntersectionObserver(function(entries){ entries.forEach(function(e){ if(e.isIntersecting){ animateTriad(); obs.disconnect(); }}); }, {threshold: 0.3});
+  obs.observe(section);
 })();
 </script>
 </body>
