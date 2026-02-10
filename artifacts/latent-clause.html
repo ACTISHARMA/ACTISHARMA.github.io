@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latent Clause Analyzer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #0f1923;
+            color: #e0e0e0;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px 0;
+            border-bottom: 1px solid rgba(45, 212, 168, 0.2);
+        }
+
+        .header h1 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #2dd4a8;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .header-icon {
+            font-size: 36px;
+        }
+
+        .header p {
+            color: #a0a0a0;
+            font-size: 14px;
+            font-weight: 400;
+        }
+
+        /* Input Section */
+        .input-section {
+            background: rgba(45, 212, 168, 0.05);
+            border: 1px solid rgba(45, 212, 168, 0.2);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 40px;
+        }
+
+        .input-section h2 {
+            color: #2dd4a8;
+            font-size: 18px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .tab-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 10px 16px;
+            background: transparent;
+            border: 1px solid rgba(45, 212, 168, 0.3);
+            color: #e0e0e0;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .tab-btn:hover {
+            border-color: #2dd4a8;
+            color: #2dd4a8;
+        }
+
+        .tab-btn.active {
+            background: #2dd4a8;
+            color: #0f1923;
+            border-color: #2dd4a8;
+        }
+
+        .input-area {
+            display: none;
+        }
+
+        .input-area.active {
+            display: block;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 120px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(45, 212, 168, 0.2);
+            border-radius: 8px;
+            color: #e0e0e0;
+            padding: 16px;
+            font-family: 'Inter', monospace;
+            font-size: 13px;
+            resize: vertical;
+            transition: all 0.3s;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #2dd4a8;
+            background: rgba(45, 212, 168, 0.1);
+        }
+
+        .button-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn-primary {
+            background: #2dd4a8;
+            color: #0f1923;
+        }
+
+        .btn-primary:hover {
+            background: #25bfa0;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(45, 212, 168, 0.3);
+        }
+
+        .btn-primary:disabled {
+            background: #4a4a4a;
+            color: #808080;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #a0a0a0;
+            border: 1px solid rgba(160, 160, 160, 0.3);
+        }
+
+        .btn-secondary:hover {
+            color: #2dd4a8;
+            border-color: #2dd4a8;
+        }
+
+        /* Examples Quick Access */
+        .examples-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .example-btn {
+            text-align: left;
+            padding: 14px;
+            background: rgba(45, 212, 168, 0.08);
+            border: 1px solid rgba(45, 212, 168, 0.2);
+            border-radius: 8px;
+            color: #e0e0e0;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 12px;
+        }
+
+        .example-btn:hover {
+            background: rgba(45, 212, 168, 0.15);
+            border-color: #2dd4a8;
+            transform: translateY(-2px);
+        }
+
+        .example-title {
+            font-weight: 600;
+            color: #2dd4a8;
+            margin-bottom: 4px;
+            font-size: 13px;
+        }
+
+        .example-preview {
+            color: #808080;
+            font-size: 11px;
+            line-height: 1.4;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+
+        /* Analysis Results */
+        .results-section {
+            display: none;
+        }
+
+        .results-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .analysis-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .panel {
+            background: rgba(45, 212, 168, 0.05);
+            border: 1px solid rgba(45, 212, 168, 0.2);
+            border-radius: 12px;
+            padding: 24px;
+            animation: slideUp 0.6s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .panel:nth-child(1) { animation-delay: 0.1s; }
+        .panel:nth-child(2) { animation-delay: 0.2s; }
+        .panel:nth-child(3) { animation-delay: 0.3s; }
+        .panel:nth-child(4) { animation-delay: 0.4s; }
+        .panel:nth-child(5) { animation-delay: 0.5s; }
+
+        .panel h3 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #2dd4a8;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(45, 212, 168, 0.2);
+        }
+
+        .panel-icon {
+            font-size: 20px;
+        }
+
+        .panel-content {
+            color: #c0c0c0;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        .panel-content p {
+            margin-bottom: 12px;
+        }
+
+        .panel-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Risk Indicators */
+        .risk-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-right: 8px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .risk-critical {
+            background: rgba(239, 68, 68, 0.2);
+            color: #ff6b6b;
+            border: 1px solid rgba(239, 68, 68, 0.4);
+        }
+
+        .risk-high {
+            background: rgba(249, 115, 22, 0.2);
+            color: #ff9d4a;
+            border: 1px solid rgba(249, 115, 22, 0.4);
+        }
+
+        .risk-medium {
+            background: rgba(245, 158, 11, 0.2);
+            color: #fbbf24;
+            border: 1px solid rgba(245, 158, 11, 0.4);
+        }
+
+        .risk-low {
+            background: rgba(34, 197, 94, 0.2);
+            color: #4ade80;
+            border: 1px solid rgba(34, 197, 94, 0.4);
+        }
+
+        .risk-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+
+        .risk-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .risk-dot.critical { background: #ef4444; }
+        .risk-dot.high { background: #f97316; }
+        .risk-dot.medium { background: #f59e0b; }
+        .risk-dot.low { background: #22c55e; }
+
+        /* Psychology Tags */
+        .psych-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+        }
+
+        .psych-tag {
+            background: rgba(212, 160, 60, 0.15);
+            color: #d4a03c;
+            border: 1px solid rgba(212, 160, 60, 0.3);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 500;
+            animation: tagReveal 0.6s ease-out;
+        }
+
+        @keyframes tagReveal {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Playbook Items */
+        .playbook-item {
+            background: rgba(212, 160, 60, 0.08);
+            border-left: 3px solid #d4a03c;
+            padding: 16px;
+            margin-bottom: 12px;
+            border-radius: 6px;
+        }
+
+        .playbook-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .playbook-item-title {
+            color: #d4a03c;
+            font-weight: 600;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+
+        .playbook-item-desc {
+            color: #a0a0a0;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 24px;
+            }
+
+            .input-section {
+                padding: 20px;
+            }
+
+            .analysis-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .panel {
+                padding: 16px;
+            }
+
+            textarea {
+                min-height: 100px;
+                font-size: 14px;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .examples-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Loading State */
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #2dd4a8;
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border: 3px solid rgba(45, 212, 168, 0.3);
+            border-top-color: #2dd4a8;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #808080;
+        }
+
+        .empty-state-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+            opacity: 0.5;
+        }
+
+        .empty-state p {
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1><span class="header-icon">⚖️</span>Latent Clause Analyzer</h1>
+            <p>Uncover hidden negotiation leverage in contract language through behavioral psychology analysis</p>
+        </div>
+
+        <!-- Input Section -->
+        <div class="input-section">
+            <h2>📋 Analyze a Clause</h2>
+
+            <!-- Tab Navigation -->
+            <div class="tab-buttons">
+                <button class="tab-btn active" data-tab="custom">Custom Clause</button>
+                <button class="tab-btn" data-tab="examples">Pre-Built Examples</button>
+            </div>
+
+            <!-- Custom Input Tab -->
+            <div class="input-area active" id="tab-custom">
+                <textarea id="clauseInput" placeholder="Paste your contract clause here. Example: 'Employee agrees not to engage in any competing business for 24 months following termination...'"></textarea>
+                <div class="button-group">
+                    <button class="btn btn-primary" onclick="analyzeClause()">Analyze Clause</button>
+                    <button class="btn btn-secondary" onclick="clearAnalysis()">Clear</button>
+                </div>
+            </div>
+
+            <!-- Examples Tab -->
+            <div class="input-area" id="tab-examples">
+                <p style="color: #a0a0a0; margin-bottom: 16px; font-size: 13px;">Choose an example to see how the Latent Clause Analyzer works:</p>
+                <div class="examples-grid" id="examplesGrid"></div>
+            </div>
+        </div>
+
+        <!-- Results Section -->
+        <div class="results-section" id="resultsSection">
+            <div class="analysis-grid" id="analysisResults"></div>
+            <div style="text-align: center; margin-top: 40px;">
+                <button class="btn btn-secondary" onclick="clearAnalysis()">Analyze Another Clause</button>
+            </div>
+        </div>
+
+        <!-- Empty State -->
+        <div class="empty-state" id="emptyState">
+            <div class="empty-state-icon">📄</div>
+            <p>Enter a contract clause or select an example to begin analysis</p>
+            <p style="font-size: 12px; color: #606060;">The analyzer will reveal hidden negotiation leverage and psychological tactics</p>
+        </div>
+    </div>
+
+    <script>
+        // Example clauses with deep legal analysis
+        const examples = [
+            {
+                title: "Non-Compete Clause",
+                clause: "Employee agrees not to engage in any business that competes directly or indirectly with the Company for a period of 24 months following termination, within a 200-mile radius.",
+                analysis: {
+                    surface: "The employee cannot work for competitors within 200 miles for 24 months after leaving.",
+                    latent: "The drafter is using vague language ('competes directly or indirectly') to maximize enforceability and control post-employment leverage. The 200-mile radius is geographically broad and may not be tied to actual business operations, creating interpretive gray areas. The 24-month period is deliberately near the enforcement limit in most jurisdictions—signaling sophistication. This clause exploits the employee's loss aversion fear of litigation while creating optionality for the employer to selectively enforce based on competitive threat.",
+                    risks: [
+                        { level: "critical", text: "Extreme overbreadth: 'Indirectly competes' is undefined and likely unenforceable, but expensive to litigate" },
+                        { level: "high", text: "Geographic scope (200 miles) may far exceed actual business territory, constraining career options" },
+                        { level: "high", text: "24-month period is longest standard duration; effectively locks employee out of industry knowledge application" },
+                        { level: "medium", text: "No consideration offered for post-employment restrictions; enforceability varies by state" }
+                    ],
+                    playbook: [
+                        {
+                            title: "Anchor to Business Necessity",
+                            desc: "Counter-propose: 'Non-compete limited to geographic areas where Company had active business operations in past 12 months.' This reframes the restriction as reasonable and creates documentary evidence of actual scope."
+                        },
+                        {
+                            title: "Temporal Reduction with Carve-Outs",
+                            desc: "Propose: '12-month restriction for non-executive roles, 18 months for roles with direct customer relationships, with full carve-out for passive investment or non-operational roles.' Adds nuance that reduces enforceability objections."
+                        },
+                        {
+                            title: "Consideration Trade-Off",
+                            desc: "Demand: 'Company will provide 6 months severance if non-compete is enforced, or alternatively, restrict to 12 months for roles under $X compensation.' This shifts from pure restriction to mutual obligation."
+                        }
+                    ],
+                    psychTags: ["Loss Aversion", "Anchoring Effect", "Ambiguity Exploitation", "Status Quo Bias"]
+                }
+            },
+            {
+                title: "Indemnification Clause",
+                clause: "Client shall indemnify and hold harmless the Service Provider against any and all claims, damages, losses, costs, and expenses arising from Client's use of the deliverables.",
+                analysis: {
+                    surface: "The client agrees to cover all claims and costs related to how they use the deliverables.",
+                    latent: "This clause is a classic one-way risk transfer that exploits the client's anchoring to standard service agreements and status quo bias. 'Any and all claims' and 'arising from' are deliberately undefined—they encompass negligence, intentional misconduct, and third-party claims far beyond the service provider's actual liability. The clause strategically omits causation standards ('directly caused by') and excludes gross negligence carve-outs, shifting liability for the provider's errors to the client. The drafter knows that clients often accept 'standard' indemnification without reading, relying on the misconception that providers share equal risk.",
+                    risks: [
+                        { level: "critical", text: "Unlimited liability scope: covers service provider's negligence, design flaws, and security failures" },
+                        { level: "critical", text: "No causation threshold: 'arising from' is vague; could include claims tangentially related to deliverables" },
+                        { level: "high", text: "Covers third-party claims the client didn't create (e.g., IP infringement claims from service provider errors)" },
+                        { level: "high", text: "No cap on indemnification costs; legal fees for defending service provider are client's responsibility" }
+                    ],
+                    playbook: [
+                        {
+                            title: "Carve-Out for Provider Negligence",
+                            desc: "Counter: 'Client shall indemnify Service Provider EXCEPT for claims arising directly from Service Provider's gross negligence, willful misconduct, or breach of this Agreement.' This creates a clear liability boundary."
+                        },
+                        {
+                            title: "Mutual Indemnification Structure",
+                            desc: "Propose: 'Each party indemnifies the other for claims arising from its own breach, negligence, or IP infringement caused by its content/services.' This balances risk and signals sophistication."
+                        },
+                        {
+                            title: "Caps and Procedure Controls",
+                            desc: "Demand: 'Indemnification capped at total fees paid in past 12 months; indemnified party must provide written notice within 30 days and allow indemnifying party to control defense.' Limits surprise liability exposure."
+                        }
+                    ],
+                    psychTags: ["Asymmetric Risk Allocation", "Status Quo Bias", "Ambiguity Effect", "Loss Aversion"]
+                }
+            },
+            {
+                title: "IP Assignment Clause",
+                clause: "All intellectual property created by Consultant during the engagement, whether or not related to the scope of work, shall be the exclusive property of the Company.",
+                analysis: {
+                    surface: "All intellectual property the consultant creates during employment belongs to the company.",
+                    latent: "This is a power-grab disguised as standard language. The phrase 'whether or not related to the scope of work' is the trap—it captures side projects, personal inventions, and unrelated creations. The drafter is exploiting several psychological anchors: (1) the consultant's assumption that 'during engagement' means 'during business hours,' (2) the normalization of broad IP clauses in tech/creative fields, and (3) the consultant's reluctance to negotiate intellectual property early in engagement. The clause creates asymmetric value capture—the company owns all upside from any creation, while the consultant loses leverage on future ventures and personal IP.",
+                    risks: [
+                        { level: "critical", text: "Captures unrelated IP: a consultant's personal side project created at night is company property if done 'during engagement'" },
+                        { level: "critical", text: "No scope boundary: 'engagement' is undefined; could extend to years after formal employment ends" },
+                        { level: "high", text: "Eliminates consultant's ownership of prior knowledge/skills; future non-compete claims are strengthened" },
+                        { level: "medium", text: "No carve-out for personal inventions; creates moral hazard for consultant hiding creative work" }
+                    ],
+                    playbook: [
+                        {
+                            title: "Scope-Limited Assignment",
+                            desc: "Counter: 'Consultant assigns IP created specifically for Company's projects and deliverables. All other IP created during engagement remains Consultant's exclusive property.' This separates work product from personal IP."
+                        },
+                        {
+                            title: "Vesting + Ownership Hedge",
+                            desc: "Propose: 'IP assignment vests to Company only upon full payment of fees. Consultant retains co-ownership of foundational technology/frameworks for use in future engagements.' Protects consultant's reusable knowledge."
+                        },
+                        {
+                            title: "Time-Limited + Explicit Carve-Out",
+                            desc: "Demand: 'IP assignment applies only to work created during business hours on Company premises, directly related to project scope. Personal projects on consultant's own time remain consultant's exclusive property.' Adds clarity and enforceability."
+                        }
+                    ],
+                    psychTags: ["Anchoring to Broad Language", "Status Quo Bias", "Loss Aversion", "Sunk Cost Fallacy"]
+                }
+            }
+        ];
+
+        // Initialize examples grid
+        function initializeExamples() {
+            const grid = document.getElementById('examplesGrid');
+            examples.forEach((ex, idx) => {
+                const div = document.createElement('div');
+                div.className = 'example-btn';
+                div.innerHTML = `
+                    <div class="example-title">${ex.title}</div>
+                    <div class="example-preview">${ex.clause}</div>
+                `;
+                div.onclick = () => loadExample(idx);
+                grid.appendChild(div);
+            });
+        }
+
+        // Tab navigation
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.input-area').forEach(a => a.classList.remove('active'));
+                e.target.classList.add('active');
+                const tabName = e.target.dataset.tab;
+                document.getElementById(`tab-${tabName}`).classList.add('active');
+            });
+        });
+
+        function loadExample(idx) {
+            const example = examples[idx];
+            document.getElementById('clauseInput').value = example.clause;
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.input-area').forEach(a => a.classList.remove('active'));
+            document.querySelector('[data-tab="custom"]').classList.add('active');
+            document.getElementById('tab-custom').classList.add('active');
+            analyzeClause(idx);
+        }
+
+        function analyzeClause(exampleIdx) {
+            const input = document.getElementById('clauseInput').value.trim();
+
+            if (!input && exampleIdx === undefined) {
+                alert('Please enter a clause or select an example.');
+                return;
+            }
+
+            let analysis;
+            if (exampleIdx !== undefined) {
+                analysis = examples[exampleIdx].analysis;
+            } else {
+                // Generate analysis for custom input (simplified)
+                analysis = generateCustomAnalysis(input);
+            }
+
+            displayResults(analysis);
+        }
+
+        function generateCustomAnalysis(clause) {
+            // Simplified analysis for custom clauses
+            return {
+                surface: `This clause states: "${clause.substring(0, 100)}..."`,
+                latent: "Custom clause analysis: This clause may contain hidden power imbalances or unbalanced risk allocation. Review the language carefully for overly broad definitions (e.g., 'any' or 'all'), undefined terms, and asymmetric obligations. Look for anchoring language that normalizes unfavorable terms.",
+                risks: [
+                    { level: "medium", text: "Requires detailed contextual analysis by legal counsel" },
+                    { level: "low", text: "Consider how this clause interacts with other agreement terms" }
+                ],
+                playbook: [
+                    {
+                        title: "Seek Legal Counsel",
+                        desc: "For custom clauses, engage a lawyer familiar with your specific jurisdiction and industry to identify hidden risks."
+                    },
+                    {
+                        title: "Benchmark Against Standards",
+                        desc: "Compare this clause against industry-standard language from similar agreements to identify unusual provisions."
+                    },
+                    {
+                        title: "Clarify Ambiguities",
+                        desc: "Propose amendments that define key terms, add scope boundaries, and create mutual obligations where asymmetries exist."
+                    }
+                ],
+                psychTags: ["Requires Legal Analysis"]
+            };
+        }
+
+        function displayResults(analysis) {
+            document.getElementById('emptyState').style.display = 'none';
+            const resultsDiv = document.getElementById('analysisResults');
+            resultsDiv.innerHTML = '';
+
+            const panels = [
+                {
+                    title: '📖 Surface Reading',
+                    icon: '📖',
+                    content: analysis.surface
+                },
+                {
+                    title: '🧠 Latent Intent',
+                    icon: '🧠',
+                    content: analysis.latent
+                },
+                {
+                    title: '🚨 Risk Analysis',
+                    icon: '🚨',
+                    content: analysis.risks.map(r =>
+                        `<div class="risk-indicator">
+                            <span class="risk-dot ${r.level}"></span>
+                            <span>${r.text}</span>
+                        </div>`
+                    ).join('')
+                },
+                {
+                    title: '🎯 Negotiation Playbook',
+                    icon: '🎯',
+                    content: analysis.playbook.map(p =>
+                        `<div class="playbook-item">
+                            <div class="playbook-item-title">${p.title}</div>
+                            <div class="playbook-item-desc">${p.desc}</div>
+                        </div>`
+                    ).join('')
+                },
+                {
+                    title: '⚡ Psychology Tags',
+                    icon: '⚡',
+                    content: `<div class="psych-tags">
+                        ${analysis.psychTags.map(tag => `<span class="psych-tag">${tag}</span>`).join('')}
+                    </div>`
+                }
+            ];
+
+            panels.forEach((panel, idx) => {
+                const panelDiv = document.createElement('div');
+                panelDiv.className = 'panel';
+                panelDiv.innerHTML = `
+                    <h3><span class="panel-icon">${panel.icon}</span>${panel.title}</h3>
+                    <div class="panel-content">${panel.content}</div>
+                `;
+                resultsDiv.appendChild(panelDiv);
+            });
+
+            document.getElementById('resultsSection').classList.add('active');
+        }
+
+        function clearAnalysis() {
+            document.getElementById('clauseInput').value = '';
+            document.getElementById('resultsSection').classList.remove('active');
+            document.getElementById('emptyState').style.display = 'block';
+        }
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', initializeExamples);
+    </script>
+</body>
+</html>

@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Buddhist Therapist - Wisdom Integration Tool</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f1923 0%, #1a2a3a 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        .header h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #2dd4a8;
+            letter-spacing: -0.5px;
+        }
+
+        .header p {
+            font-size: 0.95rem;
+            color: #a0a0a0;
+            font-weight: 400;
+        }
+
+        .input-section {
+            background: rgba(26, 42, 58, 0.8);
+            border: 1px solid rgba(45, 212, 168, 0.2);
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+            animation: slideUp 0.6s ease-out 0.1s backwards;
+        }
+
+        .input-section label {
+            display: block;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #2dd4a8;
+            letter-spacing: 0.3px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 110px;
+            padding: 14px;
+            background: rgba(15, 25, 35, 0.8);
+            border: 1px solid rgba(45, 212, 168, 0.15);
+            border-radius: 8px;
+            color: #e0e0e0;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            resize: vertical;
+            transition: all 0.3s ease;
+            line-height: 1.6;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: rgba(45, 212, 168, 0.4);
+            background: rgba(15, 25, 35, 0.95);
+            box-shadow: 0 0 20px rgba(45, 212, 168, 0.1);
+        }
+
+        .examples-section {
+            margin-top: 18px;
+        }
+
+        .examples-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #707070;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .examples-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+
+        .example-btn {
+            padding: 10px 12px;
+            background: rgba(45, 212, 168, 0.08);
+            border: 1px solid rgba(45, 212, 168, 0.2);
+            border-radius: 6px;
+            color: #a0a0a0;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease;
+            text-align: left;
+            line-height: 1.4;
+        }
+
+        .example-btn:hover {
+            background: rgba(45, 212, 168, 0.15);
+            border-color: rgba(45, 212, 168, 0.4);
+            color: #2dd4a8;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 18px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 14px 20px;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #2dd4a8 0%, #25b894 100%);
+            color: #0f1923;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(45, 212, 168, 0.3);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .btn-secondary {
+            background: rgba(45, 212, 168, 0.1);
+            color: #2dd4a8;
+            border: 1px solid rgba(45, 212, 168, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(45, 212, 168, 0.15);
+            border-color: rgba(45, 212, 168, 0.5);
+        }
+
+        .response-section {
+            display: none;
+            margin-top: 30px;
+        }
+
+        .response-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .panel {
+            background: rgba(26, 42, 58, 0.6);
+            border: 1px solid rgba(45, 212, 168, 0.15);
+            border-radius: 10px;
+            padding: 22px;
+            margin-bottom: 16px;
+            backdrop-filter: blur(5px);
+            animation: slideUp 0.5s ease-out;
+        }
+
+        .panel-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+
+        .panel-icon {
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+        }
+
+        .panel-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+        }
+
+        .panel-western {
+            border-left: 3px solid #5b7ea8;
+        }
+
+        .panel-western .panel-title {
+            color: #7eb3d4;
+        }
+
+        .panel-eastern {
+            border-left: 3px solid #d4a03c;
+        }
+
+        .panel-eastern .panel-title {
+            color: #d4a03c;
+        }
+
+        .panel-synthesis {
+            border-left: 3px solid #2dd4a8;
+            background: rgba(45, 212, 168, 0.05);
+        }
+
+        .panel-synthesis .panel-title {
+            color: #2dd4a8;
+        }
+
+        .distortion-tag {
+            display: inline-block;
+            background: rgba(123, 179, 212, 0.2);
+            color: #7eb3d4;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .panel-content {
+            color: #d0d0d0;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        .panel-content strong {
+            color: #e0e0e0;
+            font-weight: 600;
+        }
+
+        .panel-content em {
+            color: #a8d5ba;
+            font-style: italic;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            color: #a0a0a0;
+        }
+
+        .loading.active {
+            display: block;
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            border: 3px solid rgba(45, 212, 168, 0.2);
+            border-top-color: #2dd4a8;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: #707070;
+        }
+
+        .empty-state-icon {
+            font-size: 3rem;
+            margin-bottom: 12px;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .examples-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .panel {
+                padding: 18px;
+                margin-bottom: 14px;
+            }
+
+            .input-section {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 12px;
+            }
+
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .header p {
+                font-size: 0.85rem;
+            }
+
+            .input-section {
+                padding: 16px;
+                margin-bottom: 24px;
+            }
+
+            textarea {
+                min-height: 90px;
+                font-size: 0.9rem;
+                padding: 12px;
+            }
+
+            .panel {
+                padding: 14px;
+                margin-bottom: 12px;
+            }
+
+            .panel-content {
+                font-size: 0.9rem;
+                line-height: 1.6;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>The Buddhist Therapist</h1>
+            <p>Integrating Western Psychology with Eastern Wisdom</p>
+        </div>
+
+        <div class="input-section">
+            <label for="thoughtInput">Share what's troubling you</label>
+            <textarea id="thoughtInput" placeholder="What anxious thought or emotional struggle is on your mind? Be as specific as you'd like..."></textarea>
+
+            <div class="examples-section">
+                <span class="examples-label">Try an example:</span>
+                <div class="examples-grid">
+                    <button class="example-btn" data-thought="I'll never be good enough to compete with people who have coding backgrounds">I'll never be good enough to compete with people who have coding backgrounds</button>
+                    <button class="example-btn" data-thought="If this business doesn't work out, I've wasted years of my life">If this business doesn't work out, I've wasted years of my life</button>
+                    <button class="example-btn" data-thought="Everyone seems to have their life figured out except me">Everyone seems to have their life figured out except me</button>
+                    <button class="example-btn" data-thought="I made one mistake at work and now they probably think I'm incompetent">I made one mistake at work and now they probably think I'm incompetent</button>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn btn-primary" id="seekGuidanceBtn">Seek Guidance</button>
+                <button class="btn btn-secondary" id="clearBtn">Clear</button>
+            </div>
+        </div>
+
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p style="margin-top: 12px;">Seeking wisdom...</p>
+        </div>
+
+        <div class="response-section" id="responseSection">
+            <div class="empty-state" id="emptyState">
+                <div class="empty-state-icon">🧘</div>
+                <p>Share your thoughts to receive integrated wisdom</p>
+            </div>
+
+            <div id="panelsContainer"></div>
+        </div>
+    </div>
+
+    <script>
+        const thoughtInput = document.getElementById('thoughtInput');
+        const seekGuidanceBtn = document.getElementById('seekGuidanceBtn');
+        const clearBtn = document.getElementById('clearBtn');
+        const responseSection = document.getElementById('responseSection');
+        const loading = document.getElementById('loading');
+        const panelsContainer = document.getElementById('panelsContainer');
+        const emptyState = document.getElementById('emptyState');
+        const exampleBtns = document.querySelectorAll('.example-btn');
+
+        // Example responses database
+        const responsesDatabase = {
+            "I'll never be good enough to compete with people who have coding backgrounds": {
+                cbtDistortion: "Catastrophizing & Personalization",
+                cbtAnalysis: "This thought extrapolates a current skill gap into a permanent identity. You're conflating <strong>not yet having a skill</strong> with <strong>being incapable</strong>—two very different things. Additionally, you're filtering out all the coding knowledge you <em>do</em> have and focusing exclusively on what others can do.",
+                cbtReframe: "Consider: <strong>'I currently have less coding experience than some people, and that's a starting point, not a verdict.'</strong> Every expert was once a beginner. Your unique perspective and existing skills (whatever they are) combined with coding knowledge will create a distinct advantage, not a deficiency.",
+                easternWisdom: "In Zen, we speak of <em>shoshin</em>—the 'beginner's mind.' It's not a weakness but a superpower. The beginner sees possibilities where the expert sees only established patterns. Buddhism teaches that comparing yourself to others is suffering; each person's journey is unique. Taoism reminds us that water, the weakest substance, wears away stone through persistence, not force.",
+                easternReframe: "<strong>Your 'beginner' status is not your problem—it's your freedom.</strong> Without rigid expertise, you approach problems with fresh thinking. The question isn't 'Am I good enough?' but 'What can I learn today?' Let go of the timeline others set and flow with your own natural unfolding.",
+                synthesis: "Merge the practical wisdom of both paths: Track your actual skill growth (CBT's grounding approach) while releasing the shame narrative about starting later (Buddhist acceptance). Set concrete, small coding goals rather than comparing yourself to mythical 'people with backgrounds.' Notice the thought without believing it—that's the heart of both traditions."
+            },
+
+            "If this business doesn't work out, I've wasted years of my life": {
+                cbtDistortion: "Catastrophizing, All-or-Nothing Thinking & Emotional Reasoning",
+                cbtAnalysis: "You're collapsing a complex outcome into a binary judgment: success or total waste. In reality, failed ventures generate skills (decision-making, resilience, market knowledge), relationships, and wisdom that feed into future endeavors. You're also using your <em>fear</em> as evidence: 'I feel like it was wasted, therefore it was.'",
+                cbtReframe: "<strong>'A business outcome that doesn't meet my goal is still an investment in my growth.'</strong> Even if this venture closes, you've gained: judgment about markets, confidence in your ability to build, networks, and self-knowledge about what you want. These compound into your next move. Failure isn't waste; it's curriculum.",
+                easternWisdom: "Buddhist philosophy teaches that attachment to a specific outcome is the root of suffering. The Stoics (Epictetus) distinguish between what's in your control (effort, learning, integrity) and what isn't (market conditions, timing, external success). Your worth doesn't depend on this business's success. The Taoist sage doesn't cling to outcomes; they do their work and release attachment to results.",
+                easternReframe: "<strong>Your effort has intrinsic value regardless of the outcome.</strong> You cannot control whether this business succeeds, but you control whether you learn, adapt, and grow from it. This is not wasted time; it's the slow cultivation of wisdom. In 10 years, this chapter will feel like exactly the education you needed.",
+                synthesis: "Create a concrete 'failure audit': What specific skills, knowledge, and connections will you retain? (CBT's practical assessment.) Then practice non-attachment to the outcome: Do your best work, then release control over results. (Buddhist acceptance.) This combination removes the false binary and reveals the actual value you're building regardless of this venture's fate."
+            },
+
+            "Everyone seems to have their life figured out except me": {
+                cbtDistortion: "Mind Reading, Comparative Distortion & Survivor Bias",
+                cbtAnalysis: "You're assuming you know what others are experiencing internally (mind reading) and selectively noticing people who appear successful while ignoring the majority struggling silently. This is survivor bias—you see the curated highlight reels, not the behind-the-scenes confusion. Everyone doubts themselves; you're just more aware of your own doubt than theirs.",
+                cbtReframe: "<strong>'People appear more figured-out than they are. Most are navigating uncertainty just like me—I'm just not seeing it.'</strong> Make a realistic inventory: Who in your life seems 'completely figured out'? When you talk to them honestly, you'll hear the uncertainty. The narrative of others' certainty is a story you're telling, not a fact.",
+                easternWisdom: "The Buddha taught that comparison is suffering (<em>mudita</em>, or sympathetic joy, is the antidote—celebrating others without jealousy). Taoism speaks of the danger of false images: You're comparing your insides to others' carefully constructed outsides. All humans experience existential uncertainty; it's part of being conscious. Your feeling of confusion isn't a personal deficiency—it's the human condition.",
+                easternReframe: "<strong>Everyone is figuring it out, moment by moment. Your awareness of this uncertainty is actually wisdom, not weakness.</strong> Rather than seeking the 'figured-out' state (which doesn't exist), practice acceptance of perpetual uncertainty. This is where peace lives—not in answers, but in being at ease with questions.",
+                synthesis: "Practically gather data (CBT): Interview 3-5 people you admire and ask them directly, 'What do you still feel uncertain about?' You'll break the comparison spell. Philosophically, shift your goal: Instead of 'figuring it out,' aim for 'moving forward with integrity even amid uncertainty.' (Buddhist-Stoic wisdom.) You're exactly where you should be."
+            },
+
+            "I made one mistake at work and now they probably think I'm incompetent": {
+                cbtDistortion: "Catastrophizing, Mind Reading & Overgeneralization",
+                cbtAnalysis: "One mistake doesn't erase your entire body of work; your brain is selectively amplifying this moment while discounting all your competent days. You're also mind-reading your colleagues' thoughts without evidence. Most people are too focused on their own work to ruminate on your error. In fact, how you <em>respond</em> to the mistake shapes their perception far more than the mistake itself.",
+                cbtReframe: "<strong>'I made a mistake. That's normal. How I respond determines what they actually think.'</strong> Create a concrete recovery plan: If relevant, acknowledge the error, explain what went wrong, and share your fix. This is far more memorable and trust-building than pretending it didn't happen. One mistake is data; it's not your identity.",
+                easternWisdom: "The Stoics remind us that we don't control others' opinions—only our own character and effort. Buddhism teaches that mistakes are part of the path to mastery; they're where learning happens. Zen koan masters value the student who fails and learns over the student who succeeds by luck. To be human is to err. The enlightened response is compassion for yourself and course-correction.",
+                easternReframe: "<strong>Your mistake is a teaching moment, not a judgment.</strong> Release the fantasy that you could be flawless. Perfection is neither possible nor desirable; it would mean you've stopped learning. Meet your own error with the same kindness you'd offer a colleague who struggled, then move forward.",
+                synthesis: "Combine both paths: Take concrete action to address the mistake (CBT's problem-solving), then practice self-compassion and let go of others' judgments (Buddhist acceptance, Stoic wisdom). Notice that your anxious rumination is the real problem, not the original error. By addressing both the practical issue and your internal narrative, you transform a moment of shame into a moment of integration."
+            }
+        };
+
+        // Populate response section
+        function displayResponse(thought) {
+            const response = responsesDatabase[thought];
+
+            if (!response) {
+                // Fallback for custom thoughts
+                displayFallbackResponse(thought);
+                return;
+            }
+
+            emptyState.style.display = 'none';
+            panelsContainer.innerHTML = '';
+
+            // CBT Panel
+            const cbtPanel = createPanel(
+                '🧠',
+                'Western: Cognitive Behavioral Therapy',
+                response.cbtDistortion,
+                response.cbtAnalysis,
+                response.cbtReframe,
+                'panel-western'
+            );
+            panelsContainer.appendChild(cbtPanel);
+
+            // Eastern Panel
+            const easternPanel = createPanel(
+                '🪷',
+                'Eastern: Buddhist & Stoic Wisdom',
+                null,
+                response.easternWisdom,
+                response.easternReframe,
+                'panel-eastern'
+            );
+            panelsContainer.appendChild(easternPanel);
+
+            // Synthesis Panel
+            const synthesisPanel = createPanel(
+                '✨',
+                'Integration: Unified Path',
+                null,
+                response.synthesis,
+                null,
+                'panel-synthesis'
+            );
+            panelsContainer.appendChild(synthesisPanel);
+
+            responseSection.classList.add('active');
+        }
+
+        function createPanel(icon, title, distortion, content, reframe, className) {
+            const panel = document.createElement('div');
+            panel.className = `panel ${className}`;
+
+            let html = `
+                <div class="panel-header">
+                    <div class="panel-icon">${icon}</div>
+                    <div class="panel-title">${title}</div>
+                </div>
+            `;
+
+            if (distortion) {
+                html += `<div class="distortion-tag">${distortion}</div>`;
+            }
+
+            html += `<div class="panel-content">${content}`;
+
+            if (reframe) {
+                html += `<div style="margin-top: 14px; padding-top: 14px; border-top: 1px solid rgba(255, 255, 255, 0.1);">${reframe}</div>`;
+            }
+
+            html += `</div>`;
+
+            panel.innerHTML = html;
+            return panel;
+        }
+
+        function displayFallbackResponse(thought) {
+            emptyState.style.display = 'none';
+            panelsContainer.innerHTML = '';
+
+            // Simple fallback for custom thoughts
+            const cbtPanel = document.createElement('div');
+            cbtPanel.className = 'panel panel-western';
+            cbtPanel.innerHTML = `
+                <div class="panel-header">
+                    <div class="panel-icon">🧠</div>
+                    <div class="panel-title">Western: Cognitive Behavioral Therapy</div>
+                </div>
+                <div class="panel-content">
+                    <strong>Observation:</strong> Notice the thought pattern. What evidence supports this thought? What evidence contradicts it? Often our anxious thoughts overgeneralize or catastrophize. Try asking: "Is this thought 100% true, or is it my anxiety speaking?"
+                </div>
+            `;
+
+            const easternPanel = document.createElement('div');
+            easternPanel.className = 'panel panel-eastern';
+            easternPanel.innerHTML = `
+                <div class="panel-header">
+                    <div class="panel-icon">🪷</div>
+                    <div class="panel-title">Eastern: Buddhist & Stoic Wisdom</div>
+                </div>
+                <div class="panel-content">
+                    <strong>Reflection:</strong> Buddhism teaches that suffering arises from clinging to outcomes we cannot control. Notice: What part of this worry is about something beyond your control? Can you practice acceptance of uncertainty while still taking right action?
+                </div>
+            `;
+
+            const synthesisPanel = document.createElement('div');
+            synthesisPanel.className = 'panel panel-synthesis';
+            synthesisPanel.innerHTML = `
+                <div class="panel-header">
+                    <div class="panel-icon">✨</div>
+                    <div class="panel-title">Integration: Unified Path</div>
+                </div>
+                <div class="panel-content">
+                    <strong>Integration:</strong> What is one small, concrete action you can take regarding this situation? (CBT's pragmatism) Then, release attachment to the outcome. (Buddhist wisdom) This combination—effort without clinging—is the integrated approach.
+                </div>
+            `;
+
+            panelsContainer.appendChild(cbtPanel);
+            panelsContainer.appendChild(easternPanel);
+            panelsContainer.appendChild(synthesisPanel);
+
+            responseSection.classList.add('active');
+        }
+
+        function seekGuidance() {
+            const thought = thoughtInput.value.trim();
+
+            if (!thought) {
+                alert('Please share a thought or select an example.');
+                return;
+            }
+
+            loading.classList.add('active');
+            responseSection.classList.remove('active');
+
+            // Simulate thinking time for a more meditative feel
+            setTimeout(() => {
+                loading.classList.remove('active');
+                displayResponse(thought);
+            }, 800);
+        }
+
+        function clearForm() {
+            thoughtInput.value = '';
+            responseSection.classList.remove('active');
+            emptyState.style.display = 'block';
+            panelsContainer.innerHTML = '';
+        }
+
+        // Event listeners
+        seekGuidanceBtn.addEventListener('click', seekGuidance);
+        clearBtn.addEventListener('click', clearForm);
+
+        thoughtInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && e.ctrlKey) {
+                seekGuidance();
+            }
+        });
+
+        exampleBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const thought = btn.getAttribute('data-thought');
+                thoughtInput.value = thought;
+                thoughtInput.focus();
+            });
+        });
+
+        // Initialize empty state
+        responseSection.classList.add('active');
+    </script>
+</body>
+</html>

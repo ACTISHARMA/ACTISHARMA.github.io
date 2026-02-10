@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Council of Prominent Figures</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #0f1923;
+            color: #e0e0e0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #2dd4a8 0%, #d4a03c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: #a0a0a0;
+            font-weight: 300;
+        }
+
+        .input-section {
+            background: rgba(45, 212, 168, 0.05);
+            border: 1px solid rgba(45, 212, 168, 0.2);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            animation: slideUp 0.6s ease-out;
+        }
+
+        .quick-dilemmas {
+            margin-bottom: 1.5rem;
+        }
+
+        .quick-dilemmas label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #2dd4a8;
+        }
+
+        .preset-buttons {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .preset-buttons {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+        }
+
+        .preset-btn {
+            background: rgba(45, 212, 168, 0.1);
+            border: 1px solid rgba(45, 212, 168, 0.3);
+            color: #e0e0e0;
+            padding: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-align: left;
+        }
+
+        .preset-btn:hover {
+            background: rgba(45, 212, 168, 0.2);
+            border-color: rgba(45, 212, 168, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .preset-btn.active {
+            background: rgba(45, 212, 168, 0.3);
+            border-color: #2dd4a8;
+        }
+
+        .or-divider {
+            text-align: center;
+            color: #606060;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .textarea-wrapper {
+            position: relative;
+            margin-bottom: 1rem;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 120px;
+            padding: 1rem;
+            background: rgba(224, 224, 224, 0.03);
+            border: 1px solid rgba(224, 224, 224, 0.1);
+            border-radius: 8px;
+            color: #e0e0e0;
+            font-family: inherit;
+            font-size: 1rem;
+            resize: vertical;
+            transition: all 0.3s ease;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #2dd4a8;
+            background: rgba(45, 212, 168, 0.05);
+        }
+
+        textarea::placeholder {
+            color: #606060;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .convene-btn {
+            flex: 1;
+            min-width: 200px;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #2dd4a8 0%, #1da88a 100%);
+            border: none;
+            color: #0f1923;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .convene-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(45, 212, 168, 0.3);
+        }
+
+        .convene-btn:active {
+            transform: translateY(0);
+        }
+
+        .convene-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .clear-btn {
+            padding: 1rem 2rem;
+            background: rgba(224, 224, 224, 0.1);
+            border: 1px solid rgba(224, 224, 224, 0.2);
+            color: #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .clear-btn:hover {
+            background: rgba(224, 224, 224, 0.15);
+            border-color: rgba(224, 224, 224, 0.3);
+        }
+
+        .council-section {
+            display: none;
+        }
+
+        .council-section.active {
+            display: block;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        .council-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .council-header h2 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .council-deliberation {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .council-deliberation {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .council-deliberation {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+        }
+
+        .council-member {
+            background: linear-gradient(135deg, rgba(45, 212, 168, 0.1) 0%, rgba(212, 160, 60, 0.05) 100%);
+            border: 1px solid rgba(45, 212, 168, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            animation: slideUp 0.6s ease-out;
+        }
+
+        .council-member:hover {
+            border-color: rgba(45, 212, 168, 0.4);
+            box-shadow: 0 8px 24px rgba(45, 212, 168, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .member-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            gap: 0.75rem;
+        }
+
+        .member-avatar {
+            font-size: 2rem;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(45, 212, 168, 0.15);
+        }
+
+        .member-info {
+            flex: 1;
+        }
+
+        .member-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #e0e0e0;
+            margin-bottom: 0.2rem;
+        }
+
+        .member-role {
+            font-size: 0.8rem;
+            color: #a0a0a0;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .member-perspective {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: #d0d0d0;
+            min-height: 1.5em;
+        }
+
+        .typing-cursor {
+            animation: blink 0.7s infinite;
+            display: inline-block;
+            width: 2px;
+            height: 1em;
+            background: #2dd4a8;
+            margin-left: 2px;
+        }
+
+        @keyframes blink {
+            0%, 49% { opacity: 1; }
+            50%, 100% { opacity: 0; }
+        }
+
+        .synthesis-panel {
+            background: linear-gradient(135deg, rgba(212, 160, 60, 0.1) 0%, rgba(45, 212, 168, 0.05) 100%);
+            border: 1px solid rgba(212, 160, 60, 0.3);
+            border-radius: 12px;
+            padding: 2rem;
+            animation: slideUp 0.8s ease-out 0.3s backwards;
+        }
+
+        .synthesis-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #d4a03c;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .synthesis-title::before {
+            content: '⚖️';
+            font-size: 1.5rem;
+        }
+
+        .consensus-box, .disagreement-box {
+            margin-bottom: 1.5rem;
+        }
+
+        .box-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #2dd4a8;
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .disagreement-box .box-title {
+            color: #e0a03c;
+        }
+
+        .box-content {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: #d0d0d0;
+        }
+
+        .key-insight {
+            background: rgba(45, 212, 168, 0.1);
+            border-left: 3px solid #2dd4a8;
+            padding: 1rem;
+            border-radius: 4px;
+            margin-top: 1rem;
+        }
+
+        .key-insight strong {
+            color: #2dd4a8;
+        }
+
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(45, 212, 168, 0.2);
+            border-top-color: #2dd4a8;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: #606060;
+        }
+
+        .empty-state p {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.75rem 1.5rem;
+            background: rgba(45, 212, 168, 0.1);
+            border: 1px solid rgba(45, 212, 168, 0.3);
+            color: #2dd4a8;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .back-btn:hover {
+            background: rgba(45, 212, 168, 0.2);
+            border-color: #2dd4a8;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .subtitle {
+                font-size: 0.95rem;
+            }
+
+            .input-section {
+                padding: 1.5rem;
+            }
+
+            .member-perspective {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Council of Prominent Figures</h1>
+            <p class="subtitle">Adversarial thinking to stress-test your decisions</p>
+        </header>
+
+        <div id="inputSection" class="input-section">
+            <div class="quick-dilemmas">
+                <label>Quick Start Dilemmas</label>
+                <div class="preset-buttons">
+                    <button class="preset-btn" onclick="selectPreset(1)">
+                        💼 Career Transition<br>
+                        <span style="font-size: 0.8rem; opacity: 0.7;">Stable job vs AI consulting</span>
+                    </button>
+                    <button class="preset-btn" onclick="selectPreset(2)">
+                        ⚖️ Ethics & Technology<br>
+                        <span style="font-size: 0.8rem; opacity: 0.7;">AI in legal decisions</span>
+                    </button>
+                    <button class="preset-btn" onclick="selectPreset(3)">
+                        🤖 Business Strategy<br>
+                        <span style="font-size: 0.8rem; opacity: 0.7;">Automation vs hiring</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="or-divider">Or pose your own dilemma</div>
+
+            <div class="textarea-wrapper">
+                <textarea id="dilemmaInput" placeholder="What decision are you facing? Be specific about the trade-offs, stakes, and constraints..."></textarea>
+            </div>
+
+            <div class="button-group">
+                <button class="convene-btn" onclick="conveneCouncil()">Convene the Council</button>
+                <button class="clear-btn" onclick="clearInput()">Clear</button>
+            </div>
+        </div>
+
+        <div id="councilSection" class="council-section">
+            <div class="council-header">
+                <h2>The Council Deliberates</h2>
+                <p style="color: #a0a0a0; margin-top: 0.5rem;">Five perspectives on your dilemma</p>
+            </div>
+
+            <div class="council-deliberation" id="councilMembers"></div>
+
+            <div class="synthesis-panel" id="synthesisPanel" style="display: none;"></div>
+
+            <button class="back-btn" onclick="goBack()">← Back to Input</button>
+        </div>
+
+        <div id="emptyState" class="empty-state">
+            <p>💭</p>
+        </div>
+    </div>
+
+    <script>
+        const councilMembers = [
+            {
+                name: 'Marcus Aurelius',
+                avatar: '🦅',
+                role: 'Stoic Philosopher',
+                perspectives: {
+                    1: "You're attaching your identity to a job title. Stoicism teaches that external circumstances—employment status, salary—are outside your control. What matters is virtue and wisdom. Starting a business requires courage, but if it comes from fear of missing out, you're running from external circumstances, not toward something meaningful. First, examine your motivations with brutal honesty. Are you fleeing or moving toward?",
+                    2: "Law exists to serve justice, not efficiency. When we delegate judgment to machines, we're substituting algorithms for wisdom. A machine cannot understand mercy, context, or human dignity. The Stoic path is to accept that justice is difficult and uncertain, but to never abandon our responsibility to reason through it ourselves.",
+                    3: "Staff are not interchangeable with machines. People create dignity through work and contribution. Firing people to buy robots is substituting convenience for virtue. However, if automation frees your team to do higher-value work—mentoring, innovation, strategy—then you're enabling human flourishing, not destroying it."
+                }
+            },
+            {
+                name: 'Simone de Beauvoir',
+                avatar: '🌸',
+                role: 'Existentialist Thinker',
+                perspectives: {
+                    1: "You are in bad faith if you hide behind the 'stability' of your job. Bad faith is choosing a role over authentic choice. The question isn't 'Is AI consulting viable?' but 'What am I choosing to become?' Freedom demands anxiety. A stable job is a prison if it denies you the chance to create your own essence through work. But starting a business can also be an escape from freedom—a new role to hide in. Choose based on who you're choosing to become.",
+                    2: "This is profound: we cannot delegate the ethical judgment that creates meaning. When courts rely on AI, they're refusing the burden of moral responsibility. We become things acted upon, rather than beings who act. Justice requires commitment, risk, and the weight of human choice. Automation here is the ultimate bad faith.",
+                    3: "Work is how humans create meaning and transcendence. Replacing humans with machines isn't efficiency—it's an act of profound disrespect. Your employees are not costs to optimize. They are subjects, not objects. If automation is your answer, you've dehumanized your question."
+                }
+            },
+            {
+                name: 'Charlie Munger',
+                avatar: '💰',
+                role: 'Investor & Rationalist',
+                perspectives: {
+                    1: "Sentimentality kills wealth creation. Here's what I'd ask: What's your competitive advantage? Can you build a defensible moat in AI consulting, or are you just another consultant? Most people massively overestimate their edge. The stable job has compound benefits—pension, health, networks, skill development. The startup has a 90% failure rate. Unless you've got proprietary insight or exceptional execution ability, stay put and invest your surplus salary. Boring beats exciting when boring works.",
+                    2: "This is a category error. The issue isn't whether AI should be used—it absolutely should be, where appropriate. The issue is: what problems does AI solve better than humans? AI is superior at pattern matching, consistency, and processing scale. Judges are superior at wisdom, context, and mercy. Use AI to inform judicial reasoning, not replace it. You don't use a hammer for every job.",
+                    3: "Automate the routine, employ the exceptional. Can machines do the work? Yes. Should they replace people? Only if the people generate negative value. Better: use automation to raise the bar for who you hire. Hire fewer, better people and invest in their development. The highest return on capital is developing human talent that compounds over decades."
+                }
+            },
+            {
+                name: 'Ruth Bader Ginsburg',
+                avatar: '⚖️',
+                role: 'Legal Scholar & Jurist',
+                perspectives: {
+                    1: "Consider the systemic impact, not just personal benefit. If talented people flee stable employment for speculative ventures, who builds institutions? Who creates legacy systems? Not everyone should start a business. Ask: will your AI consulting create value for society, or just extract rent from existing inefficiencies? Contribution matters more than personal autonomy.",
+                    2: "The law is fundamentally about accountability. When a machine makes a consequential decision, who is responsible if it's wrong? The programmer? The user? The machine? We've created accountability structures for humans. Machines operate outside that framework. Until we can assign responsibility clearly, using AI in legal decisions is abdicating judicial responsibility.",
+                    3: "Employment law exists because power is asymmetrical. Your workers depend on you for survival. That power imbalance creates obligations. You cannot simply optimize labor costs without regard for workers' dignity and future. Any decision about automation must consider the impact on those affected. That's the moral arc of the law."
+                }
+            },
+            {
+                name: 'Nassim Taleb',
+                avatar: '🎲',
+                role: 'Risk Scholar & Contrarian',
+                perspectives: {
+                    1: "The stable job is an illusion. Companies fail, industries disappear, skills become obsolete. Your 'stability' is an exposed tail risk. The consulting business is volatile, but volatility can be your friend if you're antifragile. Build something that gains from disorder—a reputation, a network, proprietary knowledge. Volatility is where optionality lives. Stay employed as long as your job compounds your options.",
+                    2: "AI in courts is a Black Swan waiting to happen. The downside of a wrong judgment is catastrophic—a person loses their freedom. The upside of faster decisions? Efficiency. That's a sucker's trade: unlimited downside for marginal upside. Use AI in low-stakes decisions. Keep humans for where the tail risks are fat.",
+                    3: "Your business model is fragile if labor is your only variable. What if wages spike? What if supply chains break? Automation is fragility dressed as efficiency. Build redundancy, employ people, create resilience. The antifragile business model has excess capacity, slack, and human judgment—the opposite of optimization."
+                }
+            }
+        ];
+
+        const dilemmas = {
+            1: "Should I leave my stable job to start an AI consulting business?",
+            2: "Is it ethical to use AI in legal decision-making?",
+            3: "Should a small business invest in AI automation or hire more staff?"
+        };
+
+        const synthesis = {
+            1: {
+                consensus: "Everyone agrees that decisions require clear-eyed self-examination and understanding your true motivations. Whether you choose stability or risk, it must be an authentic choice, not an escape. The decision's quality depends on whether you understand your competitive advantages.",
+                disagreements: "Marcus and Taleb emphasize volatility and risk differently—Taleb sees it as an opportunity for antifragility, while Marcus questions whether you're running from something or toward something. Munger is purely rational about odds, while de Beauvoir prioritizes authenticity over outcomes. Ginsburg adds institutional considerations that Munger overlooks.",
+                keyInsight: "The real question isn't 'stable vs risky'—it's 'What unique value will you create?' Most failures come from ignoring either the math (Munger) or the meaning (de Beauvoir). Do both."
+            },
+            2: {
+                consensus: "All perspectives reject full automation of judicial decisions. The council agrees that AI can inform but not replace human judgment, primarily because accountability and wisdom cannot be mechanized.",
+                disagreements: "Ruth focuses on legal accountability structures, while Taleb emphasizes tail risk asymmetry. Marcus prioritizes virtue and wisdom, de Beauvoir emphasizes responsibility and freedom. Munger agrees with the outcome but approaches it pragmatically—different domains have different tool fitness.",
+                keyInsight: "This isn't a technology problem—it's a philosophy problem. AI isn't moral or immoral; it's amoral. Putting an amoral tool in the place of moral judgment is the error. AI should enhance human decision-making, not replace it."
+            },
+            3: {
+                consensus: "Automation is not inherently bad, but replacing people to optimize for cost alone is ethically problematic and strategically shortsighted. All perspectives support strategic automation that raises the quality of work, not eliminates it.",
+                disagreements: "De Beauvoir and Ginsburg focus on human dignity and worker welfare, while Munger focuses on capital returns. Taleb emphasizes antifragility and redundancy as business strategy. Marcus questions whether this creates virtue or convenience.",
+                keyInsight: "The best-performing companies don't minimize labor—they maximize talent. Automate routine work, invest in exceptional people, and create room for judgment and creativity. That's both moral and profitable."
+            }
+        };
+
+        function selectPreset(dilemmaNumber) {
+            const input = document.getElementById('dilemmaInput');
+            input.value = dilemmas[dilemmaNumber];
+
+            // Visual feedback
+            document.querySelectorAll('.preset-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.closest('.preset-btn').classList.add('active');
+        }
+
+        function clearInput() {
+            document.getElementById('dilemmaInput').value = '';
+            document.querySelectorAll('.preset-btn').forEach(btn => btn.classList.remove('active'));
+        }
+
+        async function conveneCouncil() {
+            const input = document.getElementById('dilemmaInput').value.trim();
+
+            if (!input) {
+                alert('Please enter a dilemma or select a quick-start example.');
+                return;
+            }
+
+            // Find which dilemma was selected
+            let dilemmaType = null;
+            for (let i = 1; i <= 3; i++) {
+                if (input === dilemmas[i]) {
+                    dilemmaType = i;
+                    break;
+                }
+            }
+
+            // Hide input, show council
+            document.getElementById('inputSection').style.display = 'none';
+            document.getElementById('councilSection').classList.add('active');
+            document.getElementById('synthesisPanel').style.display = 'none';
+
+            // Render council members with typing animation
+            const memberContainer = document.getElementById('councilMembers');
+            memberContainer.innerHTML = '';
+
+            for (let i = 0; i < councilMembers.length; i++) {
+                const member = councilMembers[i];
+                const perspective = dilemmaType
+                    ? member.perspectives[dilemmaType]
+                    : `On your specific question: "${input}", I believe the key is to examine the underlying assumptions. Your dilemma likely contains false dichotomies or hidden trade-offs you haven't fully considered. The strongest path forward requires first understanding what you're truly optimizing for—and that varies by person and context.`;
+
+                const memberDiv = document.createElement('div');
+                memberDiv.className = 'council-member';
+                memberDiv.innerHTML = `
+                    <div class="member-header">
+                        <div class="member-avatar">${member.avatar}</div>
+                        <div class="member-info">
+                            <div class="member-name">${member.name}</div>
+                            <div class="member-role">${member.role}</div>
+                        </div>
+                    </div>
+                    <div class="member-perspective" id="perspective-${i}">
+                        <span class="loading-spinner"></span>
+                    </div>
+                `;
+                memberContainer.appendChild(memberDiv);
+
+                // Stagger the typing animations
+                setTimeout(() => {
+                    typeText(`perspective-${i}`, perspective);
+                }, i * 200);
+            }
+
+            // Show synthesis panel after a delay
+            setTimeout(() => {
+                showSynthesis(dilemmaType);
+            }, 2500);
+        }
+
+        function typeText(elementId, text) {
+            const element = document.getElementById(elementId);
+            element.innerHTML = '';
+            let index = 0;
+
+            const typeNextCharacter = () => {
+                if (index < text.length) {
+                    element.textContent += text[index];
+                    index++;
+                    // Vary speed for more natural feel
+                    const speed = Math.random() > 0.95 ? 50 : 15;
+                    setTimeout(typeNextCharacter, speed);
+                } else {
+                    // Animation complete
+                }
+            };
+
+            typeNextCharacter();
+        }
+
+        function showSynthesis(dilemmaType) {
+            const synthesisPanel = document.getElementById('synthesisPanel');
+            let synth = synthesis[dilemmaType];
+
+            // Default synthesis for custom inputs
+            if (!synth) {
+                synth = {
+                    consensus: "While the council members have different frameworks and priorities, they agree on the importance of careful deliberation. Consider both the rational analysis (What are the odds?) and the existential question (Who are you choosing to become?). Most decisions fail not because the choice was wrong, but because the analysis was incomplete.",
+                    disagreements: "The council fundamentally disagrees on what matters most. Marcus and Ruth prioritize virtue and responsibility. Charlie prioritizes capital returns. Nassim prioritizes antifragility and tail risk. Simone prioritizes authenticity. These aren't contradictions—they're different lenses on the same decision.",
+                    keyInsight: "The highest-value insight is the disagreement itself. Your decision should account for all these perspectives. You need the math (Munger), the meaning (de Beauvoir), the virtue (Marcus), the responsibility (Ruth), and the resilience (Taleb)."
+                };
+            }
+
+            synthesisPanel.innerHTML = `
+                <div class="synthesis-title">Council Synthesis</div>
+
+                <div class="consensus-box">
+                    <div class="box-title">✓ Consensus</div>
+                    <div class="box-content">${synth.consensus}</div>
+                </div>
+
+                <div class="disagreement-box">
+                    <div class="box-title">✗ Key Disagreements</div>
+                    <div class="box-content">${synth.disagreements}</div>
+                </div>
+
+                <div class="key-insight">
+                    <strong>💡 Strongest Argument:</strong><br>${synth.keyInsight}
+                </div>
+            `;
+
+            synthesisPanel.style.display = 'block';
+        }
+
+        function goBack() {
+            document.getElementById('inputSection').style.display = 'block';
+            document.getElementById('councilSection').classList.remove('active');
+            document.getElementById('councilMembers').innerHTML = '';
+            document.getElementById('synthesisPanel').style.display = 'none';
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('dilemmaInput').focus();
+        });
+    </script>
+</body>
+</html>
