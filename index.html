@@ -140,6 +140,14 @@ nav .nav-links a:hover::after { width: 100%; }
 @keyframes hero-fade-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes bounce-down { 0%,100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
 
+/* === PICTURE-IN-PICTURE FLOATING VIDEO === */
+.pip-video { position: fixed; bottom: 24px; right: 24px; width: 280px; height: 158px; z-index: 900; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.6), 0 0 0 1px rgba(45,212,168,0.15); transform: translateY(120%) scale(0.8); opacity: 0; transition: transform 0.45s cubic-bezier(0.16,1,0.3,1), opacity 0.35s ease; pointer-events: none; }
+.pip-video.active { transform: translateY(0) scale(1); opacity: 1; pointer-events: auto; }
+.pip-video video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.pip-close { position: absolute; top: 6px; right: 6px; width: 26px; height: 26px; border-radius: 50%; background: rgba(0,0,0,0.6); border: none; color: #fff; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 2; transition: background 0.2s; line-height: 1; }
+.pip-close:hover { background: rgba(0,0,0,0.85); }
+@media (max-width: 600px) { .pip-video { width: 180px; height: 101px; bottom: 16px; right: 16px; } }
+
 /* === ANIMATED TRIAD SECTION === */
 #triad-section { background: var(--navy-deep); padding: 100px 2rem; overflow: hidden; }
 .triad-wrapper { display: flex; flex-direction: column; align-items: center; text-align: center; max-width: 900px; margin: 0 auto; }
@@ -382,7 +390,7 @@ footer .footer-tagline { font-family: 'Playfair Display', serif; font-style: ita
 
 <!-- HERO VIDEO -->
 <section class="hero" id="hero">
-<video class="hero-video" id="heroVideo" autoplay muted loop playsinline preload="auto">
+<video class="hero-video" id="heroVideo" autoplay muted loop playsinline preload="auto" poster="hero-poster.jpg">
   <source src="hero-web.mp4" type="video/mp4">
 </video>
 <div class="hero-overlay"></div>
@@ -400,6 +408,12 @@ footer .footer-tagline { font-family: 'Playfair Display', serif; font-style: ita
   <svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M10 14l-5-5h10l-5 5z" fill="rgba(255,255,255,0.4)"/></svg>
 </div>
 </section>
+
+<!-- PIP FLOATING VIDEO (appears when scrolling past hero) -->
+<div class="pip-video" id="pipVideo">
+  <button class="pip-close" id="pipClose" aria-label="Close mini player">&times;</button>
+  <video id="pipPlayer" muted loop playsinline></video>
+</div>
 
 <!-- ANIMATED TRIAD -->
 <section id="triad-section">
@@ -899,12 +913,89 @@ document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 function toggleMute() {
   var v = document.getElementById('heroVideo');
   var btn = document.getElementById('muteBtn');
-  if (!v) return;
+  if (!v || !btn) return;
+  // If video is paused, play it first
+  if (v.paused) { v.play().catch(function(){}); }
   v.muted = !v.muted;
   btn.innerHTML = v.muted ? '&#128263;' : '&#128266;';
 }
 
-// === LANDING FIX: Reinforce scroll-to-top (head script does the heavy lifting) ===
+// === FORCE AUTOPLAY on interaction (fallback for strict browsers) ===
+(function(){
+  var v = document.getElementById('heroVideo');
+  if (!v) return;
+  // Try playing immediately
+  var p = v.play();
+  if (p && p.catch) p.catch(function(){
+    // Autoplay blocked — play on first user interaction
+    function playOnce() {
+      v.play().catch(function(){});
+      document.removeEventListener('click', playOnce);
+      document.removeEventListener('touchstart', playOnce);
+      document.removeEventListener('scroll', playOnce);
+    }
+    document.addEventListener('click', playOnce, {once:true});
+    document.addEventListener('touchstart', playOnce, {once:true});
+    document.addEventListener('scroll', playOnce, {once:true});
+  });
+})();
+
+// === PICTURE-IN-PICTURE ON SCROLL ===
+(function(){
+  var hero = document.getElementById('hero');
+  var heroVid = document.getElementById('heroVideo');
+  var pip = document.getElementById('pipVideo');
+  var pipPlayer = document.getElementById('pipPlayer');
+  var pipClose = document.getElementById('pipClose');
+  if (!hero || !heroVid || !pip || !pipPlayer) return;
+
+  // Share video source with PiP player
+  pipPlayer.src = heroVid.querySelector('source')?.src || heroVid.src || 'hero-web.mp4';
+
+  var pipDismissed = false;
+  var pipActive = false;
+
+  // Sync PiP player time with hero video when activating
+  function activatePip() {
+    if (pipDismissed || pipActive) return;
+    pipPlayer.currentTime = heroVid.currentTime;
+    pipPlayer.play().catch(function(){});
+    pip.classList.add('active');
+    pipActive = true;
+  }
+  function deactivatePip() {
+    pip.classList.remove('active');
+    pipPlayer.pause();
+    pipActive = false;
+  }
+
+  // Close button dismisses PiP for this session
+  pipClose.addEventListener('click', function(){
+    pipDismissed = true;
+    deactivatePip();
+  });
+
+  // Click on PiP scrolls back to hero
+  pipPlayer.addEventListener('click', function(){
+    deactivatePip();
+    hero.scrollIntoView({behavior:'smooth'});
+  });
+  pipPlayer.style.cursor = 'pointer';
+
+  // Use IntersectionObserver to detect when hero leaves viewport
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (!e.isIntersecting && !pipDismissed) {
+        activatePip();
+      } else if (e.isIntersecting) {
+        deactivatePip();
+      }
+    });
+  }, {threshold: 0.15});
+  obs.observe(hero);
+})();
+
+// === LANDING FIX: Reinforce scroll-to-top ===
 (function(){
   window.scrollTo(0, 0);
   document.querySelectorAll('iframe').forEach(function(f){ f.setAttribute('tabindex', '-1'); });
