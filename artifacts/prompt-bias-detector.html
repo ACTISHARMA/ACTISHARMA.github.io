@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prompt Bias Detector | Human Layer AI</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#030410;--surface:#0a0e1a;--surface2:#111827;--teal:#2dd4a8;--gold:#d4a03c;--red:#ff6b6b;--amber:#ffbe6b;--green:#6bffb8;--blue:#6bb8ff;--purple:#b86bff;--white:#f5f0eb;--muted:#8b95a5;--border:rgba(45,212,168,0.12)}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--white);min-height:100vh;overflow-x:hidden}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* HEADER */
+.header{text-align:center;padding:48px 20px 32px;position:relative}
+.header::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:120px;height:2px;background:linear-gradient(90deg,transparent,var(--teal),transparent)}
+.tag{font-size:0.65rem;letter-spacing:3px;text-transform:uppercase;color:var(--teal);background:rgba(45,212,168,0.08);padding:6px 16px;border-radius:20px;display:inline-block;margin-bottom:16px}
+.header h1{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.2;margin-bottom:12px}
+.header h1 span{color:var(--teal)}
+.header p{color:var(--muted);font-size:0.95rem;max-width:520px;margin:0 auto;line-height:1.6}
+
+/* MAIN LAYOUT */
+.main{max-width:900px;margin:0 auto;padding:32px 20px 60px}
+
+/* INPUT AREA */
+.input-section{margin-bottom:32px}
+.input-label{font-size:0.75rem;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.input-label .dot{width:6px;height:6px;border-radius:50%;background:var(--teal);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+textarea{width:100%;min-height:160px;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;font-family:'JetBrains Mono',monospace;font-size:0.9rem;color:var(--white);resize:vertical;transition:border-color 0.3s;line-height:1.6}
+textarea:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px rgba(45,212,168,0.1)}
+textarea::placeholder{color:rgba(139,149,165,0.5)}
+.input-footer{display:flex;justify-content:space-between;align-items:center;margin-top:12px;flex-wrap:wrap;gap:12px}
+.char-count{font-size:0.75rem;color:var(--muted);font-family:'JetBrains Mono',monospace}
+.analyze-btn{background:linear-gradient(135deg,var(--teal),#1fa88a);color:var(--bg);border:none;padding:12px 32px;border-radius:8px;font-weight:600;font-size:0.9rem;cursor:pointer;transition:all 0.3s;font-family:'Inter',sans-serif;position:relative;overflow:hidden}
+.analyze-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(45,212,168,0.3)}
+.analyze-btn:active{transform:translateY(0)}
+.analyze-btn:disabled{opacity:0.5;cursor:not-allowed;transform:none}
+.analyze-btn .spinner{display:none;width:16px;height:16px;border:2px solid transparent;border-top-color:var(--bg);border-radius:50%;animation:spin 0.6s linear infinite;margin-right:8px}
+.analyze-btn.loading .spinner{display:inline-block}
+.analyze-btn.loading .btn-text{opacity:0.7}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* EXAMPLES */
+.examples{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.example-btn{background:var(--surface);border:1px solid var(--border);color:var(--muted);padding:6px 14px;border-radius:20px;font-size:0.75rem;cursor:pointer;transition:all 0.2s;font-family:'Inter',sans-serif}
+.example-btn:hover{border-color:var(--teal);color:var(--teal);background:rgba(45,212,168,0.05)}
+
+/* SCANNING ANIMATION */
+.scanning{display:none;text-align:center;padding:40px 20px}
+.scanning.active{display:block}
+.scan-ring{width:80px;height:80px;border:3px solid var(--border);border-top-color:var(--teal);border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 20px}
+.scan-text{color:var(--teal);font-size:0.85rem;letter-spacing:1px}
+.scan-steps{margin-top:16px;display:flex;flex-direction:column;gap:8px;align-items:center}
+.scan-step{font-size:0.8rem;color:var(--muted);transition:color 0.3s}
+.scan-step.active{color:var(--teal)}
+.scan-step.done{color:var(--green)}
+
+/* RESULTS */
+.results{display:none}
+.results.active{display:block}
+
+/* SCORE RING */
+.score-section{text-align:center;margin-bottom:36px;padding:32px;background:var(--surface);border-radius:16px;border:1px solid var(--border)}
+.score-ring-wrap{position:relative;width:140px;height:140px;margin:0 auto 20px}
+.score-ring{transform:rotate(-90deg)}
+.score-ring-bg{fill:none;stroke:var(--border);stroke-width:8}
+.score-ring-fill{fill:none;stroke-width:8;stroke-linecap:round;transition:stroke-dashoffset 1.5s ease,stroke 0.5s}
+.score-value{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:700}
+.score-label{font-size:0.75rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.score-verdict{font-size:1.1rem;font-weight:600;margin-bottom:4px}
+.score-explain{font-size:0.85rem;color:var(--muted);max-width:480px;margin:0 auto;line-height:1.5}
+
+/* BIAS CARDS */
+.bias-list{display:flex;flex-direction:column;gap:16px;margin-bottom:32px}
+.bias-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;transition:all 0.3s;cursor:pointer;position:relative;overflow:hidden}
+.bias-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;border-radius:3px 0 0 3px}
+.bias-card.high::before{background:var(--red)}
+.bias-card.medium::before{background:var(--amber)}
+.bias-card.low::before{background:var(--green)}
+.bias-card:hover{border-color:rgba(45,212,168,0.3);transform:translateX(4px)}
+.bias-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;gap:12px}
+.bias-name{font-size:1.05rem;font-weight:600}
+.bias-severity{font-size:0.65rem;letter-spacing:1.5px;text-transform:uppercase;padding:4px 10px;border-radius:12px;font-weight:600}
+.bias-card.high .bias-severity{color:var(--red);background:rgba(255,107,107,0.1)}
+.bias-card.medium .bias-severity{color:var(--amber);background:rgba(255,190,107,0.1)}
+.bias-card.low .bias-severity{color:var(--green);background:rgba(107,255,184,0.1)}
+.bias-category{font-size:0.7rem;color:var(--teal);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px}
+.bias-explanation{font-size:0.88rem;color:var(--muted);line-height:1.6;margin-bottom:12px}
+.bias-quote{font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:var(--gold);background:rgba(212,160,60,0.06);padding:10px 14px;border-radius:8px;border-left:2px solid var(--gold);margin-bottom:12px}
+.bias-fix{display:none;padding-top:12px;border-top:1px solid var(--border)}
+.bias-card.expanded .bias-fix{display:block}
+.fix-label{font-size:0.7rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--teal);margin-bottom:8px}
+.fix-text{font-size:0.88rem;line-height:1.6;color:var(--white)}
+.bias-toggle{font-size:0.75rem;color:var(--teal);cursor:pointer;display:flex;align-items:center;gap:4px}
+.bias-toggle svg{transition:transform 0.3s}
+.bias-card.expanded .bias-toggle svg{transform:rotate(180deg)}
+
+/* FRAMEWORK TAGS */
+.framework-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.fw-tag{font-size:0.65rem;padding:3px 8px;border-radius:10px;letter-spacing:0.5px}
+.fw-tag.law{color:var(--blue);background:rgba(107,184,255,0.1)}
+.fw-tag.psych{color:var(--amber);background:rgba(255,190,107,0.1)}
+.fw-tag.ai{color:var(--teal);background:rgba(45,212,168,0.1)}
+
+/* REWRITTEN PROMPT */
+.rewrite-section{background:var(--surface);border:1px solid rgba(45,212,168,0.2);border-radius:12px;padding:24px;margin-bottom:32px}
+.rewrite-label{font-size:0.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.rewrite-text{font-family:'JetBrains Mono',monospace;font-size:0.85rem;line-height:1.7;color:var(--green);white-space:pre-wrap}
+.copy-btn{background:rgba(45,212,168,0.1);border:1px solid var(--teal);color:var(--teal);padding:8px 16px;border-radius:6px;font-size:0.75rem;cursor:pointer;margin-top:14px;font-family:'Inter',sans-serif;transition:all 0.2s}
+.copy-btn:hover{background:var(--teal);color:var(--bg)}
+
+/* SUMMARY STATS */
+.stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:32px}
+.stat-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center}
+.stat-num{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;margin-bottom:2px}
+.stat-label{font-size:0.7rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase}
+
+/* RESET */
+.reset-btn{display:block;margin:0 auto;background:none;border:1px solid var(--border);color:var(--muted);padding:10px 24px;border-radius:8px;font-size:0.85rem;cursor:pointer;transition:all 0.2s;font-family:'Inter',sans-serif}
+.reset-btn:hover{border-color:var(--teal);color:var(--teal)}
+
+/* FOOTER */
+.footer{text-align:center;padding:32px 20px;border-top:1px solid var(--border);margin-top:40px}
+.footer p{font-size:0.8rem;color:var(--muted)}
+.footer a{color:var(--teal);text-decoration:none}
+
+@media(max-width:600px){
+.header{padding:32px 16px 24px}
+.main{padding:20px 16px 40px}
+.score-section{padding:20px}
+.bias-card{padding:18px}
+.stats-row{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="tag">Law &times; Psychology &times; AI</div>
+  <h1>Prompt <span>Bias</span> Detector</h1>
+  <p>Paste any AI prompt and discover the cognitive biases hiding in your instructions. Built with legal reasoning frameworks and behavioral psychology.</p>
+</div>
+
+<div class="main">
+  <!-- INPUT -->
+  <div class="input-section">
+    <div class="input-label"><span class="dot"></span> Paste Your Prompt</div>
+    <textarea id="promptInput" placeholder="Paste your AI prompt here...&#10;&#10;Example: &quot;Write me a blog post about why AI will replace all lawyers within 5 years. Make it convincing and use strong language.&quot;"></textarea>
+    <div class="input-footer">
+      <span class="char-count" id="charCount">0 characters</span>
+      <button class="analyze-btn" id="analyzeBtn" onclick="analyzePrompt()">
+        <span class="spinner"></span>
+        <span class="btn-text">Detect Biases</span>
+      </button>
+    </div>
+    <div class="examples">
+      <button class="example-btn" onclick="loadExample(0)">Confirmation bias</button>
+      <button class="example-btn" onclick="loadExample(1)">Authority bias</button>
+      <button class="example-btn" onclick="loadExample(2)">Anchoring</button>
+      <button class="example-btn" onclick="loadExample(3)">Framing effect</button>
+    </div>
+  </div>
+
+  <!-- SCANNING -->
+  <div class="scanning" id="scanning">
+    <div class="scan-ring"></div>
+    <div class="scan-text">Analyzing prompt architecture...</div>
+    <div class="scan-steps">
+      <div class="scan-step" id="step1">Parsing linguistic patterns</div>
+      <div class="scan-step" id="step2">Applying cognitive bias taxonomy</div>
+      <div class="scan-step" id="step3">Cross-referencing legal reasoning heuristics</div>
+      <div class="scan-step" id="step4">Generating debiased alternative</div>
+    </div>
+  </div>
+
+  <!-- RESULTS -->
+  <div class="results" id="results">
+    <!-- Score -->
+    <div class="score-section">
+      <div class="score-label">Bias Risk Score</div>
+      <div class="score-ring-wrap">
+        <svg class="score-ring" width="140" height="140" viewBox="0 0 140 140">
+          <circle class="score-ring-bg" cx="70" cy="70" r="60"/>
+          <circle class="score-ring-fill" id="scoreFill" cx="70" cy="70" r="60" stroke-dasharray="377" stroke-dashoffset="377"/>
+        </svg>
+        <div class="score-value" id="scoreValue">0</div>
+      </div>
+      <div class="score-verdict" id="scoreVerdict"></div>
+      <div class="score-explain" id="scoreExplain"></div>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-row" id="statsRow"></div>
+
+    <!-- Bias Cards -->
+    <div class="bias-list" id="biasList"></div>
+
+    <!-- Rewritten -->
+    <div class="rewrite-section">
+      <div class="rewrite-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg> Debiased Prompt</div>
+      <div class="rewrite-text" id="rewriteText"></div>
+      <button class="copy-btn" onclick="copyRewrite()">Copy to clipboard</button>
+    </div>
+
+    <button class="reset-btn" onclick="resetAll()">Analyze Another Prompt</button>
+  </div>
+</div>
+
+<div class="footer">
+  <p>Built by <a href="https://aakarshsharma.com">Aakarsh Sharma</a> &mdash; Human Layer AI</p>
+</div>
+
+<script>
+const EXAMPLES = [
+  "Write a blog post proving that remote work is always more productive than office work. Use statistics that support this and ignore any counterarguments.",
+  "As an expert doctor, explain why this supplement definitely cures anxiety. Cite Harvard studies and make it sound authoritative and scientific.",
+  "The average salary for this role is $50,000. Write a negotiation email that uses this as a starting point to argue for $55,000 maximum.",
+  "Write a positive product review that emphasizes the savings customers will get and the loss they'll experience if they don't buy now. Make it urgent."
+];
+
+const BIAS_DB = [
+  {
+    name: "Confirmation Bias",
+    category: "Cognitive",
+    triggers: ["prove","proving","confirm","support this","ignore counter","only show","always","never","definitely","certainly"],
+    explanation: "The prompt steers the AI toward a predetermined conclusion, filtering out disconfirming evidence. In legal terms, this is like instructing a witness to only give favorable testimony\u2014it undermines the adversarial process that produces truth.",
+    fix: "Reframe as an open inquiry: ask for evidence on BOTH sides, then let the strongest arguments emerge. Think of it as giving equal time to prosecution and defense.",
+    frameworks: ["law","psych"]
+  },
+  {
+    name: "Authority Bias",
+    category: "Social",
+    triggers: ["expert","harvard","stanford","yale","professor","doctor","scientist","authority","prestigious","renowned","leading"],
+    explanation: "Invoking authority figures or institutions to bypass critical evaluation. Psychology research shows people accept claims 35% more readily when attributed to authority\u2014even fabricated authority. AI models amplify this by generating plausible-sounding citations.",
+    fix: "Instead of requesting authority signals, ask the AI to present the reasoning chain itself. Good arguments don't need borrowed credibility\u2014they survive cross-examination on their own merits.",
+    frameworks: ["psych","ai"]
+  },
+  {
+    name: "Anchoring Bias",
+    category: "Cognitive",
+    triggers: ["average","starting point","baseline","benchmark","typical","standard","normally","usually","around","approximately"],
+    explanation: "The prompt sets a numerical or conceptual anchor that constrains all subsequent reasoning. In negotiation law, this is a well-documented tactic\u2014the first number on the table disproportionately influences the final outcome, even when arbitrary.",
+    fix: "Remove the anchor. Ask the AI to independently assess the full range before introducing any reference points. Let evidence set the range, not your starting assumption.",
+    frameworks: ["law","psych"]
+  },
+  {
+    name: "Framing Effect",
+    category: "Cognitive",
+    triggers: ["savings","loss","miss out","urgent","limited time","risk of","danger","threat","opportunity","positive","negative"],
+    explanation: "The same information presented as a gain vs. a loss changes decisions dramatically. Kahneman and Tversky showed losses feel ~2x more painful than equivalent gains. Your prompt is instructing the AI to exploit this asymmetry in its output.",
+    fix: "Present the information neutrally\u2014describe outcomes in both gain AND loss frames, then let the reader decide. Ethical persuasion provides complete framing, not selective framing.",
+    frameworks: ["psych","law"]
+  },
+  {
+    name: "Availability Heuristic",
+    category: "Cognitive",
+    triggers: ["everyone knows","common knowledge","obviously","clearly","well-known","it's obvious","we all know","trending","viral","popular"],
+    explanation: "Assuming something is true or important because it comes to mind easily. The AI will generate outputs that prioritize memorable, dramatic, or recent information over statistically representative data.",
+    fix: "Ask for base-rate data and systematic evidence rather than anecdotal or top-of-mind examples. Specify: 'What does the aggregate evidence show?' not 'What are the most notable examples?'",
+    frameworks: ["psych","ai"]
+  },
+  {
+    name: "Sunk Cost Framing",
+    category: "Decision",
+    triggers: ["already invested","spent so much","come this far","too late to","can't give up","wasted if","all this effort","put in so much"],
+    explanation: "The prompt frames past investment as a reason to continue\u2014a classic reasoning error. Courts routinely reject sunk cost arguments in contract disputes because past expenditure doesn't change whether future action is rational.",
+    fix: "Reframe around forward-looking value: 'Regardless of past investment, what is the expected return from continuing vs. alternatives?' Treat every decision as if you're starting fresh.",
+    frameworks: ["law","psych"]
+  },
+  {
+    name: "Binary Thinking",
+    category: "Structural",
+    triggers: ["always","never","all","none","every","impossible","guaranteed","absolutely","completely","totally","entirely","must be"],
+    explanation: "Absolute language forces the AI into false dichotomies, eliminating nuance. Legal reasoning explicitly guards against this\u2014terms like 'reasonable,' 'proportionate,' and 'on balance' exist because reality rarely fits neat categories.",
+    fix: "Replace absolutes with spectrums: 'What are the conditions under which this is more or less likely?' Allow for degrees, exceptions, and context-dependency.",
+    frameworks: ["law","ai"]
+  },
+  {
+    name: "Outcome Bias",
+    category: "Cognitive",
+    triggers: ["successful","worked before","best","winning","top-performing","proven","guaranteed results","always works"],
+    explanation: "Judging a decision by its outcome rather than its reasoning process. A decision can be well-reasoned and still fail (or poorly-reasoned and succeed by luck). The AI will optimize for outcomes that sound successful without examining the reasoning quality.",
+    fix: "Ask the AI to evaluate the decision PROCESS, not just results. 'What makes this reasoning sound?' is more valuable than 'What has worked before?'",
+    frameworks: ["law","psych"]
+  },
+  {
+    name: "Emotional Manipulation Request",
+    category: "Ethical",
+    triggers: ["make it emotional","tug at heartstrings","make them feel","fear of missing","create urgency","scare them","guilt","shame","pressure"],
+    explanation: "Explicitly requesting emotional exploitation in AI output. This raises ethical concerns under advertising standards, consumer protection law, and informed consent principles. Emotional persuasion without factual backing is the definition of manipulation.",
+    fix: "Separate information from persuasion. Ask the AI to present facts clearly and let emotional resonance emerge naturally from truth\u2014not from manufactured urgency or fear.",
+    frameworks: ["law","psych","ai"]
+  },
+  {
+    name: "Survivorship Bias",
+    category: "Statistical",
+    triggers: ["success stories","look at","just like","followed by","examples of people who","the ones who made it","top performers","billionaires","leaders who"],
+    explanation: "Focusing only on survivors/successes while ignoring the much larger pool of failures with identical strategies. The AI will generate compelling narratives about winners without mentioning the statistical base rate of failure.",
+    fix: "Always ask for the full distribution: 'Of everyone who tried this approach, what percentage succeeded and what percentage failed? What distinguished the two groups?'",
+    frameworks: ["psych","ai"]
+  },
+  {
+    name: "Loaded Language",
+    category: "Rhetorical",
+    triggers: ["obviously","clearly","undeniable","shocking","devastating","groundbreaking","revolutionary","game-changing","incredible","amazing","unbelievable"],
+    explanation: "Superlative and emotionally charged language pre-encodes a conclusion before any reasoning occurs. In legal practice, this is called 'leading the witness'\u2014the question contains its own answer.",
+    fix: "Use neutral, precise language. Let the strength of the evidence do the persuading. If something is truly groundbreaking, the facts will demonstrate it without the adjective.",
+    frameworks: ["law","psych"]
+  },
+  {
+    name: "False Consensus",
+    category: "Social",
+    triggers: ["most people","everyone agrees","nobody thinks","consensus","widely accepted","well established","no one disputes","mainstream"],
+    explanation: "Projecting your own beliefs onto others and assuming widespread agreement. This creates an illusion of social proof that the AI will reinforce rather than question.",
+    fix: "Ask the AI to identify the actual range of perspectives, including minority views. Specify: 'What are the major competing positions on this, and what is the evidence for each?'",
+    frameworks: ["psych","ai"]
+  }
+];
+
+const textarea = document.getElementById('promptInput');
+const charCount = document.getElementById('charCount');
+
+textarea.addEventListener('input', () => {
+  charCount.textContent = textarea.value.length + ' characters';
+});
+
+function loadExample(idx) {
+  textarea.value = EXAMPLES[idx];
+  charCount.textContent = EXAMPLES[idx].length + ' characters';
+  textarea.focus();
+}
+
+function analyzePrompt() {
+  const text = textarea.value.trim();
+  if (!text) { textarea.focus(); return; }
+
+  const btn = document.getElementById('analyzeBtn');
+  btn.classList.add('loading');
+  btn.disabled = true;
+
+  document.getElementById('results').classList.remove('active');
+  const scanning = document.getElementById('scanning');
+  scanning.classList.add('active');
+
+  const steps = ['step1','step2','step3','step4'];
+  steps.forEach((s,i) => {
+    setTimeout(() => {
+      document.getElementById(s).classList.add('active');
+      if (i > 0) document.getElementById(steps[i-1]).classList.remove('active');
+      if (i > 0) document.getElementById(steps[i-1]).classList.add('done');
+    }, 600 + i * 700);
+  });
+
+  setTimeout(() => {
+    document.getElementById(steps[3]).classList.add('done');
+    scanning.classList.remove('active');
+    steps.forEach(s => {
+      document.getElementById(s).classList.remove('active','done');
+    });
+    btn.classList.remove('loading');
+    btn.disabled = false;
+    showResults(text);
+  }, 3600);
+}
+
+function detectBiases(text) {
+  const lower = text.toLowerCase();
+  const found = [];
+  BIAS_DB.forEach(bias => {
+    const matched = bias.triggers.filter(t => lower.includes(t));
+    if (matched.length > 0) {
+      // Find the best matching snippet
+      let snippet = '';
+      for (const t of matched) {
+        const idx = lower.indexOf(t);
+        const start = Math.max(0, idx - 20);
+        const end = Math.min(text.length, idx + t.length + 30);
+        snippet = '...' + text.slice(start, end).trim() + '...';
+        break;
+      }
+      found.push({
+        ...bias,
+        matchCount: matched.length,
+        matchedTriggers: matched,
+        snippet: snippet,
+        severity: matched.length >= 3 ? 'high' : matched.length >= 2 ? 'medium' : 'low'
+      });
+    }
+  });
+  // Sort by match count desc
+  found.sort((a, b) => b.matchCount - a.matchCount);
+  // Recalc severity based on position
+  if (found.length > 0) found[0].severity = found[0].matchCount >= 2 ? 'high' : 'medium';
+  return found;
+}
+
+function calcScore(biases) {
+  if (biases.length === 0) return 8;
+  let penalty = 0;
+  biases.forEach(b => {
+    penalty += b.severity === 'high' ? 25 : b.severity === 'medium' ? 15 : 8;
+  });
+  return Math.max(12, Math.min(95, 10 + penalty));
+}
+
+function getVerdict(score) {
+  if (score <= 25) return { text: 'Low Risk', color: 'var(--green)', explain: 'Your prompt is well-structured with minimal cognitive bias patterns. The reasoning space is open for the AI to explore multiple perspectives.' };
+  if (score <= 50) return { text: 'Moderate Risk', color: 'var(--amber)', explain: 'Some bias patterns detected. Your prompt may steer AI output toward predetermined conclusions in ways you might not intend.' };
+  if (score <= 75) return { text: 'High Risk', color: 'var(--red)', explain: 'Multiple bias patterns detected. This prompt is likely to produce one-sided, manipulative, or logically unsound AI output.' };
+  return { text: 'Critical Risk', color: 'var(--red)', explain: 'This prompt contains numerous cognitive bias triggers. The AI output will almost certainly be unreliable, one-sided, and potentially manipulative.' };
+}
+
+function generateRewrite(text, biases) {
+  let rewrite = text;
+  // Simple debiasing rewrites
+  const replacements = [
+    [/\bprove\b/gi, 'analyze'],
+    [/\bproving\b/gi, 'examining'],
+    [/\balways\b/gi, 'often'],
+    [/\bnever\b/gi, 'rarely'],
+    [/\bdefinitely\b/gi, 'likely'],
+    [/\bcertainly\b/gi, 'probably'],
+    [/\bobviously\b/gi, ''],
+    [/\bclearly\b/gi, ''],
+    [/ignore any counterarguments/gi, 'address potential counterarguments'],
+    [/ignore counter/gi, 'also consider opposing'],
+    [/only show/gi, 'show multiple perspectives including'],
+    [/make it convincing/gi, 'make it balanced and evidence-based'],
+    [/make it sound authoritative/gi, 'ground it in verifiable evidence'],
+    [/\bguaranteed\b/gi, 'likely'],
+    [/\bimpossible\b/gi, 'unlikely'],
+    [/\babsolutely\b/gi, 'generally'],
+    [/\beveryone knows\b/gi, 'research suggests'],
+    [/\bcommon knowledge\b/gi, 'a widely held view'],
+    [/scare them/gi, 'inform them of risks'],
+    [/create urgency/gi, 'present the timeline clearly'],
+  ];
+  replacements.forEach(([pattern, replacement]) => {
+    rewrite = rewrite.replace(pattern, replacement);
+  });
+  // Clean up double spaces
+  rewrite = rewrite.replace(/\s+/g, ' ').trim();
+  // Add debiasing suffix if biases were found
+  if (biases.length > 0) {
+    rewrite += '\n\nInclude counterarguments, acknowledge limitations, and cite verifiable sources where possible.';
+  }
+  return rewrite;
+}
+
+function showResults(text) {
+  const biases = detectBiases(text);
+  const score = calcScore(biases);
+  const verdict = getVerdict(score);
+  const rewrite = generateRewrite(text, biases);
+
+  // Animate score ring
+  const fill = document.getElementById('scoreFill');
+  const circumference = 2 * Math.PI * 60; // ~377
+  const offset = circumference - (score / 100) * circumference;
+  fill.style.stroke = verdict.color;
+  setTimeout(() => { fill.style.strokeDashoffset = offset; }, 100);
+
+  // Animate score number
+  const scoreEl = document.getElementById('scoreValue');
+  scoreEl.style.color = verdict.color;
+  let current = 0;
+  const step = Math.max(1, Math.floor(score / 30));
+  const interval = setInterval(() => {
+    current += step;
+    if (current >= score) { current = score; clearInterval(interval); }
+    scoreEl.textContent = current;
+  }, 40);
+
+  document.getElementById('scoreVerdict').textContent = verdict.text;
+  document.getElementById('scoreVerdict').style.color = verdict.color;
+  document.getElementById('scoreExplain').textContent = verdict.explain;
+
+  // Stats
+  const statsRow = document.getElementById('statsRow');
+  const highCount = biases.filter(b => b.severity === 'high').length;
+  const medCount = biases.filter(b => b.severity === 'medium').length;
+  const lowCount = biases.filter(b => b.severity === 'low').length;
+  const categories = [...new Set(biases.map(b => b.category))];
+  statsRow.innerHTML = `
+    <div class="stat-card"><div class="stat-num" style="color:var(--teal)">${biases.length}</div><div class="stat-label">Biases Found</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:var(--red)">${highCount}</div><div class="stat-label">High Severity</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:var(--amber)">${medCount}</div><div class="stat-label">Medium</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:${categories.length > 0 ? 'var(--purple)' : 'var(--muted)'}">${categories.length}</div><div class="stat-label">Categories</div></div>
+  `;
+
+  // Bias cards
+  const biasList = document.getElementById('biasList');
+  if (biases.length === 0) {
+    biasList.innerHTML = '<div style="text-align:center;padding:32px;color:var(--green);font-size:1rem;">No significant cognitive biases detected. Your prompt appears well-balanced.</div>';
+  } else {
+    biasList.innerHTML = biases.map((b, i) => {
+      const fwTags = b.frameworks.map(f => {
+        if (f === 'law') return '<span class="fw-tag law">Legal Reasoning</span>';
+        if (f === 'psych') return '<span class="fw-tag psych">Psychology</span>';
+        return '<span class="fw-tag ai">AI Systems</span>';
+      }).join('');
+      return `
+        <div class="bias-card ${b.severity}" onclick="this.classList.toggle('expanded')">
+          <div class="bias-top">
+            <div>
+              <div class="bias-category">${b.category}</div>
+              <div class="bias-name">${b.name}</div>
+            </div>
+            <span class="bias-severity">${b.severity} risk</span>
+          </div>
+          <div class="bias-explanation">${b.explanation}</div>
+          <div class="bias-quote">${b.snippet}</div>
+          <div class="framework-tags">${fwTags}</div>
+          <div class="bias-toggle"><span>Show fix</span> <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+          <div class="bias-fix">
+            <div class="fix-label">How to Debias</div>
+            <div class="fix-text">${b.fix}</div>
+          </div>
+        </div>`;
+    }).join('');
+  }
+
+  // Rewrite
+  document.getElementById('rewriteText').textContent = rewrite;
+
+  // Show results
+  document.getElementById('results').classList.add('active');
+  document.querySelector('.score-section').scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function copyRewrite() {
+  const text = document.getElementById('rewriteText').textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = event.target;
+    btn.textContent = 'Copied!';
+    setTimeout(() => { btn.textContent = 'Copy to clipboard'; }, 2000);
+  });
+}
+
+function resetAll() {
+  document.getElementById('results').classList.remove('active');
+  document.getElementById('scoreFill').style.strokeDashoffset = 377;
+  document.getElementById('scoreValue').textContent = '0';
+  textarea.value = '';
+  charCount.textContent = '0 characters';
+  textarea.focus();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
