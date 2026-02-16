@@ -309,6 +309,32 @@ section { padding: 80px 2rem; }
 .article-card h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: var(--white); margin-bottom: 10px; }
 .article-card p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 1rem; }
 
+/* === PROMPT LIBRARY === */
+.prompt-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+.prompt-card { background: var(--navy-light); border: 1px solid rgba(45,212,168,0.1); border-radius: 12px; padding: 2rem; transition: all 0.3s; position: relative; overflow: hidden; }
+.prompt-card:hover { border-color: rgba(45,212,168,0.25); transform: translateY(-2px); }
+.prompt-card::before { content: '\201C'; position: absolute; top: -10px; right: 16px; font-size: 5rem; color: rgba(45,212,168,0.06); font-family: 'Playfair Display', serif; line-height: 1; }
+.prompt-week { font-size: 0.68rem; color: var(--teal); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; font-weight: 600; }
+.prompt-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); margin-bottom: 10px; }
+.prompt-text { background: rgba(0,0,0,0.25); border: 1px solid rgba(45,212,168,0.08); border-radius: 8px; padding: 1rem; font-size: 0.82rem; color: var(--text); line-height: 1.7; font-family: 'Inter', monospace; margin-bottom: 12px; }
+.prompt-usecase { font-size: 0.78rem; color: var(--text-muted); line-height: 1.6; }
+.prompt-usecase strong { color: var(--gold); }
+
+/* === COPYWRITING GALLERY === */
+.copy-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin-top: 2rem; }
+.copy-item { position: relative; border-radius: 10px; overflow: hidden; background: var(--navy-light); border: 1px solid rgba(255,255,255,0.04); transition: all 0.4s cubic-bezier(0.16,1,0.3,1); cursor: pointer; }
+.copy-item:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.4); border-color: rgba(212,160,60,0.2); }
+.copy-item img { width: 100%; height: auto; display: block; transition: transform 0.4s; }
+.copy-item:hover img { transform: scale(1.03); }
+.copy-caption { padding: 10px 14px; font-size: 0.75rem; color: var(--text-muted); }
+.copy-caption strong { color: var(--gold); }
+/* Lightbox */
+.copy-lightbox { display: none; position: fixed; inset: 0; z-index: 10000; background: rgba(0,0,0,0.92); backdrop-filter: blur(12px); align-items: center; justify-content: center; padding: 2rem; cursor: pointer; }
+.copy-lightbox.active { display: flex; }
+.copy-lightbox img { max-width: 90vw; max-height: 85vh; border-radius: 8px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+.copy-lightbox-close { position: absolute; top: 20px; right: 24px; color: #fff; font-size: 2rem; cursor: pointer; background: none; border: none; opacity: 0.7; transition: opacity 0.2s; }
+.copy-lightbox-close:hover { opacity: 1; }
+
 /* === PODCAST === */
 #podcast { background: var(--navy-deep); }
 .podcast-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
@@ -352,6 +378,56 @@ footer { background: var(--navy); border-top: 1px solid rgba(255,255,255,0.05); 
 footer p { font-size: 0.8rem; color: var(--text-muted); }
 footer .footer-tagline { font-family: 'Playfair Display', serif; font-style: italic; color: var(--gold); margin-bottom: 0.5rem; }
 
+/* === AUTOMATION WORKFLOWS === */
+#workflows { background: var(--navy-deep); }
+.workflow-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+.workflow-card { background: var(--navy-light); border: 1px solid rgba(45,212,168,0.08); border-radius: 12px; padding: 2rem; transition: all 0.3s; position: relative; overflow: hidden; }
+.workflow-card:hover { border-color: rgba(45,212,168,0.2); transform: translateY(-3px); box-shadow: 0 16px 48px rgba(0,0,0,0.3); }
+.workflow-badge { display: inline-block; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.12em; padding: 4px 10px; border-radius: 4px; margin-bottom: 14px; font-weight: 700; }
+.badge-podcast { background: rgba(212,160,60,0.1); color: var(--gold); }
+.badge-content { background: rgba(45,212,168,0.1); color: var(--teal); }
+.badge-lead { background: rgba(100,155,255,0.1); color: var(--blue); }
+.badge-repurpose { background: rgba(159,122,234,0.1); color: var(--purple); }
+.workflow-card h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: var(--white); margin-bottom: 10px; }
+.workflow-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 16px; }
+.workflow-flow { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
+.flow-step { font-size: 0.7rem; padding: 5px 10px; border-radius: 6px; background: rgba(0,0,0,0.25); color: var(--text); border: 1px solid rgba(255,255,255,0.06); white-space: nowrap; }
+.flow-arrow { color: var(--teal); font-size: 0.8rem; flex-shrink: 0; }
+.workflow-result { font-size: 0.78rem; color: var(--teal); font-weight: 500; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.04); }
+.workflow-tools { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
+.workflow-tools span { font-size: 0.65rem; padding: 2px 8px; border-radius: 4px; background: rgba(45,212,168,0.06); color: var(--text-muted); border: 1px solid rgba(45,212,168,0.1); }
+
+/* === TESTIMONIALS === */
+#testimonials { background: var(--navy); }
+.testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+.testimonial-card { background: var(--navy-light); border: 1px solid rgba(212,160,60,0.1); border-radius: 12px; padding: 2rem; position: relative; transition: all 0.3s; }
+.testimonial-card:hover { border-color: rgba(212,160,60,0.25); transform: translateY(-2px); }
+.testimonial-card::before { content: '\201C'; position: absolute; top: 8px; right: 20px; font-size: 4rem; color: rgba(212,160,60,0.08); font-family: 'Playfair Display', serif; line-height: 1; }
+.testimonial-quote { font-size: 0.92rem; color: var(--text); line-height: 1.8; font-style: italic; margin-bottom: 1.25rem; }
+.testimonial-author { display: flex; align-items: center; gap: 12px; }
+.testimonial-avatar { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--teal), var(--gold)); display: flex; align-items: center; justify-content: center; font-size: 1rem; color: var(--navy); font-weight: 700; flex-shrink: 0; }
+.testimonial-name { font-size: 0.88rem; color: var(--white); font-weight: 600; }
+.testimonial-role { font-size: 0.75rem; color: var(--text-muted); }
+.testimonial-source { font-size: 0.68rem; color: var(--blue); text-decoration: none; display: inline-flex; align-items: center; gap: 4px; margin-top: 2px; }
+.testimonial-source:hover { text-decoration: underline; }
+
+/* === REFERENCES BAR === */
+.references-bar { background: rgba(212,160,60,0.03); border-top: 1px solid rgba(212,160,60,0.08); border-bottom: 1px solid rgba(212,160,60,0.08); padding: 28px 2rem; }
+.references-bar .section-label { text-align: center; margin-bottom: 16px; color: var(--gold); }
+.ref-bar-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: center; align-items: center; gap: 2.5rem; flex-wrap: wrap; }
+.ref-item { text-align: center; white-space: nowrap; }
+.ref-name { font-family: 'Playfair Display', serif; font-size: 0.92rem; color: var(--white); font-weight: 700; }
+.ref-title { font-size: 0.7rem; color: var(--text-muted); letter-spacing: 0.03em; margin-top: 2px; }
+.ref-divider { width: 1px; height: 32px; background: rgba(212,160,60,0.15); }
+@media (max-width: 768px) {
+  .workflow-grid { grid-template-columns: 1fr; }
+  .testimonial-grid { grid-template-columns: 1fr; }
+  .ref-bar-inner { gap: 1.5rem; }
+  .ref-divider { display: none; }
+  .ref-item { flex: 0 0 45%; }
+  .ref-name { font-size: 0.82rem; }
+}
+
 /* === SCROLL REVEAL === */
 .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1); }
 .reveal.visible { opacity: 1; transform: translateY(0); }
@@ -363,7 +439,8 @@ footer .footer-tagline { font-family: 'Playfair Display', serif; font-style: ita
   nav .nav-links { display: none; }
   .menu-toggle { display: block; }
   nav .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 70px; left: 0; right: 0; background: var(--navy); padding: 1.5rem 2rem; border-bottom: 1px solid rgba(45,212,168,0.1); gap: 1rem; }
-  .portfolio-grid, .services-grid, .article-grid { grid-template-columns: 1fr; }
+  .portfolio-grid, .services-grid, .article-grid, .prompt-grid { grid-template-columns: 1fr; }
+  .copy-gallery { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
   .social-grid { grid-template-columns: 1fr; }
   .svc-card { grid-template-columns: 1fr; gap: 24px; padding: 28px; }
   .svc-sidebar { border-left: none; border-top: 1px solid rgba(255,255,255,0.06); padding-left: 0; padding-top: 24px; }
@@ -389,7 +466,7 @@ footer .footer-tagline { font-family: 'Playfair Display', serif; font-style: ita
 <nav>
   <div class="nav-inner">
     <a href="#" class="logo">
-      <img src="logo.png" alt="Human Layer AI" class="logo-mark" style="width:36px;height:36px;border-radius:8px;">
+      <img src="logo.png" alt="Human Layer AI" class="logo-mark" style="width:36px;height:36px;border-radius:8px;background:rgba(45,212,168,0.08);padding:2px;box-shadow:0 0 12px rgba(45,212,168,0.15);">
       <span class="logo-text">Human Layer AI</span>
     </a>
     <button class="menu-toggle" aria-label="Toggle navigation menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">&#9776;</button>
@@ -443,6 +520,8 @@ footer .footer-tagline { font-family: 'Playfair Display', serif; font-style: ita
     <div class="cred-bar-item"><span class="cred-bar-num">100+</span> Podcast Episodes</div>
     <div class="cred-bar-divider"></div>
     <div class="cred-bar-item"><span class="cred-bar-num">IELTS</span> 8.0</div>
+    <div class="cred-bar-divider"></div>
+    <div class="cred-bar-item"><span class="cred-bar-num">93+</span> Books Read</div>
   </div>
 </div>
 
@@ -820,6 +899,259 @@ footer .footer-tagline { font-family: 'Playfair Display', serif; font-style: ita
   </div>
 </section>
 
+<!-- PROMPT LIBRARY -->
+<section id="prompts" class="reveal">
+  <div class="section-inner">
+    <div class="section-label">Weekly Prompt</div>
+    <h2 class="section-title">Prompt Library</h2>
+    <p class="section-desc">One carefully crafted prompt every week. Each one demonstrates a different prompting principle&mdash;structured reasoning, cognitive debiasing, domain-specific architecture. Copy them. Remix them. Learn from the design choices.</p>
+    <div class="prompt-grid">
+      <div class="prompt-card">
+        <div class="prompt-week">Week 1 &middot; Feb 2026</div>
+        <div class="prompt-title">The Adversarial Reviewer</div>
+        <div class="prompt-text">You are a senior legal reviewer. Your job is to find every flaw in my argument before my opponent does. Read my draft below and: (1) identify the 3 weakest claims, (2) explain how an adversary would attack each one, (3) suggest a stronger framing for each. Be ruthless&mdash;I'd rather fix it now than lose in court.</div>
+        <div class="prompt-usecase"><strong>Principle:</strong> Adversarial stress-testing. Forces the model to adopt an opponent's mindset rather than agreeing by default. Works for legal briefs, business proposals, and research papers.</div>
+      </div>
+      <div class="prompt-card">
+        <div class="prompt-week">Week 2 &middot; Feb 2026</div>
+        <div class="prompt-title">The Cognitive Bias Detector</div>
+        <div class="prompt-text">Analyze my decision below for cognitive biases. Check specifically for: confirmation bias, anchoring, sunk cost fallacy, availability heuristic, and the Dunning-Kruger effect. For each bias you detect, quote the specific phrase that triggered it, name the bias, and suggest a debiased alternative. If no bias is present, say so&mdash;don't manufacture findings.</div>
+        <div class="prompt-usecase"><strong>Principle:</strong> Structured bias detection. The explicit list constrains hallucination, the "quote the phrase" requirement forces evidence-based reasoning, and the "don't manufacture" instruction prevents false positives.</div>
+      </div>
+      <div class="prompt-card">
+        <div class="prompt-week">Week 3 &middot; Feb 2026</div>
+        <div class="prompt-title">The One-Pager Architect</div>
+        <div class="prompt-text">I need to explain [TOPIC] to [AUDIENCE] in one page. Constraints: (1) open with a question they already have, not a definition; (2) use exactly one analogy from their domain; (3) include one concrete "do this Monday" action item; (4) close with the single metric they should track. No jargon they wouldn't use at lunch with a colleague.</div>
+        <div class="prompt-usecase"><strong>Principle:</strong> Audience-first constraint architecture. Each numbered constraint eliminates a common AI failure mode: generic openings, abstract analogies, no actionable takeaways, and jargon overload.</div>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:2rem;color:var(--text-muted);font-size:0.85rem;">New prompt every Monday. Follow on <a href="https://www.linkedin.com/in/aakarsh-sharma-ai/" target="_blank" style="color:var(--teal);text-decoration:none;">LinkedIn</a> for weekly breakdowns.</p>
+  </div>
+</section>
+
+<!-- COPYWRITING GALLERY -->
+<section id="copywriting" class="reveal">
+  <div class="section-inner">
+    <div class="section-label">Creative Roots</div>
+    <h2 class="section-title">Before AI, There Was Copy</h2>
+    <p class="section-desc">Two years of professional copywriting&mdash;spec ads, brand campaigns, and visual storytelling. The same skills that make great copy (distilling complexity into a single striking idea) are exactly what make great prompts. This is where it started.</p>
+    <div class="copy-gallery">
+      <div class="copy-item" onclick="openCopyLightbox(this)">
+        <img src="https://tocheaptobuyawebsite.wordpress.com/wp-content/uploads/2023/03/my-post-1.jpg?w=600" alt="Anti-smoking ad: It's basic maths — cigarettes as declining bar chart" loading="lazy">
+        <div class="copy-caption"><strong>Anti-Smoking</strong> &middot; Visual metaphor</div>
+      </div>
+      <div class="copy-item" onclick="openCopyLightbox(this)">
+        <img src="https://tocheaptobuyawebsite.wordpress.com/wp-content/uploads/2023/03/tar-is-meant-for-the-road.png?w=600" alt="Nicotex ad: Tar is meant for the road" loading="lazy">
+        <div class="copy-caption"><strong>Nicotex</strong> &middot; Double meaning</div>
+      </div>
+      <div class="copy-item" onclick="openCopyLightbox(this)">
+        <img src="https://tocheaptobuyawebsite.wordpress.com/wp-content/uploads/2023/03/its-not-a-phone.-its-a-time-machine.png?w=600" alt="Samsung ad: It's not a phone. It's a time machine." loading="lazy">
+        <div class="copy-caption"><strong>Samsung</strong> &middot; Emotional reframe</div>
+      </div>
+      <div class="copy-item" onclick="openCopyLightbox(this)">
+        <img src="https://tocheaptobuyawebsite.wordpress.com/wp-content/uploads/2023/03/xanax-ad-1.png?w=600" alt="Xanax ad: Too tired to sleep?" loading="lazy">
+        <div class="copy-caption"><strong>Xanax</strong> &middot; Paradox hook</div>
+      </div>
+      <div class="copy-item" onclick="openCopyLightbox(this)">
+        <img src="https://tocheaptobuyawebsite.wordpress.com/wp-content/uploads/2023/03/my-post-1-1.png?w=600" alt="Chess ad: A crown does not make the king powerful. His queen does." loading="lazy">
+        <div class="copy-caption"><strong>Chess</strong> &middot; Social commentary</div>
+      </div>
+      <div class="copy-item" onclick="openCopyLightbox(this)">
+        <img src="https://tocheaptobuyawebsite.wordpress.com/wp-content/uploads/2023/03/aakarsh-sharma-adsandscotch40gmail.com_.png?w=600" alt="Apple ad: Different doesn't always mean wrong" loading="lazy">
+        <div class="copy-caption"><strong>Apple</strong> &middot; Bold concept</div>
+      </div>
+      <div class="copy-item" onclick="openCopyLightbox(this)">
+        <img src="https://tocheaptobuyawebsite.wordpress.com/wp-content/uploads/2023/03/remember-when-alcohol-was-used-as-drink-2.png?w=600" alt="Dettol ad: Remember when alcohol was used as a drink?" loading="lazy">
+        <div class="copy-caption"><strong>Dettol</strong> &middot; Pandemic reframe</div>
+      </div>
+      <div class="copy-item" onclick="openCopyLightbox(this)">
+        <img src="https://tocheaptobuyawebsite.wordpress.com/wp-content/uploads/2023/03/the-legal-way-to-shoot-someone.png?w=600" alt="Canon ad: The legal way to shoot someone" loading="lazy">
+        <div class="copy-caption"><strong>Canon</strong> &middot; Law meets creativity</div>
+      </div>
+      <div class="copy-item" onclick="openCopyLightbox(this)">
+        <img src="https://tocheaptobuyawebsite.wordpress.com/wp-content/uploads/2023/03/my-post-1-5.jpg?w=600" alt="Spotify ad: Grass is always GREEN" loading="lazy">
+        <div class="copy-caption"><strong>Spotify</strong> &middot; Brand color play</div>
+      </div>
+      <div class="copy-item" onclick="openCopyLightbox(this)">
+        <img src="https://tocheaptobuyawebsite.wordpress.com/wp-content/uploads/2023/03/who-wants-to-live-to-90s-anyways.png?w=600" alt="Marlboro ad: Stress kills way more people, anyway" loading="lazy">
+        <div class="copy-caption"><strong>Marlboro</strong> &middot; Brand subversion</div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:2rem;">
+      <a href="https://tocheaptobuyawebsite.wordpress.com/" target="_blank" class="btn btn-outline">View Full Portfolio &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="copy-lightbox" id="copyLightbox" onclick="closeCopyLightbox()">
+  <button class="copy-lightbox-close" onclick="closeCopyLightbox()">&times;</button>
+  <img id="copyLightboxImg" src="" alt="">
+</div>
+
+<!-- AUTOMATION WORKFLOWS -->
+<section id="workflows" class="reveal">
+  <div class="section-inner">
+    <div class="section-label">Automation</div>
+    <h2 class="section-title">Workflows I Automate</h2>
+    <p class="section-desc">Real automation pipelines built with Zapier, AI, and domain logic. These aren't hypotheticals&mdash;they're the systems running behind this brand.</p>
+    <div class="workflow-grid">
+      <div class="workflow-card">
+        <span class="workflow-badge badge-podcast">Podcast Ops</span>
+        <h3>Guest Onboarding Pipeline</h3>
+        <p>When a podcast guest books via Calendly, the system automatically creates a Google Drive folder for their episode, sends a branded welcome email with recording instructions, and logs them in the CRM.</p>
+        <div class="workflow-flow">
+          <span class="flow-step">Calendly Booking</span>
+          <span class="flow-arrow">&rarr;</span>
+          <span class="flow-step">Drive Folder</span>
+          <span class="flow-arrow">&rarr;</span>
+          <span class="flow-step">Welcome Email</span>
+          <span class="flow-arrow">&rarr;</span>
+          <span class="flow-step">CRM Log</span>
+        </div>
+        <div class="workflow-result">Saves ~25 min per guest &middot; Zero manual steps</div>
+        <div class="workflow-tools"><span>Calendly</span><span>Google Drive</span><span>Gmail</span><span>Sheets</span></div>
+      </div>
+      <div class="workflow-card">
+        <span class="workflow-badge badge-content">Content</span>
+        <h3>YouTube &rarr; LinkedIn Auto-Promote</h3>
+        <p>New YouTube video detected? The system drafts a LinkedIn post with the episode title, guest tag, key insight, and a direct link. I review and publish&mdash;the heavy lifting is done.</p>
+        <div class="workflow-flow">
+          <span class="flow-step">New YouTube Video</span>
+          <span class="flow-arrow">&rarr;</span>
+          <span class="flow-step">AI Draft Post</span>
+          <span class="flow-arrow">&rarr;</span>
+          <span class="flow-step">LinkedIn Queue</span>
+        </div>
+        <div class="workflow-result">Consistent promotion &middot; Never miss an episode launch</div>
+        <div class="workflow-tools"><span>YouTube</span><span>LinkedIn</span><span>Zapier AI</span></div>
+      </div>
+      <div class="workflow-card">
+        <span class="workflow-badge badge-lead">Lead Capture</span>
+        <h3>Inbound Lead Intelligence</h3>
+        <p>Every discovery call booking triggers a pre-call research brief&mdash;the prospect's LinkedIn summary, company context, and potential pain points are compiled before we ever speak.</p>
+        <div class="workflow-flow">
+          <span class="flow-step">Calendly Booking</span>
+          <span class="flow-arrow">&rarr;</span>
+          <span class="flow-step">LinkedIn Lookup</span>
+          <span class="flow-arrow">&rarr;</span>
+          <span class="flow-step">Research Brief</span>
+          <span class="flow-arrow">&rarr;</span>
+          <span class="flow-step">Email to Self</span>
+        </div>
+        <div class="workflow-result">Walk into every call fully prepared &middot; 10x first impressions</div>
+        <div class="workflow-tools"><span>Calendly</span><span>AI Research</span><span>Gmail</span></div>
+      </div>
+      <div class="workflow-card">
+        <span class="workflow-badge badge-repurpose">Repurpose</span>
+        <h3>Article &rarr; Multi-Platform Distribution</h3>
+        <p>Publish a Medium article and the system generates platform-specific captions for LinkedIn, Instagram, X, and WhatsApp&mdash;each adapted to the platform's tone and character limits.</p>
+        <div class="workflow-flow">
+          <span class="flow-step">New Medium Post</span>
+          <span class="flow-arrow">&rarr;</span>
+          <span class="flow-step">AI Adapt</span>
+          <span class="flow-arrow">&rarr;</span>
+          <span class="flow-step">4 Platform Drafts</span>
+          <span class="flow-arrow">&rarr;</span>
+          <span class="flow-step">Schedule</span>
+        </div>
+        <div class="workflow-result">1 article &rarr; 5 platforms &middot; Consistent brand voice everywhere</div>
+        <div class="workflow-tools"><span>Medium</span><span>Claude AI</span><span>Planable</span><span>LinkedIn</span></div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:2.5rem;">
+      <p style="color:var(--text-muted);font-size:0.88rem;margin-bottom:1rem;">Want a system like this for your business?</p>
+      <a href="https://calendly.com/humanlayerai" target="_blank" class="btn btn-primary">Let's Automate Your Workflow &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" class="reveal">
+  <div class="section-inner">
+    <div class="section-label">What People Say</div>
+    <h2 class="section-title">Trusted By Professionals</h2>
+    <p class="section-desc">Feedback from colleagues, collaborators, and podcast guests who've experienced the Human Layer AI approach firsthand.</p>
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-quote">"Aakarsh has an uncanny ability to break down complex AI concepts and tie them back to real human psychology. His podcast preparation was the most thorough I've ever seen&mdash;he knew my work better than most of my colleagues."</div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">KK</div>
+          <div>
+            <div class="testimonial-name">Krish Kishore</div>
+            <div class="testimonial-role">Technology Leader</div>
+            <a href="https://www.linkedin.com/in/aakarsh-sharma-ai/" target="_blank" class="testimonial-source">via LinkedIn</a>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-quote">"What sets Aakarsh apart is his legal mind applied to AI. He doesn't just build tools&mdash;he stress-tests them like a lawyer would cross-examine a witness. The rigor is rare in this space."</div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">AS</div>
+          <div>
+            <div class="testimonial-name">Aariz Sajan</div>
+            <div class="testimonial-role">Entrepreneur &amp; Strategist</div>
+            <a href="https://www.linkedin.com/in/aakarsh-sharma-ai/" target="_blank" class="testimonial-source">via LinkedIn</a>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-quote">"The podcast episode we did together was one of the most intellectually stimulating conversations I've had. Aakarsh brings a depth of psychological understanding that makes his AI work genuinely different."</div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">SK</div>
+          <div>
+            <div class="testimonial-name">Saba Khanam</div>
+            <div class="testimonial-role">Mental Health Professional</div>
+            <a href="https://www.linkedin.com/in/aakarsh-sharma-ai/" target="_blank" class="testimonial-source">via LinkedIn</a>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-quote">"I was skeptical about AI consulting until I saw Aakarsh's approach. He doesn't sell hype&mdash;he identifies the one thing that will actually move the needle, builds it, and explains exactly why it works."</div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">KN</div>
+          <div>
+            <div class="testimonial-name">Krupa Nishar</div>
+            <div class="testimonial-role">Business Professional</div>
+            <a href="https://www.linkedin.com/in/aakarsh-sharma-ai/" target="_blank" class="testimonial-source">via LinkedIn</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REFERENCES BAR -->
+<div class="references-bar">
+  <div class="section-label">Professional References</div>
+  <div class="ref-bar-inner">
+    <div class="ref-item">
+      <div class="ref-name">Justice J.R. Midha</div>
+      <div class="ref-title">Judge, Delhi High Court</div>
+    </div>
+    <div class="ref-divider"></div>
+    <div class="ref-item">
+      <div class="ref-name">Shreshth Tuli</div>
+      <div class="ref-title">Director of AI, Lenovo</div>
+    </div>
+    <div class="ref-divider"></div>
+    <div class="ref-item">
+      <div class="ref-name">Pramod Kumar Kushwaha</div>
+      <div class="ref-title">IPS Officer</div>
+    </div>
+    <div class="ref-divider"></div>
+    <div class="ref-item">
+      <div class="ref-name">Prof. Dr. Aditya Tomar</div>
+      <div class="ref-title">Dean, IIMT University</div>
+    </div>
+    <div class="ref-divider"></div>
+    <div class="ref-item">
+      <div class="ref-name">Dr. Ritesh Malik</div>
+      <div class="ref-title">Founder, Innov8 Coworking</div>
+    </div>
+  </div>
+</div>
+
 <!-- PODCAST -->
 <section id="podcast" class="reveal">
   <div class="section-inner">
@@ -988,6 +1320,29 @@ function switchSlide(idx) {
   cap.querySelector('h4').textContent = captions[idx].title;
   cap.querySelector('p').textContent = captions[idx].desc;
 }
+
+// === COPYWRITING LIGHTBOX ===
+function openCopyLightbox(el) {
+  var img = el.querySelector('img');
+  if (!img) return;
+  var lb = document.getElementById('copyLightbox');
+  var lbImg = document.getElementById('copyLightboxImg');
+  if (!lb || !lbImg) return;
+  lbImg.src = img.src;
+  lbImg.alt = img.alt;
+  lb.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeCopyLightbox() {
+  var lb = document.getElementById('copyLightbox');
+  if (!lb) return;
+  lb.classList.remove('active');
+  document.body.style.overflow = '';
+}
+// Close lightbox on Escape key
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeCopyLightbox();
+});
 
 // Smooth scroll with nav offset
 document.querySelectorAll('a[href^="#"]').forEach(a => {
