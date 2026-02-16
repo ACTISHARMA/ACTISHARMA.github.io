@@ -98,7 +98,7 @@ setTimeout(function(){
   --purple: #9f7aea;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+/* scroll-behavior: smooth removed — using JS scrollIntoView instead to avoid conflicts with landing overlay */
 body { font-family: 'Inter', sans-serif; background: var(--navy); color: var(--text); line-height: 1.7; overflow-x: hidden; }
 
 /* === NAV === */
@@ -209,7 +209,7 @@ nav .nav-links a:hover::after { width: 100%; }
 }
 
 /* === SECTIONS === */
-section { padding: 100px 2rem; }
+section { padding: 80px 2rem; }
 @media (max-width: 768px) { section { padding: 60px 1.5rem; } }
 .section-inner { max-width: 1200px; margin: 0 auto; }
 .section-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--teal); font-weight: 600; margin-bottom: 0.75rem; }
@@ -353,7 +353,7 @@ footer p { font-size: 0.8rem; color: var(--text-muted); }
 footer .footer-tagline { font-family: 'Playfair Display', serif; font-style: italic; color: var(--gold); margin-bottom: 0.5rem; }
 
 /* === SCROLL REVEAL === */
-.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1); }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
 /* === RESPONSIVE === */
@@ -394,14 +394,11 @@ footer .footer-tagline { font-family: 'Playfair Display', serif; font-style: ita
     </a>
     <button class="menu-toggle" aria-label="Toggle navigation menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">&#9776;</button>
     <ul class="nav-links">
-      <li><a href="#demos">Live Demos</a></li>
       <li><a href="#portfolio">Portfolio</a></li>
       <li><a href="#services">Services</a></li>
       <li><a href="#about">About</a></li>
-      <li><a href="#articles">Articles</a></li>
-            <li><a href="/artifacts/" style="color:var(--teal);">Artifacts</a></li>
-      <li><a href="#podcast" style="color:var(--gold);">Podcast</a></li>
-      <li><a href="#videos">Videos</a></li>
+      <li><a href="#articles">Content</a></li>
+      <li><a href="/artifacts/" style="color:var(--teal);">Artifacts</a></li>
       <li><a href="https://calendly.com/humanlayerai" target="_blank" class="btn btn-primary" style="padding:8px 20px;font-size:0.8rem;">Book a Call</a></li>
     </ul>
   </div>
@@ -485,7 +482,7 @@ footer .footer-tagline { font-family: 'Playfair Display', serif; font-style: ita
 </section>
 
 <!-- PROBLEM PUNCH -->
-<section id="problem-punch" style="padding:120px 2rem;">
+<section id="problem-punch" style="padding:80px 2rem;">
   <div class="section-inner">
     <h2 class="punch-headline">Your AI sounds smart.<br><em>It isn&rsquo;t.</em></h2>
     <p class="punch-sub">It hallucinates. It contradicts itself. It crumbles the moment someone with domain expertise pushes back. I fix that.</p>
@@ -508,6 +505,33 @@ footer .footer-tagline { font-family: 'Playfair Display', serif; font-style: ita
     </div>
     <div class="punch-cta">
       <a href="#demos" class="btn btn-primary">See What I&rsquo;ve Built &darr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT (moved here: Problem → Who I Am → then proof of work) -->
+<section id="about" class="reveal">
+  <div class="section-inner">
+    <div class="section-label">About</div>
+    <h2 class="section-title">Meet Aakarsh</h2>
+    <div class="about-grid">
+      <div class="about-content">
+        <p><span class="hl">Law graduate turned AI strategist.</span> After 5 years in litigation and legal drafting&mdash;including clearing the Rajasthan Judicial Services Prelims and practicing at a High Court chamber in New Delhi&mdash;I pivoted to the intersection of artificial intelligence, human psychology, and governance frameworks.</p>
+        <p>That pivot wasn't a leap of faith. It was a logical extension. <span class="hl">Law taught me to think in structures</span>&mdash;precedent, burden of proof, adversarial testing. <span class="hl">Psychology taught me why humans make irrational decisions</span> even when the evidence is clear. AI gave me a medium where both disciplines converge.</p>
+        <p>Through <span class="hl">Human Layer AI</span>, I build systems that are psychologically informed, legally defensible, and genuinely human-centered. I design prompt architectures that account for cognitive bias, build AI artifacts that augment human judgment, and consult with organizations on responsible AI adoption.</p>
+        <p>Most AI consultants come from tech. I come from law and psychology. That's not a weakness&mdash;<span class="hl">it's the moat.</span> I see failure modes that engineers miss: regulatory exposure, cognitive manipulation, governance gaps, reasoning failures that pass unit tests but fail in the real world.</p>
+      </div>
+      <div class="about-sidebar">
+        <h3>Credentials &amp; Proof</h3>
+        <div class="cred"><div class="cred-icon">&#9878;</div><div><div class="cred-title">BA LL.B. (Hons)</div><div class="cred-detail">5 years litigation &bull; High Court chamber, New Delhi</div></div></div>
+        <div class="cred"><div class="cred-icon">&#9879;</div><div><div class="cred-title">RJS Prelims Cleared</div><div class="cred-detail">Rajasthan Judicial Services examination</div></div></div>
+        <div class="cred"><div class="cred-icon">&#9881;</div><div><div class="cred-title">556+ Sessions on Claude</div><div class="cred-detail">170+ hours hands-on AI system design</div></div></div>
+        <div class="cred"><div class="cred-icon">&#9998;</div><div><div class="cred-title">4 Published Essays</div><div class="cred-detail">Medium &bull; AI, Law &amp; Psychology</div></div></div>
+        <div class="cred"><div class="cred-icon">&#127760;</div><div><div class="cred-title">IELTS 8.0</div><div class="cred-detail">Native-level English proficiency</div></div></div>
+        <div class="cred"><div class="cred-icon">&#128248;</div><div><div class="cred-title">~3,000 LinkedIn Followers</div><div class="cred-detail">Primary professional network</div></div></div>
+        <div class="cred"><div class="cred-icon">&#127897;</div><div><div class="cred-title">100+ Podcast Episodes</div><div class="cred-detail">Conversations with mental health experts &amp; founders</div></div></div>
+        <div class="cred"><div class="cred-icon">&#128214;</div><div><div class="cred-title">93 Books Read</div><div class="cred-detail">Continuous learning across domains</div></div></div>
+      </div>
     </div>
   </div>
 </section>
@@ -758,33 +782,6 @@ footer .footer-tagline { font-family: 'Playfair Display', serif; font-style: ita
   </div>
 </section>
 
-<!-- ABOUT -->
-<section id="about" class="reveal">
-  <div class="section-inner">
-    <div class="section-label">About</div>
-    <h2 class="section-title">Meet Aakarsh</h2>
-    <div class="about-grid">
-      <div class="about-content">
-        <p><span class="hl">Law graduate turned AI strategist.</span> After 5 years in litigation and legal drafting&mdash;including clearing the Rajasthan Judicial Services Prelims and practicing at a High Court chamber in New Delhi&mdash;I pivoted to the intersection of artificial intelligence, human psychology, and governance frameworks.</p>
-        <p>That pivot wasn't a leap of faith. It was a logical extension. <span class="hl">Law taught me to think in structures</span>&mdash;precedent, burden of proof, adversarial testing. <span class="hl">Psychology taught me why humans make irrational decisions</span> even when the evidence is clear. AI gave me a medium where both disciplines converge.</p>
-        <p>Through <span class="hl">Human Layer AI</span>, I build systems that are psychologically informed, legally defensible, and genuinely human-centered. I design prompt architectures that account for cognitive bias, build AI artifacts that augment human judgment, and consult with organizations on responsible AI adoption.</p>
-        <p>Most AI consultants come from tech. I come from law and psychology. That's not a weakness&mdash;<span class="hl">it's the moat.</span> I see failure modes that engineers miss: regulatory exposure, cognitive manipulation, governance gaps, reasoning failures that pass unit tests but fail in the real world.</p>
-      </div>
-      <div class="about-sidebar">
-        <h3>Credentials &amp; Proof</h3>
-        <div class="cred"><div class="cred-icon">&#9878;</div><div><div class="cred-title">BA LL.B. (Hons)</div><div class="cred-detail">5 years litigation &bull; High Court chamber, New Delhi</div></div></div>
-        <div class="cred"><div class="cred-icon">&#9879;</div><div><div class="cred-title">RJS Prelims Cleared</div><div class="cred-detail">Rajasthan Judicial Services examination</div></div></div>
-        <div class="cred"><div class="cred-icon">&#9881;</div><div><div class="cred-title">556+ Sessions on Claude</div><div class="cred-detail">170+ hours hands-on AI system design</div></div></div>
-        <div class="cred"><div class="cred-icon">&#9998;</div><div><div class="cred-title">4 Published Essays</div><div class="cred-detail">Medium &bull; AI, Law &amp; Psychology</div></div></div>
-        <div class="cred"><div class="cred-icon">&#127760;</div><div><div class="cred-title">IELTS 8.0</div><div class="cred-detail">Native-level English proficiency</div></div></div>
-        <div class="cred"><div class="cred-icon">&#128248;</div><div><div class="cred-title">~3,000 LinkedIn Followers</div><div class="cred-detail">Primary professional network</div></div></div>
-        <div class="cred"><div class="cred-icon">&#127897;</div><div><div class="cred-title">100+ Podcast Episodes</div><div class="cred-detail">Conversations with mental health experts &amp; founders</div></div></div>
-        <div class="cred"><div class="cred-icon">&#128214;</div><div><div class="cred-title">93 Books Read</div><div class="cred-detail">Continuous learning across domains</div></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ARTICLES -->
 <section id="articles" class="reveal">
   <div class="section-inner">
@@ -992,12 +989,16 @@ function switchSlide(idx) {
   cap.querySelector('p').textContent = captions[idx].desc;
 }
 
-// Smooth scroll
+// Smooth scroll with nav offset
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
     e.preventDefault();
     const t = document.querySelector(a.getAttribute('href'));
-    if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (t) {
+      const navH = document.querySelector('nav')?.offsetHeight || 70;
+      const y = t.getBoundingClientRect().top + window.scrollY - navH - 10;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
     document.querySelector('.nav-links')?.classList.remove('open');
   });
 });
@@ -1017,7 +1018,7 @@ window.addEventListener('scroll', () => {
 // Scroll reveal
 const revealObs = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
-}, { threshold: 0.02, rootMargin: '0px 0px 80px 0px' });
+}, { threshold: 0.01, rootMargin: '0px 0px 150px 0px' });
 document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 
 // === MUTE/UNMUTE TOGGLE ===
@@ -1150,4 +1151,3 @@ function toggleMute() {
 </script>
 </body>
 </html>
-
