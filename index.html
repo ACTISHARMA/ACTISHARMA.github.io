@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Aakarsh Sharma — AI Strategist & Legal Technologist. I build AI systems that survive cross-examination using law, psychology, and cognitive science.">
+    <meta name="description" content="Aakarsh Sharma — Workflow Designer at Human Layer AI. I build AI systems that survive cross-examination using law, psychology, and cognitive science.">
     <meta name="author" content="Aakarsh Sharma">
     <meta name="theme-color" content="#030410">
     
     <!-- OG Meta Tags -->
     <meta property="og:title" content="Aakarsh Sharma — Human Layer AI">
-    <meta property="og:description" content="I Build AI Systems That Survive Cross-Examination. Prompt Engineering × Legal Logic × Cognitive Psychology">
+    <meta property="og:description" content="I Build AI Systems That Survive Cross-Examination. Workflow Design × Legal Logic × Cognitive Psychology">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://aakarshsharma.com">
     <meta property="og:image" content="https://aakarshsharma.com/og-image.png">
@@ -23,7 +23,7 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "name": "Aakarsh Sharma",
-      "jobTitle": "AI Strategist & Legal Technologist",
+      "jobTitle": "Workflow Designer",
       "url": "https://aakarshsharma.com",
       "email": "hello@aakarshsharma.com",
       "sameAs": [
@@ -43,15 +43,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     
     <style>
-        /* CSS Variables */
+        /* CSS Variables — Gold Primary System */
         :root {
             --bg-dark: #030410;
             --bg-card: #0f1923;
             --text-white: #ffffff;
             --text-secondary: #b0b8c1;
+            --accent-primary: #d4a03c;
+            --accent-secondary: #2dd4a8;
             --accent-teal: #2dd4a8;
             --accent-gold: #d4a03c;
             --accent-coral: #ff6b6b;
+            --gold-glow: rgba(212, 160, 60, 0.4);
+            --gold-glow-soft: rgba(212, 160, 60, 0.15);
             --border-color: #1a2a3a;
             --transition: all 0.3s ease;
         }
@@ -118,7 +122,7 @@
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: var(--accent-teal);
+            color: var(--accent-gold);
             margin-bottom: 0.5rem;
         }
         
@@ -146,23 +150,25 @@
         }
         
         .btn-primary {
-            background-color: var(--accent-teal);
+            background-color: var(--accent-gold);
             color: var(--bg-dark);
+            box-shadow: 0 0 20px var(--gold-glow-soft);
         }
-        
+
         .btn-primary:hover {
-            background-color: #22b890;
+            background-color: #e0ad42;
             transform: translateY(-2px);
+            box-shadow: 0 0 30px var(--gold-glow);
         }
-        
+
         .btn-outline {
-            border: 2px solid var(--accent-teal);
-            color: var(--accent-teal);
+            border: 2px solid var(--accent-secondary);
+            color: var(--accent-secondary);
             background-color: transparent;
         }
-        
+
         .btn-outline:hover {
-            background-color: var(--accent-teal);
+            background-color: var(--accent-secondary);
             color: var(--bg-dark);
             transform: translateY(-2px);
         }
@@ -174,7 +180,7 @@
         }
         
         .btn-secondary:hover {
-            border-color: var(--accent-teal);
+            border-color: var(--accent-gold);
             transform: translateY(-2px);
         }
         
@@ -208,9 +214,10 @@
         }
         
         .nav-logo img {
-            width: 40px;
-            height: 40px;
+            width: 44px;
+            height: 44px;
             border-radius: 8px;
+            filter: drop-shadow(0 0 8px rgba(212, 160, 60, 0.4));
         }
         
         .nav-links {
@@ -233,7 +240,7 @@
         }
         
         .nav-links a:hover {
-            color: var(--accent-teal);
+            color: var(--accent-gold);
         }
         
         .nav-cta {
@@ -305,7 +312,7 @@
         }
         
         .mobile-menu a:hover {
-            color: var(--accent-teal);
+            color: var(--accent-gold);
         }
         
         .mobile-menu .btn {
@@ -341,8 +348,8 @@
         }
         
         @keyframes heroGlow {
-            0%, 100% { filter: drop-shadow(0 0 20px rgba(45, 212, 168, 0.1)); }
-            50% { filter: drop-shadow(0 0 40px rgba(45, 212, 168, 0.2)); }
+            0%, 100% { filter: drop-shadow(0 0 20px rgba(212, 160, 60, 0.2)); }
+            50% { filter: drop-shadow(0 0 50px rgba(212, 160, 60, 0.5)); }
         }
         
         #hero h1 {
@@ -354,7 +361,7 @@
         }
         
         .hero-tagline {
-            color: var(--accent-teal);
+            color: var(--accent-gold);
             font-size: 1.125rem;
             font-weight: 500;
             margin-bottom: 2rem;
@@ -395,16 +402,21 @@
         }
         
         .credentials-bar strong {
-            color: var(--accent-teal);
+            color: var(--accent-gold);
             font-weight: 600;
+        }
+
+        .credentials-bar {
+            border-color: rgba(212, 160, 60, 0.2);
+            box-shadow: 0 0 30px var(--gold-glow-soft);
         }
         
         /* Problem Section */
         #problem-punch {
             padding: 100px 20px;
-            background: linear-gradient(180deg, transparent 0%, rgba(45, 212, 168, 0.03) 50%, transparent 100%);
+            background: linear-gradient(180deg, transparent 0%, rgba(212, 160, 60, 0.03) 50%, transparent 100%);
         }
-        
+
         .problem-intro {
             text-align: center;
             max-width: 800px;
@@ -431,13 +443,14 @@
         }
         
         .problem-card:hover {
-            border-color: var(--accent-teal);
+            border-color: var(--accent-gold);
             background-color: rgba(15, 25, 35, 0.8);
             transform: translateY(-4px);
+            box-shadow: 0 4px 20px var(--gold-glow-soft);
         }
         
         .problem-card h3 {
-            color: var(--accent-teal);
+            color: var(--accent-gold);
             margin-bottom: 0.5rem;
         }
         
@@ -481,8 +494,9 @@
         }
         
         .artifact-card:hover {
-            border-color: var(--accent-teal);
+            border-color: var(--accent-gold);
             transform: translateY(-4px);
+            box-shadow: 0 4px 20px var(--gold-glow-soft);
         }
         
         .artifact-card.active {
@@ -527,7 +541,7 @@
         }
         
         .artifact-cta {
-            color: var(--accent-teal);
+            color: var(--accent-gold);
             text-decoration: none;
             font-weight: 600;
             transition: var(--transition);
@@ -639,7 +653,7 @@
         }
         
         .testimonial-card:hover {
-            border-color: var(--accent-teal);
+            border-color: var(--accent-gold);
             background-color: rgba(15, 25, 35, 0.8);
         }
         
@@ -680,7 +694,7 @@
         }
         
         .podcast-banner {
-            background: linear-gradient(135deg, rgba(45, 212, 168, 0.1) 0%, rgba(212, 160, 60, 0.05) 100%);
+            background: linear-gradient(135deg, rgba(212, 160, 60, 0.1) 0%, rgba(45, 212, 168, 0.05) 100%);
             border: 1px solid var(--border-color);
             border-radius: 12px;
             padding: 2rem;
@@ -700,9 +714,9 @@
         /* About Section */
         #about {
             padding: 100px 20px;
-            background: linear-gradient(180deg, transparent 0%, rgba(45, 212, 168, 0.03) 50%, transparent 100%);
+            background: linear-gradient(180deg, transparent 0%, rgba(212, 160, 60, 0.03) 50%, transparent 100%);
         }
-        
+
         .about-container {
             max-width: 800px;
             margin: 0 auto;
@@ -758,7 +772,7 @@
         }
         
         .contact-card h3 {
-            color: var(--accent-teal);
+            color: var(--accent-gold);
             margin-bottom: 1rem;
         }
         
@@ -771,7 +785,7 @@
         }
         
         .contact-card a:hover {
-            color: var(--accent-teal);
+            color: var(--accent-gold);
         }
         
         .contact-final {
@@ -819,9 +833,373 @@
         }
         
         .footer-links a:hover {
-            color: var(--accent-teal);
+            color: var(--accent-gold);
         }
         
+        /* Underdog Narrative Section */
+        #narrative {
+            padding: 100px 20px;
+        }
+
+        .narrative-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+
+        .narrative-opener {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
+            font-style: italic;
+            color: var(--accent-gold);
+            text-align: center;
+            margin-bottom: 3rem;
+            line-height: 1.4;
+            text-shadow: 0 0 40px rgba(212, 160, 60, 0.15);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 700px;
+            margin: 0 auto;
+            padding-left: 40px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--accent-gold) 0%, rgba(212, 160, 60, 0.1) 100%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 1.5rem;
+            padding: 1rem 1.25rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            transition: var(--transition);
+        }
+
+        .timeline-item:hover {
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 20px var(--gold-glow-soft);
+            transform: translateX(4px);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -33px;
+            top: 1.2rem;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--accent-gold);
+            box-shadow: 0 0 12px var(--gold-glow);
+        }
+
+        .timeline-item .step-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--accent-gold);
+            margin-bottom: 0.3rem;
+        }
+
+        .timeline-item h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-white);
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-item p {
+            font-size: 0.9rem;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* Dad Tribute */
+        .dad-tribute {
+            max-width: 650px;
+            margin: 3rem auto;
+            padding: 2rem;
+            border-left: 3px solid var(--accent-gold);
+            background: rgba(212, 160, 60, 0.04);
+            border-radius: 0 12px 12px 0;
+        }
+
+        .dad-tribute p {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        .dad-tribute .attribution {
+            font-family: 'Inter', sans-serif;
+            font-style: normal;
+            font-size: 0.8rem;
+            color: var(--accent-gold);
+            margin-top: 1rem;
+            display: block;
+        }
+
+        /* Mental Health Edge */
+        .edge-card {
+            max-width: 700px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+        }
+
+        .edge-card h3 {
+            color: var(--accent-gold);
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .edge-stats {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .edge-stat {
+            text-align: center;
+            flex: 1;
+            min-width: 100px;
+        }
+
+        .edge-stat .num {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            display: block;
+        }
+
+        .edge-stat .label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Content Hub Section */
+        #content-hub {
+            padding: 100px 20px;
+            background: linear-gradient(180deg, transparent 0%, rgba(212, 160, 60, 0.02) 50%, transparent 100%);
+        }
+
+        .content-hub-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .content-block {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+
+        .content-block h3 {
+            color: var(--accent-gold);
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .yt-placeholder, .ig-placeholder {
+            aspect-ratio: 16/9;
+            background: rgba(212, 160, 60, 0.05);
+            border: 1px dashed rgba(212, 160, 60, 0.2);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        /* AI Chatbot Widget */
+        .chat-fab {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: var(--accent-gold);
+            border: none;
+            cursor: pointer;
+            z-index: 900;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 20px rgba(212, 160, 60, 0.4);
+            transition: var(--transition);
+        }
+
+        .chat-fab:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(212, 160, 60, 0.6);
+        }
+
+        .chat-panel {
+            position: fixed;
+            bottom: 92px;
+            right: 24px;
+            width: 380px;
+            max-height: 520px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            z-index: 899;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .chat-panel.open {
+            display: flex;
+        }
+
+        .chat-header {
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .chat-header h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--accent-gold);
+        }
+
+        .chat-header .close-chat {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            min-height: 300px;
+        }
+
+        .chat-msg {
+            max-width: 85%;
+            padding: 0.7rem 1rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+
+        .chat-msg.bot {
+            background: rgba(212, 160, 60, 0.08);
+            border: 1px solid rgba(212, 160, 60, 0.15);
+            color: var(--text-white);
+            align-self: flex-start;
+        }
+
+        .chat-msg.user {
+            background: var(--accent-gold);
+            color: var(--bg-dark);
+            align-self: flex-end;
+        }
+
+        .chat-input-area {
+            padding: 0.75rem 1rem;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .chat-input-area input {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 0.6rem 0.75rem;
+            color: var(--text-white);
+            font-size: 0.85rem;
+            font-family: 'Inter', sans-serif;
+            outline: none;
+        }
+
+        .chat-input-area input:focus {
+            border-color: var(--accent-gold);
+        }
+
+        .chat-input-area button {
+            background: var(--accent-gold);
+            border: none;
+            border-radius: 8px;
+            padding: 0.6rem 1rem;
+            color: var(--bg-dark);
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 480px) {
+            .chat-panel {
+                width: calc(100vw - 32px);
+                right: 16px;
+                bottom: 84px;
+                max-height: 70vh;
+            }
+            .chat-fab {
+                bottom: 16px;
+                right: 16px;
+            }
+        }
+
         /* Scroll Reveal */
         .reveal {
             opacity: 0;
@@ -865,20 +1243,43 @@
     <nav>
         <div class="nav-container">
             <a href="#hero" class="nav-logo">
-                <img src="logo.png" alt="Human Layer AI" width="40" height="40">
+                <svg width="40" height="40" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-label="Human Layer AI logo">
+                  <defs>
+                    <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style="stop-color:#d4a03c"/>
+                      <stop offset="100%" style="stop-color:#c4882a"/>
+                    </linearGradient>
+                  </defs>
+                  <!-- Apple silhouette -->
+                  <path d="M100 20 C85 20 72 28 68 38 C55 35 42 42 38 55 C32 72 35 95 45 115 C55 135 70 155 85 168 C92 174 100 178 100 178 C100 178 108 174 115 168 C130 155 145 135 155 115 C165 95 168 72 162 55 C158 42 145 35 132 38 C128 28 115 20 100 20Z" fill="url(#logoGrad)" opacity="0.9"/>
+                  <!-- Stem -->
+                  <path d="M100 20 Q105 8 118 5" stroke="#d4a03c" stroke-width="4" fill="none" stroke-linecap="round"/>
+                  <!-- Leaf -->
+                  <path d="M112 10 Q125 5 130 15 Q120 18 112 10Z" fill="#d4a03c" opacity="0.7"/>
+                  <!-- Brain left hemisphere -->
+                  <path d="M62 75 Q62 55 78 52 Q85 48 90 55 Q95 48 100 52 L100 120 Q80 118 70 105 Q60 92 62 75Z" fill="#030410" opacity="0.85"/>
+                  <!-- Brain right hemisphere -->
+                  <path d="M138 75 Q138 55 122 52 Q115 48 110 55 Q105 48 100 52 L100 120 Q120 118 130 105 Q140 92 138 75Z" fill="#030410" opacity="0.85"/>
+                  <!-- Brain folds left -->
+                  <path d="M72 70 Q80 65 88 72 M70 82 Q80 77 90 84 M72 94 Q82 89 92 96" stroke="#d4a03c" stroke-width="2.5" fill="none" opacity="0.6" stroke-linecap="round"/>
+                  <!-- Brain folds right -->
+                  <path d="M128 70 Q120 65 112 72 M130 82 Q120 77 110 84 M128 94 Q118 89 108 96" stroke="#d4a03c" stroke-width="2.5" fill="none" opacity="0.6" stroke-linecap="round"/>
+                  <!-- Central fissure -->
+                  <line x1="100" y1="52" x2="100" y2="120" stroke="#d4a03c" stroke-width="2" opacity="0.4"/>
+                </svg>
                 <span>Human Layer AI</span>
             </a>
             
             <ul class="nav-links">
-                <li><a href="#demos">Portfolio</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#testimonials">Proof</a></li>
+                <li><a href="#narrative">Story</a></li>
                 <li><a href="#demos">Artifacts</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#testimonials">Proof</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
             
             <div class="nav-cta">
-                <a href="https://calendly.com/humanlayerai" class="btn btn-primary" target="_blank">Book a Call</a>
+                <a href="artifacts/influence-decoder.html" class="btn btn-primary" target="_blank">Try Decoder</a>
                 <button class="hamburger" id="hamburger">
                     <span></span>
                     <span></span>
@@ -890,28 +1291,50 @@
     
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
-        <a href="#demos">Portfolio</a>
-        <a href="#services">Services</a>
-        <a href="#about">About</a>
-        <a href="#testimonials">Proof</a>
+        <a href="#narrative">Story</a>
         <a href="#demos">Artifacts</a>
-        <a href="https://calendly.com/humanlayerai" class="btn btn-primary" target="_blank">Book a Call</a>
+        <a href="#services">Services</a>
+        <a href="#testimonials">Proof</a>
+        <a href="#content-hub">Content</a>
+        <a href="#contact">Contact</a>
+        <a href="artifacts/influence-decoder.html" class="btn btn-primary" target="_blank">Try Decoder</a>
     </div>
     
     <!-- Hero Section -->
     <section id="hero" class="reveal">
         <div class="hero-content">
             <div class="hero-logo">
-                <img src="logo.png" alt="Human Layer AI">
+                <svg width="120" height="120" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-label="Human Layer AI logo">
+                  <defs>
+                    <linearGradient id="heroLogoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style="stop-color:#d4a03c"/>
+                      <stop offset="100%" style="stop-color:#c4882a"/>
+                    </linearGradient>
+                    <filter id="logoGlow">
+                      <feGaussianBlur stdDeviation="4" result="blur"/>
+                      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                    </filter>
+                  </defs>
+                  <g filter="url(#logoGlow)">
+                    <path d="M100 20 C85 20 72 28 68 38 C55 35 42 42 38 55 C32 72 35 95 45 115 C55 135 70 155 85 168 C92 174 100 178 100 178 C100 178 108 174 115 168 C130 155 145 135 155 115 C165 95 168 72 162 55 C158 42 145 35 132 38 C128 28 115 20 100 20Z" fill="url(#heroLogoGrad)" opacity="0.9"/>
+                    <path d="M100 20 Q105 8 118 5" stroke="#d4a03c" stroke-width="4" fill="none" stroke-linecap="round"/>
+                    <path d="M112 10 Q125 5 130 15 Q120 18 112 10Z" fill="#d4a03c" opacity="0.7"/>
+                    <path d="M62 75 Q62 55 78 52 Q85 48 90 55 Q95 48 100 52 L100 120 Q80 118 70 105 Q60 92 62 75Z" fill="#030410" opacity="0.85"/>
+                    <path d="M138 75 Q138 55 122 52 Q115 48 110 55 Q105 48 100 52 L100 120 Q120 118 130 105 Q140 92 138 75Z" fill="#030410" opacity="0.85"/>
+                    <path d="M72 70 Q80 65 88 72 M70 82 Q80 77 90 84 M72 94 Q82 89 92 96" stroke="#d4a03c" stroke-width="2.5" fill="none" opacity="0.6" stroke-linecap="round"/>
+                    <path d="M128 70 Q120 65 112 72 M130 82 Q120 77 110 84 M128 94 Q118 89 108 96" stroke="#d4a03c" stroke-width="2.5" fill="none" opacity="0.6" stroke-linecap="round"/>
+                    <line x1="100" y1="52" x2="100" y2="120" stroke="#d4a03c" stroke-width="2" opacity="0.4"/>
+                  </g>
+                </svg>
             </div>
             <h1>I Build AI Systems That Survive Cross-Examination.</h1>
-            <p class="hero-tagline">Prompt Engineering × Legal Logic × Cognitive Psychology</p>
+            <p class="hero-tagline">Workflow Designer × Legal Logic × Cognitive Psychology</p>
             <div class="hero-cta">
-                <a href="https://calendly.com/humanlayerai" class="btn btn-primary" target="_blank">Book a Strategy Call</a>
-                <a href="#demos" class="btn btn-outline">See My Artifacts ↓</a>
+                <a href="artifacts/influence-decoder.html" class="btn btn-primary" target="_blank">Try the Influence Decoder →</a>
+                <a href="https://calendly.com/humanlayerai" class="btn btn-outline" target="_blank">Book a Strategy Call</a>
             </div>
             <div class="credentials-bar">
-                <p><strong>5 Years Legal Practice</strong> | <strong>RJS Prelims Cleared</strong> | <strong>556+ AI Sessions on Claude</strong> | <strong>100+ Podcast Episodes</strong> | <strong>IELTS 8.0</strong> | <strong>93+ Books Read</strong></p>
+                <p><strong>5 Years Legal Practice</strong> · <strong>RJS Prelims Cleared</strong> · <strong>10,000 Meditation Minutes</strong> · <strong>100+ Podcast Episodes</strong> · <strong>93 Psychology Books</strong> · <strong>556+ AI Sessions</strong></p>
             </div>
         </div>
     </section>
@@ -948,6 +1371,95 @@
         </div>
     </section>
     
+    <!-- Underdog Narrative Section -->
+    <section id="narrative" class="reveal">
+        <div class="container">
+            <div class="narrative-intro">
+                <p class="section-label">The Story</p>
+                <h2>Meet The Workflow Designer</h2>
+            </div>
+
+            <p class="narrative-opener">"Everyone told me to pick a lane. I picked all of them."</p>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="step-label">Foundation</div>
+                    <h4>6.0 GPA — Amity Law School</h4>
+                    <p>Where the analytical engine was built. Five years of legal education, learning to think in structures, precedent, and burden of proof.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="step-label">Discipline</div>
+                    <h4>Competitive Bodybuilder</h4>
+                    <p>Transformation isn't metaphorical when you've lived it. The discipline, the pain tolerance, the ability to show up when motivation disappears.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="step-label">Persuasion</div>
+                    <h4>Copywriter</h4>
+                    <p>Learning what moves people — not through manipulation, but through understanding what they actually need to hear.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="step-label">Visual Craft</div>
+                    <h4>VFX Editor</h4>
+                    <p>Technical creativity meets storytelling. Building worlds that don't exist yet and making them feel real.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="step-label">Public Voice</div>
+                    <h4>Podcaster — 100+ Episodes</h4>
+                    <p>Conversations with experts who think differently. The skill of asking the right question at the right moment.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="step-label">Proving Ground</div>
+                    <h4>Cracked RJS Prelims</h4>
+                    <p>One of India's hardest judicial service exams. Not because I wanted to be a judge — because I needed to know I could.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="step-label">The Mind</div>
+                    <h4>Psychology Student + 93 Books</h4>
+                    <p>Formal study of cognitive science. 93 psychology books with one-line summaries. Understanding why people do what they do — including myself.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="step-label">The Pivot</div>
+                    <h4>AI Workflow Designer</h4>
+                    <p>Where every thread converges. Legal logic + psychological insight + creative execution = systems that actually work for humans.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="step-label">Inner Work</div>
+                    <h4>10,000 Meditation Minutes</h4>
+                    <p>Headspace verified. Mental discipline as daily practice, not performance. The quietest competitive advantage.</p>
+                </div>
+            </div>
+
+            <!-- Dad Tribute -->
+            <div class="dad-tribute">
+                <p>"Rest in peace, Dad. I now realize how hard you had to work and bought me the first laptop that helped start my journey. It's been 7 years, yet I can't imagine any number of decades where I can follow your shoes."</p>
+                <span class="attribution">— With love and gratitude, always</span>
+            </div>
+
+            <!-- Mental Health as Competitive Edge -->
+            <div class="edge-card">
+                <h3>Why This Work Has Depth</h3>
+                <p>Most people study psychology from textbooks. I've studied it from 6 years of therapy, 93 books, and interviews with 100+ mental health professionals. That's not a vulnerability statement — it's a training disclosure. This is what gives the work its edge: the ability to understand cognitive patterns, emotional triggers, and behavioral design at a level that purely technical practitioners can't access.</p>
+                <div class="edge-stats">
+                    <div class="edge-stat">
+                        <span class="num">6</span>
+                        <span class="label">Years Therapy</span>
+                    </div>
+                    <div class="edge-stat">
+                        <span class="num">93</span>
+                        <span class="label">Psychology Books</span>
+                    </div>
+                    <div class="edge-stat">
+                        <span class="num">100+</span>
+                        <span class="label">Professionals Interviewed</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Family Acknowledgment -->
+            <p style="text-align:center; color: var(--text-secondary); font-size: 0.9rem; margin-top: 2rem;">With thanks to Mom and my brother — for holding the ground while I figured out the sky.</p>
+        </div>
+    </section>
+
     <!-- Live Artifacts Section -->
     <section id="demos" class="reveal">
         <div class="container">
@@ -1016,7 +1528,7 @@
             <div class="services-intro">
                 <p class="section-label">Services</p>
                 <h2>What I Build</h2>
-                <p class="subtitle">Five service tiers—from a free strategy conversation to full custom systems. Each grounded in the Law × Psychology × AI framework.</p>
+                <p class="subtitle">Five service tiers — from a free strategy conversation to full custom workflow systems. Each grounded in the Law × Psychology × AI framework.</p>
             </div>
             
             <div class="services-grid">
@@ -1115,6 +1627,43 @@
         </div>
     </section>
     
+    <!-- Content Hub Section -->
+    <section id="content-hub" class="reveal">
+        <div class="container">
+            <div class="content-hub-intro">
+                <p class="section-label">Content</p>
+                <h2>Watch, Listen, Follow</h2>
+                <p class="subtitle">Deep conversations with experts, bite-sized AI insights, and everything in between.</p>
+            </div>
+
+            <div class="content-grid">
+                <div class="content-block">
+                    <h3>📺 YouTube — @humanlayerAI</h3>
+                    <div class="yt-placeholder">
+                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed?listType=user_uploads&list=humanlayerAI" loading="lazy" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border-radius:8px;"></iframe>
+                    </div>
+                    <a href="https://youtube.com/@humanlayerAI" class="btn btn-outline" target="_blank" style="width:100%;justify-content:center;">See All Episodes →</a>
+                </div>
+
+                <div class="content-block">
+                    <h3>📸 Instagram — @humanlayerai</h3>
+                    <div class="ig-placeholder">
+                        Follow for AI insights, behind-the-scenes workflow design, and psychology breakdowns.
+                    </div>
+                    <a href="https://instagram.com/humanlayerai" class="btn btn-outline" target="_blank" style="width:100%;justify-content:center;">Follow on Instagram →</a>
+                </div>
+            </div>
+
+            <div style="text-align:center;">
+                <div class="podcast-banner" style="margin-top: 2rem;">
+                    <h3>🎙️ The Human Layer Podcast</h3>
+                    <p>100+ Conversations with Experts Who Think Differently</p>
+                    <a href="https://youtube.com/@humanlayerAI" class="btn btn-primary" target="_blank">Listen Now →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- About Section -->
     <section id="about" class="reveal">
         <div class="container about-container">
@@ -1147,6 +1696,7 @@
                     <h3>Platforms</h3>
                     <a href="https://linkedin.com/in/aakarsh-sharma-ai" target="_blank">LinkedIn: in/aakarsh-sharma-ai</a>
                     <a href="https://youtube.com/@humanlayerAI" target="_blank">YouTube: @humanlayerAI</a>
+                    <a href="https://instagram.com/humanlayerai" target="_blank">Instagram: @humanlayerai</a>
                     <a href="https://medium.com/@humanlayerai" target="_blank">Medium: @humanlayerai</a>
                     <a href="https://github.com/HumanLayerAI" target="_blank">GitHub: HumanLayerAI</a>
                 </div>
@@ -1167,6 +1717,7 @@
             <div class="footer-links">
                 <a href="https://linkedin.com/in/aakarsh-sharma-ai" target="_blank">LinkedIn</a>
                 <a href="https://youtube.com/@humanlayerAI" target="_blank">YouTube</a>
+                <a href="https://instagram.com/humanlayerai" target="_blank">Instagram</a>
                 <a href="https://medium.com/@humanlayerai" target="_blank">Medium</a>
                 <a href="https://github.com/HumanLayerAI" target="_blank">GitHub</a>
                 <a href="mailto:hello@aakarshsharma.com">Email</a>
@@ -1174,7 +1725,123 @@
         </div>
     </footer>
     
+    <!-- AI Chatbot Widget -->
+    <button class="chat-fab" id="chatFab" aria-label="Chat with AI assistant">💬</button>
+    <div class="chat-panel" id="chatPanel">
+        <div class="chat-header">
+            <h4>Human Layer AI — Assistant</h4>
+            <button class="close-chat" id="closeChat">✕</button>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="chat-msg bot">Hi! I'm Aakarsh's AI assistant — a small demo of what's possible when you combine legal logic with psychology-aware AI. Ask me anything about his services, artifacts, or workflow design approach. <br><br><em style="color:var(--accent-gold);font-size:0.75rem;">This is about 5% of what a custom system can do.</em></div>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" id="chatInput" placeholder="Ask me anything..." autocomplete="off">
+            <button id="chatSend">Send</button>
+        </div>
+    </div>
+
     <script>
+        // --- AI CHATBOT ---
+        const CHATBOT_API_KEY = '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';
+        const CHATBOT_SYSTEM = `You are Aakarsh Sharma's AI assistant on aakarshsharma.com. You represent Human Layer AI.
+
+ABOUT AAKARSH:
+- Workflow Designer (not just prompt engineer) at the intersection of Law, Psychology, and AI
+- 5 years legal practice, cleared RJS Prelims, practiced at High Court chamber in New Delhi
+- 6 years therapy, 93 psychology books, 100+ mental health professional interviews
+- 10,000 meditation minutes (Headspace verified), competitive bodybuilder
+- Hosts The Human Layer Podcast with 100+ episodes
+- Built multiple AI tools: Universal Influence Decoder, Council of Prominent Figures, Buddhist Therapist, Prompt Bias Detector
+
+SERVICES (5 tiers):
+1. Free: AI Strategy Discovery Call (30 min)
+2. ₹4,999: AI Workflow Audit & Red-Teaming
+3. ₹14,999+: Custom AI Tool Design & Build
+4. ₹29,999+: Prompt System Architecture
+5. Custom: AI Thought Leadership & Content
+
+YOUR JOB:
+- Answer questions about Aakarsh's work, services, and approach
+- After 2-3 exchanges, naturally mention: "By the way, I'm about 5% of what's possible when you work with Aakarsh. For the other 95%, book a free strategy call."
+- Qualify leads by naturally asking about: their field, time wasted on repetitive tasks, budget range
+- Link to book a call: https://calendly.com/humanlayerai
+- Be warm, sharp, and concise. Channel Aakarsh's tone: direct but empathetic, no corporate fluff.
+- Keep responses under 100 words.`;
+
+        let chatHistory = [];
+        let exchangeCount = 0;
+
+        const chatFab = document.getElementById('chatFab');
+        const chatPanel = document.getElementById('chatPanel');
+        const closeChat = document.getElementById('closeChat');
+        const chatInput = document.getElementById('chatInput');
+        const chatSend = document.getElementById('chatSend');
+        const chatMessages = document.getElementById('chatMessages');
+
+        chatFab.addEventListener('click', () => {
+            chatPanel.classList.toggle('open');
+            if (chatPanel.classList.contains('open')) chatInput.focus();
+        });
+        closeChat.addEventListener('click', () => chatPanel.classList.remove('open'));
+
+        function addMessage(text, role) {
+            const div = document.createElement('div');
+            div.className = `chat-msg ${role}`;
+            div.innerHTML = text;
+            chatMessages.appendChild(div);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        async function sendMessage() {
+            const text = chatInput.value.trim();
+            if (!text) return;
+            chatInput.value = '';
+            addMessage(text, 'user');
+            exchangeCount++;
+
+            chatHistory.push({ role: 'user', content: text });
+
+            if (!CHATBOT_API_KEY) {
+                // Fallback when no API key is set
+                let response = '';
+                if (exchangeCount === 1) {
+                    response = "Great question! Aakarsh specializes in building AI workflow systems that combine legal rigor with psychological insight. His tools are designed to survive scrutiny — not just sound smart. What specific challenge are you working on?";
+                } else if (exchangeCount === 2) {
+                    response = "That's exactly the kind of problem Aakarsh's workflow design approach addresses. By the way — I'm about 5% of what's possible. For the other 95%, <a href='https://calendly.com/humanlayerai' target='_blank' style='color:var(--accent-gold);font-weight:600'>book a free strategy call</a>.";
+                } else {
+                    response = "I'd love to go deeper, but this is where my demo limits kick in. The real magic happens in a direct conversation. <a href='https://calendly.com/humanlayerai' target='_blank' style='color:var(--accent-gold);font-weight:600'>Book a free 30-min call</a> and Aakarsh will personally walk you through what's possible for your specific use case.";
+                }
+                setTimeout(() => addMessage(response, 'bot'), 800);
+                return;
+            }
+
+            // With API key — use OpenAI
+            try {
+                const res = await fetch('https://api.openai.com/v1/chat/completions', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${CHATBOT_API_KEY}` },
+                    body: JSON.stringify({
+                        model: 'gpt-4o-mini',
+                        messages: [{ role: 'system', content: CHATBOT_SYSTEM }, ...chatHistory],
+                        max_tokens: 200,
+                        temperature: 0.7
+                    })
+                });
+                const data = await res.json();
+                const reply = data.choices?.[0]?.message?.content || "I'm having trouble connecting. Please try again or book a call directly at calendly.com/humanlayerai";
+                chatHistory.push({ role: 'assistant', content: reply });
+                addMessage(reply, 'bot');
+            } catch {
+                addMessage("Connection issue. <a href='https://calendly.com/humanlayerai' target='_blank' style='color:var(--accent-gold)'>Book a call directly</a> instead.", 'bot');
+            }
+        }
+
+        chatSend.addEventListener('click', sendMessage);
+        chatInput.addEventListener('keydown', e => { if (e.key === 'Enter') sendMessage(); });
+
+        // --- END CHATBOT ---
+
         // Mobile Menu Toggle
         const hamburger = document.getElementById('hamburger');
         const mobileMenu = document.getElementById('mobileMenu');
