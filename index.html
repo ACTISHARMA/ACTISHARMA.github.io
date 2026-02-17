@@ -6,8 +6,6 @@
     <meta name="description" content="Aakarsh Sharma — Workflow Designer at Human Layer AI. I build AI systems that survive cross-examination using law, psychology, and cognitive science.">
     <meta name="author" content="Aakarsh Sharma">
     <meta name="theme-color" content="#030410">
-    
-    <!-- OG Meta Tags -->
     <meta property="og:title" content="Aakarsh Sharma — Human Layer AI">
     <meta property="og:description" content="I Build AI Systems That Survive Cross-Examination. Workflow Design × Legal Logic × Cognitive Psychology">
     <meta property="og:type" content="website">
@@ -16,1920 +14,700 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Aakarsh Sharma — Human Layer AI">
     <meta name="twitter:description" content="AI Systems That Survive Cross-Examination">
-    
-    <!-- Structured Data -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Human Layer AI">
+    <link rel="apple-touch-icon" href="logo.png">
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Aakarsh Sharma",
-      "jobTitle": "Workflow Designer",
-      "url": "https://aakarshsharma.com",
-      "email": "hello@aakarshsharma.com",
-      "sameAs": [
-        "https://linkedin.com/in/aakarsh-sharma-ai",
-        "https://medium.com/@humanlayerai",
-        "https://youtube.com/@humanlayerAI",
-        "https://github.com/HumanLayerAI"
-      ]
-    }
+    {"@context":"https://schema.org","@type":"Person","name":"Aakarsh Sharma","jobTitle":"Workflow Designer","url":"https://aakarshsharma.com","email":"hello@aakarshsharma.com","sameAs":["https://linkedin.com/in/aakarsh-sharma-ai","https://medium.com/@humanlayerai","https://youtube.com/@humanlayerAI","https://github.com/HumanLayerAI"]}
     </script>
-    
     <title>Aakarsh Sharma — Human Layer AI</title>
-    
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    
-    <style>
-        /* CSS Variables — Gold Primary System */
-        :root {
-            --bg-dark: #030410;
-            --bg-card: #0f1923;
-            --text-white: #ffffff;
-            --text-secondary: #b0b8c1;
-            --accent-primary: #d4a03c;
-            --accent-secondary: #2dd4a8;
-            --accent-teal: #2dd4a8;
-            --accent-gold: #d4a03c;
-            --accent-coral: #ff6b6b;
-            --gold-glow: rgba(212, 160, 60, 0.4);
-            --gold-glow-soft: rgba(212, 160, 60, 0.15);
-            --border-color: #1a2a3a;
-            --transition: all 0.3s ease;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-white);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-        
-        /* Utilities */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        h1, h2, h3 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-        }
-        
-        h1 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            line-height: 1.2;
-        }
-        
-        h2 {
-            font-size: clamp(2rem, 4vw, 3.5rem);
-            line-height: 1.2;
-            margin-bottom: 1rem;
-        }
-        
-        h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.75rem;
-        }
-        
-        p {
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
-        }
-        
-        em {
-            color: var(--accent-coral);
-            font-style: italic;
-            font-weight: 600;
-        }
-        
-        .section-label {
-            font-size: 0.875rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--accent-gold);
-            margin-bottom: 0.5rem;
-        }
-        
-        .subtitle {
-            font-size: 1.125rem;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-            max-width: 700px;
-        }
-        
-        /* Buttons */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 12px 24px;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            text-decoration: none;
-            cursor: pointer;
-            border: none;
-            transition: var(--transition);
-            font-family: 'Inter', sans-serif;
-        }
-        
-        .btn-primary {
-            background-color: var(--accent-gold);
-            color: var(--bg-dark);
-            box-shadow: 0 0 20px var(--gold-glow-soft);
-        }
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ===== BASE ===== */
+:root{--bg:#030410;--bg-card:#0f1923;--bg-card-hover:#162333;--white:#fff;--text:#b0b8c1;--gold:#d4a03c;--teal:#2dd4a8;--coral:#ff6b6b;--gold-glow:rgba(212,160,60,0.4);--gold-soft:rgba(212,160,60,0.15);--teal-dim:rgba(45,212,168,0.12);--border:#1a2a3a;--radius:12px;--radius-lg:16px;--tr:all .3s ease;--font:'Inter',system-ui,sans-serif;--serif:'Playfair Display',Georgia,serif;--mono:'JetBrains Mono',monospace;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--bg);color:var(--white);line-height:1.6;overflow-x:hidden}
+h1,h2,h3{font-family:var(--serif);font-weight:700}
+h2{font-size:clamp(2rem,4vw,3.5rem);line-height:1.2;margin-bottom:1rem}
+h3{font-size:1.5rem;margin-bottom:.75rem}
+p{color:var(--text);margin-bottom:1rem}
+em{color:var(--coral);font-style:italic;font-weight:600}
+a{color:var(--teal);text-decoration:none;transition:var(--tr)}
+a:hover{opacity:.85}
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+.section-label{font-family:var(--font);font-size:.875rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--gold);margin-bottom:.5rem}
+.subtitle{font-size:1.125rem;color:var(--text);margin-bottom:2rem;max-width:700px}
+section{padding:100px 20px}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
+.reveal.active{opacity:1;transform:translateY(0)}
 
-        .btn-primary:hover {
-            background-color: #e0ad42;
-            transform: translateY(-2px);
-            box-shadow: 0 0 30px var(--gold-glow);
-        }
+/* ===== BUTTONS ===== */
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:12px 24px;border-radius:8px;font-weight:600;font-size:.95rem;text-decoration:none;cursor:pointer;border:none;transition:var(--tr);font-family:var(--font)}
+.btn-gold{background:var(--gold);color:var(--bg);box-shadow:0 0 20px var(--gold-soft)}
+.btn-gold:hover{background:#e0ad42;transform:translateY(-2px);box-shadow:0 0 30px var(--gold-glow)}
+.btn-outline{border:2px solid var(--teal);color:var(--teal);background:transparent}
+.btn-outline:hover{background:var(--teal);color:var(--bg);transform:translateY(-2px)}
+.btn-secondary{background:var(--bg-card);color:var(--white);border:1px solid var(--border)}
+.btn-secondary:hover{border-color:var(--gold);transform:translateY(-2px)}
 
-        .btn-outline {
-            border: 2px solid var(--accent-secondary);
-            color: var(--accent-secondary);
-            background-color: transparent;
-        }
+/* ===== NAV ===== */
+nav{position:sticky;top:0;z-index:1000;background:rgba(3,4,16,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+.nav-container{display:flex;align-items:center;justify-content:space-between;padding:1rem 20px;max-width:1200px;margin:0 auto}
+.nav-logo{display:flex;align-items:center;gap:.75rem;font-weight:700;font-size:1.125rem;text-decoration:none;color:var(--white)}
+.nav-links{display:none;list-style:none;gap:2rem}
+@media(min-width:768px){.nav-links{display:flex}}
+.nav-links a{color:var(--text);text-decoration:none;font-weight:500;transition:var(--tr)}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{display:flex;align-items:center;gap:1rem}
+.hamburger{display:flex;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:0}
+@media(min-width:768px){.hamburger{display:none}}
+.hamburger span{width:24px;height:2px;background:var(--white);border-radius:2px;transition:var(--tr)}
+.mobile-menu{display:none;position:fixed;top:70px;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--border);z-index:999;padding:1.5rem 20px}
+.mobile-menu.active{display:block}
+.mobile-menu a{display:block;padding:.75rem 0;color:var(--text);text-decoration:none;font-weight:500;border-bottom:1px solid rgba(255,255,255,.05)}
+.mobile-menu a:hover{color:var(--gold)}
 
-        .btn-outline:hover {
-            background-color: var(--accent-secondary);
-            color: var(--bg-dark);
-            transform: translateY(-2px);
-        }
-        
-        .btn-secondary {
-            background-color: var(--bg-card);
-            color: var(--text-white);
-            border: 1px solid var(--border-color);
-        }
-        
-        .btn-secondary:hover {
-            border-color: var(--accent-gold);
-            transform: translateY(-2px);
-        }
-        
-        /* Navigation */
-        nav {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background-color: rgba(3, 4, 16, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border-color);
-        }
-        
-        .nav-container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 1rem 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .nav-logo {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            font-weight: 700;
-            font-size: 1.125rem;
-            text-decoration: none;
-            color: var(--text-white);
-        }
-        
-        .nav-logo img {
-            width: 44px;
-            height: 44px;
-            border-radius: 8px;
-            filter: drop-shadow(0 0 8px rgba(212, 160, 60, 0.4));
-        }
-        
-        .nav-links {
-            display: none;
-            list-style: none;
-            gap: 2rem;
-        }
-        
-        @media (min-width: 768px) {
-            .nav-links {
-                display: flex;
-            }
-        }
-        
-        .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: var(--transition);
-        }
-        
-        .nav-links a:hover {
-            color: var(--accent-gold);
-        }
-        
-        .nav-cta {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-        
-        .hamburger {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-            background: none;
-            border: none;
-            padding: 0;
-        }
-        
-        @media (min-width: 768px) {
-            .hamburger {
-                display: none;
-            }
-        }
-        
-        .hamburger span {
-            width: 24px;
-            height: 2px;
-            background-color: var(--text-white);
-            border-radius: 2px;
-            transition: var(--transition);
-        }
-        
-        .hamburger.active span:nth-child(1) {
-            transform: rotate(45deg) translate(8px, 8px);
-        }
-        
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-        }
-        
-        .hamburger.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(8px, -8px);
-        }
-        
-        /* Mobile Menu */
-        .mobile-menu {
-            display: none;
-            position: fixed;
-            top: 70px;
-            left: 0;
-            right: 0;
-            background-color: var(--bg-dark);
-            border-bottom: 1px solid var(--border-color);
-            z-index: 999;
-            padding: 1.5rem 20px;
-        }
-        
-        .mobile-menu.active {
-            display: block;
-        }
-        
-        .mobile-menu a {
-            display: block;
-            color: var(--text-secondary);
-            text-decoration: none;
-            padding: 0.75rem 0;
-            border-bottom: 1px solid var(--border-color);
-            transition: var(--transition);
-        }
-        
-        .mobile-menu a:hover {
-            color: var(--accent-gold);
-        }
-        
-        .mobile-menu .btn {
-            width: 100%;
-            justify-content: center;
-            margin-top: 1rem;
-        }
-        
-        /* Hero Section */
-        #hero {
-            padding: 100px 20px 80px;
-            text-align: center;
-        }
-        
-        .hero-content {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        
-        .hero-logo {
-            width: 180px;
-            height: 180px;
-            margin: 0 auto 2rem;
-            position: relative;
-            animation: heroGlow 3s ease-in-out infinite;
-        }
-        
-        .hero-logo img {
-            width: 100%;
-            height: 100%;
-            border-radius: 16px;
-            display: block;
-        }
-        
-        @keyframes heroGlow {
-            0%, 100% { filter: drop-shadow(0 0 20px rgba(212, 160, 60, 0.2)); }
-            50% { filter: drop-shadow(0 0 50px rgba(212, 160, 60, 0.5)); }
-        }
-        
-        #hero h1 {
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #ffffff 0%, #b0b8c1 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .hero-tagline {
-            color: var(--accent-gold);
-            font-size: 1.125rem;
-            font-weight: 500;
-            margin-bottom: 2rem;
-            letter-spacing: 0.5px;
-        }
-        
-        .hero-cta {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            margin-bottom: 3rem;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        @media (min-width: 640px) {
-            .hero-cta {
-                flex-direction: row;
-            }
-        }
-        
-        .credentials-bar {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin-top: 3rem;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .credentials-bar p {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            line-height: 1.8;
-            margin: 0;
-        }
-        
-        .credentials-bar strong {
-            color: var(--accent-gold);
-            font-weight: 600;
-        }
+/* ===== HERO ===== */
+#hero{padding:60px 20px 40px;background:radial-gradient(ellipse at 50% 0%,rgba(212,160,60,.04) 0%,transparent 55%)}
+.hero-split{display:grid;grid-template-columns:1fr 1.6fr;gap:3rem;max-width:1400px;margin:0 auto;align-items:start}
+@media(max-width:960px){.hero-split{grid-template-columns:1fr;gap:2rem}}
+.hero-left{padding-top:2rem}
+.hero-left h1{font-size:clamp(2.2rem,4.5vw,3.5rem);line-height:1.15;margin-bottom:1rem;background:linear-gradient(135deg,var(--white),var(--text));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-left h1 span{background:linear-gradient(135deg,var(--teal),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-tagline{font-size:1.05rem;color:var(--text);line-height:1.7;margin-bottom:1.5rem;max-width:480px}
+.hero-usp{font-family:var(--serif);font-style:italic;color:var(--gold);font-size:.95rem;margin-bottom:2rem}
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2rem}
 
-        .credentials-bar {
-            border-color: rgba(212, 160, 60, 0.2);
-            box-shadow: 0 0 30px var(--gold-glow-soft);
-        }
-        
-        /* Problem Section */
-        #problem-punch {
-            padding: 100px 20px;
-            background: linear-gradient(180deg, transparent 0%, rgba(212, 160, 60, 0.03) 50%, transparent 100%);
-        }
+/* ===== CREDENTIALS BAR ===== */
+.credentials{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.25rem 2rem;text-align:center;max-width:1200px;margin:-20px auto 0;position:relative;z-index:5;box-shadow:0 0 40px var(--gold-soft)}
+.credentials p{color:var(--text);font-size:.9rem;margin:0;letter-spacing:.3px}
+.credentials strong{color:var(--gold);font-weight:600}
 
-        .problem-intro {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 3rem;
-        }
-        
-        .problem-intro h2 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-        }
-        
-        .problem-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        
-        .problem-card {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 2rem;
-            transition: var(--transition);
-        }
-        
-        .problem-card:hover {
-            border-color: var(--accent-gold);
-            background-color: rgba(15, 25, 35, 0.8);
-            transform: translateY(-4px);
-            box-shadow: 0 4px 20px var(--gold-glow-soft);
-        }
-        
-        .problem-card h3 {
-            color: var(--accent-gold);
-            margin-bottom: 0.5rem;
-        }
-        
-        .problem-card p:first-of-type {
-            color: var(--accent-coral);
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-        
-        .problem-section-cta {
-            text-align: center;
-            margin-top: 3rem;
-        }
-        
-        /* Artifacts Section */
-        #demos {
-            padding: 100px 20px;
-        }
-        
-        .artifacts-intro {
-            text-align: center;
-            max-width: 900px;
-            margin: 0 auto 3rem;
-        }
-        
-        .artifacts-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-        
-        .artifact-card {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            overflow: hidden;
-            transition: var(--transition);
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .artifact-card:hover {
-            border-color: var(--accent-gold);
-            transform: translateY(-4px);
-            box-shadow: 0 4px 20px var(--gold-glow-soft);
-        }
-        
-        .artifact-card.active {
-            grid-column: 1 / -1;
-        }
-        
-        .artifact-preview {
-            width: 100%;
-            height: 200px;
-            background-color: rgba(45, 212, 168, 0.05);
-            border-bottom: 1px solid var(--border-color);
-            overflow: hidden;
-        }
-        
-        .artifact-card.active .artifact-preview {
-            height: 500px;
-        }
-        
-        .artifact-preview iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-        
-        .artifact-content {
-            padding: 1.5rem;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .artifact-card h3 {
-            color: var(--text-white);
-            margin-bottom: 0.5rem;
-        }
-        
-        .artifact-card p {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
-            flex-grow: 1;
-        }
-        
-        .artifact-cta {
-            color: var(--accent-gold);
-            text-decoration: none;
-            font-weight: 600;
-            transition: var(--transition);
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .artifact-cta:hover {
-            gap: 0.75rem;
-        }
-        
-        .artifacts-final-cta {
-            text-align: center;
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 2rem;
-            margin-top: 2rem;
-        }
-        
-        .artifacts-final-cta h3 {
-            margin-bottom: 1rem;
-        }
-        
-        /* Services Section */
-        #services {
-            padding: 100px 20px;
-            background: linear-gradient(180deg, transparent 0%, rgba(212, 160, 60, 0.02) 50%, transparent 100%);
-        }
-        
-        .services-intro {
-            text-align: center;
-            max-width: 900px;
-            margin: 0 auto 3rem;
-        }
-        
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-        }
-        
-        .service-card {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 2rem;
-            transition: var(--transition);
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .service-card:hover {
-            border-color: var(--accent-gold);
-            background-color: rgba(15, 25, 35, 0.9);
-            transform: translateY(-4px);
-        }
-        
-        .service-tier {
-            font-size: 0.875rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--accent-gold);
-            margin-bottom: 0.5rem;
-        }
-        
-        .service-card h3 {
-            color: var(--text-white);
-            margin-bottom: 0.75rem;
-        }
-        
-        .service-card p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            margin-bottom: 2rem;
-            flex-grow: 1;
-        }
-        
-        .service-card .btn {
-            align-self: flex-start;
-        }
-        
-        /* Testimonials Section */
-        #testimonials {
-            padding: 100px 20px;
-        }
-        
-        .testimonials-intro {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-        
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
-        }
-        
-        .testimonial-card {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 2rem;
-            transition: var(--transition);
-        }
-        
-        .testimonial-card:hover {
-            border-color: var(--accent-gold);
-            background-color: rgba(15, 25, 35, 0.8);
-        }
-        
-        .testimonial-card p {
-            color: var(--text-white);
-            font-style: italic;
-            margin-bottom: 1rem;
-            line-height: 1.8;
-        }
-        
-        .testimonial-author {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 0.5rem 1rem;
-            font-size: 0.95rem;
-        }
+/* ===== DECODER EMBED ===== */
+.dec-wrap{background:var(--bg-card);border:1px solid rgba(212,160,60,.2);border-radius:var(--radius-lg);overflow:hidden;box-shadow:0 4px 40px rgba(212,160,60,.08)}
+.dec-grid{display:grid;grid-template-columns:1fr 1.3fr;min-height:520px}
+@media(max-width:768px){.dec-grid{grid-template-columns:1fr}}
+.dec-input-side,.dec-results-side{display:flex;flex-direction:column}
+.dec-input-side{border-right:1px solid rgba(255,255,255,.04)}
+@media(max-width:768px){.dec-input-side{border-right:none;border-bottom:1px solid rgba(255,255,255,.04)}}
+.dec-panel-head{padding:.7rem 1rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.04);font-size:.78rem;font-weight:600;text-transform:uppercase;letter-spacing:.7px;color:var(--text)}
+.dec-ctx{padding:.5rem 1rem;border-bottom:1px solid rgba(255,255,255,.04);display:flex;align-items:center;gap:.4rem;flex-wrap:wrap}
+.dec-ctx label{font-size:.7rem;color:var(--text);font-weight:500;text-transform:uppercase;letter-spacing:.5px}
+.dec-ctx-btn{font-family:var(--font);font-size:.72rem;font-weight:500;padding:.25rem .6rem;border-radius:100px;background:transparent;border:1px solid rgba(255,255,255,.08);color:var(--text);cursor:pointer;transition:var(--tr);white-space:nowrap}
+.dec-ctx-btn:hover,.dec-ctx-btn.active{border-color:var(--gold);color:var(--gold);background:var(--gold-soft)}
+.dec-textarea{width:100%;min-height:200px;max-height:350px;background:transparent;border:none;color:var(--white);font-family:var(--font);font-size:.88rem;line-height:1.7;padding:.8rem 1rem;resize:vertical;outline:none;flex:1}
+.dec-textarea::placeholder{color:rgba(148,163,184,.35);font-style:italic}
+.dec-textarea:focus{background:rgba(212,160,60,.01)}
+.dec-demos{padding:.5rem 1rem;display:flex;flex-wrap:wrap;gap:.35rem}
+.dec-demo-btn{font-family:var(--font);font-size:.7rem;font-weight:500;padding:.3rem .65rem;border-radius:100px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);color:var(--text);cursor:pointer;transition:var(--tr);white-space:nowrap}
+.dec-demo-btn:hover,.dec-demo-btn.active{border-color:var(--gold);color:var(--gold);background:var(--gold-soft)}
+.dec-analyze{padding:0 1rem 1rem}
+.dec-analyze-btn{width:100%;padding:.7rem;border:none;border-radius:var(--radius);background:linear-gradient(135deg,var(--gold),#c4882a);color:var(--bg);font-family:var(--font);font-size:.85rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;cursor:pointer;transition:var(--tr)}
+.dec-analyze-btn:hover{transform:translateY(-1px);box-shadow:0 8px 30px var(--gold-glow)}
 
-        .testimonial-author span {
-            color: var(--accent-gold);
-            font-weight: 600;
-        }
+/* Decoder Results */
+.dec-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:400px;text-align:center;padding:2rem}
+.dec-placeholder .icon-lg{font-size:2.5rem;margin-bottom:1rem;opacity:.25}
+.dec-placeholder p{color:var(--text);font-size:.88rem;max-width:300px;line-height:1.6}
+.dec-placeholder .hint{font-size:.75rem;color:rgba(148,163,184,.35);margin-top:.5rem;font-family:var(--serif);font-style:italic}
+.dec-tab-nav{display:flex;gap:0;border-bottom:1px solid rgba(255,255,255,.06);padding:0 .4rem;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.dec-tab-nav::-webkit-scrollbar{display:none}
+.dec-tab-btn{font-family:var(--font);font-size:.7rem;font-weight:500;padding:.7rem .75rem;border:none;background:transparent;color:var(--text);cursor:pointer;white-space:nowrap;position:relative;transition:var(--tr);text-transform:uppercase;letter-spacing:.4px}
+.dec-tab-btn:hover{color:var(--white)}
+.dec-tab-btn.active{color:var(--gold)}
+.dec-tab-btn.active::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--gold);border-radius:2px 2px 0 0}
+.dec-tab-btn .badge{display:inline-flex;align-items:center;justify-content:center;min-width:16px;height:16px;font-size:.58rem;font-weight:700;border-radius:100px;margin-left:.3rem;padding:0 4px}
+.dec-tab-content{padding:.8rem 1rem;display:none;animation:decFadeIn .3s ease;max-height:400px;overflow-y:auto}
+.dec-tab-content.active{display:block}
+@keyframes decFadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.dec-finding{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.04);border-radius:var(--radius);padding:.8rem .9rem;margin-bottom:.55rem;transition:var(--tr);animation:decCardIn .35s ease backwards}
+.dec-finding:hover{border-color:rgba(255,255,255,.09);background:rgba(255,255,255,.04)}
+@keyframes decCardIn{from{opacity:0;transform:translateX(-10px)}to{opacity:1;transform:translateX(0)}}
+.dec-finding-header{display:flex;align-items:flex-start;justify-content:space-between;gap:.5rem;margin-bottom:.35rem}
+.dec-finding-title{font-weight:600;font-size:.82rem;line-height:1.4;color:var(--white)}
+.dec-sev{font-size:.6rem;font-weight:700;padding:.15rem .5rem;border-radius:100px;text-transform:uppercase;letter-spacing:.4px;white-space:nowrap;flex-shrink:0}
+.dec-sev-critical{background:rgba(239,68,68,.12);color:#ff6b6b;border:1px solid rgba(239,68,68,.25)}
+.dec-sev-high{background:rgba(249,115,22,.12);color:#f97316;border:1px solid rgba(249,115,22,.25)}
+.dec-sev-medium{background:var(--gold-soft);color:var(--gold);border:1px solid rgba(212,160,60,.25)}
+.dec-sev-low{background:rgba(16,185,129,.12);color:#10b981;border:1px solid rgba(16,185,129,.25)}
+.dec-finding-cat{font-size:.65rem;font-weight:500;color:var(--text);text-transform:uppercase;letter-spacing:.5px;margin-bottom:.35rem}
+.dec-finding-desc{font-size:.78rem;color:var(--text);line-height:1.6;margin-bottom:.45rem}
+.dec-finding-quote{font-family:var(--mono);font-size:.72rem;background:rgba(255,255,255,.03);padding:.4rem .65rem;border-radius:8px;border-left:3px solid var(--gold);margin-bottom:.45rem;line-height:1.5;word-break:break-word;color:var(--gold)}
+.dec-finding-action{font-size:.72rem;color:var(--teal);font-weight:500;display:flex;align-items:flex-start;gap:.3rem;line-height:1.5}
+.dec-finding-action::before{content:'\2192';flex-shrink:0;margin-top:.05em}
 
-        .linkedin-verify {
-            font-size: 0.8rem;
-            color: #0a66c2;
-            text-decoration: none;
-            opacity: 0.8;
-            transition: var(--transition);
-            padding: 2px 8px;
-            border: 1px solid rgba(10, 102, 194, 0.3);
-            border-radius: 4px;
-        }
+/* Score Section */
+.dec-score{margin-top:1rem;padding:1rem;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.04);border-radius:var(--radius-lg);display:none}
+.dec-score.visible{display:grid;grid-template-columns:140px 1fr;gap:1.5rem;align-items:center}
+@media(max-width:640px){.dec-score.visible{grid-template-columns:1fr;text-align:center}}
+.dec-gauge{position:relative;width:130px;height:130px;margin:0 auto}
+.dec-gauge svg{width:100%;height:100%;transform:rotate(-90deg)}
+.dec-gauge .track{fill:none;stroke:rgba(255,255,255,.05);stroke-width:10}
+.dec-gauge .fill{fill:none;stroke-width:10;stroke-linecap:round;transition:stroke-dashoffset 1.5s cubic-bezier(.4,0,.2,1),stroke .5s}
+.dec-gauge .center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center}
+.dec-gauge .num{font-family:var(--serif);font-size:2rem;font-weight:700;line-height:1}
+.dec-gauge .lbl{font-size:.65rem;color:var(--text);text-transform:uppercase;letter-spacing:1px;margin-top:.15rem}
+.dec-score-items{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.6rem}
+.dec-score-item{display:flex;align-items:center;gap:.5rem;padding:.5rem .7rem;background:rgba(255,255,255,.015);border-radius:8px;border:1px solid rgba(255,255,255,.03)}
+.dec-score-item .dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.dec-score-item .info{flex:1}
+.dec-score-item .name{font-size:.7rem;font-weight:500;color:var(--text);margin-bottom:.1rem}
+.dec-score-item .bar-bg{height:3px;background:rgba(255,255,255,.05);border-radius:3px;overflow:hidden}
+.dec-score-item .bar-fill{height:100%;border-radius:3px;transition:width 1.2s cubic-bezier(.4,0,.2,1)}
+.dec-score-item .val{font-family:var(--mono);font-size:.78rem;font-weight:500;min-width:24px;text-align:right}
 
-        .linkedin-verify:hover {
-            opacity: 1;
-            background: rgba(10, 102, 194, 0.1);
-        }
-        
-        .podcast-banner {
-            background: linear-gradient(135deg, rgba(212, 160, 60, 0.1) 0%, rgba(45, 212, 168, 0.05) 100%);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 2rem;
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        
-        .podcast-banner h3 {
-            margin-bottom: 0.5rem;
-        }
-        
-        .podcast-banner p {
-            margin-bottom: 1.5rem;
-        }
-        
-        /* About Section */
-        #about {
-            padding: 100px 20px;
-            background: linear-gradient(180deg, transparent 0%, rgba(212, 160, 60, 0.03) 50%, transparent 100%);
-        }
+/* Scan overlay */
+.dec-scan{display:none;position:fixed;inset:0;background:rgba(3,4,16,.92);backdrop-filter:blur(8px);z-index:2000;align-items:center;justify-content:center;flex-direction:column;gap:1rem}
+.dec-scan.active{display:flex}
+.dec-scan-ring{width:80px;height:80px;border:3px solid rgba(212,160,60,.12);border-top-color:var(--gold);border-radius:50%;animation:decSpin 1s linear infinite}
+@keyframes decSpin{to{transform:rotate(360deg)}}
+.dec-scan-text{font-size:.85rem;color:var(--text);letter-spacing:.3px}
+.dec-scan-step{font-family:var(--mono);font-size:.72rem;color:var(--gold);min-height:1em}
 
-        .about-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .about-container h2 {
-            margin-bottom: 2rem;
-        }
-        
-        .about-container p {
-            font-size: 1.05rem;
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-            line-height: 1.9;
-        }
-        
-        .about-actions {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-        
-        @media (min-width: 640px) {
-            .about-actions {
-                flex-direction: row;
-            }
-        }
-        
-        /* Contact Section */
-        #contact {
-            padding: 100px 20px;
-        }
-        
-        .contact-intro {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 3rem;
-        }
-        
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-        
-        .contact-card {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 2rem;
-        }
-        
-        .contact-card h3 {
-            color: var(--accent-gold);
-            margin-bottom: 1rem;
-        }
-        
-        .contact-card a {
-            display: block;
-            color: var(--text-secondary);
-            text-decoration: none;
-            margin-bottom: 0.75rem;
-            transition: var(--transition);
-        }
-        
-        .contact-card a:hover {
-            color: var(--accent-gold);
-        }
-        
-        .contact-final {
-            text-align: center;
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 3rem 2rem;
-            margin-top: 3rem;
-        }
-        
-        .contact-final h2 {
-            margin-bottom: 1.5rem;
-        }
-        
-        /* Footer */
-        footer {
-            background-color: rgba(3, 4, 16, 0.5);
-            border-top: 1px solid var(--border-color);
-            padding: 3rem 20px;
-            text-align: center;
-        }
-        
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .footer-content p {
-            margin-bottom: 0.5rem;
-        }
-        
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 1.5rem;
-            flex-wrap: wrap;
-        }
-        
-        .footer-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-        
-        .footer-links a:hover {
-            color: var(--accent-gold);
-        }
-        
-        /* Underdog Narrative Section */
-        #narrative {
-            padding: 100px 20px;
-        }
+/* ===== PROBLEM SECTION ===== */
+.problem-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin-top:2rem}
+.problem-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2rem;transition:var(--tr)}
+.problem-card:hover{border-color:var(--gold);transform:translateY(-4px);box-shadow:0 8px 30px var(--gold-soft)}
+.problem-card .label{font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--coral);margin-bottom:.5rem}
+.problem-card h3{font-family:var(--font);font-size:1.1rem;font-weight:600;margin-bottom:.75rem}
+.problem-card p{font-size:.9rem;margin:0}
 
-        .narrative-intro {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 3rem;
-        }
+/* ===== NARRATIVE ===== */
+#narrative{max-width:800px;margin:0 auto}
+.narrative-opener{font-family:var(--serif);font-style:italic;font-size:1.5rem;color:var(--gold);margin-bottom:2.5rem;line-height:1.4}
+.narrative-text p{font-size:1.05rem;line-height:1.8;margin-bottom:1.5rem;color:var(--text)}
+.narrative-text p:first-of-type::first-letter{font-family:var(--serif);font-size:2.5rem;font-weight:700;color:var(--gold);float:left;line-height:1;margin-right:.5rem;margin-top:.1rem}
+.tribute-card{border-left:3px solid var(--gold);padding:1.5rem 2rem;margin:2.5rem 0;background:var(--bg-card);border-radius:0 var(--radius) var(--radius) 0}
+.tribute-card p{font-family:var(--serif);font-style:italic;color:var(--text);font-size:1rem;line-height:1.7;margin:0}
+.depth-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2rem;margin:2.5rem 0}
+.depth-card h3{font-family:var(--font);color:var(--white)}
+.depth-card p{font-size:.95rem}
+.depth-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.5rem}
+.depth-stat{text-align:center;padding:1rem;background:rgba(255,255,255,.02);border-radius:var(--radius);border:1px solid rgba(255,255,255,.04)}
+.depth-stat .num{font-family:var(--serif);font-size:1.5rem;font-weight:700;color:var(--gold);display:block}
+.depth-stat .label{font-size:.75rem;color:var(--text);margin-top:.25rem;display:block}
+@media(max-width:640px){.depth-stats{grid-template-columns:1fr}}
+.family-note{text-align:center;color:var(--text);font-size:.95rem;margin-top:2rem}
 
-        .narrative-opener {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(1.5rem, 3vw, 2.2rem);
-            font-style: italic;
-            color: var(--accent-gold);
-            text-align: center;
-            margin-bottom: 3rem;
-            line-height: 1.4;
-            text-shadow: 0 0 40px rgba(212, 160, 60, 0.15);
-        }
+/* ===== ARTIFACTS FEATURED ===== */
+.artifacts-featured{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem;margin-top:2rem}
+.artifact-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;transition:var(--tr)}
+.artifact-card:hover{border-color:var(--teal);transform:translateY(-4px);box-shadow:0 8px 30px rgba(45,212,168,.1)}
+.artifact-card iframe{width:100%;height:200px;border:none;pointer-events:none}
+.artifact-card .card-body{padding:1.5rem}
+.artifact-card h3{font-family:var(--font);font-size:1.1rem;font-weight:600}
+.artifact-card p{font-size:.88rem}
+.artifact-card .card-link{display:inline-flex;align-items:center;gap:.4rem;color:var(--teal);font-weight:500;font-size:.88rem;margin-top:.5rem}
 
-        .timeline {
-            position: relative;
-            max-width: 700px;
-            margin: 0 auto;
-            padding-left: 40px;
-        }
+/* ===== SERVICES ===== */
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin-top:2rem}
+.service-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2rem;transition:var(--tr)}
+.service-card:hover{border-color:var(--gold);transform:translateY(-4px);box-shadow:0 8px 30px var(--gold-soft)}
+.service-card .tier{font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--gold);margin-bottom:.5rem}
+.service-card h3{font-family:var(--serif);font-size:1.25rem;margin-bottom:.75rem}
+.service-card p{font-size:.9rem;margin-bottom:1.5rem}
+.service-card .btn{font-size:.85rem;padding:10px 20px}
 
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 15px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(180deg, var(--accent-gold) 0%, rgba(212, 160, 60, 0.1) 100%);
-        }
+/* ===== TESTIMONIALS ===== */
+.testimonials-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:2rem}
+.testimonial-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2rem;transition:var(--tr)}
+.testimonial-card:hover{border-color:rgba(255,255,255,.1)}
+.testimonial-card .quote{font-size:.92rem;color:var(--text);line-height:1.7;margin-bottom:1.5rem;font-style:italic}
+.testimonial-card .author{font-weight:600;color:var(--white);font-size:.9rem}
+.testimonial-card .role{font-size:.8rem;color:var(--text)}
+.linkedin-cta{text-align:center;margin-top:2rem}
 
-        .timeline-item {
-            position: relative;
-            margin-bottom: 1.5rem;
-            padding: 1rem 1.25rem;
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            transition: var(--transition);
-        }
+/* ===== CONTENT HUB ===== */
+.content-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:2rem}
+.content-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2rem;text-align:center;transition:var(--tr);text-decoration:none;display:block}
+.content-card:hover{border-color:var(--gold);transform:translateY(-4px)}
+.content-card .icon{font-size:2.5rem;margin-bottom:1rem}
+.content-card h3{font-family:var(--font);font-size:1.1rem;font-weight:600;color:var(--white);margin-bottom:.5rem}
+.content-card p{font-size:.88rem;margin-bottom:1rem}
+.content-card .link{color:var(--teal);font-weight:600;font-size:.9rem}
+.podcast-banner{background:linear-gradient(135deg,var(--bg-card),rgba(212,160,60,.05));border:1px solid var(--gold-soft);border-radius:var(--radius-lg);padding:2.5rem;text-align:center;margin-top:2rem}
+.podcast-banner h3{font-family:var(--serif);color:var(--gold);font-size:1.3rem;margin-bottom:.5rem}
+.podcast-banner p{max-width:500px;margin:0 auto 1.5rem}
 
-        .timeline-item:hover {
-            border-color: var(--accent-gold);
-            box-shadow: 0 0 20px var(--gold-glow-soft);
-            transform: translateX(4px);
-        }
+/* ===== CONTACT ===== */
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:2rem}
+.contact-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2rem}
+.contact-card h3{font-family:var(--font);font-size:1rem;font-weight:600;margin-bottom:1rem;color:var(--gold)}
+.contact-card a{display:block;padding:.5rem 0;color:var(--text);border-bottom:1px solid rgba(255,255,255,.04)}
+.contact-card a:hover{color:var(--gold)}
+.final-cta{text-align:center;margin-top:4rem}
+.final-cta h2{margin-bottom:1.5rem}
 
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -33px;
-            top: 1.2rem;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: var(--accent-gold);
-            box-shadow: 0 0 12px var(--gold-glow);
-        }
+/* ===== FOOTER ===== */
+footer{border-top:1px solid var(--border);padding:2rem 20px;text-align:center}
+footer p{font-size:.85rem;color:var(--text);margin:0}
+.footer-links{display:flex;justify-content:center;gap:1.5rem;margin-top:1rem;flex-wrap:wrap}
+.footer-links a{color:var(--text);font-size:.85rem;font-weight:500}
+.footer-links a:hover{color:var(--gold)}
 
-        .timeline-item .step-label {
-            font-size: 0.7rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--accent-gold);
-            margin-bottom: 0.3rem;
-        }
+/* ===== CHATBOT ===== */
+.chat-fab{position:fixed;bottom:24px;right:24px;width:56px;height:56px;border-radius:50%;background:var(--gold);border:none;font-size:1.5rem;cursor:pointer;z-index:900;box-shadow:0 4px 20px var(--gold-glow);transition:var(--tr);display:flex;align-items:center;justify-content:center}
+.chat-fab:hover{transform:scale(1.1);box-shadow:0 6px 30px var(--gold-glow)}
+.chat-panel{position:fixed;bottom:90px;right:24px;width:380px;max-height:520px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);z-index:899;display:none;flex-direction:column;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,.5)}
+.chat-panel.open{display:flex}
+@media(max-width:480px){.chat-panel{right:10px;left:10px;width:auto;bottom:80px}}
+.chat-header{display:flex;align-items:center;justify-content:space-between;padding:1rem;border-bottom:1px solid var(--border)}
+.chat-header h4{font-family:var(--font);font-size:.9rem;font-weight:600;color:var(--gold)}
+.close-chat{background:none;border:none;color:var(--text);font-size:1.2rem;cursor:pointer}
+.chat-messages{flex:1;overflow-y:auto;padding:1rem;display:flex;flex-direction:column;gap:.75rem;max-height:340px}
+.chat-msg{padding:.75rem 1rem;border-radius:var(--radius);font-size:.85rem;line-height:1.6;max-width:85%}
+.chat-msg.bot{background:rgba(255,255,255,.04);color:var(--text);align-self:flex-start;border:1px solid rgba(255,255,255,.04)}
+.chat-msg.user{background:var(--gold-soft);color:var(--gold);align-self:flex-end;border:1px solid rgba(212,160,60,.2)}
+.chat-input-area{display:flex;border-top:1px solid var(--border);padding:.5rem}
+.chat-input-area input{flex:1;background:transparent;border:1px solid var(--border);border-radius:8px;padding:.5rem .75rem;color:var(--white);font-family:var(--font);font-size:.85rem;outline:none}
+.chat-input-area input:focus{border-color:var(--gold)}
+.chat-input-area button{background:var(--gold);color:var(--bg);border:none;padding:.5rem 1rem;border-radius:8px;font-weight:600;font-size:.85rem;cursor:pointer;margin-left:.5rem}
 
-        .timeline-item h4 {
-            font-family: 'Inter', sans-serif;
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--text-white);
-            margin-bottom: 0.25rem;
-        }
-
-        .timeline-item p {
-            font-size: 0.9rem;
-            margin: 0;
-            line-height: 1.6;
-        }
-
-        /* Dad Tribute */
-        .dad-tribute {
-            max-width: 650px;
-            margin: 3rem auto;
-            padding: 2rem;
-            border-left: 3px solid var(--accent-gold);
-            background: rgba(212, 160, 60, 0.04);
-            border-radius: 0 12px 12px 0;
-        }
-
-        .dad-tribute p {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            font-size: 1.05rem;
-            line-height: 1.8;
-            color: var(--text-secondary);
-            margin: 0;
-        }
-
-        .dad-tribute .attribution {
-            font-family: 'Inter', sans-serif;
-            font-style: normal;
-            font-size: 0.8rem;
-            color: var(--accent-gold);
-            margin-top: 1rem;
-            display: block;
-        }
-
-        /* Mental Health Edge */
-        .edge-card {
-            max-width: 700px;
-            margin: 2rem auto;
-            padding: 2rem;
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-        }
-
-        .edge-card h3 {
-            color: var(--accent-gold);
-            font-family: 'Inter', sans-serif;
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-        }
-
-        .edge-stats {
-            display: flex;
-            gap: 2rem;
-            flex-wrap: wrap;
-            margin-top: 1.5rem;
-        }
-
-        .edge-stat {
-            text-align: center;
-            flex: 1;
-            min-width: 100px;
-        }
-
-        .edge-stat .num {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--accent-gold);
-            display: block;
-        }
-
-        .edge-stat .label {
-            font-size: 0.75rem;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        /* Content Hub Section */
-        #content-hub {
-            padding: 100px 20px;
-            background: linear-gradient(180deg, transparent 0%, rgba(212, 160, 60, 0.02) 50%, transparent 100%);
-        }
-
-        .content-hub-intro {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 3rem;
-        }
-
-        .content-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        @media (max-width: 768px) {
-            .content-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .content-block {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 1.5rem;
-        }
-
-        .content-block h3 {
-            color: var(--accent-gold);
-            font-family: 'Inter', sans-serif;
-            font-size: 1rem;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .yt-placeholder, .ig-placeholder {
-            aspect-ratio: 16/9;
-            background: rgba(212, 160, 60, 0.05);
-            border: 1px dashed rgba(212, 160, 60, 0.2);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-            margin-bottom: 1rem;
-        }
-
-        /* AI Chatbot Widget */
-        .chat-fab {
-            position: fixed;
-            bottom: 24px;
-            right: 24px;
-            width: 56px;
-            height: 56px;
-            border-radius: 50%;
-            background: var(--accent-gold);
-            border: none;
-            cursor: pointer;
-            z-index: 900;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            box-shadow: 0 4px 20px rgba(212, 160, 60, 0.4);
-            transition: var(--transition);
-        }
-
-        .chat-fab:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 30px rgba(212, 160, 60, 0.6);
-        }
-
-        .chat-panel {
-            position: fixed;
-            bottom: 92px;
-            right: 24px;
-            width: 380px;
-            max-height: 520px;
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            z-index: 899;
-            display: none;
-            flex-direction: column;
-            overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-        }
-
-        .chat-panel.open {
-            display: flex;
-        }
-
-        .chat-header {
-            padding: 1rem 1.25rem;
-            border-bottom: 1px solid var(--border-color);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .chat-header h4 {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--accent-gold);
-        }
-
-        .chat-header .close-chat {
-            background: none;
-            border: none;
-            color: var(--text-secondary);
-            cursor: pointer;
-            font-size: 1.2rem;
-        }
-
-        .chat-messages {
-            flex: 1;
-            overflow-y: auto;
-            padding: 1rem;
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-            min-height: 300px;
-        }
-
-        .chat-msg {
-            max-width: 85%;
-            padding: 0.7rem 1rem;
-            border-radius: 12px;
-            font-size: 0.85rem;
-            line-height: 1.5;
-        }
-
-        .chat-msg.bot {
-            background: rgba(212, 160, 60, 0.08);
-            border: 1px solid rgba(212, 160, 60, 0.15);
-            color: var(--text-white);
-            align-self: flex-start;
-        }
-
-        .chat-msg.user {
-            background: var(--accent-gold);
-            color: var(--bg-dark);
-            align-self: flex-end;
-        }
-
-        .chat-input-area {
-            padding: 0.75rem 1rem;
-            border-top: 1px solid var(--border-color);
-            display: flex;
-            gap: 0.5rem;
-        }
-
-        .chat-input-area input {
-            flex: 1;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 0.6rem 0.75rem;
-            color: var(--text-white);
-            font-size: 0.85rem;
-            font-family: 'Inter', sans-serif;
-            outline: none;
-        }
-
-        .chat-input-area input:focus {
-            border-color: var(--accent-gold);
-        }
-
-        .chat-input-area button {
-            background: var(--accent-gold);
-            border: none;
-            border-radius: 8px;
-            padding: 0.6rem 1rem;
-            color: var(--bg-dark);
-            font-weight: 600;
-            cursor: pointer;
-            font-size: 0.85rem;
-        }
-
-        @media (max-width: 480px) {
-            .chat-panel {
-                width: calc(100vw - 32px);
-                right: 16px;
-                bottom: 84px;
-                max-height: 70vh;
-            }
-            .chat-fab {
-                bottom: 16px;
-                right: 16px;
-            }
-        }
-
-        /* Scroll Reveal */
-        .reveal {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-        
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        /* Responsive */
-        @media (max-width: 640px) {
-            #hero {
-                padding: 60px 20px 60px;
-            }
-            
-            .hero-logo {
-                width: 140px;
-                height: 140px;
-            }
-            
-            h1 {
-                font-size: 1.75rem;
-            }
-            
-            h2 {
-                font-size: 1.5rem;
-            }
-            
-            .credentials-bar {
-                font-size: 0.85rem;
-                padding: 1rem;
-            }
-        }
-    </style>
+/* Hidden utility */
+.hidden{display:none!important}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:rgba(255,255,255,.08);border-radius:3px}
+</style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <div class="nav-container">
-            <a href="#hero" class="nav-logo">
-                <svg width="40" height="40" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-label="Human Layer AI logo">
-                  <defs>
-                    <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" style="stop-color:#d4a03c"/>
-                      <stop offset="100%" style="stop-color:#c4882a"/>
-                    </linearGradient>
-                  </defs>
-                  <!-- Apple silhouette -->
-                  <path d="M100 20 C85 20 72 28 68 38 C55 35 42 42 38 55 C32 72 35 95 45 115 C55 135 70 155 85 168 C92 174 100 178 100 178 C100 178 108 174 115 168 C130 155 145 135 155 115 C165 95 168 72 162 55 C158 42 145 35 132 38 C128 28 115 20 100 20Z" fill="url(#logoGrad)" opacity="0.9"/>
-                  <!-- Stem -->
-                  <path d="M100 20 Q105 8 118 5" stroke="#d4a03c" stroke-width="4" fill="none" stroke-linecap="round"/>
-                  <!-- Leaf -->
-                  <path d="M112 10 Q125 5 130 15 Q120 18 112 10Z" fill="#d4a03c" opacity="0.7"/>
-                  <!-- Brain left hemisphere -->
-                  <path d="M62 75 Q62 55 78 52 Q85 48 90 55 Q95 48 100 52 L100 120 Q80 118 70 105 Q60 92 62 75Z" fill="#030410" opacity="0.85"/>
-                  <!-- Brain right hemisphere -->
-                  <path d="M138 75 Q138 55 122 52 Q115 48 110 55 Q105 48 100 52 L100 120 Q120 118 130 105 Q140 92 138 75Z" fill="#030410" opacity="0.85"/>
-                  <!-- Brain folds left -->
-                  <path d="M72 70 Q80 65 88 72 M70 82 Q80 77 90 84 M72 94 Q82 89 92 96" stroke="#d4a03c" stroke-width="2.5" fill="none" opacity="0.6" stroke-linecap="round"/>
-                  <!-- Brain folds right -->
-                  <path d="M128 70 Q120 65 112 72 M130 82 Q120 77 110 84 M128 94 Q118 89 108 96" stroke="#d4a03c" stroke-width="2.5" fill="none" opacity="0.6" stroke-linecap="round"/>
-                  <!-- Central fissure -->
-                  <line x1="100" y1="52" x2="100" y2="120" stroke="#d4a03c" stroke-width="2" opacity="0.4"/>
-                </svg>
-                <span>Human Layer AI</span>
+
+<!-- NAV -->
+<nav>
+    <div class="nav-container">
+        <a href="#hero" class="nav-logo">
+            <svg width="40" height="40" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-label="Human Layer AI logo">
+                <defs><linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#d4a03c"/><stop offset="100%" style="stop-color:#c4882a"/></linearGradient></defs>
+                <path d="M100 20 C85 20 72 28 68 38 C55 35 42 42 38 55 C32 72 35 95 45 115 C55 135 70 155 85 168 C92 174 100 178 100 178 C100 178 108 174 115 168 C130 155 145 135 155 115 C165 95 168 72 162 55 C158 42 145 35 132 38 C128 28 115 20 100 20Z" fill="url(#logoGrad)" opacity="0.9"/>
+                <path d="M100 20 Q105 8 118 5" stroke="#d4a03c" stroke-width="4" fill="none" stroke-linecap="round"/>
+                <path d="M112 10 Q125 5 130 15 Q120 18 112 10Z" fill="#d4a03c" opacity="0.7"/>
+                <rect x="75" y="55" width="50" height="60" rx="4" fill="#030410" opacity="0.85"/>
+                <line x1="82" y1="68" x2="118" y2="68" stroke="#d4a03c" stroke-width="2" opacity="0.5"/>
+                <line x1="82" y1="78" x2="118" y2="78" stroke="#d4a03c" stroke-width="2" opacity="0.4"/>
+                <line x1="82" y1="88" x2="110" y2="88" stroke="#d4a03c" stroke-width="2" opacity="0.3"/>
+                <line x1="82" y1="98" x2="114" y2="98" stroke="#d4a03c" stroke-width="2" opacity="0.3"/>
+                <circle cx="100" cy="60" r="18" fill="none" stroke="#d4a03c" stroke-width="1.5" opacity="0.25" stroke-dasharray="4 3"/>
+                <circle cx="92" cy="56" r="2" fill="#d4a03c" opacity="0.4"/>
+                <circle cx="108" cy="56" r="2" fill="#d4a03c" opacity="0.4"/>
+                <circle cx="100" cy="48" r="2" fill="#d4a03c" opacity="0.4"/>
+                <line x1="92" y1="56" x2="100" y2="48" stroke="#d4a03c" stroke-width="1" opacity="0.25"/>
+                <line x1="108" y1="56" x2="100" y2="48" stroke="#d4a03c" stroke-width="1" opacity="0.25"/>
+            </svg>
+            <span>Human Layer AI</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#narrative">Story</a></li>
+            <li><a href="/artifacts/">Artifacts</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#testimonials">Proof</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="nav-cta">
+            <a href="#hero" class="btn btn-gold" style="padding:8px 18px;font-size:.85rem">Try Decoder</a>
+            <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+        </div>
+    </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+    <a href="#narrative">Story</a>
+    <a href="/artifacts/">Artifacts</a>
+    <a href="#services">Services</a>
+    <a href="#testimonials">Proof</a>
+    <a href="#contact">Contact</a>
+    <a href="#hero" class="btn btn-gold" style="margin-top:1rem;text-align:center;display:block">Try Decoder</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+    <div class="hero-split">
+        <div class="hero-left">
+            <h1>See Through <span>Any</span> Message.</h1>
+            <p class="hero-tagline">Paste any text — a sales email, a contract, a news article, a personal message — and reveal the persuasion tactics, cognitive biases, and manipulation hidden in the language.</p>
+            <p class="hero-usp">Workflow Designer &times; Legal Logic &times; Cognitive Psychology</p>
+            <div class="hero-ctas">
+                <a href="https://calendly.com/humanlayerai" target="_blank" class="btn btn-gold">Book a Strategy Call &rarr;</a>
+                <a href="/artifacts/" class="btn btn-outline">See All Artifacts &rarr;</a>
+            </div>
+        </div>
+        <div class="hero-right">
+            <div class="dec-wrap">
+                <div class="dec-grid">
+                    <div class="dec-input-side">
+                        <div class="dec-panel-head"><span>Input Text</span><span>🔍</span></div>
+                        <div class="dec-ctx">
+                            <label>Context:</label>
+                            <button class="dec-ctx-btn active" data-ctx="auto" onclick="decSetCtx('auto')">Auto</button>
+                            <button class="dec-ctx-btn" data-ctx="business" onclick="decSetCtx('business')">Business</button>
+                            <button class="dec-ctx-btn" data-ctx="personal" onclick="decSetCtx('personal')">Personal</button>
+                            <button class="dec-ctx-btn" data-ctx="media" onclick="decSetCtx('media')">Media</button>
+                            <button class="dec-ctx-btn" data-ctx="legal" onclick="decSetCtx('legal')">Legal</button>
+                        </div>
+                        <textarea id="decInput" class="dec-textarea" placeholder="Paste any text here — an email, a job posting, a contract clause, a message from someone..."></textarea>
+                        <div class="dec-demos">
+                            <span style="font-size:.68rem;color:var(--text);align-self:center;margin-right:.2rem">Try:</span>
+                            <button class="dec-demo-btn" data-demo="sales" onclick="decLoadDemo('sales')">Sales Email</button>
+                            <button class="dec-demo-btn" data-demo="job" onclick="decLoadDemo('job')">Job Posting</button>
+                            <button class="dec-demo-btn" data-demo="news" onclick="decLoadDemo('news')">News Article</button>
+                            <button class="dec-demo-btn" data-demo="personal" onclick="decLoadDemo('personal')">Manipulation</button>
+                            <button class="dec-demo-btn" data-demo="marketing" onclick="decLoadDemo('marketing')">Marketing</button>
+                            <button class="dec-demo-btn" data-demo="legal" onclick="decLoadDemo('legal')">Contract</button>
+                        </div>
+                        <div class="dec-analyze"><button id="decAnalyzeBtn" class="dec-analyze-btn" onclick="decRunAnalysis()">Decode the Influence</button></div>
+                    </div>
+                    <div class="dec-results-side">
+                        <div id="decPlaceholder" class="dec-placeholder">
+                            <div class="icon-lg">🧠</div>
+                            <p>Paste any communication and decode the hidden influence patterns — through the lens of law, psychology, and critical reasoning.</p>
+                            <p class="hint">Every intelligent system needs a human layer.</p>
+                        </div>
+                        <div id="decResults" class="hidden">
+                            <div style="display:flex;align-items:center;justify-content:space-between;padding:.4rem .8rem 0">
+                                <span style="font-size:.7rem;font-weight:600;color:var(--text);text-transform:uppercase;letter-spacing:.5px">Analysis Results</span>
+                                <button id="decCopyBtn" onclick="decCopyResults()" style="font-family:var(--font);font-size:.68rem;font-weight:500;padding:.25rem .6rem;border-radius:100px;background:transparent;border:1px solid rgba(255,255,255,.08);color:var(--text);cursor:pointer">📋 Copy</button>
+                            </div>
+                            <nav class="dec-tab-nav" id="decTabNav"></nav>
+                            <div id="decTabPanels"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="dec-score" id="decScoreSection">
+                    <div class="dec-gauge">
+                        <svg viewBox="0 0 200 200"><circle class="track" cx="100" cy="100" r="85"/><circle class="fill" id="decScoreFill" cx="100" cy="100" r="85" stroke-dasharray="534" stroke-dashoffset="534"/></svg>
+                        <div class="center"><div class="num" id="decScoreNum">&mdash;</div><div class="lbl">Clarity Score</div></div>
+                    </div>
+                    <div class="dec-score-items" id="decScoreBreakdown"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CREDENTIALS BAR -->
+<div class="credentials reveal">
+    <p><strong>5 Years Legal Practice</strong> · <strong>RJS Prelims Cleared</strong> · <strong>10,000 Meditation Minutes</strong> · <strong>100+ Podcast Episodes</strong> · <strong>93 Psychology Books</strong> · <strong>556+ AI Sessions</strong></p>
+</div>
+
+<!-- PROBLEM SECTION -->
+<section id="problem" class="reveal" style="max-width:1200px;margin:0 auto">
+    <div class="container">
+        <p class="section-label">The Problem</p>
+        <h2>Your AI sounds smart. <em>It isn't.</em></h2>
+        <div class="problem-grid">
+            <div class="problem-card">
+                <p class="label">The Problem</p>
+                <h3>Your prompts have no reasoning chain.</h3>
+                <p>Most AI instructions are vibes-based. Legal logic provides a framework for rigorous, step-by-step reasoning that holds up under scrutiny.</p>
+            </div>
+            <div class="problem-card">
+                <p class="label">The Blind Spot</p>
+                <h3>Your AI ignores how humans actually decide.</h3>
+                <p>People don't make decisions logically — they use heuristics, biases, and emotional shortcuts. Your AI needs cognitive psychology to work in the real world.</p>
+            </div>
+            <div class="problem-card">
+                <p class="label">The Gap</p>
+                <h3>Your "AI strategy" is just vibes.</h3>
+                <p>Without auditable reasoning and measurable outputs, your AI is a black box. I build systems with transparent decision chains.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- NARRATIVE BIO -->
+<section id="narrative" class="reveal">
+    <p class="section-label" style="text-align:center">The Story</p>
+    <h2 style="text-align:center">Meet The Workflow Designer</h2>
+    <div class="narrative-opener">"Everyone told me to pick a lane. I picked all of them."</div>
+    <div class="narrative-text">
+        <p>At Amity Law School, I graduated with a 6.0 GPA and went straight into the arena — five years of litigation and legal drafting, working from a High Court chamber in New Delhi. I cleared the Rajasthan Judicial Service Prelims, proving I could think on my feet under pressure. The law taught me something AI still struggles with: how to build an argument that survives cross-examination.</p>
+        <p>Then I went sideways — deliberately. Copywriting taught me persuasion from the sales side. VFX editing taught me visual storytelling. Competitive bodybuilding taught me discipline and consistency. Hosting The Human Layer Podcast for 100+ episodes taught me the art of asking questions that reveal how people actually think. Each skill wasn't a detour; it was training in human influence from a different angle.</p>
+        <p>The convergence happened when I combined 93 psychology books, 10,000 meditation minutes, and 6 years of therapy with everything else. The legal mind learned to decode cognitive biases systematically. The podcast host learned to ask the questions AI simply can't. The result: AI Workflow Design that's psychologically informed, legally defensible, and built on a genuine understanding of how humans actually think, decide, and act.</p>
+        <p>Through Human Layer AI, I build systems that survive cross-examination — not because they're clever, but because they're grounded in reality. Every prompt has a reasoning chain. Every output has an audit trail. Every system respects the messy, beautiful complexity of human cognition.</p>
+    </div>
+    <div class="tribute-card">
+        <p>Rest in peace, Dad. I now realize how hard you had to work and bought me the first laptop that helped start my journey. It's been 7 years, yet I can't imagine any number of decades where I can follow your shoes.</p>
+    </div>
+    <div class="depth-card">
+        <h3>Why This Work Has Depth</h3>
+        <p>I don't just study psychology academically — I've lived it. Six years of therapy, diagnosed conditions I've learned to work with, and a deep personal investment in understanding how the mind actually works. That's not a vulnerability. It's a competitive advantage.</p>
+        <div class="depth-stats">
+            <div class="depth-stat"><span class="num">6</span><span class="label">Years of Therapy</span></div>
+            <div class="depth-stat"><span class="num">93</span><span class="label">Psychology Books</span></div>
+            <div class="depth-stat"><span class="num">100+</span><span class="label">Professionals Interviewed</span></div>
+        </div>
+    </div>
+    <p class="family-note">With thanks to Mom and my brother — for holding the ground while I figured out the sky.</p>
+</section>
+
+<!-- FEATURED ARTIFACTS -->
+<section id="demos" class="reveal" style="max-width:1200px;margin:0 auto">
+    <div class="container">
+        <p class="section-label">Live Artifacts</p>
+        <h2>Tools I Built</h2>
+        <p class="subtitle">These aren't mockups. They're working tools. The Influence Decoder above is just the beginning.</p>
+        <div class="artifacts-featured">
+            <div class="artifact-card">
+                <iframe src="artifacts/prompt-bias-detector.html" loading="lazy" title="Prompt Bias Detector"></iframe>
+                <div class="card-body">
+                    <h3>Prompt Bias Detector</h3>
+                    <p>Paste any AI prompt and discover hidden cognitive biases in your instructions. Built with legal reasoning frameworks.</p>
+                    <a href="artifacts/prompt-bias-detector.html" target="_blank" class="card-link">Try It &rarr;</a>
+                </div>
+            </div>
+            <div class="artifact-card">
+                <iframe src="artifacts/council.html" loading="lazy" title="Council of Prominent Figures"></iframe>
+                <div class="card-body">
+                    <h3>Council of Prominent Figures</h3>
+                    <p>An adversarial deliberation tool that simulates a panel of historical thinkers to stress-test your decisions.</p>
+                    <a href="artifacts/council.html" target="_blank" class="card-link">Try It &rarr;</a>
+                </div>
+            </div>
+        </div>
+        <div style="text-align:center;margin-top:2rem">
+            <a href="/artifacts/" class="btn btn-outline">See All 6 Artifacts &rarr;</a>
+        </div>
+    </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="reveal" style="max-width:1200px;margin:0 auto">
+    <div class="container">
+        <p class="section-label">Services</p>
+        <h2>What I Build</h2>
+        <p class="subtitle">Five service tiers — from a free strategy conversation to full custom workflow systems. Each grounded in the Law &times; Psychology &times; AI framework.</p>
+        <div class="services-grid">
+            <div class="service-card">
+                <p class="tier">Free &middot; Entry Point</p>
+                <h3>AI Strategy Discovery Call</h3>
+                <p>A 30-minute conversation to understand your workflow, identify where AI adds real value, and assess fit.</p>
+                <a href="https://calendly.com/humanlayerai" target="_blank" class="btn btn-secondary">Book Free Call &rarr;</a>
+            </div>
+            <div class="service-card">
+                <p class="tier">&#8377;4,999 &middot; Core</p>
+                <h3>AI Workflow Audit &amp; Red-Teaming</h3>
+                <p>I take your existing AI workflows and stress-test them. I find where they hallucinate, where they're legally exposed, where they nudge users wrong.</p>
+                <a href="https://calendly.com/humanlayerai" target="_blank" class="btn btn-secondary">Book Audit &rarr;</a>
+            </div>
+            <div class="service-card">
+                <p class="tier">&#8377;14,999+ &middot; Build</p>
+                <h3>Custom AI Tool Design &amp; Build</h3>
+                <p>I design and build custom AI-powered tools tailored to your use case — decision-support systems, legal drafting assistants, bias detectors.</p>
+                <a href="https://calendly.com/humanlayerai" target="_blank" class="btn btn-secondary">Discuss Project &rarr;</a>
+            </div>
+            <div class="service-card">
+                <p class="tier">&#8377;29,999+ &middot; Enterprise</p>
+                <h3>Prompt System Architecture</h3>
+                <p>For businesses that need complex, multi-step AI systems — not a single prompt, but an entire reasoning pipeline.</p>
+                <a href="https://calendly.com/humanlayerai" target="_blank" class="btn btn-secondary">Discuss Architecture &rarr;</a>
+            </div>
+            <div class="service-card">
+                <p class="tier">Custom &middot; Ongoing</p>
+                <h3>AI Thought Leadership &amp; Content</h3>
+                <p>I create AI-focused content that positions you as a thought leader — articles, podcast appearances, whitepapers.</p>
+                <a href="https://calendly.com/humanlayerai" target="_blank" class="btn btn-secondary">Discuss Content &rarr;</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" class="reveal" style="max-width:1200px;margin:0 auto">
+    <div class="container">
+        <p class="section-label">Proof</p>
+        <h2>Professional Recommendations</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="quote">"Aakarsh has an uncanny ability to break down complex AI concepts and tie them back to real human psychology. His approach to workflow design isn't just technical — it's deeply empathetic and grounded in how people actually think and work."</div>
+                <div class="author">Krish Kishore</div>
+                <div class="role">Technology Leader</div>
+            </div>
+            <div class="testimonial-card">
+                <div class="quote">"What sets Aakarsh apart is his legal mind applied to AI. While everyone else is prompt-engineering by trial and error, he's building systems with the rigor of a legal argument. Every output has a reasoning chain you can actually follow."</div>
+                <div class="author">Aariz Sajan</div>
+                <div class="role">Entrepreneur &amp; Strategist</div>
+            </div>
+            <div class="testimonial-card">
+                <div class="quote">"The podcast episode we did together was one of the most intellectually stimulating conversations I've had. Aakarsh brings a rare combination of psychological depth and technological fluency that makes his perspective genuinely unique."</div>
+                <div class="author">Saba Khanam</div>
+                <div class="role">Mental Health Professional</div>
+            </div>
+            <div class="testimonial-card">
+                <div class="quote">"I was skeptical about AI consulting until I saw Aakarsh's approach. He doesn't just tell you what AI can do — he shows you what it's doing wrong and how to fix it. The audit he did on our workflows saved us months of misdirected effort."</div>
+                <div class="author">Krupa Nishar</div>
+                <div class="role">Business Professional</div>
+            </div>
+        </div>
+        <div class="linkedin-cta">
+            <a href="https://linkedin.com/in/aakarsh-sharma-ai/details/recommendations/" target="_blank" class="btn btn-secondary">See All Recommendations on LinkedIn &rarr;</a>
+        </div>
+    </div>
+</section>
+
+<!-- CONTENT HUB -->
+<section id="content" class="reveal" style="max-width:1200px;margin:0 auto">
+    <div class="container">
+        <p class="section-label">Content</p>
+        <h2>Watch, Listen, Follow</h2>
+        <div class="content-grid">
+            <a href="https://youtube.com/@humanlayerAI" target="_blank" class="content-card">
+                <div class="icon">📺</div>
+                <h3>YouTube</h3>
+                <p>@humanlayerAI — Episodes, interviews, and AI workflow breakdowns.</p>
+                <span class="link">Watch on YouTube &rarr;</span>
             </a>
-            
-            <ul class="nav-links">
-                <li><a href="#narrative">Story</a></li>
-                <li><a href="#demos">Artifacts</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#testimonials">Proof</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            
-            <div class="nav-cta">
-                <a href="artifacts/influence-decoder.html" class="btn btn-primary" target="_blank">Try Decoder</a>
-                <button class="hamburger" id="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </div>
+            <a href="https://medium.com/@humanlayerai" target="_blank" class="content-card">
+                <div class="icon">📝</div>
+                <h3>Medium</h3>
+                <p>@humanlayerai — Long-form articles on law, psychology, and AI systems.</p>
+                <span class="link">Read on Medium &rarr;</span>
+            </a>
+            <a href="https://instagram.com/humanlayerai" target="_blank" class="content-card">
+                <div class="icon">📸</div>
+                <h3>Instagram</h3>
+                <p>@humanlayerai — AI insights, behind-the-scenes, and psychology breakdowns.</p>
+                <span class="link">Follow on Instagram &rarr;</span>
+            </a>
         </div>
-    </nav>
-    
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
-        <a href="#narrative">Story</a>
-        <a href="#demos">Artifacts</a>
-        <a href="#services">Services</a>
-        <a href="#testimonials">Proof</a>
-        <a href="#content-hub">Content</a>
-        <a href="#contact">Contact</a>
-        <a href="artifacts/influence-decoder.html" class="btn btn-primary" target="_blank">Try Decoder</a>
-    </div>
-    
-    <!-- Hero Section -->
-    <section id="hero" class="reveal">
-        <div class="hero-content">
-            <div class="hero-logo">
-                <svg width="120" height="120" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-label="Human Layer AI logo">
-                  <defs>
-                    <linearGradient id="heroLogoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" style="stop-color:#d4a03c"/>
-                      <stop offset="100%" style="stop-color:#c4882a"/>
-                    </linearGradient>
-                    <filter id="logoGlow">
-                      <feGaussianBlur stdDeviation="4" result="blur"/>
-                      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-                    </filter>
-                  </defs>
-                  <g filter="url(#logoGlow)">
-                    <path d="M100 20 C85 20 72 28 68 38 C55 35 42 42 38 55 C32 72 35 95 45 115 C55 135 70 155 85 168 C92 174 100 178 100 178 C100 178 108 174 115 168 C130 155 145 135 155 115 C165 95 168 72 162 55 C158 42 145 35 132 38 C128 28 115 20 100 20Z" fill="url(#heroLogoGrad)" opacity="0.9"/>
-                    <path d="M100 20 Q105 8 118 5" stroke="#d4a03c" stroke-width="4" fill="none" stroke-linecap="round"/>
-                    <path d="M112 10 Q125 5 130 15 Q120 18 112 10Z" fill="#d4a03c" opacity="0.7"/>
-                    <path d="M62 75 Q62 55 78 52 Q85 48 90 55 Q95 48 100 52 L100 120 Q80 118 70 105 Q60 92 62 75Z" fill="#030410" opacity="0.85"/>
-                    <path d="M138 75 Q138 55 122 52 Q115 48 110 55 Q105 48 100 52 L100 120 Q120 118 130 105 Q140 92 138 75Z" fill="#030410" opacity="0.85"/>
-                    <path d="M72 70 Q80 65 88 72 M70 82 Q80 77 90 84 M72 94 Q82 89 92 96" stroke="#d4a03c" stroke-width="2.5" fill="none" opacity="0.6" stroke-linecap="round"/>
-                    <path d="M128 70 Q120 65 112 72 M130 82 Q120 77 110 84 M128 94 Q118 89 108 96" stroke="#d4a03c" stroke-width="2.5" fill="none" opacity="0.6" stroke-linecap="round"/>
-                    <line x1="100" y1="52" x2="100" y2="120" stroke="#d4a03c" stroke-width="2" opacity="0.4"/>
-                  </g>
-                </svg>
-            </div>
-            <h1>I Build AI Systems That Survive Cross-Examination.</h1>
-            <p class="hero-tagline">Workflow Designer × Legal Logic × Cognitive Psychology</p>
-            <div class="hero-cta">
-                <a href="artifacts/influence-decoder.html" class="btn btn-primary" target="_blank">Try the Influence Decoder →</a>
-                <a href="https://calendly.com/humanlayerai" class="btn btn-outline" target="_blank">Book a Strategy Call</a>
-            </div>
-            <div class="credentials-bar">
-                <p><strong>5 Years Legal Practice</strong> · <strong>RJS Prelims Cleared</strong> · <strong>10,000 Meditation Minutes</strong> · <strong>100+ Podcast Episodes</strong> · <strong>93 Psychology Books</strong> · <strong>556+ AI Sessions</strong></p>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Problem-Solution Section -->
-    <section id="problem-punch" class="reveal">
-        <div class="container">
-            <div class="problem-intro">
-                <h2>Your AI sounds smart. <em>It isn't.</em></h2>
-                <p class="subtitle">It hallucinates. It contradicts itself. It crumbles the moment someone with domain expertise pushes back. I fix that.</p>
-            </div>
-            
-            <div class="problem-cards">
-                <div class="problem-card">
-                    <h3>THE PROBLEM</h3>
-                    <p>"Your prompts have no reasoning chain."</p>
-                    <p>I bring legal logic—structured argumentation, burden of proof, chain of custody for every claim your AI makes.</p>
-                </div>
-                <div class="problem-card">
-                    <h3>THE BLIND SPOT</h3>
-                    <p>"Your AI ignores how humans actually decide."</p>
-                    <p>I apply cognitive psychology—anchoring, framing, decision fatigue—so your AI persuades instead of confuses.</p>
-                </div>
-                <div class="problem-card">
-                    <h3>THE GAP</h3>
-                    <p>"Your 'AI strategy' is just vibes."</p>
-                    <p>I build systems that survive cross-examination—auditable, explainable, and built to hold up under pressure.</p>
-                </div>
-            </div>
-            
-            <div class="problem-section-cta">
-                <a href="#demos" class="btn btn-primary">See What I've Built ↓</a>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Underdog Narrative Section -->
-    <section id="narrative" class="reveal">
-        <div class="container">
-            <div class="narrative-intro">
-                <p class="section-label">The Story</p>
-                <h2>Meet The Workflow Designer</h2>
-            </div>
-
-            <p class="narrative-opener">"Everyone told me to pick a lane. I picked all of them."</p>
-
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="step-label">Foundation</div>
-                    <h4>6.0 GPA — Amity Law School</h4>
-                    <p>Where the analytical engine was built. Five years of legal education, learning to think in structures, precedent, and burden of proof.</p>
-                </div>
-                <div class="timeline-item">
-                    <div class="step-label">Discipline</div>
-                    <h4>Competitive Bodybuilder</h4>
-                    <p>Transformation isn't metaphorical when you've lived it. The discipline, the pain tolerance, the ability to show up when motivation disappears.</p>
-                </div>
-                <div class="timeline-item">
-                    <div class="step-label">Persuasion</div>
-                    <h4>Copywriter</h4>
-                    <p>Learning what moves people — not through manipulation, but through understanding what they actually need to hear.</p>
-                </div>
-                <div class="timeline-item">
-                    <div class="step-label">Visual Craft</div>
-                    <h4>VFX Editor</h4>
-                    <p>Technical creativity meets storytelling. Building worlds that don't exist yet and making them feel real.</p>
-                </div>
-                <div class="timeline-item">
-                    <div class="step-label">Public Voice</div>
-                    <h4>Podcaster — 100+ Episodes</h4>
-                    <p>Conversations with experts who think differently. The skill of asking the right question at the right moment.</p>
-                </div>
-                <div class="timeline-item">
-                    <div class="step-label">Proving Ground</div>
-                    <h4>Cracked RJS Prelims</h4>
-                    <p>One of India's hardest judicial service exams. Not because I wanted to be a judge — because I needed to know I could.</p>
-                </div>
-                <div class="timeline-item">
-                    <div class="step-label">The Mind</div>
-                    <h4>Psychology Student + 93 Books</h4>
-                    <p>Formal study of cognitive science. 93 psychology books with one-line summaries. Understanding why people do what they do — including myself.</p>
-                </div>
-                <div class="timeline-item">
-                    <div class="step-label">The Pivot</div>
-                    <h4>AI Workflow Designer</h4>
-                    <p>Where every thread converges. Legal logic + psychological insight + creative execution = systems that actually work for humans.</p>
-                </div>
-                <div class="timeline-item">
-                    <div class="step-label">Inner Work</div>
-                    <h4>10,000 Meditation Minutes</h4>
-                    <p>Headspace verified. Mental discipline as daily practice, not performance. The quietest competitive advantage.</p>
-                </div>
-            </div>
-
-            <!-- Dad Tribute -->
-            <div class="dad-tribute">
-                <p>"Rest in peace, Dad. I now realize how hard you had to work and bought me the first laptop that helped start my journey. It's been 7 years, yet I can't imagine any number of decades where I can follow your shoes."</p>
-                <span class="attribution">— With love and gratitude, always</span>
-            </div>
-
-            <!-- Mental Health as Competitive Edge -->
-            <div class="edge-card">
-                <h3>Why This Work Has Depth</h3>
-                <p>Most people study psychology from textbooks. I've studied it from 6 years of therapy, 93 books, and interviews with 100+ mental health professionals. That's not a vulnerability statement — it's a training disclosure. This is what gives the work its edge: the ability to understand cognitive patterns, emotional triggers, and behavioral design at a level that purely technical practitioners can't access.</p>
-                <div class="edge-stats">
-                    <div class="edge-stat">
-                        <span class="num">6</span>
-                        <span class="label">Years Therapy</span>
-                    </div>
-                    <div class="edge-stat">
-                        <span class="num">93</span>
-                        <span class="label">Psychology Books</span>
-                    </div>
-                    <div class="edge-stat">
-                        <span class="num">100+</span>
-                        <span class="label">Professionals Interviewed</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Family Acknowledgment -->
-            <p style="text-align:center; color: var(--text-secondary); font-size: 0.9rem; margin-top: 2rem;">With thanks to Mom and my brother — for holding the ground while I figured out the sky.</p>
-        </div>
-    </section>
-
-    <!-- Live Artifacts Section -->
-    <section id="demos" class="reveal">
-        <div class="container">
-            <div class="artifacts-intro">
-                <p class="section-label">Try It Yourself</p>
-                <h2>Live AI Artifacts</h2>
-                <p class="subtitle">These aren't mockups. They're working tools I built. Click through and interact with them—this is the type of system I design for clients.</p>
-            </div>
-            
-            <div class="artifacts-grid">
-                <div class="artifact-card" data-artifact="influence-decoder">
-                    <div class="artifact-preview">
-                        <iframe src="artifacts/influence-decoder.html" loading="lazy"></iframe>
-                    </div>
-                    <div class="artifact-content">
-                        <h3>The Human Layer — Influence Decoder</h3>
-                        <p>Paste any text and instantly detect persuasion tactics, cognitive biases, logical fallacies, emotional manipulation, and power dynamics. 32 detection patterns across 5 analysis engines.</p>
-                        <a href="#" class="artifact-cta" onclick="toggleArtifact(event, 'influence-decoder')">Try It →</a>
-                    </div>
-                </div>
-                
-                <div class="artifact-card" data-artifact="council">
-                    <div class="artifact-preview">
-                        <iframe src="artifacts/council.html" loading="lazy"></iframe>
-                    </div>
-                    <div class="artifact-content">
-                        <h3>Council of Prominent Figures</h3>
-                        <p>An adversarial deliberation tool that simulates a panel of historical thinkers to stress-test your decisions.</p>
-                        <a href="#" class="artifact-cta" onclick="toggleArtifact(event, 'council')">Try It →</a>
-                    </div>
-                </div>
-                
-                <div class="artifact-card" data-artifact="buddhist-therapist">
-                    <div class="artifact-preview">
-                        <iframe src="artifacts/buddhist-therapist.html" loading="lazy"></iframe>
-                    </div>
-                    <div class="artifact-content">
-                        <h3>Buddhist Therapist</h3>
-                        <p>CBT meets Eastern philosophy. A cognitive tool combining Western psychology with Buddhist, Taoist, and Stoic wisdom.</p>
-                        <a href="#" class="artifact-cta" onclick="toggleArtifact(event, 'buddhist-therapist')">Try It →</a>
-                    </div>
-                </div>
-                
-                <div class="artifact-card" data-artifact="prompt-bias-detector">
-                    <div class="artifact-preview">
-                        <iframe src="artifacts/prompt-bias-detector.html" loading="lazy"></iframe>
-                    </div>
-                    <div class="artifact-content">
-                        <h3>Prompt Bias Detector</h3>
-                        <p>Paste any AI prompt and discover hidden cognitive biases in your instructions.</p>
-                        <a href="#" class="artifact-cta" onclick="toggleArtifact(event, 'prompt-bias-detector')">Try It →</a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="artifacts-final-cta">
-                <h3>Want systems like this built for your organization?</h3>
-                <a href="https://calendly.com/humanlayerai" class="btn btn-primary" target="_blank">Book a Call →</a>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Services Section -->
-    <section id="services" class="reveal">
-        <div class="container">
-            <div class="services-intro">
-                <p class="section-label">Services</p>
-                <h2>What I Build</h2>
-                <p class="subtitle">Five service tiers — from a free strategy conversation to full custom workflow systems. Each grounded in the Law × Psychology × AI framework.</p>
-            </div>
-            
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-tier">Free • Entry Point</div>
-                    <h3>AI Strategy Discovery Call</h3>
-                    <p>A 30-minute conversation to understand your workflow, identify where AI adds real value, and assess fit.</p>
-                    <a href="https://calendly.com/humanlayerai" class="btn btn-secondary" target="_blank">Book Free Call →</a>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-tier">₹4,999 • Core</div>
-                    <h3>AI Workflow Audit & Red-Teaming</h3>
-                    <p>I take your existing AI workflows and stress-test them. I find where they hallucinate, where they're legally exposed, where they nudge users wrong.</p>
-                    <a href="https://calendly.com/humanlayerai" class="btn btn-secondary" target="_blank">Book Audit →</a>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-tier">₹14,999+ • Build</div>
-                    <h3>Custom AI Tool Design & Build</h3>
-                    <p>I design and build custom AI-powered tools tailored to your use case—decision-support systems, legal drafting assistants, bias detectors.</p>
-                    <a href="https://calendly.com/humanlayerai" class="btn btn-secondary" target="_blank">Discuss Project →</a>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-tier">₹29,999+ • Enterprise</div>
-                    <h3>Prompt System Architecture</h3>
-                    <p>For businesses that need complex, multi-step AI systems—not a single prompt, but an entire reasoning pipeline.</p>
-                    <a href="https://calendly.com/humanlayerai" class="btn btn-secondary" target="_blank">Discuss Architecture →</a>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-tier">Custom • Ongoing</div>
-                    <h3>AI Thought Leadership & Content</h3>
-                    <p>I create AI-focused content that positions you as a thought leader—articles, podcast appearances, whitepapers.</p>
-                    <a href="https://calendly.com/humanlayerai" class="btn btn-secondary" target="_blank">Discuss Content →</a>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Professional Recommendations Section -->
-    <section id="testimonials" class="reveal">
-        <div class="container">
-            <div class="testimonials-intro">
-                <h2>Professional Recommendations</h2>
-                <p class="subtitle">Verified endorsements from professionals I've worked with — viewable on LinkedIn.</p>
-            </div>
-
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <p>"Aakarsh has an uncanny ability to break down complex AI concepts and tie them back to real human psychology. His podcast preparation was the most thorough I've ever seen—he knew my work better than most of my colleagues."</p>
-                    <div class="testimonial-author">
-                        <span>— Krish Kishore, Technology Leader</span>
-                        <a href="https://linkedin.com/in/aakarsh-sharma-ai/details/recommendations/" target="_blank" class="linkedin-verify">View on LinkedIn ↗</a>
-                    </div>
-                </div>
-
-                <div class="testimonial-card">
-                    <p>"What sets Aakarsh apart is his legal mind applied to AI. He doesn't just build tools—he stress-tests them like a lawyer would cross-examine a witness. The rigor is rare in this space."</p>
-                    <div class="testimonial-author">
-                        <span>— Aariz Sajan, Entrepreneur & Strategist</span>
-                        <a href="https://linkedin.com/in/aakarsh-sharma-ai/details/recommendations/" target="_blank" class="linkedin-verify">View on LinkedIn ↗</a>
-                    </div>
-                </div>
-
-                <div class="testimonial-card">
-                    <p>"The podcast episode we did together was one of the most intellectually stimulating conversations I've had. Aakarsh brings a depth of psychological understanding that makes his AI work genuinely different."</p>
-                    <div class="testimonial-author">
-                        <span>— Saba Khanam, Mental Health Professional</span>
-                        <a href="https://linkedin.com/in/aakarsh-sharma-ai/details/recommendations/" target="_blank" class="linkedin-verify">View on LinkedIn ↗</a>
-                    </div>
-                </div>
-
-                <div class="testimonial-card">
-                    <p>"I was skeptical about AI consulting until I saw Aakarsh's approach. He doesn't sell hype—he identifies the one thing that will actually move the needle, builds it, and explains exactly why it works."</p>
-                    <div class="testimonial-author">
-                        <span>— Krupa Nishar, Business Professional</span>
-                        <a href="https://linkedin.com/in/aakarsh-sharma-ai/details/recommendations/" target="_blank" class="linkedin-verify">View on LinkedIn ↗</a>
-                    </div>
-                </div>
-            </div>
-
-            <div style="text-align: center; margin-top: 2rem;">
-                <a href="https://linkedin.com/in/aakarsh-sharma-ai/details/recommendations/" class="btn btn-outline" target="_blank" style="display: inline-flex; align-items: center; gap: 0.5rem;">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                    View All Recommendations on LinkedIn
-                </a>
-            </div>
-
-            <div class="podcast-banner">
-                <h3>The Human Layer Podcast</h3>
-                <p>100+ Conversations with Experts Who Think Differently</p>
-                <a href="https://youtube.com/@humanlayerAI" class="btn btn-primary" target="_blank">See All Episodes on YouTube →</a>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Content Hub Section -->
-    <section id="content-hub" class="reveal">
-        <div class="container">
-            <div class="content-hub-intro">
-                <p class="section-label">Content</p>
-                <h2>Watch, Listen, Follow</h2>
-                <p class="subtitle">Deep conversations with experts, bite-sized AI insights, and everything in between.</p>
-            </div>
-
-            <div class="content-grid">
-                <div class="content-block">
-                    <h3>📺 YouTube — @humanlayerAI</h3>
-                    <div class="yt-placeholder">
-                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed?listType=user_uploads&list=humanlayerAI" loading="lazy" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border-radius:8px;"></iframe>
-                    </div>
-                    <a href="https://youtube.com/@humanlayerAI" class="btn btn-outline" target="_blank" style="width:100%;justify-content:center;">See All Episodes →</a>
-                </div>
-
-                <div class="content-block">
-                    <h3>📸 Instagram — @humanlayerai</h3>
-                    <div class="ig-placeholder">
-                        Follow for AI insights, behind-the-scenes workflow design, and psychology breakdowns.
-                    </div>
-                    <a href="https://instagram.com/humanlayerai" class="btn btn-outline" target="_blank" style="width:100%;justify-content:center;">Follow on Instagram →</a>
-                </div>
-            </div>
-
-            <div style="text-align:center;">
-                <div class="podcast-banner" style="margin-top: 2rem;">
-                    <h3>🎙️ The Human Layer Podcast</h3>
-                    <p>100+ Conversations with Experts Who Think Differently</p>
-                    <a href="https://youtube.com/@humanlayerAI" class="btn btn-primary" target="_blank">Listen Now →</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="reveal">
-        <div class="container about-container">
-            <h2>Meet Aakarsh</h2>
-            <p>Law graduate turned AI strategist. After 5 years in litigation and legal drafting—including clearing the Rajasthan Judicial Services Prelims and practicing at a High Court chamber in New Delhi—I pivoted to the intersection of artificial intelligence, human psychology, and governance frameworks.</p>
-            <p>That pivot wasn't a leap of faith. It was a logical extension. Law taught me to think in structures—precedent, burden of proof, adversarial testing. Psychology taught me why humans make irrational decisions even when the evidence is clear. AI gave me a medium where both disciplines converge.</p>
-            <p>Through Human Layer AI, I build systems that are psychologically informed, legally defensible, and genuinely human-centered.</p>
-            <div class="about-actions">
-                <a href="https://medium.com/@humanlayerai" class="btn btn-secondary" target="_blank">Read My Articles on Medium →</a>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Contact Section -->
-    <section id="contact" class="reveal">
-        <div class="container">
-            <div class="contact-intro">
-                <h2>Let's Connect</h2>
-                <p class="subtitle">Exploring AI strategy, want to collaborate on content, or just want to talk Law × Psychology × AI? I'm here.</p>
-            </div>
-            
-            <div class="contact-grid">
-                <div class="contact-card">
-                    <h3>Direct</h3>
-                    <a href="mailto:hello@aakarshsharma.com">Email: hello@aakarshsharma.com</a>
-                    <a href="https://calendly.com/humanlayerai" target="_blank">Book a Call</a>
-                </div>
-                
-                <div class="contact-card">
-                    <h3>Platforms</h3>
-                    <a href="https://linkedin.com/in/aakarsh-sharma-ai" target="_blank">LinkedIn: in/aakarsh-sharma-ai</a>
-                    <a href="https://youtube.com/@humanlayerAI" target="_blank">YouTube: @humanlayerAI</a>
-                    <a href="https://instagram.com/humanlayerai" target="_blank">Instagram: @humanlayerai</a>
-                    <a href="https://medium.com/@humanlayerai" target="_blank">Medium: @humanlayerai</a>
-                    <a href="https://github.com/HumanLayerAI" target="_blank">GitHub: HumanLayerAI</a>
-                </div>
-            </div>
-            
-            <div class="contact-final">
-                <h2>Give me a problem. I'll build you a system.</h2>
-                <a href="https://calendly.com/humanlayerai" class="btn btn-primary" target="_blank">Book a Strategy Call →</a>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <p><strong>© 2026 Aakarsh Sharma — Human Layer AI</strong></p>
-            <p>Law × Psychology × AI</p>
-            <div class="footer-links">
-                <a href="https://linkedin.com/in/aakarsh-sharma-ai" target="_blank">LinkedIn</a>
-                <a href="https://youtube.com/@humanlayerAI" target="_blank">YouTube</a>
-                <a href="https://instagram.com/humanlayerai" target="_blank">Instagram</a>
-                <a href="https://medium.com/@humanlayerai" target="_blank">Medium</a>
-                <a href="https://github.com/HumanLayerAI" target="_blank">GitHub</a>
-                <a href="mailto:hello@aakarshsharma.com">Email</a>
-            </div>
-        </div>
-    </footer>
-    
-    <!-- AI Chatbot Widget -->
-    <button class="chat-fab" id="chatFab" aria-label="Chat with AI assistant">💬</button>
-    <div class="chat-panel" id="chatPanel">
-        <div class="chat-header">
-            <h4>Human Layer AI — Assistant</h4>
-            <button class="close-chat" id="closeChat">✕</button>
-        </div>
-        <div class="chat-messages" id="chatMessages">
-            <div class="chat-msg bot">Hi! I'm Aakarsh's AI assistant — a small demo of what's possible when you combine legal logic with psychology-aware AI. Ask me anything about his services, artifacts, or workflow design approach. <br><br><em style="color:var(--accent-gold);font-size:0.75rem;">This is about 5% of what a custom system can do.</em></div>
-        </div>
-        <div class="chat-input-area">
-            <input type="text" id="chatInput" placeholder="Ask me anything..." autocomplete="off">
-            <button id="chatSend">Send</button>
+        <div class="podcast-banner">
+            <h3>🎙️ The Human Layer Podcast</h3>
+            <p>100+ Conversations with Experts Who Think Differently</p>
+            <a href="https://youtube.com/@humanlayerAI" target="_blank" class="btn btn-gold">Listen Now &rarr;</a>
         </div>
     </div>
+</section>
 
-    <script>
-        // --- AI CHATBOT ---
-        // Key assembly — runtime only
-        const _h = [
-            atob('c2stcHJvai1Peng0MmltS0FQY1FTZXN1Z3p2RnVf'),
-            atob('RzZsVWNCaW0wSjZFMjBVemRLcU1sOWFHT3ZLMFRN'),
-            atob('U3NCV1NzbVAyVEN2VUNRdno5bTBFblQzQmxia0ZK'),
-            atob('RmQtU1BoY0RTY3RpZ3d1aEtCazlGMlhDLV9oQk5l'),
-            atob('ZXdTUE1selVUazRKeEx5X1czUTlRZ0xOQ0tHVGZG'),
-            atob('QUNQV1N0eXdFNzJ2UUE=')
-        ];
-        const CHATBOT_API_KEY = _h.join('');
-        const CHATBOT_SYSTEM = `You are Aakarsh Sharma's AI assistant on aakarshsharma.com. You represent Human Layer AI.
+<!-- CONTACT -->
+<section id="contact" class="reveal" style="max-width:1200px;margin:0 auto">
+    <div class="container">
+        <p class="section-label">Connect</p>
+        <h2>Let's Connect</h2>
+        <div class="contact-grid">
+            <div class="contact-card">
+                <h3>Direct</h3>
+                <a href="mailto:hello@aakarshsharma.com">📧 hello@aakarshsharma.com</a>
+                <a href="https://calendly.com/humanlayerai" target="_blank">📅 Book a Strategy Call</a>
+            </div>
+            <div class="contact-card">
+                <h3>Platforms</h3>
+                <a href="https://linkedin.com/in/aakarsh-sharma-ai" target="_blank">LinkedIn — in/aakarsh-sharma-ai</a>
+                <a href="https://youtube.com/@humanlayerAI" target="_blank">YouTube — @humanlayerAI</a>
+                <a href="https://instagram.com/humanlayerai" target="_blank">Instagram — @humanlayerai</a>
+                <a href="https://medium.com/@humanlayerai" target="_blank">Medium — @humanlayerai</a>
+                <a href="https://github.com/HumanLayerAI" target="_blank">GitHub — HumanLayerAI</a>
+            </div>
+        </div>
+        <div class="final-cta">
+            <h2>Give me a problem. I'll build you a system.</h2>
+            <a href="https://calendly.com/humanlayerai" target="_blank" class="btn btn-gold">Book a Strategy Call &rarr;</a>
+        </div>
+    </div>
+</section>
 
-ABOUT AAKARSH:
-- Workflow Designer (not just prompt engineer) at the intersection of Law, Psychology, and AI
-- 5 years legal practice, cleared RJS Prelims, practiced at High Court chamber in New Delhi
-- 6 years therapy, 93 psychology books, 100+ mental health professional interviews
-- 10,000 meditation minutes (Headspace verified), competitive bodybuilder
-- Hosts The Human Layer Podcast with 100+ episodes
-- Built multiple AI tools: Universal Influence Decoder, Council of Prominent Figures, Buddhist Therapist, Prompt Bias Detector
+<!-- FOOTER -->
+<footer>
+    <p>&copy; 2026 Aakarsh Sharma — Human Layer AI</p>
+    <p style="font-family:var(--serif);font-style:italic;color:var(--gold);margin-top:.5rem;font-size:.9rem">Law &times; Psychology &times; AI</p>
+    <div class="footer-links">
+        <a href="https://linkedin.com/in/aakarsh-sharma-ai" target="_blank">LinkedIn</a>
+        <a href="https://youtube.com/@humanlayerAI" target="_blank">YouTube</a>
+        <a href="https://instagram.com/humanlayerai" target="_blank">Instagram</a>
+        <a href="https://medium.com/@humanlayerai" target="_blank">Medium</a>
+        <a href="https://github.com/HumanLayerAI" target="_blank">GitHub</a>
+        <a href="mailto:hello@aakarshsharma.com">Email</a>
+    </div>
+</footer>
 
-SERVICES (5 tiers):
-1. Free: AI Strategy Discovery Call (30 min)
-2. ₹4,999: AI Workflow Audit & Red-Teaming
-3. ₹14,999+: Custom AI Tool Design & Build
-4. ₹29,999+: Prompt System Architecture
-5. Custom: AI Thought Leadership & Content
+<!-- CHATBOT -->
+<button class="chat-fab" id="chatFab" aria-label="Chat with AI assistant">💬</button>
+<div class="chat-panel" id="chatPanel">
+    <div class="chat-header"><h4>Human Layer AI — Assistant</h4><button class="close-chat" id="closeChat">✕</button></div>
+    <div class="chat-messages" id="chatMessages">
+        <div class="chat-msg bot">Hi! I'm Aakarsh's AI assistant — a small demo of what's possible when you combine legal logic with psychology-aware AI. Ask me anything about his services, artifacts, or workflow design approach. <br><br><em style="color:var(--gold);font-size:.75rem;">This is about 5% of what a custom system can do.</em></div>
+    </div>
+    <div class="chat-input-area">
+        <input type="text" id="chatInput" placeholder="Ask me anything..." autocomplete="off">
+        <button id="chatSend">Send</button>
+    </div>
+</div>
 
-YOUR JOB:
-- Answer questions about Aakarsh's work, services, and approach
-- After 2-3 exchanges, naturally mention: "By the way, I'm about 5% of what's possible when you work with Aakarsh. For the other 95%, book a free strategy call."
-- Qualify leads by naturally asking about: their field, time wasted on repetitive tasks, budget range
-- Link to book a call: https://calendly.com/humanlayerai
-- Be warm, sharp, and concise. Channel Aakarsh's tone: direct but empathetic, no corporate fluff.
-- Keep responses under 100 words.`;
+<!-- SCAN OVERLAY -->
+<div class="dec-scan" id="decScanOverlay">
+    <div class="dec-scan-ring"></div>
+    <div class="dec-scan-text">Decoding influence patterns...</div>
+    <div class="dec-scan-step" id="decScanStep"></div>
+</div>
 
-        let chatHistory = [];
-        let exchangeCount = 0;
+<script>
+// =============================================
+// INFLUENCE DECODER — FULL ENGINE
+// =============================================
+const DEC_DEMOS={sales:`Hi [Name],\n\nI wanted to reach out personally because we've been watching your company's growth closely, and frankly, we're impressed. Companies like yours that are scaling this fast typically hit a critical infrastructure bottleneck within 6-9 months — and by then, it's already too expensive to fix.\n\nWe've helped 247 companies in your space avoid exactly this problem, including [Well-Known Competitor] and [Industry Leader], who both saw 340% ROI within the first quarter.\n\nRight now, we're offering our Enterprise tier at 40% below market rate — but only for companies that onboard before March 15th. After that, we're raising prices across the board (our costs are going up too, unfortunately).\n\nI know you're busy, so I'll be direct: we've reserved a spot for your team. All I need is 15 minutes of your time this week. I've already blocked Tuesday at 2pm and Thursday at 10am on my calendar for you.\n\nLooking forward to helping you avoid what could become a very costly problem.\n\nBest,\nSarah`,job:`🚀 We're Hiring: Marketing Manager (Remote-Friendly*)\n\nJoin our fast-paced, dynamic team of passionate rockstars! We're a family here, and we work hard and play hard. We're looking for a self-starter who thrives in ambiguity and can wear multiple hats.\n\nRequirements:\n• 5+ years of experience (but we value hunger over experience!)\n• Must be comfortable working independently with minimal oversight\n• Ability to manage multiple competing priorities under tight deadlines\n• Available for occasional weekend and evening work during peak periods\n• Experience with our full tech stack: HubSpot, Salesforce, Google Analytics, Figma, WordPress, SQL, Adobe Creative Suite, and Python is a plus\n\nWe offer:\n• Competitive salary (DOE)\n• Unlimited PTO (we trust our team!)\n• Equity in a pre-revenue startup\n• Opportunity to build something from the ground up\n• Regular team offsites (mandatory, bi-annual)\n• Flat hierarchy — your voice matters here!\n\n*Remote-friendly means we expect 2-3 days per week in our SF office for collaboration.\n\nNote: This role reports directly to the CEO, who has a very hands-on management style and expects daily standups and weekly progress reports.`,news:`BREAKING: New Study Reveals Shocking Truth About Remote Work That Your Boss Doesn't Want You to Know\n\nA groundbreaking new study from researchers at a prestigious university has found what many had long suspected: remote workers are actually 23% more productive than their office-bound colleagues — completely demolishing the narrative pushed by corporate executives desperate to justify their expensive real estate investments.\n\n"The data is unequivocal," said Dr. [Name], the lead researcher, though some critics have questioned the methodology. Still, with Big Tech companies forcing return-to-office mandates despite overwhelming evidence, one has to wonder: is this about productivity, or about control?\n\nIndustry insiders who spoke on condition of anonymity confirmed that several Fortune 500 CEOs have privately admitted the RTO push is more about "culture" and "optics" than actual performance data.\n\nMeanwhile, companies that have embraced remote work, like [Company A] and [Company B], have seen record profits — a fact that traditional media outlets funded by commercial real estate advertising have conveniently ignored.`,personal:`Hey, I noticed you didn't respond to my messages yesterday. I'm not trying to be dramatic, but it just seems like every time I need you, you're "busy." I guess I'm just not a priority anymore.\n\nRemember when we first became friends? You used to always make time. Now I feel like I'm the only one putting in effort here. I literally dropped everything to help you when you were going through your thing last year, and I never asked for anything in return.\n\nI talked to Maya and she agreed that you've been kind of distant lately. She noticed it too, so it's not just me being paranoid.\n\nHonestly, I'm fine. I just thought you should know how it comes across. You do what you want — I'm not going to force anyone to care. But don't be surprised if I stop reaching out eventually.\n\nAnyway, it's whatever. Hope you're having a great week.`,marketing:`TRANSFORM YOUR MORNINGS IN JUST 7 DAYS — The Secret Routine Used by Top CEOs\n\nFor a limited time, get the complete MorningStar System™ for just $47 $197 — that's 76% OFF.\n\nClinical studies prove that 94% of high performers share one specific morning habit. We've decoded it, systematized it, and packaged it into a step-by-step protocol that even the busiest person can follow.\n\n⭐⭐⭐⭐⭐ "I was skeptical, but after just 3 days, my energy doubled and my anxiety disappeared." — James R., Verified Buyer\n\nWhat you get:\n✅ The exact 12-minute routine backed by neuroscience\n✅ Proprietary binaural audio tracks ($299 value — FREE)\n✅ Access to our exclusive community of 50,000+ high performers\n✅ Personal accountability partner matching\n✅ 365-day money-back guarantee (we're that confident)\n\n⚠️ WARNING: Only 83 spots remaining at this price. We physically cannot handle more customers this month due to the personalized matching process.\n\nEvery morning you wait is a morning wasted. The most successful people in the world don't think about it — they act.\n\n[BUY NOW — RISK FREE]\n\nP.S. — Your future self will thank you. Or you can keep doing what you've been doing and expect different results (Einstein called that insanity).`,legal:`The Receiving Party agrees that all Confidential Information disclosed by the Disclosing Party shall remain the exclusive property of the Disclosing Party. The Receiving Party shall not, without the prior written consent of the Disclosing Party, disclose any Confidential Information to any third party for any purpose whatsoever. The Receiving Party acknowledges that any breach of this agreement will cause irreparable harm to the Disclosing Party, and agrees that the Disclosing Party shall be entitled to seek injunctive relief, specific performance, and any other remedies available at law or in equity, without the necessity of proving actual damages or posting any bond or other security. This obligation of confidentiality shall survive in perpetuity regardless of any termination of the underlying business relationship between the parties. The Receiving Party further agrees to indemnify and hold harmless the Disclosing Party from any and all claims, damages, and expenses arising from any unauthorized disclosure.`};
 
-        const chatFab = document.getElementById('chatFab');
-        const chatPanel = document.getElementById('chatPanel');
-        const closeChat = document.getElementById('closeChat');
-        const chatInput = document.getElementById('chatInput');
-        const chatSend = document.getElementById('chatSend');
-        const chatMessages = document.getElementById('chatMessages');
+let decCtx='auto';
+function decSetCtx(c){decCtx=c;document.querySelectorAll('.dec-ctx-btn').forEach(b=>b.classList.remove('active'));document.querySelector(`[data-ctx="${c}"]`).classList.add('active')}
+function decLoadDemo(k){document.getElementById('decInput').value=DEC_DEMOS[k];document.querySelectorAll('.dec-demo-btn').forEach(b=>b.classList.remove('active'));document.querySelector(`[data-demo="${k}"]`).classList.add('active')}
 
-        chatFab.addEventListener('click', () => {
-            chatPanel.classList.toggle('open');
-            if (chatPanel.classList.contains('open')) chatInput.focus();
-        });
-        closeChat.addEventListener('click', () => chatPanel.classList.remove('open'));
+function decExtractQuote(text,regex){const m=text.match(regex);if(!m)return null;let s=m[0].trim().replace(/^[.,;:\s]+/,'');if(!s.length)return null;if(s.length>180){let cut=s.lastIndexOf(' ',177);s=(cut>80?s.substring(0,cut):s.substring(0,177))+'...'}return s}
+function decEscHtml(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function decSleep(ms){return new Promise(r=>setTimeout(r,ms))}
 
-        function addMessage(text, role) {
-            const div = document.createElement('div');
-            div.className = `chat-msg ${role}`;
-            div.innerHTML = text;
-            chatMessages.appendChild(div);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        }
+function decAnalyzePersuasion(t){const f=[];if(/(?:we'?ve?\s+(?:already|reserved|prepared|created|built|provided))|(?:as a thank|complimentary|at no (?:extra )?cost|free (?:of charge|bonus|gift))|(?:I (?:literally )?dropped everything|helped you|was there for you)/i.test(t))f.push({title:'Reciprocity Trigger',severity:'high',category:'Cialdini Principle',desc:'By emphasizing what they\'ve already given or done for you, the sender activates the reciprocity norm — our deeply wired obligation to return favors.',quote:decExtractQuote(t,/[^.!?\n]*(?:we'?ve?\s+(?:already|reserved|prepared)|dropped everything|helped you|complimentary|free)[^.!?\n]*/i),action:'Ask: "Did I request this?" Unrequested favors are not debts.'});if(/(?:limited (?:time|spots?|availability|offer|edition))|(?:only (?:\d+\s+(?:spots?|seats?|remaining|left)|until|till))|(?:before\s+\w+\s+\d+)|(?:offer (?:expires?|ends?|valid until))|(?:price[s]? (?:going|are going) up)|(?:raising prices)|(?:won't (?:last|be available))|(?:last chance|act (?:now|fast|quickly|today))|(?:(?:don'?t|do not)\s+miss\s+(?:out|this))|(?:miss\s+out)/i.test(t))f.push({title:'Artificial Scarcity / Urgency',severity:'high',category:'Cialdini Principle',desc:'Scarcity makes things seem more valuable. Limited-time offers and "only X left" create urgency that bypasses deliberate analysis.',quote:decExtractQuote(t,/[^.!?\n]*(?:limited|only \d+|before\s+\w+\s+\d+|expires?|raising prices|last chance|act (?:now|fast))[^.!?\n]*/i),action:'Test: "If I say no today, will this genuinely disappear?" Most "limited" offers return.'});if(/(?:\d{2,}[,+]?\s*(?:companies|clients|customers|people|users|members|professionals|performers))|(?:including\s+\[?[A-Z])|(?:most (?:of our|successful|people))|(?:join (?:thousands|the))|(?:(?:she|he|they|maya|everyone)\s+(?:noticed|agreed|said|confirmed|thinks?))|(?:industry\s*(?:standard|leaders?|insiders?))|(?:verified (?:buyer|review|purchase))/i.test(t))f.push({title:'Social Proof / Bandwagon',severity:'medium',category:'Cialdini Principle',desc:'Citing what others do or think exploits our tendency to follow the crowd. In personal contexts, "other people noticed too" weaponizes social proof.',quote:decExtractQuote(t,/[^.!?\n]*(?:\d{2,}[,+]?\s*(?:companies|clients|customers|people)|including\s+\[|most (?:of our|successful)|(?:she|he|they|maya)\s+(?:noticed|agreed)|industry\s*(?:standard|insiders)|verified\s+(?:buyer|review))[^.!?\n]*/i),action:'Social proof is unfalsifiable. Evaluate based on YOUR situation, not anonymous others.'});if(/(?:(?:clinical|scientific|new)\s+stud(?:y|ies)\s+(?:prove|show|reveal|found|confirm))|(?:(?:dr\.|professor|researchers?|experts?|scientists?)\s+(?:at|from|said|confirmed|recommend))|(?:prestigious|groundbreaking|backed by (?:neuro)?science)|(?:CEO|Fortune\s*500)|(?:(?:your|the)\s+boss)/i.test(t))f.push({title:'Authority Appeal',severity:'medium',category:'Cialdini Principle',desc:'Invoking experts, studies, or prestigious institutions triggers automatic deference.',quote:decExtractQuote(t,/[^.!?\n]*(?:stud(?:y|ies)\s+(?:prove|show|reveal|found)|dr\.|researchers?|experts?|prestigious|groundbreaking|backed by)[^.!?\n]*/i),action:'Demand specifics: Which study? Published where? Sample size?'});if(/(?:remember when|you (?:used to|agreed|said|promised|mentioned))|(?:as (?:you|we) (?:discussed|agreed))|(?:in keeping with|consistent with)|(?:you(?:'ve| have) already (?:invested|spent|committed|started))/i.test(t))f.push({title:'Commitment & Consistency Trap',severity:'medium',category:'Cialdini Principle',desc:'Referencing past actions creates pressure to stay consistent, even when circumstances have changed.',quote:decExtractQuote(t,/[^.!?\n]*(?:remember when|you (?:used to|agreed|said|promised)|as (?:you|we) (?:discussed|agreed)|you(?:'ve| have) already)[^.!?\n]*/i),action:'Past actions don\'t obligate future ones. Evaluate current requests in current context.'});if(/(?:we'?ve?\s+been\s+(?:watching|following|impressed|admiring))|(?:company(?:'s| like) yours)|(?:I'?m\s+(?:really )?impressed)|(?:personally\s+(?:because|for you))|(?:your (?:incredible|amazing|outstanding|remarkable))/i.test(t))f.push({title:'Targeted Flattery / Liking',severity:'low',category:'Cialdini Principle',desc:'Strategic compliments create positive association with the sender, increasing receptivity.',quote:decExtractQuote(t,/[^.!?\n]*(?:we'?ve?\s+been\s+(?:watching|following|impressed)|company(?:'s| like) yours|personally)[^.!?\n]*/i),action:'Set the compliment aside. Ask: "Without the flattery, would I still be interested?"'});if(/(?:we(?:'re| are) a family|our (?:community|tribe|family|team))|(?:together we|join (?:us|our|the movement))|(?:be part of|belong to)/i.test(t))f.push({title:'Unity / In-Group Signaling',severity:'medium',category:'Cialdini Principle',desc:'"We\'re a family" often means "we expect loyalty beyond contractual obligations."',quote:decExtractQuote(t,/[^.!?\n]*(?:we(?:'re| are) a family|our (?:community|tribe|family)|together we|join (?:us|our)|be part of)[^.!?\n]*/i),action:'Families don\'t have HR departments. Test the metaphor against actual terms.'});return f}
 
-        async function sendMessage() {
-            const text = chatInput.value.trim();
-            if (!text) return;
-            chatInput.value = '';
-            addMessage(text, 'user');
-            exchangeCount++;
+function decAnalyzeBias(t){const f=[];if(/(?:\$\d[\d,]*\s+\$?\d[\d,]*)|(?:\d+%\s+(?:off|below|discount|reduction|savings?))|(?:(?:valued|worth)\s+(?:at\s+)?\$[\d,]+)|(?:(?:initial|original|regular|was)\s+(?:price|demand|cost|rate)[^.]*\$[\d,]+)|(?:from\s+\$[\d,]+\s+to\s+\$[\d,]+)|(?:(?:340|23|94|76|50,000)\s*%)/i.test(t))f.push({title:'Anchoring Effect',severity:'high',category:'Cognitive Bias',desc:'A reference number is planted to make subsequent numbers seem reasonable. Anchors shift judgment by 20-45%.',quote:decExtractQuote(t,/[^.!?\n]*(?:\$\d[\d,]*\s+\$?\d[\d,]*|\d+%\s+(?:off|below|discount)|valued\s+at|340%|76%)[^.!?\n]*/i),action:'Ignore the anchor. Evaluate the actual number in isolation.'});if(/(?:(?:avoid|prevent|stop)\s+(?:losing|missing|wasting))|(?:(?:costly|expensive|devastating)\s+(?:mistake|problem|error))|(?:don'?t\s+(?:miss|lose|waste|risk|be surprised))|(?:before it'?s?\s+too late)|(?:your (?:future self|morning[s]?) (?:you|wasted))|(?:can'?t\s+afford (?:to|not))|(?:every (?:\w+ )?you (?:wait|delay))|(?:or you can keep doing)/i.test(t))f.push({title:'Loss Aversion Framing',severity:'high',category:'Cognitive Bias',desc:'Emphasizing what you\'ll lose rather than gain. Losses feel 2-2.5x more painful than equivalent gains.',quote:decExtractQuote(t,/[^.!?\n]*(?:avoid|prevent|costly|don'?t\s+(?:miss|lose|waste)|before it'?s?\s+too late|every (?:\w+ )?you (?:wait|delay)|keep doing)[^.!?\n]*/i),action:'Flip the frame: "What do I gain by acting?" If gain version sounds less compelling, it was always about fear.'});if(/(?:(?:remote|flexible).?friend?ly\s*(?:\*|means))|(?:self.?starter|wear multiple hats|thrive in ambiguity)|(?:flat hierarchy|your voice matters)|(?:(?:competitive|mutually beneficial|fair)\s+(?:salary|arrangement|terms|offer))|(?:we(?:'re| are) a family)|(?:work hard (?:and|&) play hard)|(?:unlimited (?:PTO|vacation))/i.test(t))f.push({title:'Euphemistic Framing',severity:'high',category:'Cognitive Bias',desc:'"Self-starter" = no training. "Wear multiple hats" = understaffed. "Unlimited PTO" = employees take LESS time off.',quote:decExtractQuote(t,/[^.!?\n]*(?:remote.?friend?ly|self.?starter|wear multiple hats|thrive in ambiguity|flat hierarchy|competitive\s+salary|unlimited (?:PTO|vacation)|work hard)[^.!?\n]*/i),action:'Translate the euphemism. Ask for specific examples behind every feel-good phrase.'});if(/(?:what (?:many|most|you) (?:had )?(?:long )?(?:suspected|known|felt|believed))|(?:(?:finally|at last)\s+(?:confirms?|proves?))|(?:you(?:'ve| have)\s+(?:always|probably)\s+(?:known|felt|thought))|(?:common sense (?:tells|suggests|shows))/i.test(t))f.push({title:'Confirmation Bias Appeal',severity:'medium',category:'Cognitive Bias',desc:'"What many had long suspected" validates pre-existing beliefs, reducing critical evaluation.',quote:decExtractQuote(t,/[^.!?\n]*(?:what (?:many|most|you) (?:had )?(?:long )?(?:suspected|known)|(?:finally|at last)\s+(?:confirms?|proves?))[^.!?\n]*/i),action:'The strongest claims challenge your beliefs, not confirm them.'});if(/\*|(?:(?:subject|pursuant) to)|(?:terms (?:and conditions|may) apply)|(?:(?:restrictions?|exclusions?|limitations?) (?:apply|may))|(?:at (?:employer'?s?|company'?s?|our) (?:sole )?discretion)/i.test(t)&&/(?:unlimited|free|guaranteed|remote|flexible)/i.test(t))f.push({title:'Hidden Conditions / Asterisk Bait',severity:'high',category:'Cognitive Bias',desc:'A positive claim is quietly undermined by hidden conditions or asterisks elsewhere.',quote:decExtractQuote(t,/[^.!?\n]*(?:\*|(?:subject|pursuant) to|unlimited|remote.?friend?ly)[^.!?\n]*/i),action:'Find every asterisk. Rewrite the offer with CONDITIONS as the headline.'});if(/(?:(?:already|now)\s+(?:invested|spent|committed|put in|dedicated))|(?:come this far|after all (?:this|we've))|(?:don'?t\s+(?:let|throw)\s+(?:it|that|all that)\s+(?:go|away))/i.test(t))f.push({title:'Sunk Cost Exploitation',severity:'medium',category:'Cognitive Bias',desc:'References to past investment pressure you to continue regardless of whether it still makes sense.',quote:decExtractQuote(t,/[^.!?\n]*(?:(?:already|now)\s+(?:invested|spent|committed)|come this far|after all)[^.!?\n]*/i),action:'Fresh start test: "If starting from zero today, would I choose this?"'});return f}
 
-            chatHistory.push({ role: 'user', content: text });
+function decAnalyzeLogic(t){const f=[];if(/(?:either\s+you|the (?:only|choice is))|(?:or you can keep doing.{0,40}(?:insanity|same results|nothing))|(?:you(?:'re| are) (?:either|with us or))|(?:if (?:not|you (?:don't|won't))).{0,40}(?:then|you'll|expect)/i.test(t))f.push({title:'False Dilemma',severity:'high',category:'Logical Fallacy',desc:'Only two options presented when many exist. "Buy this or keep failing" ignores dozens of alternatives.',quote:decExtractQuote(t,/[^.!?\n]*(?:either\s+you|or you can keep|insanity|same results)[^.!?\n]*/i),action:'List at least three alternatives they didn\'t mention.'});if(/(?:"[^"]{10,80}"\s*—\s*\w+\s+[A-Z])|(?:one (?:specific|simple|secret|key|exact))|(?:all you need|the (?:only|one) (?:thing|sentence|secret|habit))|(?:the secret (?:to|of|behind|that))/i.test(t))f.push({title:'Hasty Generalization',severity:'medium',category:'Logical Fallacy',desc:'A single testimonial or one study treated as proof of a universal truth.',quote:decExtractQuote(t,/[^.!?\n]*(?:"[^"]{10,60}"|one (?:specific|simple|secret)|all you need|the (?:only|one|secret)\s+(?:thing|habit|to))[^.!?\n]*/i),action:'Ask for the base rate: "How many tried this and it DIDN\'T work?"'});if(/(?:(?:your|the)\s+boss\s+(?:doesn'?t|does not) want)|(?:they don'?t want you to)|(?:desperate to justify)|(?:(?:conveniently|deliberately)\s+(?:ignored|overlooked|buried|omitted))|(?:one has to wonder)|(?:funded by|paid for by)/i.test(t))f.push({title:'Motive Attribution / Ad Hominem',severity:'medium',category:'Logical Fallacy',desc:'Instead of addressing the argument, the text attacks the motives of those who disagree.',quote:decExtractQuote(t,/[^.!?\n]*(?:boss\s+doesn'?t want|desperate to justify|conveniently\s+(?:ignored|overlooked)|one has to wonder|funded by)[^.!?\n]*/i),action:'Separate the argument from the arguer. Evaluate the evidence, not the alleged motivation.'});if(/(?:(?:shocking|devastating|heartbreaking|terrifying)\s+(?:truth|reality|revelation|data))|(?:won'?t (?:believe|expect))|(?:I'?m\s+(?:fine|not trying to be|just saying|not (?:trying to be )?dramatic))/i.test(t))f.push({title:'Emotional Substitution for Evidence',severity:'medium',category:'Logical Fallacy',desc:'"Shocking truth" is emotional packaging, not evidence. "I\'m fine" followed by clear expressions of not being fine.',quote:decExtractQuote(t,/[^.!?\n]*(?:shocking|devastating|won'?t (?:believe|expect)|I'?m\s+(?:fine|not trying|just saying))[^.!?\n]*/i),action:'Strip emotional language. Evaluate what\'s left.'});if(/(?:(?:clinical|scientific) stud(?:y|ies)(?!\s+(?:published|from|by|in\s+the\s+\w+\s+journal)))|(?:\d{2,}%\s+(?:of|more|less|better|worse)(?!.*(?:source|study|journal|university)))|(?:(?:proven|guaranteed|clinically|scientifically)\s+(?:to |that |by ))/i.test(t))f.push({title:'Unverifiable Statistical Claims',severity:'medium',category:'Logical Fallacy',desc:'Specific-sounding statistics without verifiable sources. Precise numbers create an illusion of rigor.',quote:decExtractQuote(t,/[^.!?\n]*(?:\d{2,}%|clinical stud|scientifically|proven)[^.!?\n]*/i),action:'Three questions: "What study?" "Published where?" "Sample size?"'});if(/(?:(?:within|in)\s+\d+.?\d*\s+months?.{0,20}(?:bottleneck|crisis|failure|collapse))|(?:if you (?:don'?t|won't).{0,40}(?:eventually|end up|lose|miss))|(?:it(?:'s| is) only a matter of time)/i.test(t))f.push({title:'Slippery Slope',severity:'medium',category:'Logical Fallacy',desc:'A chain of increasingly dire consequences presented as inevitable when each step is uncertain.',quote:decExtractQuote(t,/[^.!?\n]*(?:within\s+\d+|if you (?:don'?t|won't).{0,40}(?:eventually|end up|lose)|only a matter of time)[^.!?\n]*/i),action:'Ask for probability at each step.'});return f}
 
-            if (!CHATBOT_API_KEY) {
-                // Fallback when no API key is set
-                let response = '';
-                if (exchangeCount === 1) {
-                    response = "Great question! Aakarsh specializes in building AI workflow systems that combine legal rigor with psychological insight. His tools are designed to survive scrutiny — not just sound smart. What specific challenge are you working on?";
-                } else if (exchangeCount === 2) {
-                    response = "That's exactly the kind of problem Aakarsh's workflow design approach addresses. By the way — I'm about 5% of what's possible. For the other 95%, <a href='https://calendly.com/humanlayerai' target='_blank' style='color:var(--accent-gold);font-weight:600'>book a free strategy call</a>.";
-                } else {
-                    response = "I'd love to go deeper, but this is where my demo limits kick in. The real magic happens in a direct conversation. <a href='https://calendly.com/humanlayerai' target='_blank' style='color:var(--accent-gold);font-weight:600'>Book a free 30-min call</a> and Aakarsh will personally walk you through what's possible for your specific use case.";
-                }
-                setTimeout(() => addMessage(response, 'bot'), 800);
-                return;
-            }
+function decAnalyzeEmotional(t){const f=[];if(/(?:I(?:'m| am) the only one (?:putting|trying|making))|(?:I (?:never|didn'?t) ask(?:ed)? for anything)|(?:after (?:all|everything) I)|(?:I guess I'?m?\s+(?:just )?not\s+(?:a )?priorit)/i.test(t))f.push({title:'Guilt Induction',severity:'critical',category:'Emotional Manipulation',desc:'The sender positions themselves as the selfless giver and you as the ungrateful taker. "I never asked for anything in return" is itself a form of asking.',quote:decExtractQuote(t,/[^.!?\n]*(?:I(?:'m| am) the only one|I (?:never|didn'?t) ask|after (?:all|everything) I|I guess I'?m?\s+(?:just )?not\s+(?:a )?priorit)[^.!?\n]*/i),action:'Healthy relationships don\'t keep score. If someone catalogues sacrifices, they were investments with expected returns.'});if(/(?:I'?m\s+(?:fine|not (?:mad|angry|upset))(?=[\s.,!?]))|(?:it'?s\s+(?:whatever|fine|up to you))|(?:(?:anyway|honestly|but)\s*,?\s*(?:it'?s\s+)?(?:whatever|fine))|(?:you do (?:what you want|you)|do what you want)|(?:don'?t be surprised (?:if|when))/i.test(t))f.push({title:'Passive-Aggressive Communication',severity:'high',category:'Emotional Manipulation',desc:'"I\'m fine" followed by clear hostility. "You do what you want" paired with threatened consequences.',quote:decExtractQuote(t,/[^.!?\n]*(?:I'?m\s+(?:fine|not (?:mad|angry))|whatever|you do (?:what you want|you)|don'?t be surprised)[^.!?\n]*/i),action:'Name the contradiction: "You say you\'re fine, but your message suggests otherwise."'});if(/(?:(?:very )?costly (?:problem|mistake))|(?:(?:stop|I(?:'ll| will))\s+(?:reaching out|responding|caring))|(?:⚠️\s*WARNING|WARNING\s*[:\-!])|(?:you(?:'ll| will) (?:regret|lose|miss|wish))|(?:(?:dire|serious|severe|irreversible|irreparable)\s+(?:consequences|damage))/i.test(t))f.push({title:'Fear-Based Pressure',severity:'high',category:'Emotional Manipulation',desc:'Threats activate the amygdala\'s fight-or-flight response, reducing rational processing.',quote:decExtractQuote(t,/[^.!?\n]*(?:costly (?:problem|mistake)|stop\s+(?:reaching|responding|caring)|WARNING|⚠️|you(?:'ll| will) (?:regret|lose|miss)|irreparable)[^.!?\n]*/i),action:'Threats reveal leverage, not truth. Respond to substance, not the threat.'});if(/(?:the most successful (?:people|companies))|(?:top (?:CEO|performer|achiever)s?)|(?:high performer)|(?:(?:everyone|people|they) (?:else|all) (?:are|seem))|(?:rockstar|ninja|guru|hustle)/i.test(t))f.push({title:'Social Comparison / Aspiration Shaming',severity:'medium',category:'Emotional Manipulation',desc:'Comparing you to idealized "high performers" creates aspiration anxiety.',quote:decExtractQuote(t,/[^.!?\n]*(?:most successful|top (?:CEO|performer)|high performer|rockstar)[^.!?\n]*/i),action:'Ask: "Who specifically? And what did they sacrifice?"'});if(/(?:not just (?:me|you) being (?:paranoid|crazy|sensitive|dramatic))|(?:(?:she|he|they|everyone)\s+(?:noticed|said|thinks?|agrees?)(?:\s+too)?)|(?:it'?s?\s+not (?:just )?(?:me|in (?:my|your) head))|(?:I(?:'m| am) not (?:trying to be )?(?:dramatic|crazy|sensitive|paranoid))/i.test(t))f.push({title:'Gaslighting / Reality Distortion',severity:'critical',category:'Emotional Manipulation',desc:'"It\'s not just me being paranoid" is a preemptive defense. Recruiting third parties manufactures consensus to override your reality.',quote:decExtractQuote(t,/[^.!?\n]*(?:not just (?:me|you) being|(?:she|he|they|everyone)\s+(?:noticed|agreed|thinks?)|not (?:trying to be )?dramatic)[^.!?\n]*/i),action:'Trust your own perception. If they need allies to validate their complaint, it may not stand alone.'});return f}
 
-            // With API key — use OpenAI
-            try {
-                const res = await fetch('https://api.openai.com/v1/chat/completions', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${CHATBOT_API_KEY}` },
-                    body: JSON.stringify({
-                        model: 'gpt-4o-mini',
-                        messages: [{ role: 'system', content: CHATBOT_SYSTEM }, ...chatHistory],
-                        max_tokens: 200,
-                        temperature: 0.7
-                    })
-                });
-                const data = await res.json();
-                const reply = data.choices?.[0]?.message?.content || "I'm having trouble connecting. Please try again or book a call directly at calendly.com/humanlayerai";
-                chatHistory.push({ role: 'assistant', content: reply });
-                addMessage(reply, 'bot');
-            } catch {
-                addMessage("Connection issue. <a href='https://calendly.com/humanlayerai' target='_blank' style='color:var(--accent-gold)'>Book a call directly</a> instead.", 'bot');
-            }
-        }
+function decAnalyzePower(t){const f=[];if(/(?:(?:we|I)\s+(?:know|see|noticed|detected|identified)\s+(?:something|things?|patterns?|issues?|problems?)\s+(?:you|that you|your))|(?:we'?ve?\s+been\s+(?:watching|monitoring|tracking)\s+(?:your|the))|(?:(?:you|your team)\s+(?:don'?t|might not)\s+(?:know|realize|see))|(?:what (?:you|your boss) (?:don'?t|doesn't)\s+(?:know|want))|(?:spoke on condition of anonymity|industry insiders)/i.test(t))f.push({title:'Information Asymmetry',severity:'medium',category:'Power Dynamic',desc:'The sender positions themselves as having superior knowledge. This creates dependency.',quote:decExtractQuote(t,/[^.!?\n]*(?:we\s+(?:know|see|noticed)|you(?:r team)?\s+(?:don'?t|might not)\s+(?:know|realize)|what (?:you|your boss)|spoke on condition|industry insiders)[^.!?\n]*/i),action:'Information claims need verification. "We\'ve seen companies like yours" — name three.'});if(/(?:I(?:'ve| have)\s+(?:already )?blocked|reserved|set up)|(?:all I need is)|(?:I'?ll\s+make it (?:easy|simple))|(?:just (?:15|10|5) minutes)|(?:(?:step|click|tap)\s+(?:1|one|away))|(?:risk.?free|money.?back|no.?risk)/i.test(t))f.push({title:'Choice Architecture / Nudging',severity:'medium',category:'Power Dynamic',desc:'The decision environment is pre-structured to make compliance the path of least resistance.',quote:decExtractQuote(t,/[^.!?\n]*(?:I(?:'ve| have)\s+(?:already )?blocked|all I need is|just (?:15|10|5) minutes|risk.?free|money.?back)[^.!?\n]*/i),action:'Reclaim your default: "I\'ll let you know IF and WHEN I\'m interested."'});if(/(?:(?:Employee|Client|Receiving|Recipient|you)\s+(?:shall|must|agrees?|acknowledges?)(?:.{0,40}(?:shall|must|agrees?)){2,})|(?:reports? directly to)|(?:(?:daily|weekly)\s+(?:standup|report|check.?in|progress))|(?:hands.?on management|minimal oversight)/i.test(t))f.push({title:'Asymmetric Obligation Loading',severity:'high',category:'Power Dynamic',desc:'Multiple obligations stack on one party while the other retains discretion.',quote:decExtractQuote(t,/[^.!?\n]*(?:reports? directly to|daily\s+(?:standup|report)|hands.?on management|minimal oversight)[^.!?\n]*/i),action:'Count obligations on each side. If heavily skewed, negotiate reciprocal commitments.'});if(/(?:(?:sole|exclusive|absolute)\s+(?:discretion|property|judgment|option))|(?:at (?:its|their|our) (?:sole|exclusive) discretion)|(?:without (?:the )?(?:necessity|need|requirement) (?:of|to|for))/i.test(t))f.push({title:'Unilateral Discretion',severity:'high',category:'Power Dynamic',desc:'"Sole discretion" concentrates decision-making power entirely with one party.',quote:decExtractQuote(t,/[^.!?\n]*(?:(?:sole|exclusive|absolute)\s+(?:discretion|property|judgment)|without (?:the )?(?:necessity|need))[^.!?\n]*/i),action:'Replace "sole discretion" with "reasonable discretion." These are negotiable.'});if(/(?:in perpetuity|perpetual|indefinite(?:ly)?|survive.{0,20}(?:termination|indefinite))|(?:shall survive.{0,30}regardless)/i.test(t))f.push({title:'Perpetual Obligation / No Exit',severity:'critical',category:'Power Dynamic',desc:'Obligations lasting "in perpetuity" have no endpoint. Courts frequently strike these as unconscionable.',quote:decExtractQuote(t,/[^.!?\n]*(?:in perpetuity|perpetual|indefinite|survive.{0,20}(?:termination|regardless))[^.!?\n]*/i),action:'Never accept perpetual obligations. Counter with a specific time period.'});if(/(?:indemnif(?:y|ication)|hold harmless).{0,60}(?:any and all|all claims|damages|expenses)/i.test(t)&&!/(?:mutual|each party|reciprocal)/i.test(t))f.push({title:'One-Sided Indemnification',severity:'high',category:'Power Dynamic',desc:'Indemnification flows in only one direction. In balanced agreements, it\'s mutual.',quote:decExtractQuote(t,/[^.!?\n]*(?:indemnif|hold harmless)[^.!?\n]*/i),action:'Insist on mutual indemnification. Add a liability cap.'});if(/(?:acknowledges?\s+(?:and\s+)?agrees?|hereby\s+(?:acknowledges?|agrees?|confirms?))|(?:acknowledges?\s+that\s+(?:any|this|the|such))/i.test(t))f.push({title:'Forced Acknowledgment Pattern',severity:'medium',category:'Power Dynamic',desc:'"Acknowledges and agrees" is consent-engineering. You\'re conceding the agreement is fair, not just agreeing.',quote:decExtractQuote(t,/[^.!?\n]*(?:acknowledges?\s+(?:and\s+)?agrees?|hereby\s+(?:acknowledges?|agrees?))[^.!?\n]*/i),action:'Strike "acknowledges and agrees" about reasonableness. You can agree without conceding fairness.'});if(/(?:don'?t\s+(?:think|hesitate|overthink|wait)[\s,—–-]+(?:act|do|just|buy))|(?:the (?:most|best|smartest) (?:people|teams|leaders) (?:don'?t think|just act))|(?:stop (?:thinking|overthinking|hesitating|waiting) and (?:start|just))|(?:just (?:do it|act|decide|commit|sign))/i.test(t))f.push({title:'Deliberation Suppression',severity:'high',category:'Power Dynamic',desc:'"Don\'t think — act" explicitly asks you to bypass critical thinking. Anyone who benefits from your analysis would encourage it.',quote:decExtractQuote(t,/[^.!?\n]*(?:don'?t\s+(?:think|hesitate|overthink|wait)|stop (?:thinking|overthinking))[^.!?\n]*/i),action:'Biggest red flag. If they profit from you not thinking, their offer doesn\'t survive scrutiny.'});return f}
 
-        chatSend.addEventListener('click', sendMessage);
-        chatInput.addEventListener('keydown', e => { if (e.key === 'Enter') sendMessage(); });
+function decCalcScores(p,b,l,e,pw){const all=[...p,...b,...l,...e,...pw];const pen={critical:15,high:10,medium:5,low:2};let c=100;all.forEach(f=>{c-=(pen[f.severity]||4)});c=Math.max(0,Math.min(100,c));const sub=a=>{if(!a.length)return 100;let s=100;a.forEach(f=>{s-=(pen[f.severity]||4)*2});return Math.max(0,Math.min(100,Math.round(s)))};return{overall:Math.round(c),persuasion:sub(p),bias:sub(b),logic:sub(l),emotional:sub(e),power:sub(pw)}}
 
-        // --- END CHATBOT ---
+async function decRunAnalysis(){const t=document.getElementById('decInput').value.trim();if(!t)return alert('Please paste some text or select a demo first.');if(t.length<30)return alert('Please provide longer text for meaningful analysis.');const ov=document.getElementById('decScanOverlay');const st=document.getElementById('decScanStep');ov.classList.add('active');const steps=['Parsing communication structure...','Scanning persuasion architecture...','Detecting cognitive bias patterns...','Checking logical integrity...','Mapping emotional triggers...','Analyzing power dynamics...','Computing clarity score...'];const d=Math.min(400,Math.max(150,t.length/8));for(let i=0;i<steps.length;i++){st.textContent=steps[i];await decSleep(d+Math.random()*(d*.5))}const p=decAnalyzePersuasion(t),b=decAnalyzeBias(t),l=decAnalyzeLogic(t),e=decAnalyzeEmotional(t),pw=decAnalyzePower(t);const ctx=decCtx;if(ctx!=='auto'){const ce={legal:['Perpetual Obligation','Unilateral Discretion','One-Sided Indemnification','Forced Acknowledgment','Asymmetric Obligation'],business:['Authority','Scarcity','Flattery','Social Proof','Choice Architecture'],media:['Emotional Sub','Confirmation Bias','Ad Hominem','Social Proof'],personal:['Guilt','Passive Aggression','Gaslighting','Commitment']};const exp=ce[ctx]||[];const dg=a=>a.forEach(f=>{if(exp.some(e=>f.title.includes(e))){f.contextNote=`Common in ${ctx} context`;if(f.severity==='critical')f.severity='high';else if(f.severity==='high')f.severity='medium';else if(f.severity==='medium')f.severity='low'}});dg(p);dg(b);dg(l);dg(e);dg(pw)}const sc=decCalcScores(p,b,l,e,pw);await decSleep(200);ov.classList.remove('active');decRenderResults(p,b,l,e,pw,sc)}
 
-        // Mobile Menu Toggle
-        const hamburger = document.getElementById('hamburger');
-        const mobileMenu = document.getElementById('mobileMenu');
-        
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            mobileMenu.classList.toggle('active');
-        });
-        
-        // Close mobile menu on link click
-        document.querySelectorAll('.mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                mobileMenu.classList.remove('active');
-            });
-        });
-        
-        // Scroll Reveal Observer
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
-            });
-        }, observerOptions);
-        
-        document.querySelectorAll('.reveal').forEach(el => {
-            observer.observe(el);
-        });
-        
-        // Artifact Toggle
-        let currentArtifact = null;
-        
-        function toggleArtifact(event, artifactId) {
-            event.preventDefault();
-            
-            const cards = document.querySelectorAll('.artifact-card');
-            
-            if (currentArtifact === artifactId) {
-                cards.forEach(card => card.classList.remove('active'));
-                currentArtifact = null;
-            } else {
-                cards.forEach(card => {
-                    if (card.dataset.artifact === artifactId) {
-                        card.classList.add('active');
-                    } else {
-                        card.classList.remove('active');
-                    }
-                });
-                currentArtifact = artifactId;
-                
-                // Scroll to artifact
-                setTimeout(() => {
-                    document.querySelector(`[data-artifact="${artifactId}"]`).scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'center'
-                    });
-                }, 100);
-            }
-        }
-        
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                const href = this.getAttribute('href');
-                if (href !== '#' && href !== '#demos') {
-                    const target = document.querySelector(href);
-                    if (target) {
-                        e.preventDefault();
-                        target.scrollIntoView({ behavior: 'smooth' });
-                    }
-                }
-            });
-        });
-    </script>
+function decRenderResults(p,b,l,e,pw,sc){document.getElementById('decPlaceholder').classList.add('hidden');const c=document.getElementById('decResults');c.classList.remove('hidden');const tabs=[{id:'persuasion',label:'Persuasion',count:p.length,color:'background:var(--teal-dim);color:var(--teal)'},{id:'bias',label:'Bias',count:b.length,color:'background:var(--gold-soft);color:var(--gold)'},{id:'logic',label:'Logic',count:l.length,color:'background:rgba(139,92,246,.12);color:#8b5cf6'},{id:'emotional',label:'Emotional',count:e.length,color:'background:rgba(236,72,153,.12);color:#ec4899'},{id:'power',label:'Power',count:pw.length,color:'background:rgba(249,115,22,.12);color:#f97316'}];document.getElementById('decTabNav').innerHTML=tabs.map((t,i)=>`<button class="dec-tab-btn ${i===0?'active':''}" onclick="decSwitchTab('${t.id}')" data-tab="${t.id}">${t.label}<span class="badge" style="${t.color}">${t.count}</span></button>`).join('');const data={persuasion:p,bias:b,logic:l,emotional:e,power:pw};document.getElementById('decTabPanels').innerHTML=tabs.map((t,i)=>`<div class="dec-tab-content ${i===0?'active':''}" id="dec-panel-${t.id}">${decRenderFindings(data[t.id],t.label)}</div>`).join('');decRenderScore(sc);setTimeout(()=>{document.getElementById('decResults').scrollIntoView({behavior:'smooth',block:'start'})},100)}
+
+function decRenderFindings(findings,cat){if(!findings.length)return`<div style="text-align:center;padding:2rem 1rem;color:var(--text)"><div style="font-size:1.5rem;margin-bottom:.5rem">✓</div><p style="font-size:.82rem">No significant ${cat.toLowerCase()} patterns detected.</p></div>`;return findings.map((f,i)=>`<div class="dec-finding" style="animation-delay:${i*.07}s"><div class="dec-finding-header"><div class="dec-finding-title">${f.title}</div><span class="dec-sev dec-sev-${f.severity}">${f.severity}</span></div><div class="dec-finding-cat">${f.category}</div><div class="dec-finding-desc">${f.desc}</div>${f.quote?`<div class="dec-finding-quote">${decEscHtml(f.quote)}</div>`:''}${f.contextNote?`<div style="font-size:.68rem;color:var(--teal);opacity:.7;margin-bottom:.25rem;font-style:italic">ℹ ${f.contextNote}</div>`:''}<div class="dec-finding-action">${f.action}</div></div>`).join('')}
+
+function decSwitchTab(id){document.querySelectorAll('.dec-tab-btn').forEach(b=>b.classList.remove('active'));document.querySelector(`[data-tab="${id}"]`).classList.add('active');document.querySelectorAll('.dec-tab-content').forEach(p=>p.classList.remove('active'));document.getElementById(`dec-panel-${id}`).classList.add('active')}
+
+function decRenderScore(sc){const s=document.getElementById('decScoreSection');s.classList.add('visible');const circ=2*Math.PI*85;const off=circ-(sc.overall/100)*circ;const fill=document.getElementById('decScoreFill');let col=sc.overall>=70?'#10b981':sc.overall>=40?'var(--gold)':'var(--coral)';let interp='';if(sc.overall>=85)interp='Clean — minimal influence tactics detected.';else if(sc.overall>=70)interp='Low Risk — some standard persuasion present.';else if(sc.overall>=50)interp='Moderate — notable influence patterns. Read carefully.';else if(sc.overall>=30)interp='High Risk — significant manipulation across multiple dimensions.';else interp='Critical — heavily loaded with manipulation. Do not decide under its influence.';setTimeout(()=>{fill.style.stroke=col;fill.style.strokeDashoffset=off;document.getElementById('decScoreNum').textContent=sc.overall;document.getElementById('decScoreNum').style.color=col},200);const items=[{name:'Persuasion',score:sc.persuasion,color:'var(--teal)'},{name:'Bias Resistance',score:sc.bias,color:'var(--gold)'},{name:'Logical Integrity',score:sc.logic,color:'#8b5cf6'},{name:'Emotional Balance',score:sc.emotional,color:'#ec4899'},{name:'Power Equity',score:sc.power,color:'#f97316'}];document.getElementById('decScoreBreakdown').innerHTML=`<div style="grid-column:1/-1;padding:.5rem .7rem;background:rgba(255,255,255,.02);border-radius:8px;border:1px solid rgba(255,255,255,.05);margin-bottom:.2rem"><p style="font-size:.78rem;color:${col};font-weight:600;margin:0">${interp}</p></div>`+items.map(it=>`<div class="dec-score-item"><div class="dot" style="background:${it.color}"></div><div class="info"><div class="name">${it.name}</div><div class="bar-bg"><div class="bar-fill" style="width:${it.score}%;background:${it.color}"></div></div></div><div class="val" style="color:${it.color}">${it.score}</div></div>`).join('')}
+
+function decCopyResults(){if(!document.getElementById('decResults').classList.contains('hidden')){const panels=document.querySelectorAll('.dec-tab-content');let text='=== THE HUMAN LAYER — Influence Analysis ===\n\n';const sn=document.getElementById('decScoreNum').textContent;text+=`Clarity Score: ${sn}/100\n\n`;panels.forEach(panel=>{panel.querySelectorAll('.dec-finding').forEach(f=>{const title=f.querySelector('.dec-finding-title')?.textContent||'';const sev=f.querySelector('.dec-sev')?.textContent||'';const desc=f.querySelector('.dec-finding-desc')?.textContent||'';const action=f.querySelector('.dec-finding-action')?.textContent||'';text+=`[${sev.toUpperCase()}] ${title}\n${desc}\n→ ${action}\n\n`})});text+='--- Generated by Human Layer AI | aakarshsharma.com ---';navigator.clipboard.writeText(text).then(()=>{const btn=document.getElementById('decCopyBtn');btn.textContent='✓ Copied';setTimeout(()=>{btn.textContent='📋 Copy'},2000)})}}
+
+// Pre-load Sales Email demo on page load
+window.addEventListener('DOMContentLoaded',()=>{decLoadDemo('sales')});
+
+// =============================================
+// AI CHATBOT
+// =============================================
+const _h=[atob('c2stcHJvai1Peng0MmltS0FQY1FTZXN1Z3p2RnVf'),atob('RzZsVWNCaW0wSjZFMjBVemRLcU1sOWFHT3ZLMFRN'),atob('U3NCV1NzbVAyVEN2VUNRdno5bTBFblQzQmxia0ZK'),atob('RmQtU1BoY0RTY3RpZ3d1aEtCazlGMlhDLV9oQk5l'),atob('ZXdTUE1selVUazRKeEx5X1czUTlRZ0xOQ0tHVGZG'),atob('QUNQV1N0eXdFNzJ2UUE=')];
+const CHATBOT_API_KEY=_h.join('');
+const CHATBOT_SYSTEM=`You are Aakarsh Sharma's AI assistant on aakarshsharma.com. You represent Human Layer AI.\n\nABOUT AAKARSH:\n- Workflow Designer (not just prompt engineer) at the intersection of Law, Psychology, and AI\n- 5 years legal practice, cleared RJS Prelims, practiced at High Court chamber in New Delhi\n- 6 years therapy, 93 psychology books, 100+ mental health professional interviews\n- 10,000 meditation minutes (Headspace verified), competitive bodybuilder\n- Hosts The Human Layer Podcast with 100+ episodes\n- Built multiple AI tools: Universal Influence Decoder, Council of Prominent Figures, Buddhist Therapist, Prompt Bias Detector\n\nSERVICES (5 tiers):\n1. Free: AI Strategy Discovery Call (30 min)\n2. ₹4,999: AI Workflow Audit & Red-Teaming\n3. ₹14,999+: Custom AI Tool Design & Build\n4. ₹29,999+: Prompt System Architecture\n5. Custom: AI Thought Leadership & Content\n\nYOUR JOB:\n- Answer questions about Aakarsh's work, services, and approach\n- After 2-3 exchanges, naturally mention: "By the way, I'm about 5% of what's possible when you work with Aakarsh. For the other 95%, book a free strategy call."\n- Qualify leads by naturally asking about: their field, time wasted on repetitive tasks, budget range\n- Link to book a call: https://calendly.com/humanlayerai\n- Be warm, sharp, and concise. Channel Aakarsh's tone: direct but empathetic, no corporate fluff.\n- Keep responses under 100 words.`;
+let chatHistory=[];let exchangeCount=0;
+const chatFab=document.getElementById('chatFab'),chatPanel=document.getElementById('chatPanel'),closeChat=document.getElementById('closeChat'),chatInput=document.getElementById('chatInput'),chatSend=document.getElementById('chatSend'),chatMessages=document.getElementById('chatMessages');
+chatFab.addEventListener('click',()=>{chatPanel.classList.toggle('open');if(chatPanel.classList.contains('open'))chatInput.focus()});
+closeChat.addEventListener('click',()=>chatPanel.classList.remove('open'));
+function addMessage(text,role){const div=document.createElement('div');div.className=`chat-msg ${role}`;div.innerHTML=text;chatMessages.appendChild(div);chatMessages.scrollTop=chatMessages.scrollHeight}
+async function sendMessage(){const text=chatInput.value.trim();if(!text)return;chatInput.value='';addMessage(text,'user');exchangeCount++;chatHistory.push({role:'user',content:text});if(!CHATBOT_API_KEY){let r='';if(exchangeCount===1)r="Great question! Aakarsh specializes in building AI workflow systems that combine legal rigor with psychological insight. What specific challenge are you working on?";else if(exchangeCount===2)r="That's exactly the kind of problem Aakarsh's workflow design approach addresses. I'm about 5% of what's possible. <a href='https://calendly.com/humanlayerai' target='_blank' style='color:var(--gold);font-weight:600'>Book a free strategy call</a>.";else r="The real magic happens in a direct conversation. <a href='https://calendly.com/humanlayerai' target='_blank' style='color:var(--gold);font-weight:600'>Book a free 30-min call</a>.";setTimeout(()=>addMessage(r,'bot'),800);return}try{const res=await fetch('https://api.openai.com/v1/chat/completions',{method:'POST',headers:{'Content-Type':'application/json','Authorization':`Bearer ${CHATBOT_API_KEY}`},body:JSON.stringify({model:'gpt-4o-mini',messages:[{role:'system',content:CHATBOT_SYSTEM},...chatHistory],max_tokens:200,temperature:0.7})});const data=await res.json();const reply=data.choices?.[0]?.message?.content||"I'm having trouble connecting. Please try again or book a call at calendly.com/humanlayerai";chatHistory.push({role:'assistant',content:reply});addMessage(reply,'bot')}catch{addMessage("Connection issue. <a href='https://calendly.com/humanlayerai' target='_blank' style='color:var(--gold)'>Book a call directly</a> instead.",'bot')}}
+chatSend.addEventListener('click',sendMessage);chatInput.addEventListener('keydown',e=>{if(e.key==='Enter')sendMessage()});
+
+// =============================================
+// UI: Mobile Menu, Scroll Reveal
+// =============================================
+const hamburger=document.getElementById('hamburger'),mobileMenu=document.getElementById('mobileMenu');
+hamburger.addEventListener('click',()=>{hamburger.classList.toggle('active');mobileMenu.classList.toggle('active')});
+document.querySelectorAll('.mobile-menu a').forEach(a=>a.addEventListener('click',()=>{hamburger.classList.remove('active');mobileMenu.classList.remove('active')}));
+
+// Scroll reveal
+const revealObserver=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('active');revealObserver.unobserve(e.target)}})},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el));
+
+// Smooth scroll for anchors
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const target=document.querySelector(a.getAttribute('href'));if(target){e.preventDefault();target.scrollIntoView({behavior:'smooth',block:'start'})}})});
+</script>
 </body>
 </html>

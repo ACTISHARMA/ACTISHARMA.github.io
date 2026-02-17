@@ -9,15 +9,19 @@
   <meta property="og:description" content="Interactive AI artifacts exploring law, psychology, and technology.">
   <meta property="og:url" content="https://aakarshsharma.com/artifacts/">
   <link rel="canonical" href="https://aakarshsharma.com/artifacts/">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Human Layer AI">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #030410;
       --surface: #0a0e1a;
       --surface-hover: #111827;
-      --border: rgba(44, 165, 165, 0.15);
-      --teal: #2CA5A5;
+      --border: rgba(212, 160, 60, 0.15);
       --gold: #D4A03C;
+      --gold-light: #e8c068;
       --warm: #F5F0EB;
       --muted: #8b95a5;
       --navy: #1B2A4A;
@@ -37,7 +41,7 @@
       gap: 12px;
     }
     .back-nav a {
-      color: var(--teal);
+      color: var(--gold);
       text-decoration: none;
       font-size: 0.9rem;
       font-weight: 500;
@@ -58,16 +62,17 @@
       font-size: 0.75rem;
       letter-spacing: 3px;
       text-transform: uppercase;
-      color: var(--teal);
+      color: var(--gold);
       margin-bottom: 16px;
     }
     .hero h1 {
+      font-family: 'Playfair Display', serif;
       font-size: clamp(2rem, 5vw, 3.2rem);
       font-weight: 700;
       line-height: 1.15;
       margin-bottom: 16px;
     }
-    .hero h1 span { color: var(--teal); }
+    .hero h1 span { color: var(--gold); }
     .hero p {
       font-size: 1.1rem;
       color: var(--muted);
@@ -82,7 +87,7 @@
       gap: 24px;
       max-width: 1100px;
       margin: 0 auto;
-      padding: 0 40px 80px;
+      padding: 0 40px 40px;
     }
     .card {
       background: var(--surface);
@@ -99,8 +104,8 @@
     }
     .card:hover {
       transform: translateY(-4px);
-      border-color: var(--teal);
-      box-shadow: 0 12px 40px rgba(44, 165, 165, 0.1);
+      border-color: var(--gold);
+      box-shadow: 0 12px 40px rgba(212, 160, 60, 0.12);
     }
     .card-icon {
       font-size: 2.2rem;
@@ -111,8 +116,8 @@
       font-size: 0.65rem;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: var(--teal);
-      background: rgba(44, 165, 165, 0.1);
+      color: var(--gold);
+      background: rgba(212, 160, 60, 0.1);
       padding: 4px 10px;
       border-radius: 20px;
       margin-bottom: 14px;
@@ -133,20 +138,38 @@
     .card-cta {
       margin-top: 20px;
       font-size: 0.85rem;
-      color: var(--teal);
+      color: var(--gold);
       font-weight: 500;
       display: flex;
       align-items: center;
       gap: 6px;
     }
     .card:hover .card-cta { gap: 10px; }
-    /* NEW badge */
-    .badge-new {
+    /* Flagship card */
+    .card-flagship {
+      border-color: rgba(212, 160, 60, 0.35);
+      background: linear-gradient(135deg, #0a0e1a 0%, #1a1408 100%);
+      grid-column: 1 / -1;
+    }
+    .card-flagship .card-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: center;
+    }
+    @media (max-width: 768px) {
+      .card-flagship .card-inner {
+        grid-template-columns: 1fr;
+      }
+    }
+    .card-flagship:hover {
+      box-shadow: 0 16px 60px rgba(212, 160, 60, 0.15);
+    }
+    /* Badges */
+    .badge {
       position: absolute;
       top: 16px;
       right: 16px;
-      background: var(--gold);
-      color: var(--bg);
       font-size: 0.6rem;
       font-weight: 700;
       letter-spacing: 1.5px;
@@ -154,6 +177,57 @@
       padding: 3px 8px;
       border-radius: 4px;
     }
+    .badge-flagship {
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      color: var(--bg);
+    }
+    .badge-new {
+      background: var(--gold);
+      color: var(--bg);
+    }
+    /* Homescreen banner */
+    .homescreen-banner {
+      max-width: 1100px;
+      margin: 0 auto 40px;
+      padding: 0 40px;
+    }
+    .homescreen-card {
+      background: linear-gradient(135deg, #0d1117 0%, #1a1408 100%);
+      border: 1px solid rgba(212, 160, 60, 0.2);
+      border-radius: 16px;
+      padding: 28px 32px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .homescreen-icon {
+      font-size: 2rem;
+      flex-shrink: 0;
+    }
+    .homescreen-text {
+      flex: 1;
+      min-width: 200px;
+    }
+    .homescreen-text h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .homescreen-text p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .homescreen-steps {
+      font-size: 0.8rem;
+      color: var(--muted);
+      background: rgba(255,255,255,0.04);
+      padding: 10px 16px;
+      border-radius: 8px;
+      line-height: 1.6;
+    }
+    .homescreen-steps strong { color: var(--warm); }
     /* FOOTER */
     .footer {
       text-align: center;
@@ -167,13 +241,15 @@
       font-size: 0.85rem;
     }
     .footer a {
-      color: var(--teal);
+      color: var(--gold);
       text-decoration: none;
     }
     @media (max-width: 600px) {
-      .grid { padding: 0 16px 60px; gap: 16px; }
+      .grid { padding: 0 16px 40px; gap: 16px; }
       .card { padding: 24px; }
       .back-nav { padding: 16px 20px; }
+      .homescreen-banner { padding: 0 16px; }
+      .homescreen-card { padding: 20px; }
     }
   </style>
 </head>
@@ -190,22 +266,35 @@
 
   <div class="grid">
 
-    <a href="/artifacts/write-your-first-page.html" class="card">
-      <div class="card-icon">&#x1F56F;</div>
-      <div class="card-tag">Writing Tool</div>
-      <h2>Write Your First Page</h2>
-      <p>A distraction-free writing environment with flow state detection, ambient candlelight, and rotating prompts. Built for writers who struggle with the blank page.</p>
+    <!-- FLAGSHIP: Influence Decoder -->
+    <a href="/artifacts/influence-decoder.html" class="card card-flagship">
+      <div class="badge badge-flagship">FLAGSHIP</div>
+      <div class="card-inner">
+        <div>
+          <div class="card-icon">&#x1F50D;</div>
+          <div class="card-tag">Law &times; Psychology &times; AI</div>
+          <h2>Influence Decoder</h2>
+          <p>Paste any text and instantly detect 32+ manipulation tactics across 5 analysis engines: persuasion, cognitive bias, logical fallacies, emotional manipulation, and power dynamics. Built with legal reasoning frameworks and behavioral psychology. No AI API needed — runs entirely in your browser.</p>
+          <div class="card-cta">Launch artifact &rarr;</div>
+        </div>
+        <div style="text-align:center;padding:20px 0;">
+          <div style="font-size:3.5rem;opacity:0.6;">&#x1F6E1;</div>
+          <div style="font-size:0.8rem;color:var(--muted);margin-top:8px;">5 Engines &middot; 32 Patterns &middot; Zero API Calls</div>
+        </div>
+      </div>
+    </a>
+
+    <!-- Prompt Bias Detector -->
+    <a href="/artifacts/prompt-bias-detector.html" class="card">
+      <div class="badge badge-new">NEW</div>
+      <div class="card-icon">&#x1F9E0;</div>
+      <div class="card-tag">AI &times; Psychology</div>
+      <h2>Prompt Bias Detector</h2>
+      <p>Paste any AI prompt and discover hidden cognitive biases in your instructions. Uses legal reasoning frameworks and behavioral psychology to audit how you talk to AI.</p>
       <div class="card-cta">Launch artifact &rarr;</div>
     </a>
 
-    <a href="/artifacts/buddhist-therapist.html" class="card">
-      <div class="card-icon">&#x1F9D8;</div>
-      <div class="card-tag">Mental Health</div>
-      <h2>The Buddhist Therapist</h2>
-      <p>An AI-guided mindfulness experience that blends Buddhist philosophy with cognitive behavioral therapy. A contemplative space for reflection and grounding.</p>
-      <div class="card-cta">Launch artifact &rarr;</div>
-    </a>
-
+    <!-- The Council -->
     <a href="/artifacts/council.html" class="card">
       <div class="card-icon">&#x1F3DB;</div>
       <div class="card-tag">Decision Making</div>
@@ -214,15 +303,34 @@
       <div class="card-cta">Launch artifact &rarr;</div>
     </a>
 
-    <a href="/artifacts/prompt-bias-detector.html" class="card">
-      <div class="badge-new">NEW</div>
-      <div class="card-icon">&#x1F9E0;</div>
-      <div class="card-tag">AI &times; Psychology</div>
-      <h2>Prompt Bias Detector</h2>
-      <p>Paste any AI prompt and discover hidden cognitive biases in your instructions. Uses legal reasoning frameworks and behavioral psychology to audit how you talk to AI.</p>
+    <!-- Buddhist Therapist -->
+    <a href="/artifacts/buddhist-therapist.html" class="card">
+      <div class="card-icon">&#x1F9D8;</div>
+      <div class="card-tag">Mental Health</div>
+      <h2>The Buddhist Therapist</h2>
+      <p>An AI-guided mindfulness experience that blends Buddhist philosophy with cognitive behavioral therapy. A contemplative space for reflection and grounding.</p>
       <div class="card-cta">Launch artifact &rarr;</div>
     </a>
 
+    <!-- Latent Clause Analyzer -->
+    <a href="/artifacts/latent-clause.html" class="card">
+      <div class="card-icon">&#x2696;</div>
+      <div class="card-tag">Legal Tech</div>
+      <h2>Latent Clause Analyzer</h2>
+      <p>Upload or paste any contract clause and surface hidden implications, ambiguities, and power asymmetries that typical legal review misses. Legal reasoning meets pattern detection.</p>
+      <div class="card-cta">Launch artifact &rarr;</div>
+    </a>
+
+    <!-- Write Your First Page -->
+    <a href="/artifacts/write-your-first-page.html" class="card">
+      <div class="card-icon">&#x1F56F;</div>
+      <div class="card-tag">Writing Tool</div>
+      <h2>Write Your First Page</h2>
+      <p>A distraction-free writing environment with flow state detection, ambient candlelight, and rotating prompts. Built for writers who struggle with the blank page.</p>
+      <div class="card-cta">Launch artifact &rarr;</div>
+    </a>
+
+    <!-- Cognitive Distortion Analyzer -->
     <a href="https://claude.ai/public/artifacts/17c3e82c-ba9a-460b-9d11-bdaca2c05b37" class="card" target="_blank">
       <div class="card-icon">&#x1F4AD;</div>
       <div class="card-tag">Psychology &times; AI</div>
@@ -233,8 +341,32 @@
 
   </div>
 
+  <!-- Homescreen Banner -->
+  <div class="homescreen-banner" id="homescreenBanner">
+    <div class="homescreen-card">
+      <div class="homescreen-icon">&#x1F4F1;</div>
+      <div class="homescreen-text">
+        <h3>Add to Home Screen</h3>
+        <p>Get instant access to all artifacts — no app store needed.</p>
+      </div>
+      <div class="homescreen-steps">
+        <strong>iOS:</strong> Tap Share &#x2197; &rarr; Add to Home Screen<br>
+        <strong>Android:</strong> Tap &#x22EE; &rarr; Add to Home Screen
+      </div>
+    </div>
+  </div>
+
   <div class="footer">
     <p>Built by <a href="/">Aakarsh Sharma</a> &mdash; Human Layer AI</p>
   </div>
+
+  <script>
+    // Handle Android install prompt
+    let deferredPrompt;
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+    });
+  </script>
 </body>
 </html>
