@@ -272,31 +272,18 @@ footer p{font-size:.85rem;color:var(--text);margin:0}
 ::-webkit-scrollbar{width:5px}
 ::-webkit-scrollbar-track{background:transparent}
 ::-webkit-scrollbar-thumb{background:rgba(255,255,255,.08);border-radius:3px}
+.nav-dropdown{position:relative;display:inline-block}.nav-dropdown-trigger{cursor:pointer}.nav-dropdown-menu{display:none;position:absolute;right:0;top:100%;background:var(--navy,#0f1923);border:1px solid rgba(45,212,168,.2);border-radius:8px;min-width:180px;padding:.5rem 0;box-shadow:0 8px 32px rgba(0,0,0,.4);z-index:1000}.nav-dropdown:hover .nav-dropdown-menu,.nav-dropdown-menu:hover{display:block}.nav-dropdown-menu a{display:block;padding:.5rem 1rem;color:#fff;text-decoration:none;font-size:.9rem;transition:background .2s}.nav-dropdown-menu a:hover{background:rgba(45,212,168,.15);color:#2dd4a8}.client-stories-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;max-width:900px;margin:2rem auto}.client-story-card{background:rgba(15,25,35,.6);border:1px solid rgba(45,212,168,.15);border-radius:12px;padding:1.5rem;transition:transform .3s,border-color .3s}.client-story-card:hover{transform:translateY(-4px);border-color:rgba(45,212,168,.4)}.client-story-icon{font-size:2rem;margin-bottom:.5rem}.client-story-card h3{color:#2dd4a8;font-size:1.1rem;margin-bottom:.3rem}.client-industry{color:#b4bec8;font-size:.85rem;margin-bottom:.75rem;font-style:italic}.client-story-card p{font-size:.92rem;line-height:1.5;margin-bottom:.5rem}.client-result{color:#2dd4a8;font-weight:600;font-size:.95rem;margin-top:.75rem}@media(max-width:700px){.client-stories-grid{grid-template-columns:1fr}}.yt-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.2rem;margin:1rem 0 2rem}.yt-embed iframe{width:100%;aspect-ratio:16/9;border:none;border-radius:8px}.yt-title{font-size:.88rem;color:#b4bec8;margin-top:.4rem}.content-subhead{color:#2dd4a8;font-size:1.15rem;margin:2rem 0 .75rem;padding-bottom:.4rem;border-bottom:1px solid rgba(45,212,168,.2)}.medium-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1rem;margin:1rem 0 2rem}.medium-card{background:rgba(15,25,35,.6);border:1px solid rgba(212,160,60,.2);border-radius:10px;padding:1.2rem;text-decoration:none;transition:transform .3s,border-color .3s}.medium-card:hover{transform:translateY(-3px);border-color:rgba(212,160,60,.5)}.medium-card h4{color:#d4a03c;font-size:1rem;margin-bottom:.4rem}.medium-card p{color:#b4bec8;font-size:.88rem;line-height:1.4}.subscribe-row{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin:2rem 0 1rem}.testimonials-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.2rem;margin:1.5rem 0}.testimonial-card{background:rgba(15,25,35,.6);border:1px solid rgba(45,212,168,.12);border-radius:12px;padding:1.5rem}.testimonial-text{font-size:.95rem;line-height:1.6;color:#e0e0e0;font-style:italic}.testimonial-author{margin-top:1rem}.testimonial-author strong{color:#2dd4a8;display:block}.testimonial-author span{color:#b4bec8;font-size:.82rem}
 </style>
 </head>
 <body>
+<script>window.addEventListener('load',function(){if(!window.location.hash){window.scrollTo(0,0);}});</script>
+
 
 <!-- NAV -->
 <nav>
     <div class="nav-container">
         <a href="#hero" class="nav-logo">
-            <svg width="40" height="40" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-label="Human Layer AI logo">
-                <defs><linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#d4a03c"/><stop offset="100%" style="stop-color:#c4882a"/></linearGradient></defs>
-                <path d="M100 20 C85 20 72 28 68 38 C55 35 42 42 38 55 C32 72 35 95 45 115 C55 135 70 155 85 168 C92 174 100 178 100 178 C100 178 108 174 115 168 C130 155 145 135 155 115 C165 95 168 72 162 55 C158 42 145 35 132 38 C128 28 115 20 100 20Z" fill="url(#logoGrad)" opacity="0.9"/>
-                <path d="M100 20 Q105 8 118 5" stroke="#d4a03c" stroke-width="4" fill="none" stroke-linecap="round"/>
-                <path d="M112 10 Q125 5 130 15 Q120 18 112 10Z" fill="#d4a03c" opacity="0.7"/>
-                <rect x="75" y="55" width="50" height="60" rx="4" fill="#030410" opacity="0.85"/>
-                <line x1="82" y1="68" x2="118" y2="68" stroke="#d4a03c" stroke-width="2" opacity="0.5"/>
-                <line x1="82" y1="78" x2="118" y2="78" stroke="#d4a03c" stroke-width="2" opacity="0.4"/>
-                <line x1="82" y1="88" x2="110" y2="88" stroke="#d4a03c" stroke-width="2" opacity="0.3"/>
-                <line x1="82" y1="98" x2="114" y2="98" stroke="#d4a03c" stroke-width="2" opacity="0.3"/>
-                <circle cx="100" cy="60" r="18" fill="none" stroke="#d4a03c" stroke-width="1.5" opacity="0.25" stroke-dasharray="4 3"/>
-                <circle cx="92" cy="56" r="2" fill="#d4a03c" opacity="0.4"/>
-                <circle cx="108" cy="56" r="2" fill="#d4a03c" opacity="0.4"/>
-                <circle cx="100" cy="48" r="2" fill="#d4a03c" opacity="0.4"/>
-                <line x1="92" y1="56" x2="100" y2="48" stroke="#d4a03c" stroke-width="1" opacity="0.25"/>
-                <line x1="108" y1="56" x2="100" y2="48" stroke="#d4a03c" stroke-width="1" opacity="0.25"/>
-            </svg>
+            <img src="Human_Layer_AI_Cover_Art_V2.png" alt="Human Layer AI" style="height:40px;width:40px;border-radius:8px;">
             <span>Human Layer AI</span>
         </a>
         <ul class="nav-links">
@@ -304,7 +291,7 @@ footer p{font-size:.85rem;color:var(--text);margin:0}
             <li><a href="/artifacts/">Artifacts</a></li>
             <li><a href="#services">Services</a></li>
             <li><a href="#testimonials">Proof</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="pricing.html">Pricing</a><div class="nav-dropdown"><a href="#contact" class="nav-dropdown-trigger">Contact <span style="font-size:0.6em">&#9660;</span></a><div class="nav-dropdown-menu"><a href="mailto:hello@aakarshsharma.com">Email</a><a href="https://calendly.com/humanlayerai" target="_blank">Book a Call</a><a href="https://linkedin.com/in/aakarsh-sharma-ai" target="_blank">LinkedIn</a><a href="https://youtube.com/@humanlayerAI" target="_blank">YouTube</a><a href="https://instagram.com/humanlayerai" target="_blank">Instagram</a><a href="https://medium.com/@humanlayerAI" target="_blank">Medium</a><a href="https://github.com/HumanLayerAI" target="_blank">GitHub</a><a href="https://x.com/HumanLayerHQ" target="_blank">X / Twitter</a></div></div></li>
         </ul>
         <div class="nav-cta">
             <a href="#hero" class="btn btn-gold" style="padding:8px 18px;font-size:.85rem">Try Decoder</a>
@@ -387,9 +374,7 @@ footer p{font-size:.85rem;color:var(--text);margin:0}
 </section>
 
 <!-- CREDENTIALS BAR -->
-<div class="credentials reveal">
-    <p><strong>5 Years Legal Practice</strong> · <strong>RJS Prelims Cleared</strong> · <strong>10,000 Meditation Minutes</strong> · <strong>100+ Podcast Episodes</strong> · <strong>93 Psychology Books</strong> · <strong>556+ AI Sessions</strong></p>
-</div>
+<div class="credentials reveal"><p><strong>5 Years Litigation & Drafting</strong> &middot; <strong>Delhi High Court Practitioner</strong> &middot; <strong>RJS Prelims Cleared</strong> &middot; <strong>100+ Podcast Episodes</strong> &middot; <strong>550+ AI Systems Built</strong> &middot; <strong>Clients Across 4 Industries</strong></p></div>
 
 <!-- PROBLEM SECTION -->
 <section id="problem" class="reveal" style="max-width:1200px;margin:0 auto">
@@ -417,46 +402,13 @@ footer p{font-size:.85rem;color:var(--text);margin:0}
 </section>
 
 <!-- NARRATIVE BIO -->
-<section id="narrative" class="reveal">
-    <p class="section-label" style="text-align:center">The Story</p>
-    <h2 style="text-align:center">Meet The Workflow Designer</h2>
-    <div class="narrative-opener">"Everyone told me to pick a lane. I picked all of them."</div>
-    <div class="narrative-text">
-        <p>At Amity Law School, I graduated with a 6.0 GPA and went straight into the arena — five years of litigation and legal drafting, working from a High Court chamber in New Delhi. I cleared the Rajasthan Judicial Service Prelims, proving I could think on my feet under pressure. The law taught me something AI still struggles with: how to build an argument that survives cross-examination.</p>
-        <p>Then I went sideways — deliberately. Copywriting taught me persuasion from the sales side. VFX editing taught me visual storytelling. Competitive bodybuilding taught me discipline and consistency. Hosting The Human Layer Podcast for 100+ episodes taught me the art of asking questions that reveal how people actually think. Each skill wasn't a detour; it was training in human influence from a different angle.</p>
-        <p>The convergence happened when I combined 93 psychology books, 10,000 meditation minutes, and 6 years of therapy with everything else. The legal mind learned to decode cognitive biases systematically. The podcast host learned to ask the questions AI simply can't. The result: AI Workflow Design that's psychologically informed, legally defensible, and built on a genuine understanding of how humans actually think, decide, and act.</p>
-        <p>Through Human Layer AI, I build systems that survive cross-examination — not because they're clever, but because they're grounded in reality. Every prompt has a reasoning chain. Every output has an audit trail. Every system respects the messy, beautiful complexity of human cognition.</p>
-    </div>
-    <div class="tribute-card">
-        <p>Rest in peace, Dad. I now realize how hard you had to work and bought me the first laptop that helped start my journey. It's been 7 years, yet I can't imagine any number of decades where I can follow your shoes.</p>
-    </div>
-    <div class="depth-card">
-        <h3>Why This Work Has Depth</h3>
-        <p>I don't just study psychology academically — I've lived it. Six years of therapy, diagnosed conditions I've learned to work with, and a deep personal investment in understanding how the mind actually works. That's not a vulnerability. It's a competitive advantage.</p>
-        <div class="depth-stats">
-            <div class="depth-stat"><span class="num">6</span><span class="label">Years of Therapy</span></div>
-            <div class="depth-stat"><span class="num">93</span><span class="label">Psychology Books</span></div>
-            <div class="depth-stat"><span class="num">100+</span><span class="label">Professionals Interviewed</span></div>
-        </div>
-    </div>
-    <p class="family-note">With thanks to Mom and my brother — for holding the ground while I figured out the sky.</p>
-</section>
-
-<!-- FEATURED ARTIFACTS -->
-<section id="demos" class="reveal" style="max-width:1200px;margin:0 auto">
+<section id="narrative" class="reveal"><p class="section-label" style="text-align:center">The Story</p><h2 style="text-align:center">Give Me a Problem. I&rsquo;ll Build You a System.</h2><div style="max-width:700px;margin:2rem auto;border-radius:12px;overflow:hidden;aspect-ratio:16/9;"><video controls preload="metadata" poster="hero-poster.jpg" style="width:100%;height:100%;object-fit:cover;"><source src="hero-web.mp4" type="video/mp4"></video></div><div class="client-stories-grid"><div class="client-story-card"><div class="client-story-icon">&#9878;&#65039;</div><h3>The Litigation Firm Drowning in Precedent</h3><p class="client-industry">Legal &middot; Delhi NCR</p><p><strong>Problem:</strong> Senior partners spent 4+ hours per brief hunting for relevant case law. Junior associates kept citing overruled judgments.</p><p><strong>System Built:</strong> A hallucination-resistant research pipeline with source-anchored prompts, automatic citation verification, and reviewer checkpoints.</p><p class="client-result">&rarr; Research time cut by 60%. Zero citation errors in 3 months.</p></div><div class="client-story-card"><div class="client-story-icon">&#128640;</div><h3>The SaaS Startup Bleeding Support Tickets</h3><p class="client-industry">Tech Startup &middot; Remote</p><p><strong>Problem:</strong> A 12-person team handling 200+ support tickets daily. Their chatbot gave wrong answers 40% of the time.</p><p><strong>System Built:</strong> A multi-layer AI triage system with intent classification, scope-constrained responses, and mandatory knowledge-base grounding.</p><p class="client-result">&rarr; Chatbot accuracy jumped to 91%. Ticket volume dropped 45%.</p></div><div class="client-story-card"><div class="client-story-icon">&#128203;</div><h3>The Recruiter Who Couldn&rsquo;t Scale Screening</h3><p class="client-industry">HR / Recruitment &middot; Hybrid</p><p><strong>Problem:</strong> An independent recruiter reviewed 300+ resumes per role manually, missing strong candidates in poorly formatted CVs.</p><p><strong>System Built:</strong> A structured extraction workflow normalising any resume format into a scoring matrix weighted against role-specific criteria.</p><p class="client-result">&rarr; Screening time reduced by 70%. Placement quality up 25%.</p></div><div class="client-story-card"><div class="client-story-icon">&#127909;</div><h3>The Creator Struggling with Consistency</h3><p class="client-industry">Content &middot; YouTube / Newsletter</p><p><strong>Problem:</strong> A solo creator with 50K subscribers couldn&rsquo;t maintain weekly output. AI drafts sounded generic and lost their voice.</p><p><strong>System Built:</strong> A voice-calibrated content engine fed with 40+ past scripts to extract tone patterns, argument structure, and vocabulary fingerprint.</p><p class="client-result">&rarr; Publishing cadence doubled. Audience engagement up 35%.</p></div></div></section>
+        <section id="demos" class="reveal" style="max-width:1200px;margin:0 auto">
     <div class="container">
         <p class="section-label">Live Artifacts</p>
         <h2>Tools I Built</h2>
         <p class="subtitle">These aren't mockups. They're working tools. The Influence Decoder above is just the beginning.</p>
         <div class="artifacts-featured">
-            <div class="artifact-card">
-                <iframe src="artifacts/prompt-bias-detector.html" loading="lazy" title="Prompt Bias Detector"></iframe>
-                <div class="card-body">
-                    <h3>Prompt Bias Detector</h3>
-                    <p>Paste any AI prompt and discover hidden cognitive biases in your instructions. Built with legal reasoning frameworks.</p>
-                    <a href="artifacts/prompt-bias-detector.html" target="_blank" class="card-link">Try It &rarr;</a>
-                </div>
-            </div>
             <div class="artifact-card">
                 <iframe src="artifacts/council.html" loading="lazy" title="Council of Prominent Figures"></iframe>
                 <div class="card-body">
@@ -514,73 +466,9 @@ footer p{font-size:.85rem;color:var(--text);margin:0}
 </section>
 
 <!-- TESTIMONIALS -->
-<section id="testimonials" class="reveal" style="max-width:1200px;margin:0 auto">
-    <div class="container">
-        <p class="section-label">Proof</p>
-        <h2>Professional Recommendations</h2>
-        <div class="testimonials-grid">
-            <div class="testimonial-card">
-                <div class="quote">"Aakarsh has an uncanny ability to break down complex AI concepts and tie them back to real human psychology. His approach to workflow design isn't just technical — it's deeply empathetic and grounded in how people actually think and work."</div>
-                <div class="author">Krish Kishore</div>
-                <div class="role">Technology Leader</div>
-            </div>
-            <div class="testimonial-card">
-                <div class="quote">"What sets Aakarsh apart is his legal mind applied to AI. While everyone else is prompt-engineering by trial and error, he's building systems with the rigor of a legal argument. Every output has a reasoning chain you can actually follow."</div>
-                <div class="author">Aariz Sajan</div>
-                <div class="role">Entrepreneur &amp; Strategist</div>
-            </div>
-            <div class="testimonial-card">
-                <div class="quote">"The podcast episode we did together was one of the most intellectually stimulating conversations I've had. Aakarsh brings a rare combination of psychological depth and technological fluency that makes his perspective genuinely unique."</div>
-                <div class="author">Saba Khanam</div>
-                <div class="role">Mental Health Professional</div>
-            </div>
-            <div class="testimonial-card">
-                <div class="quote">"I was skeptical about AI consulting until I saw Aakarsh's approach. He doesn't just tell you what AI can do — he shows you what it's doing wrong and how to fix it. The audit he did on our workflows saved us months of misdirected effort."</div>
-                <div class="author">Krupa Nishar</div>
-                <div class="role">Business Professional</div>
-            </div>
-        </div>
-        <div class="linkedin-cta">
-            <a href="https://linkedin.com/in/aakarsh-sharma-ai/details/recommendations/" target="_blank" class="btn btn-secondary">See All Recommendations on LinkedIn &rarr;</a>
-        </div>
-    </div>
-</section>
-
-<!-- CONTENT HUB -->
-<section id="content" class="reveal" style="max-width:1200px;margin:0 auto">
-    <div class="container">
-        <p class="section-label">Content</p>
-        <h2>Watch, Listen, Follow</h2>
-        <div class="content-grid">
-            <a href="https://youtube.com/@humanlayerAI" target="_blank" class="content-card">
-                <div class="icon">📺</div>
-                <h3>YouTube</h3>
-                <p>@humanlayerAI — Episodes, interviews, and AI workflow breakdowns.</p>
-                <span class="link">Watch on YouTube &rarr;</span>
-            </a>
-            <a href="https://medium.com/@humanlayerai" target="_blank" class="content-card">
-                <div class="icon">📝</div>
-                <h3>Medium</h3>
-                <p>@humanlayerai — Long-form articles on law, psychology, and AI systems.</p>
-                <span class="link">Read on Medium &rarr;</span>
-            </a>
-            <a href="https://instagram.com/humanlayerai" target="_blank" class="content-card">
-                <div class="icon">📸</div>
-                <h3>Instagram</h3>
-                <p>@humanlayerai — AI insights, behind-the-scenes, and psychology breakdowns.</p>
-                <span class="link">Follow on Instagram &rarr;</span>
-            </a>
-        </div>
-        <div class="podcast-banner">
-            <h3>🎙️ The Human Layer Podcast</h3>
-            <p>100+ Conversations with Experts Who Think Differently</p>
-            <a href="https://youtube.com/@humanlayerAI" target="_blank" class="btn btn-gold">Listen Now &rarr;</a>
-        </div>
-    </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact" class="reveal" style="max-width:1200px;margin:0 auto">
+<section id="testimonials" class="reveal"><div class="container"><p class="section-label" style="text-align:center">Proof</p><h2 style="text-align:center">Professional Recommendations</h2><div class="testimonials-grid"><div class="testimonial-card"><p class="testimonial-text">&ldquo;Working with Aakarsh on the Human Layer AI podcast was such a smooth experience. He combines strong work ethic with clarity and professionalism&mdash;everything was delivered on time, and his follow-ups were consistent and proactive.&rdquo;</p><div class="testimonial-author"><strong>Vidhi Khaitan</strong><span>Founder, AI Simplified &middot; Ex-Google, Ex-Pinterest</span></div></div><div class="testimonial-card"><p class="testimonial-text">&ldquo;Aakarsh has a rare ability to ask sharp, well-researched questions while making the discussion feel natural and engaging.&rdquo;</p><div class="testimonial-author"><strong>Krish Kishore</strong><span>Building</span></div></div><div class="testimonial-card"><p class="testimonial-text">&ldquo;It was obvious from the start that he was extremely well educated on AI&rsquo;s applications, and it was evident he is seeking truth more than short-lived vanity.&rdquo;</p><div class="testimonial-author"><strong>Aariz Sajan</strong><span>BSc CS with AI &middot; AI Educator</span></div></div><div class="testimonial-card"><p class="testimonial-text">&ldquo;An entrepreneur with fresh ideas who is eager to learn from people from all walks of life. The best host who simply allows you to speak freely and openly.&rdquo;</p><div class="testimonial-author"><strong>Krupa Nishar</strong><span>Forensic Psychologist &middot; TEDx Speaker</span></div></div><div class="testimonial-card"><p class="testimonial-text">&ldquo;A very modest and talented podcaster.&rdquo;</p><div class="testimonial-author"><strong>Saba Khanam</strong><span>Counselor, VIT-AP &middot; AIR 286 GATE Psychology &middot; Gold Medalist</span></div></div></div><div style="text-align:center;margin-top:1.5rem;"><a href="https://linkedin.com/in/aakarsh-sharma-ai" target="_blank" class="btn btn-outline">View All on LinkedIn &rarr;</a></div></div></section>
+        <section id="content" class="reveal"><div class="container"><p class="section-label" style="text-align:center">Content</p><h2 style="text-align:center">Watch, Listen, Follow</h2><h3 class="content-subhead">Most Popular Episodes</h3><div class="yt-grid"><div class="yt-embed"><iframe src="https://www.youtube.com/embed/io5bv3uRpfc" title="Criminal Psychology" loading="lazy" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe><p class="yt-title">Criminal Psychology: The Secret Science of Indian Crime</p></div><div class="yt-embed"><iframe src="https://www.youtube.com/embed/wq99a5yQ8cA" title="Childhood Trauma" loading="lazy" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe><p class="yt-title">How Childhood Trauma Changes Your Brain</p></div><div class="yt-embed"><iframe src="https://www.youtube.com/embed/u-z4MkBG_A8" title="Podcasting Psychology" loading="lazy" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe><p class="yt-title">The Secrets Behind Podcasting Psychology</p></div><div class="yt-embed"><iframe src="https://www.youtube.com/embed/XXlZ0byoYTk" title="Mind of a Psychiatrist" loading="lazy" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe><p class="yt-title">Inside the Mind of a Psychiatrist</p></div><div class="yt-embed"><iframe src="https://www.youtube.com/embed/qXuoHDqLtsw" title="Cognitive Psychology" loading="lazy" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe><p class="yt-title">Why Cognitive Psychology is the Future of Mental Health</p></div></div><h3 class="content-subhead">Latest Episodes</h3><div class="yt-grid"><div class="yt-embed"><iframe src="https://www.youtube.com/embed/nRTpkEP8OYU" title="Krish" loading="lazy" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe><p class="yt-title">This 21-Year-Old Is Fixing College Placements</p></div><div class="yt-embed"><iframe src="https://www.youtube.com/embed/9MpdxX6xhRI" title="Vidhi" loading="lazy" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe><p class="yt-title">Ex-Google PM: Why AI Fails in Chaos</p></div><div class="yt-embed"><iframe src="https://www.youtube.com/embed/3Ql-E_8vgfo" title="Buddhist" loading="lazy" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe><p class="yt-title">The Buddhist Therapist Concept</p></div><div class="yt-embed"><iframe src="https://www.youtube.com/embed/gDFdGOG3buM" title="Aariz" loading="lazy" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe><p class="yt-title">Why AI Getting Easier is Making Clients Struggle MORE</p></div><div class="yt-embed"><iframe src="https://www.youtube.com/embed/blC0hzisgLg" title="Prompt" loading="lazy" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe><p class="yt-title">What is a Prompt?</p></div></div><h3 class="content-subhead">From the Blog</h3><div class="medium-grid"><a href="https://medium.com/@humanlayerAI/write-a-book-dont-publish-it-becf4870cc50" target="_blank" class="medium-card"><h4>Write a Book. Don&rsquo;t Publish It.</h4><p>Why the act of writing itself is the real product.</p></a><a href="https://medium.com/@humanlayerAI/exercise-meditation-and-therapy-the-only-sentence-you-need-e81dd4b7c03e" target="_blank" class="medium-card"><h4>Exercise, Meditation, and Therapy</h4><p>The only sentence you need for mental health.</p></a><a href="https://medium.com/@humanlayerAI/what-rationing-meals-taught-me-about-designing-ai-workflows-97e1e56b129f" target="_blank" class="medium-card"><h4>What Rationing Meals Taught Me About AI Workflows</h4><p>Scarcity thinking applied to system design.</p></a><a href="https://medium.com/@humanlayerAI/why-i-stopped-asking-ai-for-answers-and-started-building-a-council-ba99c88fac01" target="_blank" class="medium-card"><h4>Why I Stopped Asking AI for Answers</h4><p>And started building a council instead.</p></a></div><div style="text-align:center;margin:1.5rem 0;"><a href="https://instagram.com/humanlayerai" target="_blank" class="btn btn-outline">Follow @humanlayerai on Instagram &rarr;</a></div><div class="subscribe-row"><a href="https://youtube.com/@humanlayerAI" target="_blank" class="btn btn-outline">Subscribe on YouTube</a><a href="https://medium.com/@humanlayerAI" target="_blank" class="btn btn-outline">Follow on Medium</a></div></div></section>
+        <section id="contact" class="reveal" style="max-width:1200px;margin:0 auto">
     <div class="container">
         <p class="section-label">Connect</p>
         <h2>Let's Connect</h2>
