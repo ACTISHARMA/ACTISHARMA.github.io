@@ -375,7 +375,6 @@ const ENGINE_COLORS={pers:'var(--orange)',bias:'var(--purple)',logic:'var(--cyan
 const ENGINE_LABELS={pers:'Persuasion',bias:'Bias',logic:'Logic',emo:'Emotional',power:'Power'};
 const CTX_ICONS={dating:'💘',personal:'💬',business:'💼',legal:'📜',crypto:'🪙',scam:'🚨',harassment:'🚩'};
 
-const API_KEY='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';
 
 const PRIMARY_PRESETS=['dating','guilt','whatsapp','catfish','workfavor'];
 const PRESETS={
@@ -548,9 +547,9 @@ Return ONLY valid JSON (no markdown, no code fences) with this exact structure:
   "legal_notes": ["<Array of legal observations>"]
 }`;
 
-    const response=await fetch('https://api.openai.com/v1/chat/completions',{
+    const response=await fetch('https://old-feather-2b4ehf-proxy.actisharma.workers.dev/',{
       method:'POST',
-      headers:{'Content-Type':'application/json','Authorization':`Bearer ${API_KEY}`},
+      headers:{'Content-Type':'application/json'},
       body:JSON.stringify({
         model:'gpt-4o-mini',
         messages:[
