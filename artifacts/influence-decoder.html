@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
-<title>The Human Filter — See Through Any Message | Human Layer AI</title>
-<meta name="description" content="Paste any message or upload a screenshot and see every manipulation tactic, cognitive bias, logical fallacy, and power play hidden inside. Built with legal reasoning and behavioral psychology.">
-<meta property="og:title" content="The Human Filter — See Through Any Message">
+<title>The Human Filter v4.0 — See Through Any Message | Human Layer AI</title>
+<meta name="description" content="Paste any message or upload a screenshot and see every manipulation tactic, cognitive bias, logical fallacy, and power play hidden inside. Built with legal reasoning and behavioral psychology. Powered by GPT-4o-mini.">
+<meta property="og:title" content="The Human Filter v4.0 — See Through Any Message">
 <meta property="og:description" content="Paste any message and reveal hidden manipulation tactics through 5 analysis engines.">
 <meta property="og:url" content="https://aakarshsharma.com/artifacts/influence-decoder.html">
 <meta property="og:type" content="website">
@@ -18,11 +18,11 @@
 :root{
   --navy:#0f1923;--navy-light:#162333;--navy-lighter:#1d2e42;--navy-card:#12202e;
   --teal:#2dd4a8;--teal-dim:rgba(45,212,168,0.12);--teal-glow:rgba(45,212,168,0.3);
-  --gold:#d4a03c;--gold-dim:rgba(212,160,60,0.12);
+  --gold:#d4a03c;--gold-dim:rgba(212,160,60,0.12);--gold-glow:rgba(212,160,60,0.3);
   --purple:#8b5cf6;--purple-dim:rgba(139,92,246,0.12);
-  --red:#ef4444;--red-dim:rgba(239,68,68,0.12);--red-soft:#ff6b6b;
+  --red:#ef4444;--red-dim:rgba(239,68,68,0.12);--red-soft:#ff6b6b;--red-glow:rgba(239,68,68,0.3);
   --orange:#f97316;--orange-dim:rgba(249,115,22,0.12);
-  --green:#10b981;--green-dim:rgba(16,185,129,0.12);
+  --green:#10b981;--green-dim:rgba(16,185,129,0.12);--green-glow:rgba(16,185,129,0.3);
   --pink:#ec4899;--pink-dim:rgba(236,72,153,0.12);
   --cyan:#06b6d4;--cyan-dim:rgba(6,182,212,0.12);
   --yellow:#eab308;--yellow-dim:rgba(234,179,8,0.12);
@@ -34,7 +34,6 @@
 html{scroll-behavior:smooth}
 body{font-family:var(--font-body);background:var(--dark-bg);color:var(--white);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 
-/* HEADER */
 .header{position:sticky;top:0;z-index:100;padding:10px 16px;background:rgba(12,18,28,0.95);backdrop-filter:blur(16px);border-bottom:1px solid rgba(45,212,168,0.08);display:flex;align-items:center;justify-content:space-between}
 .header-brand{display:flex;align-items:center;gap:8px}
 .logo-text{font-family:var(--font-display);font-size:1rem;color:var(--gold)}
@@ -44,14 +43,12 @@ body{font-family:var(--font-body);background:var(--dark-bg);color:var(--white);l
 .header-links a:hover{color:var(--teal)}
 .btn-cta{background:var(--gold);color:var(--navy);font-weight:600;font-size:0.7rem;padding:7px 14px;border-radius:20px;text-decoration:none;letter-spacing:0.5px}
 
-/* HERO */
 .hero{text-align:center;padding:28px 16px 16px;max-width:700px;margin:0 auto}
 .hero-badge{display:inline-block;font-size:0.65rem;letter-spacing:2px;text-transform:uppercase;color:var(--teal);padding:5px 14px;border:1px solid var(--teal-dim);border-radius:20px;margin-bottom:10px}
 .hero h1{font-family:var(--font-display);font-size:clamp(1.6rem,4.5vw,2.5rem);line-height:1.15;margin-bottom:8px}
 .hero h1 .accent{color:var(--gold);font-style:italic}
 .hero-desc{color:var(--gray-light);font-size:clamp(0.78rem,2.2vw,0.88rem);max-width:500px;margin:0 auto}
 
-/* ===== INPUT SECTION (Screenshot-first) ===== */
 .input-section{max-width:700px;margin:0 auto;padding:0 12px 12px}
 .input-dual{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
 @media(max-width:480px){.input-dual{grid-template-columns:1fr}}
@@ -69,7 +66,6 @@ body{font-family:var(--font-body);background:var(--dark-bg);color:var(--white);l
 .input-area::placeholder{color:rgba(148,163,184,0.3);font-style:italic;font-size:0.78rem}
 input[type="file"]{display:none}
 
-/* PRESETS (5 visible + More) */
 .presets-wrap{max-width:700px;margin:0 auto;padding:0 12px 10px}
 .presets{display:flex;flex-wrap:wrap;gap:5px;justify-content:center}
 .preset-chip{display:inline-flex;align-items:center;gap:4px;font-size:0.66rem;padding:5px 10px;border-radius:20px;border:1px solid var(--navy-lighter);background:var(--navy-light);color:var(--gray-light);cursor:pointer;transition:var(--transition);white-space:nowrap;-webkit-tap-highlight-color:transparent}
@@ -79,12 +75,11 @@ input[type="file"]{display:none}
 .presets-extra{display:none;flex-wrap:wrap;gap:5px;justify-content:center;margin-top:5px}
 .presets-extra.show{display:flex}
 
-/* DECODE BUTTON */
 .decode-btn{display:block;width:calc(100% - 24px);max-width:676px;margin:0 auto 14px;padding:13px;font-size:0.88rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--navy);background:linear-gradient(135deg,var(--gold),#e8b84a);border:none;border-radius:var(--radius);cursor:pointer;transition:var(--transition);-webkit-tap-highlight-color:transparent}
 .decode-btn:hover{filter:brightness(1.1);transform:translateY(-1px);box-shadow:0 4px 20px rgba(212,160,60,0.3)}
 .decode-btn:active{transform:translateY(0)}
+.decode-btn:disabled{opacity:0.6;cursor:not-allowed}
 
-/* SCAN OVERLAY */
 .scan-overlay{position:fixed;inset:0;z-index:999;background:rgba(12,18,28,0.96);display:none;align-items:center;justify-content:center;flex-direction:column;gap:16px}
 .scan-overlay.active{display:flex}
 .scan-spinner{width:44px;height:44px;border:3px solid var(--navy-lighter);border-top-color:var(--teal);border-radius:50%;animation:spin 0.8s linear infinite}
@@ -93,15 +88,14 @@ input[type="file"]{display:none}
 @keyframes spin{to{transform:rotate(360deg)}}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
 
-/* ============ RESULTS ============ */
 .results{display:none;max-width:700px;margin:0 auto;padding:0 12px 40px}
 .results.visible{display:block}
 
-/* ===== SCORE CARD (shareable, screenshot-ready) ===== */
 .score-card{background:linear-gradient(145deg,var(--navy-card),var(--navy-light));border:1px solid var(--navy-lighter);border-radius:var(--radius-lg);padding:20px;margin-bottom:14px;text-align:center;position:relative;overflow:hidden;opacity:0;transform:translateY(16px);transition:all 0.6s cubic-bezier(0.4,0,0.2,1)}
 .score-card.anim-in{opacity:1;transform:translateY(0)}
 .score-card::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:conic-gradient(from 0deg,transparent,rgba(45,212,168,0.03),transparent,rgba(212,160,60,0.03),transparent);animation:cardShimmer 8s linear infinite}
 @keyframes cardShimmer{to{transform:rotate(360deg)}}
+.score-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:140px;height:140px;border-radius:50%;opacity:0;pointer-events:none}
 .sc-ctx{display:inline-flex;align-items:center;gap:5px;font-size:0.62rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray);padding:4px 10px;border:1px solid var(--navy-lighter);border-radius:12px;margin-bottom:12px;position:relative}
 .sc-ctx-icon{font-size:0.8rem}
 .sc-score-wrap{position:relative;width:110px;height:110px;margin:0 auto 12px}
@@ -111,6 +105,7 @@ input[type="file"]{display:none}
 .sc-num-wrap{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column}
 .sc-num{font-size:2.2rem;font-weight:900;line-height:1;font-family:var(--font-body)}
 .sc-label{font-size:0.55rem;color:var(--gray);letter-spacing:1.5px;text-transform:uppercase;margin-top:2px}
+.sc-verdict{font-size:0.78rem;color:var(--white);line-height:1.5;margin:10px auto;padding:10px 12px;background:rgba(212,160,60,0.08);border:1px solid rgba(212,160,60,0.15);border-radius:var(--radius-sm);border-left:3px solid var(--gold);font-style:italic}
 .sc-tactics{display:flex;flex-wrap:wrap;gap:5px;justify-content:center;margin-bottom:10px}
 .sc-tactic{font-size:0.6rem;padding:3px 9px;border-radius:10px;display:flex;align-items:center;gap:3px}
 .sc-sub{display:flex;flex-wrap:wrap;gap:5px;justify-content:center}
@@ -120,7 +115,6 @@ input[type="file"]{display:none}
 
 .section-head{font-size:0.7rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray);margin-bottom:8px;display:flex;align-items:center;gap:6px}
 
-/* ===== X-RAY DUAL PANE ===== */
 .xray{background:var(--navy-card);border:1px solid var(--navy-lighter);border-radius:var(--radius-lg);overflow:hidden;margin-bottom:14px;opacity:0;transform:translateY(16px);transition:all 0.6s cubic-bezier(0.4,0,0.2,1) 0.15s}
 .xray.anim-in{opacity:1;transform:translateY(0)}
 .xray-tabs{display:flex;border-bottom:1px solid var(--navy-lighter)}
@@ -169,7 +163,6 @@ input[type="file"]{display:none}
 .decoded-line.d-green{color:var(--green);background:rgba(16,185,129,0.06)}
 .decoded-line.d-gray{color:var(--gray);background:transparent}
 
-/* ===== VIBE CHECK (was: Sender Profile) ===== */
 .vibe-check{background:var(--navy-card);border:1px solid var(--navy-lighter);border-radius:var(--radius-lg);padding:14px;margin-bottom:14px;display:grid;grid-template-columns:1fr 1fr;gap:10px;opacity:0;transform:translateY(16px);transition:all 0.6s cubic-bezier(0.4,0,0.2,1) 0.3s}
 .vibe-check.anim-in{opacity:1;transform:translateY(0)}
 @media(max-width:480px){.vibe-check{grid-template-columns:1fr}}
@@ -177,7 +170,6 @@ input[type="file"]{display:none}
 .vibe-label{font-size:0.58rem;letter-spacing:1px;text-transform:uppercase;color:var(--gray)}
 .vibe-value{font-size:0.78rem;font-weight:600;color:var(--white)}
 
-/* ===== FINDINGS TABS ===== */
 .findings{background:var(--navy-card);border:1px solid var(--navy-lighter);border-radius:var(--radius-lg);overflow:hidden;margin-bottom:14px;opacity:0;transform:translateY(16px);transition:all 0.6s cubic-bezier(0.4,0,0.2,1) 0.45s}
 .findings.anim-in{opacity:1;transform:translateY(0)}
 .f-tabs{display:flex;overflow-x:auto;border-bottom:1px solid var(--navy-lighter);-webkit-overflow-scrolling:touch;scrollbar-width:none}
@@ -189,8 +181,11 @@ input[type="file"]{display:none}
 .f-cnt{font-size:0.52rem;padding:1px 5px;border-radius:8px;background:var(--navy-lighter);color:var(--gray);vertical-align:middle}
 .f-tab.active .f-cnt{background:var(--teal-dim);color:var(--teal)}
 .f-body{padding:12px}
-.f-card{background:var(--navy-light);border:1px solid var(--navy-lighter);border-radius:var(--radius);padding:11px;margin-bottom:9px}
+.f-card{background:var(--navy-light);border:1px solid var(--navy-lighter);border-left:3px solid var(--teal);border-radius:var(--radius);padding:11px;margin-bottom:9px}
 .f-card:last-child{margin-bottom:0}
+.f-card.high{border-left-color:var(--red)}
+.f-card.medium{border-left-color:var(--orange)}
+.f-card.low{border-left-color:var(--teal)}
 .f-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:3px}
 .f-name-wrap{display:flex;align-items:center;gap:5px}
 .f-icon{font-size:0.9rem}
@@ -207,30 +202,27 @@ input[type="file"]{display:none}
 .f-ask{font-size:0.68rem;color:var(--gold);display:flex;gap:4px;align-items:flex-start}
 .f-ask::before{content:'→';font-weight:700;flex-shrink:0}
 
-/* RESPONSE */
 .response{background:var(--navy-card);border:1px solid var(--navy-lighter);border-radius:var(--radius-lg);padding:14px;margin-bottom:14px;opacity:0;transform:translateY(16px);transition:all 0.6s cubic-bezier(0.4,0,0.2,1) 0.55s}
 .response.anim-in{opacity:1;transform:translateY(0)}
 .response-text{font-family:var(--font-mono);font-size:0.76rem;color:var(--teal);line-height:1.5;padding:9px;background:rgba(45,212,168,0.04);border-radius:var(--radius-sm);border:1px solid var(--teal-dim)}
 .response-copy{font-size:0.62rem;color:var(--gray);cursor:pointer;margin-top:5px;text-align:right}
 .response-copy:hover{color:var(--teal)}
 
-/* LEGAL */
 .legal-box{background:var(--navy-card);border:1px solid rgba(6,182,212,0.2);border-radius:var(--radius-lg);padding:14px;margin-bottom:14px;opacity:0;transform:translateY(16px);transition:all 0.6s cubic-bezier(0.4,0,0.2,1) 0.6s}
 .legal-box.anim-in{opacity:1;transform:translateY(0)}
 .legal-item{font-size:0.72rem;color:var(--cyan);margin-bottom:5px;display:flex;gap:5px;align-items:flex-start;line-height:1.45}
 .legal-item::before{content:'⚖️';flex-shrink:0}
 .legal-item:last-child{margin-bottom:0}
 
-/* COPY */
 .copy-btn{display:flex;align-items:center;gap:6px;margin:0 auto;padding:10px 20px;font-size:0.72rem;font-weight:600;color:var(--teal);background:var(--teal-dim);border:1px solid rgba(45,212,168,0.2);border-radius:var(--radius);cursor:pointer;transition:var(--transition)}
 .copy-btn:hover{background:rgba(45,212,168,0.2)}
 
-/* FOOTER */
+.error-msg{background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);border-radius:var(--radius);padding:12px;margin:0 auto 14px;max-width:676px;font-size:0.75rem;color:var(--red-soft)}
+
 .footer{text-align:center;padding:20px 12px;border-top:1px solid var(--navy-lighter);margin-top:16px}
 .footer p{font-size:0.65rem;color:var(--gray)}
 .footer a{color:var(--gold);text-decoration:none}
 
-/* MOBILE */
 @media(max-width:480px){
   .header{padding:8px 12px}
   .header-links a:not(.btn-cta){display:none}
@@ -247,7 +239,6 @@ input[type="file"]{display:none}
   .sc-num{font-size:1.9rem}
 }
 
-/* ===== EMBED MODE (?embed=true) ===== */
 body.embed-mode .header{display:none}
 body.embed-mode .hero{padding:10px 12px 8px}
 body.embed-mode .hero-badge{display:none}
@@ -281,6 +272,8 @@ body.embed-mode{overflow:hidden}
 
 .embed-cta{display:none;text-align:center;margin:4px auto;padding:8px 18px;font-size:0.72rem;font-weight:600;color:var(--gold);text-decoration:none;letter-spacing:0.5px}
 .embed-cta:hover{text-decoration:underline}
+
+.rate-limit-notice{background:rgba(212,160,60,0.1);border:1px solid rgba(212,160,60,0.3);border-radius:var(--radius);padding:10px;margin:0 auto 12px;max-width:676px;font-size:0.7rem;color:var(--gold);text-align:center}
 </style>
 </head>
 <body>
@@ -295,12 +288,11 @@ body.embed-mode{overflow:hidden}
 </header>
 
 <section class="hero">
-  <div class="hero-badge">● The Human Filter</div>
+  <div class="hero-badge">● The Human Filter v4.0</div>
   <h1>What Are They <span class="accent">Really</span> Saying?</h1>
-  <p class="hero-desc">Screenshot a message or paste it in. Every sentence gets X-rayed through 5 engines: persuasion, bias, logic, emotional manipulation, and power dynamics.</p>
+  <p class="hero-desc">Screenshot a message or paste it in. Every sentence gets X-rayed through 5 engines: persuasion, bias, logic, emotional manipulation, and power dynamics — powered by GPT-4o-mini.</p>
 </section>
 
-<!-- ===== INPUT: Screenshot-first ===== -->
 <section class="input-section">
   <div class="input-dual">
     <label class="upload-zone" for="ocrFile" id="uploadZone">
@@ -320,7 +312,6 @@ body.embed-mode{overflow:hidden}
   <div class="ocr-status" id="ocrStatus"></div>
 </section>
 
-<!-- ===== PRESETS (5 visible + More) ===== -->
 <div class="presets-wrap">
   <div class="presets" id="presets"></div>
   <div class="presets-extra" id="presetsExtra"></div>
@@ -334,19 +325,20 @@ body.embed-mode{overflow:hidden}
   <div class="scan-step" id="scanStep"></div>
 </div>
 
-<!-- ======= RESULTS ======= -->
 <section class="results" id="results">
+  <div id="errorMsg"></div>
+  <div id="rateLimitMsg"></div>
 
-  <!-- SCORE CARD (shareable) -->
   <div class="score-card" id="scoreCard">
+    <div class="score-glow" id="scoreGlow"></div>
     <div class="sc-ctx" id="scCtx"><span class="sc-ctx-icon" id="scCtxIcon"></span><span id="scCtxLabel"></span></div>
     <div class="sc-score-wrap"><svg viewBox="0 0 36 36"><circle class="sc-ring-bg" cx="18" cy="18" r="15"/><circle class="sc-ring-fill" id="scRing" cx="18" cy="18" r="15" stroke-dasharray="94.25" stroke-dashoffset="94.25"/></svg><div class="sc-num-wrap"><span class="sc-num" id="scNum">0</span><span class="sc-label">Influence</span></div></div>
+    <div class="sc-verdict" id="scVerdict"></div>
     <div class="sc-tactics" id="scTactics"></div>
     <div class="sc-sub" id="scEngines"></div>
-    <div class="sc-watermark">analyzed by the human filter · humanlayerai.com</div>
+    <div class="sc-watermark">analyzed by the human filter v4.0 · humanlayerai.com</div>
   </div>
 
-  <!-- X-RAY -->
   <div class="xray" id="xray">
     <div class="xray-tabs">
       <div class="xray-tab t-original active" data-pane="orig">Original (Annotated)</div>
@@ -358,16 +350,12 @@ body.embed-mode{overflow:hidden}
     </div>
   </div>
 
-  <!-- VIBE CHECK -->
   <div class="vibe-check" id="vibeCheck"></div>
 
-  <!-- FINDINGS -->
   <div class="findings" id="findingsWrap"><div class="f-tabs" id="fTabs"></div><div class="f-body" id="fBody"></div></div>
 
-  <!-- RESPONSE -->
   <div class="response" id="responseBox"><div class="section-head">💬 Suggested Response</div><div class="response-text" id="responseText"></div><div class="response-copy" onclick="copyEl('responseText')">Copy response ↗</div></div>
 
-  <!-- LEGAL -->
   <div class="legal-box" id="legalBox"><div class="section-head" style="color:var(--cyan)">⚖️ Legal Perspective</div><div id="legalContent"></div></div>
 
   <button class="copy-btn" onclick="copyResults()">📋 Copy Full Analysis</button>
@@ -376,25 +364,19 @@ body.embed-mode{overflow:hidden}
 
 <footer class="footer">
   <p>Built by <a href="https://aakarshsharma.com">Aakarsh Sharma</a> · Law × Psychology × AI · <a href="https://aakarshsharma.com/artifacts">More Artifacts</a></p>
-  <p style="margin-top:4px;font-size:0.58rem">The Human Filter runs entirely in your browser. No data leaves your device.</p>
+  <p style="margin-top:4px;font-size:0.58rem">Analysis powered by AI. Your message is sent to OpenAI for processing. This tool runs in your browser.</p>
 </footer>
 
 <script>
-// Embed mode detection
 if(new URLSearchParams(window.location.search).has('embed')){document.body.classList.add('embed-mode')}
-
-// ============================================================
-// THE HUMAN FILTER v3.5 — Gen Z Optimized Flagship
-// Built by Aakarsh Sharma | Human Layer AI
-// 5 Engines: Persuasion · Bias · Logic · Emotional · Power
-// ============================================================
 
 const ENGINE_ICONS={PERSUASION:'🎭',BIAS:'🧠',LOGIC:'⚡',EMOTIONAL:'💔',POWER:'👑'};
 const ENGINE_COLORS={pers:'var(--orange)',bias:'var(--purple)',logic:'var(--cyan)',emo:'var(--pink)',power:'var(--red)'};
 const ENGINE_LABELS={pers:'Persuasion',bias:'Bias',logic:'Logic',emo:'Emotional',power:'Power'};
-const CTX_ICONS={dating:'💘',personal:'💬',business:'💼',legal:'📜',crypto:'🪙',media:'📰'};
+const CTX_ICONS={dating:'💘',personal:'💬',business:'💼',legal:'📜',crypto:'🪙',scam:'🚨',harassment:'🚩'};
 
-// --- PRESETS ---
+const API_KEY='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';
+
 const PRIMARY_PRESETS=['dating','guilt','whatsapp','catfish','workfavor'];
 const PRESETS={
 dating:{label:'💘 Dating DM',text:`Hey gorgeous 😍 I know we just matched but I feel like I already know you. You're not like other girls on here — you actually seem real. I deleted the app btw, you're the only one I'm talking to. Can I get your number? I hate texting on here. Also my premium is expiring soon so we might lose this connection 😅`},
@@ -413,7 +395,6 @@ contract:{label:'📜 Contract',text:`The Contractor agrees to assign all intell
 creepy:{label:'🚩 Creepy DM',text:`Hey I noticed you at the coffee shop today. You probably didn't see me but I've seen you there a few times. You always look so good. I found your Instagram from the location tag. I know this might seem forward but life's too short right? We should hang out sometime. I'm a really nice guy, you'd see that if you gave me a chance. Don't leave me on read like other girls do. I just want to get to know you. What's your schedule like? I could come by when you're there again 😊`},
 };
 
-// Build presets: 5 primary + More button + hidden extras
 const presetsEl=document.getElementById('presets');
 const presetsExtra=document.getElementById('presetsExtra');
 function makeChip(k,target){
@@ -427,362 +408,359 @@ moreBtn.onclick=()=>{presetsExtra.classList.toggle('show');moreBtn.innerHTML=pre
 presetsEl.appendChild(moreBtn);
 Object.keys(PRESETS).filter(k=>!PRIMARY_PRESETS.includes(k)).forEach(k=>makeChip(k,presetsExtra));
 
-// =====================================================
-// ENGINE 1: PERSUASION (Cialdini + Dark Patterns + Manipulation)
-// =====================================================
-const PERSUASION=[
-  {name:'Reciprocity Trigger',type:'CIALDINI',p:/\b(did.*for you|covered for you|helped you|remember when I|I gave you|favor.*return)\b/i,desc:'Emphasizing past favors activates the reciprocity norm — our deeply wired obligation to return favors.',sev:'high',legal:'A favor freely given creates no legal obligation. Social debts are not enforceable contracts.',ask:'Ask: "Did I request this favor? Am I obligated to repay it?"'},
-  {name:'Artificial Scarcity',type:'CIALDINI',p:/\b(limited.time|only \d|closes?\s*(?:friday|today|tomorrow|soon)|expir(?:es?|ing)|(?:last|final)\s*chance|running out|act\s*(?:now|fast)|hurry|ASAP|(?:hours?|days?)\s*(?:left|remaining))\b/i,desc:'Scarcity makes things seem more valuable. "Only X left" creates urgency that bypasses deliberate analysis.',sev:'high',legal:'Fake scarcity claims may violate consumer protection laws (FTC Act §5, Consumer Protection Act 2019 India).',ask:'Test: "If I say no today, will this genuinely disappear?" Most "limited" offers return.'},
-  {name:'Social Proof',type:'CIALDINI',p:/\b(\d+\s*(?:companies|people|clients|users|customers)|well.known|industry leader|top.tier|backed by|trusted by|leadership.*mentioned)\b/i,desc:'Referencing numbers or authority figures triggers herd behavior — "if others trust them, I should too."',sev:'medium',legal:'Unverifiable claims about client numbers or endorsements may constitute false advertising.',ask:'Ask: "Can I independently verify these numbers?"'},
-  {name:'Targeted Flattery',type:'CIALDINI',p:/\b(impressed|amazing|perfect for|you're\s*(?:not like|special|exactly|the only)|been\s*(?:watching|following)|your\s*(?:background|profile|work).*impress)\b/i,desc:'Strategic compliments create positive association with the sender, increasing receptivity.',sev:'low',legal:'Flattery itself is not illegal, but when used to induce a transaction, it can be part of undue influence.',ask:'Set the compliment aside. Ask: "Without the flattery, would I still be interested?"'},
-  {name:'Unity / In-Group',type:'CIALDINI',p:/\b(we're\s*a\s*family|part of\s*(?:the|our)\s*team|one of us|join\s*(?:our|my|the)\s*(?:team|family)|community)\b/i,desc:'"We\'re a family" often means "we expect loyalty beyond contractual obligations."',sev:'medium',legal:'"Family" rhetoric cannot override employment law protections.',ask:'Ask: "Does this \'family\' dynamic apply equally, or only when they need something from me?"'},
-  {name:'Commitment Escalation',type:'DARK PATTERN',p:/\b(already\s*(?:told|said|committed|signed|agreed)|you\s*(?:said|agreed|committed)|since you already|too late to)\b/i,desc:'Leveraging your past micro-agreements to escalate commitment beyond what you originally intended.',sev:'high',legal:'Pre-commitment without informed consent may constitute coercion. You can withdraw consent at any time.',ask:'Ask: "Did I agree to THIS specific thing, or am I being held to something I didn\'t sign up for?"'},
-  {name:'False Exclusivity',type:'DARK PATTERN',p:/\b(can't share.*publicly|just between|confidential|I'm only telling you|not supposed to|insider)\b/i,desc:'Creating a false sense of exclusive closeness to bypass your rational filters.',sev:'medium',legal:'If this involves investments, sharing "confidential" tips may constitute securities fraud.',ask:'Ask: "Why would a stranger share genuinely exclusive information with me?"'},
-  {name:'Emotional Blackmail',type:'MANIPULATION',p:/\b(if you\s*(?:really|truly)\s*(?:loved|cared)|I guess.*not\s*(?:important|enough)|you'll regret|when I'm gone|used to.*now you|disappointed|after everything)\b/i,desc:'Using guilt, fear, or obligation to coerce compliance. Emotional debts are not real debts.',sev:'high',legal:'Emotional coercion can constitute undue influence — grounds to void contracts.',ask:'Ask: "Am I making this decision because I want to, or because I feel guilty?"'},
-  {name:'Love Bombing',type:'MANIPULATION',p:/\b(soulmate|never felt this way|you're\s*(?:the\s*(?:best|one)|everything)|deleted\s*the\s*app|only.*talking to\s*(?:you|one)|best thing.*happened)\b/i,desc:'Overwhelming affection early on to create emotional dependency before revealing true intentions.',sev:'high',legal:'Love bombing that leads to financial extraction is a recognized pattern in romance fraud prosecutions.',ask:'Ask: "Is this intensity proportionate to how long we\'ve actually known each other?"'},
-  {name:'Gaslighting Signal',type:'MANIPULATION',p:/\b(you'?re\s*(?:overreacting|too sensitive|imagining|being dramatic|crazy)|that never happened|I never said|you always|you never)\b/i,desc:'Undermining your perception of reality to make you doubt your own judgment.',sev:'high',legal:'Sustained gaslighting may constitute psychological abuse, actionable under domestic violence legislation.',ask:'Trust your memory. Ask a third party to verify.'},
-  {name:'FOMO Trigger',type:'DARK PATTERN',p:/\b(everyone\s*(?:is|else)|don't\s*(?:be|get)\s*left|you'll miss|won't get\s*(?:another|this)\s*chance|might lose|waiting list|people\s*(?:who'd|would)\s*(?:love|want))\b/i,desc:'Triggering anxiety about missing an opportunity to force hasty decision-making.',sev:'medium',legal:'Creating false impressions of demand may constitute deceptive trade practices.',ask:'Ask: "If I miss this, what actually happens? Usually nothing."'},
-  {name:'Passive-Aggressive Martyrdom',type:'MANIPULATION',p:/\b(it's fine|I'm\s*(?:fine|used to it|okay)|don't worry about me|I'll\s*(?:manage|survive|be fine)|I\s*(?:guess|suppose).*(?:fine|okay)|I always do)\b/i,desc:'Saying "I\'m fine" while clearly communicating the opposite to induce guilt.',sev:'medium',legal:'Recognized manipulation pattern in psychology (passive aggression).',ask:'Ask: "Are they actually fine, or making me feel guilty without asking directly?"'},
-];
-
-// =====================================================
-// ENGINE 2: COGNITIVE BIAS
-// =====================================================
-const BIAS=[
-  {name:'Survivorship Bias',type:'COGNITIVE BIAS',p:/\b(success\s*stor(?:y|ies)|they made it|if they can|top\s*\d+%|(?:most|many)\s*people\s*(?:make|earn))\b/i,desc:'Highlighting winners while hiding the far more common losers.',sev:'medium',legal:'Selective use of success stories without disclaimers may violate advertising standards.',ask:'Ask: "For every success story, how many people failed?"'},
-  {name:'Anchoring Effect',type:'COGNITIVE BIAS',p:/\b(\$[\d,]+.*\$[\d,]+|was\s*\$.*now\s*\$|(?:worth|valued at).*(?:only|just)\s*\$|(?:regular|standard).*\$)\b/i,desc:'The first number you see becomes your reference point, making subsequent numbers feel like a deal.',sev:'medium',legal:'Inflated "original prices" is deceptive pricing, illegal in most jurisdictions.',ask:'Ask: "Is this comparison price real, or manufactured?"'},
-  {name:'Bandwagon Effect',type:'COGNITIVE BIAS',p:/\b(everyone(?:'s|\s*is)|most people|growing|join\s*\d+|\d+\s*(?:members|users|clients)(?:\s*(?:and counting|strong))?|trending)\b/i,desc:'Implying mass adoption to trigger conformity. Popular does not mean good.',sev:'low',legal:'Inflated user numbers may constitute false advertising.',ask:'Ask: "Would I want this if nobody else was doing it?"'},
-  {name:'Sunk Cost Exploitation',type:'COGNITIVE BIAS',p:/\b((?:you'?ve|we'?ve)\s*(?:already|come this far)|invested\s*(?:so much|all this)|too\s*(?:far|much)\s*to|don't\s*waste|give up now)\b/i,desc:'Exploiting your past investment to prevent rational exit decisions now.',sev:'high',legal:'Past investment creates no obligation to continue.',ask:'Ask: "Ignoring what I\'ve already spent, would I choose this today?"'},
-  {name:'Unverifiable Authority',type:'COGNITIVE BIAS',p:/\b(studies show|research\s*(?:proves|shows)|experts?\s*(?:say|agree|recommend)|according to|scientifically\s*(?:proven|backed))\b/i,desc:'Citing unnamed "experts" or "studies" without verifiable sources.',sev:'medium',legal:'Unsubstantiated scientific claims violate FTC and ASCI guidelines.',ask:'Ask: "Which study? Who funded it? Can I read it?"'},
-];
-
-// =====================================================
-// ENGINE 3: LOGICAL FALLACIES
-// =====================================================
-const LOGIC=[
-  {name:'False Dilemma',type:'LOGICAL FALLACY',p:/\b(either.*or|if you don'?t.*then|(?:only|two)\s*(?:options?|choices?)|take it or leave|now or never|with us or against)\b/i,desc:'Presenting only two options when many exist.',sev:'high',legal:'Forced binary choices may constitute coercion if one option is punitive.',ask:'Ask: "What are the third, fourth, and fifth options they\'re not mentioning?"'},
-  {name:'Slippery Slope',type:'LOGICAL FALLACY',p:/\b(will lead to|before you know it|soon\s*(?:enough|you'll)|next thing|once.*starts?)\b/i,desc:'Claiming one action inevitably leads to extreme consequences.',sev:'medium',legal:'Each step in a causal chain must be independently established.',ask:'Ask: "Is there actual evidence that A leads to B?"'},
-  {name:'Ad Hominem',type:'LOGICAL FALLACY',p:/\b(you\s*(?:always|never)|(?:people|someone)\s*like you|your\s*(?:type|kind)|what do you know|you don't understand|typical)\b/i,desc:'Attacking the person instead of the argument.',sev:'medium',legal:'Personal attacks in professional contexts may constitute harassment.',ask:'Ask: "Are they addressing my argument, or attacking me personally?"'},
-  {name:'Circular Reasoning',type:'LOGICAL FALLACY',p:/\b(because\s*(?:I|we)\s*said|it'?s\s*(?:just|simply)\s*(?:the way|how)|trust\s*(?:me|us)|believe me|I know what I'm talking about)\b/i,desc:'The conclusion is assumed in the premise. "Trust me" is not reasoning.',sev:'medium',legal:'"Because I said so" is not a contractual term.',ask:'Ask: "Can you explain WHY without restating the conclusion?"'},
-  {name:'Appeal to Emotion',type:'LOGICAL FALLACY',p:/\b(think\s*(?:of|about)\s*(?:the|your)\s*(?:children|family|future)|how\s*(?:would|could)\s*you|imagine if|what if\s*(?:something|it)\s*happens?)\b/i,desc:'Substituting emotional reactions for logical arguments.',sev:'low',legal:'Emotional manipulation in negotiations may constitute undue influence.',ask:'Ask: "Is there a logical argument here, or just an emotional one?"'},
-];
-
-// =====================================================
-// ENGINE 4: EMOTIONAL MANIPULATION
-// =====================================================
-const EMOTIONAL=[
-  {name:'Parentification',type:'EMOTIONAL',p:/\b((?:your|the)\s*(?:father|mother)\s*was\s*(?:the same|like that)|just like your|apple.*tree|I raised you)\b/i,desc:'Comparing you to someone painful to trigger shame and compliance.',sev:'high',legal:'Using familial shame to coerce behavior is recognized emotional manipulation.',ask:'Ask: "Am I being compared to make me feel shame, not to make a point?"'},
-  {name:'Catastrophizing',type:'EMOTIONAL',p:/\b(when I'm gone|you'll regret|too late|one day you'll|never\s*(?:forgive|forget)|everything is ruined|nothing\s*(?:ever|will))\b/i,desc:'Escalating to worst-case scenarios to create panic.',sev:'high',legal:'Threats about irreversible consequences are a coercion tactic.',ask:'Ask: "Is the worst case likely, or is this designed to panic me?"'},
-  {name:'Silent Treatment Setup',type:'EMOTIONAL',p:/\b(I\s*(?:won't|can't)\s*(?:bother|disturb)\s*you|if you\s*(?:even|still)\s*care|when you\s*(?:have|find)\s*time|I'll\s*(?:stop|quit)\s*(?:calling|texting|trying))\b/i,desc:'Pre-announcing withdrawal to create anxiety and force you to chase.',sev:'medium',legal:'Emotional withdrawal as punishment is a recognized manipulation tactic.',ask:'Ask: "Are they stepping back, or creating anxiety so I\'ll chase them?"'},
-  {name:'Conditional Love',type:'EMOTIONAL',p:/\b(if you\s*(?:really|truly|actually)\s*(?:loved|cared|wanted)|prove\s*(?:it|that you)|show me\s*(?:that|you)|real\s*(?:friend|partner)\s*would)\b/i,desc:'Making love contingent on compliance. Healthy relationships don\'t have conditions.',sev:'high',legal:'Conditional affection used to extract benefit may constitute undue influence.',ask:'Ask: "If I say no, will they still care about me? If not, this is leverage."'},
-  {name:'Sympathy Exploitation',type:'EMOTIONAL',p:/\b(mom needs surgery|really tough spot|I'm\s*(?:broke|struggling|desperate)|hospital|medical\s*(?:bills?|emergency)|no one else to turn to)\b/i,desc:'Using a crisis narrative to make saying no feel cruel.',sev:'high',legal:'Fabricated emergencies used to solicit money may constitute fraud.',ask:'Ask: "Can I verify this independently before sending anything?"'},
-];
-
-// =====================================================
-// ENGINE 5: POWER DYNAMICS (incl. harassment)
-// =====================================================
-const POWER=[
-  {name:'Implicit Threat',type:'POWER',p:/\b(welcome to\s*(?:find|leave|go)|if you\s*(?:don't|have a problem)|waiting list|(?:others?|people)\s*(?:who'd|would|who)\s*(?:love|want)|(?:I'll|we'll)\s*(?:have to|assume))\b/i,desc:'Veiled threats disguised as "helpful information" — designed to make you feel replaceable.',sev:'high',legal:'Threats to coerce agreement may constitute economic duress.',ask:'Ask: "Is this a fact, or a threat dressed up as information?"'},
-  {name:'Boundary Violation',type:'POWER',p:/\b(I\s*(?:have|got)\s*a key|no need to be\s*(?:home|present)|I'll\s*(?:come|stop)\s*by|without\s*(?:your|prior)\s*(?:consent|permission|notice)|inspect)\b/i,desc:'Casually overriding your right to consent. Legitimate actors ask; manipulators inform.',sev:'high',legal:'Entering property without notice violates tenant rights in most jurisdictions.',ask:'Ask: "Did they request my permission, or inform me?"'},
-  {name:'Deadline Coercion',type:'POWER',p:/\b((?:by|before)\s*(?:EOD|eod|end of day|friday|tomorrow|tonight)|I'll assume|if I don't hear|silence\s*(?:means|implies))\b/i,desc:'Imposing deadlines and treating silence as consent — a power grab.',sev:'high',legal:'Silence does not constitute acceptance in contract law.',ask:'Ask: "Who set this deadline, and what happens if I take more time?"'},
-  {name:'Information Asymmetry',type:'POWER',p:/\b(can't share.*details|more info\s*(?:later|soon)|off the record|confidential|between us)\b/i,desc:'Withholding key information while demanding decisions.',sev:'medium',legal:'Material non-disclosure before a transaction may constitute fraud.',ask:'Ask: "If they can\'t share details, why should I commit?"'},
-  {name:'IP / Rights Grab',type:'POWER',p:/\b(all\s*intellectual\s*property|in\s*perpetuity|throughout\s*the\s*universe|waive.*(?:right|attribution)|moral\s*rights|assign\s*all|non.?compete.*(?:\d+\s*)?(?:months?|years?))\b/i,desc:'Overly broad rights claims hidden in legalese.',sev:'high',legal:'Excessively broad non-competes may be unenforceable.',ask:'Ask a lawyer to review. These terms are negotiable.'},
-  {name:'Financial Power Play',type:'POWER',p:/\b((?:rent|price|rate|fee).*(?:going up|increas)|non.?negotiable|take it or leave|standard\s*(?:terms|rate|practice)|market\s*(?:rate|value))\b/i,desc:'Presenting one-sided terms as unchangeable facts.',sev:'medium',legal:'"Market rate" claims must be verifiable.',ask:'Ask: "Can I verify this independently?"'},
-  // Sexual harassment / boundary violation patterns
-  {name:'Unsolicited Pursuit',type:'HARASSMENT',p:/\b(found your\s*(?:instagram|profile|number|socials?)|I've\s*(?:seen|noticed|been watching)\s*you|I\s*(?:followed|found)\s*you\s*(?:from|on))\b/i,desc:'Finding someone\'s personal information without consent and using it to initiate contact is stalking behavior, not flattery.',sev:'high',legal:'Cyberstalking is a criminal offense under IT Act 2000 (India), 18 USC §2261A (US), and Protection from Harassment Act 1997 (UK).',ask:'This is not romantic. This is surveillance. Block and document.'},
-  {name:'"Nice Guy" Coercion',type:'HARASSMENT',p:/\b(I'm a\s*(?:really\s*)?(?:nice|good|decent)\s*(?:guy|person)|give me a chance|you'd see\s*(?:that|if)|like other girls|don't\s*(?:be like|leave me on read|ignore))\b/i,desc:'Framing rejection as YOUR moral failing. "I\'m a nice guy" is a pressure tactic, not a character reference.',sev:'high',legal:'Persistent unwanted contact after rejection may constitute harassment.',ask:'Ask: "Would a genuinely nice person pressure me after I said no?"'},
-  {name:'Physical Proximity Threat',type:'HARASSMENT',p:/\b(I\s*(?:could|might|will)\s*come\s*(?:by|to|find)|I know where you\s*(?:live|work|go)|what's your\s*(?:schedule|address|location)|when\s*(?:are|will)\s*you\s*(?:there|home|free))\b/i,desc:'Expressing intent to appear at your location uninvited signals predatory boundary violation.',sev:'high',legal:'Threatening physical proximity after unsolicited contact can constitute stalking under criminal law.',ask:'Do not share location information. Document this message and consider reporting.'},
-];
-
-// --- CONTEXT DETECTION ---
-function detectCtx(t){
-  const s={business:0,personal:0,legal:0,dating:0,crypto:0,media:0};
-  if(/\b(crypto|bitcoin|binance|coin.*listed|insider.*(?:info|tip)|5x|10x|double.*money|₹\d+K?)\b/i.test(t))s.crypto+=8;
-  if(/\b(matched|dating|tinder|bumble|hinge|gorgeous|babe?y|soulmate|love you|miss you|deleted the app)\b/i.test(t))s.dating+=6;
-  if(/💘|😍|🥺|💕|❤️/.test(t))s.dating+=3;
-  if(/\b(found your instagram|I've seen you|nice guy|give me a chance|like other girls|leave me on read)\b/i.test(t))s.dating+=5;
-  if(/\b(ROI|cohort|onboard|enterprise|scaling|infrastructure|quarterly|KPI|revenue)\b/i.test(t))s.business+=5;
-  if(/\b(meeting|EOD|eod|deadline|deliverable|stakeholder|client)\b/i.test(t))s.business+=3;
-  if(/\b(intellectual property|perpetuity|binding arbitration|non.compete|contractor|indemnif|jurisdiction|waive|clause)\b/i.test(t))s.legal+=6;
-  if(/\b(mom|dad|mother|father|family|brother|sister|remember when|I raised|when I'm gone)\b/i.test(t))s.personal+=5;
-  if(/\b(dear beloved|million.*usd|processing fee|bank details|advance fee|widow|verify.*account|click here|permanently.*locked)\b/i.test(t))s.business+=3;
-  return Object.entries(s).sort((a,b)=>b[1]-a[1])[0][0];
+function updateCC(){
+  const len=document.getElementById('inputText').value.length;
+  document.getElementById('charCount').textContent=len;
 }
+document.getElementById('inputText').addEventListener('input',updateCC);
 
-// --- ANALYSIS ---
-function analyzeP(text,patterns){
-  const found=[];
-  for(const p of patterns){const m=text.match(p.p);if(m){found.push({name:p.name,type:p.type,desc:p.desc,sev:p.sev||'medium',legal:p.legal||'',ask:p.ask||'',quote:extractQ(text,m.index,m[0].length),matchIdx:m.index,matchLen:m[0].length,matchText:m[0]})}}
-  return found;
-}
-function extractQ(t,idx,ml){const s=Math.max(0,t.lastIndexOf(' ',Math.max(0,idx-30)));const e=Math.min(t.length,t.indexOf(' ',idx+ml+30)||t.length);let q=t.substring(s,e).trim();if(s>0)q='...'+q;if(e<t.length)q+='...';return q}
-function splitSentences(text){return text.split(/(?<=[.!?…\n])\s+|(?<=\n)/).filter(s=>s.trim().length>0)}
-
-// --- X-RAY ---
-function buildXray(text,allFindings,ctx){
-  const sentences=splitSentences(text);const origLines=[];const decLines=[];
-  for(const sent of sentences){
-    let matched=null;let hlClass='hl-clean';let decClass='d-gray';
-    for(const f of allFindings){if(f.matchText&&sent.toLowerCase().includes(f.matchText.toLowerCase())){matched=f;hlClass=f.sev==='high'?'hl-red':f.sev==='medium'?'hl-orange':'hl-yellow';decClass=f.sev==='high'?'d-red':f.sev==='medium'?'d-orange':'d-yellow';break}}
-    if(!matched){const all=[...PERSUASION,...BIAS,...LOGIC,...EMOTIONAL,...POWER];for(const p of all){const m=sent.match(p.p);if(m){matched={name:p.name,type:p.type,desc:p.desc,sev:p.sev,legal:p.legal,ask:p.ask,matchText:m[0]};hlClass=p.sev==='high'?'hl-red':p.sev==='medium'?'hl-orange':'hl-yellow';decClass=p.sev==='high'?'d-red':p.sev==='medium'?'d-orange':'d-yellow';break}}}
-    const decoded=decode(sent,matched,ctx);
-    origLines.push({text:sent,hl:hlClass,anno:matched});
-    decLines.push({text:decoded,cls:matched?decClass:'d-gray'});
-  }
-  return{origLines,decLines};
-}
-
-function decode(sent,f,ctx){
-  if(!f||f.sev==='low')return sent;
-  // Specific decoded translations (most important for UX depth)
-  const tests=[
-    [/you're not like|not like other|you actually seem real/i,'"I\'m using flattery so you\'ll lower your guard."'],
-    [/deleted the app|only.*talking to you/i,'"Artificial exclusivity. No way to verify this."'],
-    [/premium.*expiring|lose this connection/i,'"Manufactured urgency — apps don\'t delete chats."'],
-    [/can I get your number|hate texting on here/i,'"I want to move off-platform where there\'s no record."'],
-    [/camera.*broken|can't video/i,'"Avoiding verification — common catfishing pattern."'],
-    [/send.*money|zelle|venmo|\$\d/i,'"The emotional buildup was the setup. THIS is the goal."'],
-    [/when I'm gone|you'll regret/i,'"Using mortality as emotional leverage."'],
-    [/your father|just like/i,'"Comparing you to someone painful to trigger shame."'],
-    [/I'm fine|I'll manage|don't worry about me/i,'"Saying \'I\'m fine\' to make you feel guilty."'],
-    [/sat.*waiting|used to call|remember when/i,'"Weaponizing nostalgia."'],
-    [/not important enough|I guess/i,'"Self-pity to make you feel responsible."'],
-    [/I always do/i,'"Martyr language — designed to guilt you."'],
-    [/covered for you|remember when I/i,'"Calling in a social debt."'],
-    [/only person|only you can/i,'"Making refusal feel like a personal failing."'],
-    [/already told|leadership.*mentioned/i,'"Pre-committed you without your consent."'],
-    [/ROI|247 companies|\d+%/i,'"Unverifiable numbers to anchor your expectations."'],
-    [/reserved a spot|closes friday/i,'"Artificial deadline to prevent critical thinking."'],
-    [/rent.*going up|market rates/i,'"Claiming \'market rates\' without evidence."'],
-    [/I have a key|no need to be home|inspect/i,'"Boundary violation. Proper notice required."'],
-    [/welcome to find|waiting list|people.*love your/i,'"\'You\'re replaceable\' — a threat as an observation."'],
-    [/I'll assume|silence means/i,'"Silence is not consent."'],
-    [/intellectual property|perpetuity|universe|waive.*right/i,'"Overreaching rights grab. Not standard."'],
-    [/non.compete.*\d+\s*months/i,'"Excessively broad — may be unenforceable."'],
-    [/arbitration.*company.*choosing|costs borne/i,'"Disputes on their turf, at your expense."'],
-    [/starter kit|only \$\d+|make.*back.*first week/i,'"The \'kit\' cost IS their revenue model."'],
-    [/own boss|changed my life/i,'"MLM script. 99% of participants lose money."'],
-    [/haven't talked since|dying to reach out/i,'"Only contacting you to recruit."'],
-    [/equity.*worth|7 figures|pre.revenue/i,'"Pre-revenue = no money. Equity from strangers = meaningless."'],
-    [/400%|growing.*MoM/i,'"Unverifiable growth claims."'],
-    [/can't share.*details|revolutionary/i,'"Withholding info while demanding commitment."'],
-    [/dear beloved|dear friend/i,'"Mass-produced opening — sent to thousands."'],
-    [/million|usd|\$[\d,]+.*million/i,'"Monetary bait to trigger greed."'],
-    [/widow|late.*husband|died/i,'"Fabricated backstory for sympathy."'],
-    [/trustworthy|foreign partner/i,'"They need someone who won\'t ask questions."'],
-    [/bank details|processing fee|small fee/i,'"The extraction point. Once you send, they vanish."'],
-    [/respond urgently|time.*essence/i,'"Urgency prevents verification."'],
-    [/click here|verify your|secure.*account/i,'"This link harvests your credentials."'],
-    [/permanently locked|account.*terminated|data loss/i,'"Fabricated threat. Real services don\'t do this."'],
-    [/congratulations|selected|position/i,'"You weren\'t \'selected.\' Sent to thousands."'],
-    [/reimbursed|purchase.*kit|download.*software/i,'"They want your money or device access."'],
-    [/insider|not supposed|don't tell/i,'"Fake exclusivity to prevent verification."'],
-    [/5x|10x|double|crypto|coin.*listed/i,'"No legit investment guarantees returns."'],
-    [/trust me.*bro|when have I ever/i,'"Using trust to bypass due diligence."'],
-    [/god bless|bless you/i,'"Religious language to build false trust."'],
-    [/soulmate|never felt this way|best thing.*happened/i,'"Love bombing — disproportionate intensity."'],
-    [/miss you so much|I love you/i,'"Emotional escalation before the real ask."'],
-    [/mom needs surgery|really tough spot/i,'"Sympathy narrative to make \'no\' feel cruel."'],
-    [/pay you back|I promise/i,'"Unenforceable promise."'],
-    [/found your instagram|I've seen you|noticed you/i,'"This is surveillance, not flattery."'],
-    [/I'm a.*nice guy|give me a chance/i,'"Framing your rejection as YOUR moral failing."'],
-    [/don't.*leave me on read|like other girls/i,'"Guilt-tripping you for having boundaries."'],
-    [/I could come by|I know where you/i,'"Signaling physical access to intimidate you."'],
-    [/what's your schedule/i,'"Probing for your location patterns."'],
-  ];
-  for(const[rx,txt]of tests)if(rx.test(sent))return txt;
-  if(f.name)return`"${f.desc.split('.')[0]}."`;
-  return sent;
-}
-
-// --- VIBE CHECK ---
-function getVibeCheck(ctx,findings){
-  const h=findings.filter(f=>f.sev==='high').length,t=findings.length;
-  const v={};
-  if(ctx==='dating'){v['Vibe']=h>1?'🚩 Love bombing / predatory pattern':'⚠️ Eager — monitor boundaries';v['Red Flags']=h>0?findings.filter(f=>f.sev==='high').map(f=>f.name).slice(0,3).join(', '):'Minor pushiness';v['Move']=h>=2?'Stay on-platform. Video call before anything else.':'Maintain your boundaries.';v['Patterns']=t+' tactics across '+new Set(findings.map(f=>f.type)).size+' categories'}
-  else if(ctx==='personal'){v['Vibe']=h>0?'🎭 Guilt-based control':'💬 Emotionally charged';v['Strategy']='Passive-aggressive / indirect';v['Move']=h>=2?'"I notice you\'re expressing hurt indirectly. What do you actually need?"':'Empathy + boundaries.';v['Need']='Attention, validation, or control'}
-  else if(ctx==='business'){v['Vibe']=t>3?'🔥 High-pressure multi-tactic':'📊 Standard sales';v['Credibility']='Claims need independent verification';v['Move']=h>=1?'Set your own timeline. Don\'t decide under theirs.':'Evaluate on merits.'}
-  else if(ctx==='legal'){v['Vibe']='📜 Heavily one-sided terms';v['Reality']='ALL terms are negotiable';v['Move']='Get independent legal review before signing';v['Risk Areas']=findings.filter(f=>f.sev==='high').map(f=>f.name).join(', ')||'Review all'}
-  else if(ctx==='crypto'){v['Vibe']='🪙 Classic pump-and-dump pattern';v['Credibility']='Unverifiable. No legit investment comes via DM.';v['Move']='Do not invest. Block if unsolicited.'}
-  else{v['Vibe']=h>1?'🚩 Multiple high-severity tactics':'⚡ Some persuasion detected';v['Move']=h>=2?'Take time before responding.':'Low risk — proceed with awareness.';v['Patterns']=t+' influence patterns detected'}
-  return v;
-}
-
-// --- LEGAL ---
-function getLegalNotes(ctx,findings){
-  const notes=[],seen=new Set();
-  findings.forEach(f=>{if(f.legal&&!seen.has(f.legal)){seen.add(f.legal);notes.push(f.legal)}});
-  if(ctx==='legal'){notes.push('All contractual terms are negotiable.');notes.push('Get independent legal review before signing.')}
-  if(ctx==='personal'&&findings.some(f=>f.sev==='high'))notes.push('Ongoing emotional manipulation may constitute psychological abuse under domestic violence legislation.');
-  if(ctx==='crypto')notes.push('Sharing "insider info" to solicit investment is securities fraud under SEBI Act (India) and SEC regulations (US).');
-  return notes.slice(0,6);
-}
-
-// --- RESPONSE ---
-function getResponse(ctx,findings){
-  const h=findings.filter(f=>f.sev==='high').length;
-  if(findings.some(f=>f.type==='HARASSMENT'))return'I\'m not interested and I\'d like you to stop contacting me. If you continue, I will report this as harassment. Do not contact me again.';
-  if(ctx==='dating'&&h>0)return'I appreciate the kind words! I\'d love to keep chatting on the app for now — I take things slow. Hope that\'s cool!';
-  if(ctx==='personal')return'I hear that you\'re upset. Can we talk about what you actually need from me? I want to help, but I need a direct ask.';
-  if(ctx==='business')return'Thanks for thinking of me. I don\'t make decisions under artificial deadlines. Send me details and I\'ll review on my timeline.';
-  if(ctx==='legal')return'I\'ve reviewed the terms and have concerns. My lawyer will need to review before I sign.';
-  if(ctx==='crypto')return'I don\'t make investment decisions based on tips or urgency. If it\'s legitimate, it\'ll hold up to my own research.';
-  if(h>=2)return'I need time to think about this before responding.';
-  return'Thanks for your message. I\'ll take some time to consider and get back to you.';
-}
-
-// --- SCORE ---
-function calcDanger(findings){let s=0;findings.forEach(f=>{s+=f.sev==='high'?14:f.sev==='medium'?8:4});return Math.min(100,Math.max(0,s))}
-
-// === MAIN ===
-async function runAnalysis(){
-  const text=document.getElementById('inputText').value.trim();
-  if(!text){document.getElementById('inputText').style.outline='2px solid var(--red)';setTimeout(()=>document.getElementById('inputText').style.outline='',1500);return}
-  const overlay=document.getElementById('scanOverlay');overlay.classList.add('active');
-  const steps=['Detecting context...','🎭 Scanning persuasion tactics...','🧠 Checking cognitive biases...','⚡ Evaluating logical fallacies...','💔 Reading emotional manipulation...','👑 Analyzing power dynamics...','Building X-ray translation...','Generating legal perspective...'];
-  for(let i=0;i<steps.length;i++){document.getElementById('scanStep').textContent=steps[i];await sleep(180+Math.random()*250)}
-  const ctx=detectCtx(text);
-  const pers=analyzeP(text,PERSUASION),bias=analyzeP(text,BIAS),logic=analyzeP(text,LOGIC),emo=analyzeP(text,EMOTIONAL),power=analyzeP(text,POWER);
-  const allFindings=[...pers,...bias,...logic,...emo,...power];
-  const xray=buildXray(text,allFindings,ctx);
-  const vibeCheck=getVibeCheck(ctx,allFindings);
-  const legalNotes=getLegalNotes(ctx,allFindings);
-  const response=getResponse(ctx,allFindings);
-  const danger=calcDanger(allFindings);
-  overlay.classList.remove('active');
-  render(xray,vibeCheck,danger,{pers,bias,logic,emo,power},legalNotes,response,ctx,allFindings);
-  document.getElementById('results').classList.add('visible');
-  document.getElementById('results').scrollIntoView({behavior:'smooth',block:'start'});
-}
-
-// === RENDER ===
-function render(xray,vibe,danger,cats,legal,response,ctx,allFindings){
-  // Score Card
-  const sc=document.getElementById('scoreCard');
-  document.getElementById('scCtxIcon').textContent=CTX_ICONS[ctx]||'📝';
-  document.getElementById('scCtxLabel').textContent=ctx.charAt(0).toUpperCase()+ctx.slice(1)+' Context Detected';
-  const circ=2*Math.PI*15;const ring=document.getElementById('scRing');
-  ring.style.stroke=danger>=70?'var(--red)':danger>=40?'var(--orange)':danger>=20?'var(--gold)':'var(--green)';
-  setTimeout(()=>{ring.style.strokeDashoffset=circ-(danger/100)*circ},300);
-  const numEl=document.getElementById('scNum');numEl.style.color=ring.style.stroke;
-  let cur=0;const step=Math.ceil(danger/25)||1;const ni=setInterval(()=>{cur=Math.min(cur+step,danger);numEl.textContent=cur;if(cur>=danger)clearInterval(ni)},30);
-  // Top 3 tactics
-  const top3=allFindings.filter(f=>f.sev==='high').slice(0,3);
-  document.getElementById('scTactics').innerHTML=top3.map(f=>{
-    const col=f.sev==='high'?'var(--red-dim)':'var(--orange-dim)';const tc=f.sev==='high'?'var(--red-soft)':'var(--orange)';
-    return`<span class="sc-tactic" style="background:${col};color:${tc};border:1px solid ${tc}22">${esc(f.name)}</span>`;
-  }).join('')||(allFindings.length?'':'<span style="font-size:0.65rem;color:var(--green)">✓ No high-severity tactics</span>');
-  // Engine breakdown
-  const counts={pers:cats.pers.length,bias:cats.bias.length,logic:cats.logic.length,emo:cats.emo.length,power:cats.power.length};
-  document.getElementById('scEngines').innerHTML=Object.entries(counts).filter(([k,v])=>v>0).map(([k,v])=>`<span class="sc-engine"><span class="dot" style="background:${ENGINE_COLORS[k]}"></span>${ENGINE_LABELS[k]} ${v}</span>`).join('');
-
-  // X-ray
-  const origEl=document.getElementById('origContent');
-  origEl.innerHTML=xray.origLines.map((line,i)=>{
-    if(!line.anno||line.hl==='hl-clean')return`<span>${esc(line.text)} </span>`;
-    const id='anno-'+i;const engKey=getEngineKey(line.anno.type);const icon=ENGINE_ICONS[engKey]||'🔍';
-    return`<span class="hl ${line.hl}" onclick="toggleAnno('${id}')">${esc(line.text)}<div class="anno" id="${id}"><div class="anno-head"><span class="anno-icon">${icon}</span><span class="anno-tactic">${esc(line.anno.name)}</span></div><div class="anno-type">${esc(line.anno.type)}</div><div class="anno-desc">${esc(line.anno.desc)}</div>${line.anno.legal?`<div class="anno-legal">${esc(line.anno.legal)}</div>`:''}${line.anno.ask?`<div class="anno-ask">${esc(line.anno.ask)}</div>`:''}</div></span> `;
-  }).join('');
-  origEl.style.fontSize='0.8rem';origEl.style.lineHeight='1.8';
-  document.getElementById('decContent').innerHTML=xray.decLines.map(l=>`<div class="decoded-line ${l.cls}">${esc(l.text)}</div>`).join('');
-
-  // Vibe Check
-  const vc=document.getElementById('vibeCheck');
-  vc.innerHTML='<div class="section-head" style="grid-column:1/-1">✨ Vibe Check</div>'+Object.entries(vibe).map(([k,v])=>`<div class="vibe-item"><span class="vibe-label">${esc(k)}</span><span class="vibe-value">${esc(v)}</span></div>`).join('');
-
-  // Findings tabs with icons
-  const tabs=[];
-  if(cats.pers.length)tabs.push({key:'pers',icon:'🎭',label:'Persuasion',count:cats.pers.length,items:cats.pers});
-  if(cats.emo.length)tabs.push({key:'emo',icon:'💔',label:'Emotional',count:cats.emo.length,items:cats.emo});
-  if(cats.power.length)tabs.push({key:'power',icon:'👑',label:'Power',count:cats.power.length,items:cats.power});
-  if(cats.bias.length)tabs.push({key:'bias',icon:'🧠',label:'Bias',count:cats.bias.length,items:cats.bias});
-  if(cats.logic.length)tabs.push({key:'logic',icon:'⚡',label:'Logic',count:cats.logic.length,items:cats.logic});
-  const tabsEl=document.getElementById('fTabs'),bodyEl=document.getElementById('fBody');
-  if(!tabs.length){tabsEl.innerHTML='';bodyEl.innerHTML='<p style="color:var(--green);text-align:center;padding:16px">✓ No specific tactics detected. This message appears clean.</p>';return}
-  tabsEl.innerHTML=tabs.map((t,i)=>`<div class="f-tab${i===0?' active':''}" data-tab="${t.key}"><span class="f-tab-icon">${t.icon}</span>${t.label}<span class="f-cnt">${t.count}</span></div>`).join('');
-  renderTab(tabs[0]);
-  tabsEl.querySelectorAll('.f-tab').forEach(tab=>{tab.onclick=function(){tabsEl.querySelectorAll('.f-tab').forEach(t=>t.classList.remove('active'));this.classList.add('active');const found=tabs.find(t=>t.key===this.dataset.tab);if(found)renderTab(found)}});
-
-  document.getElementById('responseText').textContent=response;
-  document.getElementById('legalContent').innerHTML=legal.map(n=>`<div class="legal-item">${esc(n)}</div>`).join('');
-
-  // Staggered animations
-  setTimeout(()=>sc.classList.add('anim-in'),50);
-  setTimeout(()=>document.getElementById('xray').classList.add('anim-in'),200);
-  setTimeout(()=>vc.classList.add('anim-in'),350);
-  setTimeout(()=>document.getElementById('findingsWrap').classList.add('anim-in'),500);
-  setTimeout(()=>document.getElementById('responseBox').classList.add('anim-in'),600);
-  setTimeout(()=>document.getElementById('legalBox').classList.add('anim-in'),700);
-}
-
-function renderTab(tab){
-  const icon=tab.icon;
-  document.getElementById('fBody').innerHTML=tab.items.map(f=>`<div class="f-card"><div class="f-top"><div class="f-name-wrap"><span class="f-icon">${icon}</span><span class="f-name">${esc(f.name)}</span></div><span class="f-badge ${f.sev}">${f.sev}</span></div><div class="f-type">${esc(f.type)}</div><div class="f-desc">${esc(f.desc)}</div>${f.quote?`<div class="f-quote">${esc(f.quote)}</div>`:''}${f.legal?`<div class="f-legal">${esc(f.legal)}</div>`:''}${f.ask?`<div class="f-ask">${esc(f.ask)}</div>`:''}</div>`).join('');
-}
-
-function getEngineKey(type){
-  if(!type)return'PERSUASION';
-  const t=type.toUpperCase();
-  if(t.includes('CIALDINI')||t.includes('DARK')||t.includes('MANIPULATION'))return'PERSUASION';
-  if(t.includes('BIAS'))return'BIAS';
-  if(t.includes('LOGIC')||t.includes('FALLACY'))return'LOGIC';
-  if(t.includes('EMOTIONAL'))return'EMOTIONAL';
-  if(t.includes('POWER')||t.includes('HARASSMENT'))return'POWER';
-  return'PERSUASION';
-}
-
-// --- X-RAY TABS ---
-document.querySelectorAll('.xray-tab').forEach(tab=>{tab.onclick=function(){
-  document.querySelectorAll('.xray-tab').forEach(t=>t.classList.remove('active'));
-  document.querySelectorAll('.xray-pane').forEach(p=>p.classList.remove('active'));
-  this.classList.add('active');
-  document.getElementById(this.dataset.pane==='orig'?'paneOrig':'paneDec').classList.add('active');
-}});
-
-// --- ANNOTATIONS ---
-function toggleAnno(id){const el=document.getElementById(id);if(!el)return;document.querySelectorAll('.anno.show').forEach(a=>{if(a.id!==id)a.classList.remove('show')});el.classList.toggle('show')}
-document.addEventListener('click',e=>{if(!e.target.closest('.hl'))document.querySelectorAll('.anno.show').forEach(a=>a.classList.remove('show'))});
-
-// --- OCR ---
-document.getElementById('ocrFile').addEventListener('change',async function(e){
-  const file=e.target.files[0];if(!file)return;
-  const status=document.getElementById('ocrStatus');const zone=document.getElementById('uploadZone');
-  status.textContent='Loading OCR engine...';zone.style.borderColor='var(--teal)';
+document.getElementById('ocrFile').addEventListener('change',async e=>{
+  const file=e.target.files[0];
+  if(!file)return;
+  document.getElementById('ocrStatus').textContent='Processing screenshot...';
   try{
-    if(!window.Tesseract){const s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js';document.head.appendChild(s);await new Promise((r,j)=>{s.onload=r;s.onerror=j})}
-    status.textContent='Reading image...';
-    const result=await Tesseract.recognize(file,'eng',{logger:m=>{if(m.status==='recognizing text')status.textContent=`Reading... ${Math.round(m.progress*100)}%`}});
-    const text=result.data.text.trim();
-    if(text){document.getElementById('inputText').value=text;updateCC();status.textContent='✓ '+text.length+' characters extracted';zone.style.borderColor='var(--green)'}
-    else{status.textContent='No text found in image';zone.style.borderColor='var(--red)'}
-  }catch(err){status.textContent='OCR failed: '+err.message;zone.style.borderColor='var(--red)'}
-  setTimeout(()=>{zone.style.borderColor='';status.textContent=''},4000);
+    if(!window.Tesseract){
+      const script=document.createElement('script');
+      script.src='https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js';
+      await new Promise((res,rej)=>{script.onload=res;script.onerror=rej;document.head.appendChild(script);});
+    }
+    const {data:{text}}=await Tesseract.recognize(file,'eng');
+    document.getElementById('inputText').value=text;
+    updateCC();
+    document.getElementById('ocrStatus').textContent='✓ Text extracted!';
+    setTimeout(()=>{document.getElementById('ocrStatus').textContent=''},2000);
+  }catch(err){
+    document.getElementById('ocrStatus').textContent='❌ OCR failed. Try a clearer image.';
+  }
 });
 
-// --- UTILS ---
-function updateCC(){document.getElementById('charCount').textContent=document.getElementById('inputText').value.length}
-document.getElementById('inputText').addEventListener('input',updateCC);
-function esc(s){return s?String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'):''}
-function sleep(ms){return new Promise(r=>setTimeout(r,ms))}
-function copyEl(id){navigator.clipboard.writeText(document.getElementById(id).textContent)}
-function copyResults(){
-  const t=`🔍 THE HUMAN FILTER\n\nINFLUENCE SCORE: ${document.getElementById('scNum').textContent}/100\n\nDECODED:\n${document.getElementById('decContent').textContent}\n\nSUGGESTED RESPONSE:\n${document.getElementById('responseText').textContent}\n\n— humanlayerai.com`;
-  navigator.clipboard.writeText(t).then(()=>{const b=document.querySelector('.copy-btn');b.textContent='✓ Copied!';setTimeout(()=>b.innerHTML='📋 Copy Full Analysis',2000)});
+function getScore(data){
+  if(!data.findings||data.findings.length===0)return 5;
+  let score=0;
+  data.findings.forEach(f=>{
+    if(f.severity==='high')score+=15;
+    else if(f.severity==='medium')score+=8;
+    else if(f.severity==='low')score+=3;
+  });
+  return Math.min(100,Math.max(0,score));
 }
 
-// --- AUTO-DEMO (first visit) ---
-(function(){
+function getColorForScore(s){
+  if(s<20)return'var(--green)';
+  if(s<40)return'var(--gold)';
+  if(s<70)return'var(--orange)';
+  return'var(--red)';
+}
+
+function getRateLimitRemaining(){
+  const key='humanfilter_usage_'+new Date().toDateString();
+  const data=JSON.parse(localStorage.getItem(key)||'{"count":0,"lastTime":0}');
+  const now=Date.now();
+  if(now-data.lastTime>15000){
+    data.count=0;
+    data.lastTime=now;
+  }
+  return {count:data.count,lastTime:data.lastTime,day:key};
+}
+
+function checkRateLimit(){
+  const limit=getRateLimitRemaining();
+  if(limit.count>=1){
+    const waitSecs=Math.ceil((15000-(Date.now()-limit.lastTime))/1000);
+    return{allowed:false,message:`Please wait ${waitSecs}s before next analysis.`};
+  }
+  const dayKey='humanfilter_daily_'+new Date().toDateString();
+  const daily=JSON.parse(localStorage.getItem(dayKey)||'{"count":0}');
+  if(daily.count>=30){
+    return{allowed:false,message:'Daily limit reached (30/day). Please try again tomorrow.'};
+  }
+  return{allowed:true};
+}
+
+function recordAnalysis(){
+  const key='humanfilter_usage_'+new Date().toDateString();
+  const data=JSON.parse(localStorage.getItem(key)||'{"count":0,"lastTime":0}');
+  data.count=1;
+  data.lastTime=Date.now();
+  localStorage.setItem(key,JSON.stringify(data));
+
+  const dayKey='humanfilter_daily_'+new Date().toDateString();
+  const daily=JSON.parse(localStorage.getItem(dayKey)||'{"count":0}');
+  daily.count++;
+  localStorage.setItem(dayKey,JSON.stringify(daily));
+}
+
+async function runAnalysis(){
+  const text=document.getElementById('inputText').value.trim();
+  if(!text){alert('Please enter or upload a message.');return;}
+
+  const limit=checkRateLimit();
+  if(!limit.allowed){
+    document.getElementById('rateLimitMsg').innerHTML=`<div class="rate-limit-notice">${limit.message}</div>`;
+    return;
+  }
+  document.getElementById('rateLimitMsg').innerHTML='';
+  document.getElementById('errorMsg').innerHTML='';
+
+  document.getElementById('scanOverlay').classList.add('active');
+  document.getElementById('decodeBtn').disabled=true;
+
   try{
-    if(!sessionStorage.getItem('hf_demo')){
-      sessionStorage.setItem('hf_demo','1');
-      setTimeout(()=>{
-        document.getElementById('inputText').value=PRESETS.guilt.text;
-        updateCC();
-        runAnalysis();
-      },800);
+    const systemPrompt=`You are The Human Filter — an AI analysis engine built by a legal professional and behavioral psychologist. Analyze messages for hidden manipulation.
+
+Analyze the message through these 5 engines:
+1. PERSUASION: Cialdini principles, dark patterns, manipulation tactics
+2. COGNITIVE BIAS: anchoring, survivorship bias, bandwagon, sunk cost, etc.
+3. LOGICAL FALLACIES: false dilemma, ad hominem, circular reasoning, etc.
+4. EMOTIONAL MANIPULATION: guilt-tripping, love bombing, gaslighting, conditional love, etc.
+5. POWER DYNAMICS: implicit threats, boundary violations, deadline coercion, IP grabs, harassment
+
+Return ONLY valid JSON (no markdown, no code fences) with this exact structure:
+{
+  "score": <0-100 influence/manipulation score>,
+  "context": "<dating|personal|business|legal|crypto|scam|harassment>",
+  "verdict": "<One compelling sentence summarizing the overall manipulation pattern>",
+  "findings": [
+    {
+      "engine": "<PERSUASION|BIAS|LOGIC|EMOTIONAL|POWER>",
+      "name": "<Tactic Name>",
+      "severity": "<high|medium|low>",
+      "quote": "<exact quote from the message>",
+      "decoded": "<What this actually means in plain language>",
+      "legal": "<Legal perspective on this tactic>",
+      "ask": "<Question the reader should ask themselves>"
     }
-  }catch(e){}
-})();
+  ],
+  "xray": [
+    {
+      "original": "<Original sentence from the message>",
+      "decoded": "<What they actually mean>",
+      "severity": "<high|medium|low|clean>"
+    }
+  ],
+  "vibe": {
+    "tone": "<emoji + short description>",
+    "red_flags": "<count and names>",
+    "recommended_move": "<what to do>",
+    "pattern": "<overall pattern name>"
+  },
+  "response": "<A suggested reply the user can send>",
+  "legal_notes": ["<Array of legal observations>"]
+}`;
+
+    const response=await fetch('https://api.openai.com/v1/chat/completions',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Authorization':`Bearer ${API_KEY}`},
+      body:JSON.stringify({
+        model:'gpt-4o-mini',
+        messages:[
+          {role:'system',content:systemPrompt},
+          {role:'user',content:`Analyze this message:\n\n${text}`}
+        ],
+        temperature:0.7,
+        max_tokens:2000
+      })
+    });
+
+    if(!response.ok){
+      throw new Error(`API error: ${response.status}`);
+    }
+
+    const json=await response.json();
+    let content=json.choices[0].message.content.trim();
+    if(content.startsWith('```json')){content=content.replace(/^```json\n?/,'').replace(/\n?```$/,'');}
+    if(content.startsWith('```')){content=content.replace(/^```\n?/,'').replace(/\n?```$/,'');}
+
+    const data=JSON.parse(content);
+    recordAnalysis();
+    displayResults(data,text);
+  }catch(err){
+    document.getElementById('errorMsg').innerHTML=`<div class="error-msg">❌ Analysis failed: ${err.message}. Please try again.</div>`;
+  }finally{
+    document.getElementById('scanOverlay').classList.remove('active');
+    document.getElementById('decodeBtn').disabled=false;
+  }
+}
+
+function displayResults(data,originalText){
+  const resultsEl=document.getElementById('results');
+  resultsEl.classList.add('visible');
+
+  setTimeout(()=>resultsEl.scrollIntoView({behavior:'smooth',block:'start'}),100);
+
+  const score=data.score||getScore(data);
+  const ctx=data.context||'personal';
+  const color=getColorForScore(score);
+
+  document.getElementById('scCtxIcon').textContent=CTX_ICONS[ctx]||'📌';
+  document.getElementById('scCtxLabel').textContent=ctx.toUpperCase();
+  document.getElementById('scNum').textContent='0';
+  document.getElementById('scVerdict').textContent=data.verdict||'Hidden manipulation detected.';
+
+  const glow=document.getElementById('scoreGlow');
+  glow.style.background=`radial-gradient(circle, ${color} 0%, transparent 70%)`;
+  glow.style.opacity='0.4';
+  glow.style.filter=`blur(20px)`;
+
+  const ring=document.getElementById('scRing');
+  const circumference=2*Math.PI*15;
+  ring.setAttribute('stroke-dasharray',circumference);
+  ring.setAttribute('stroke',color);
+
+  let current=0;
+  const interval=setInterval(()=>{
+    current++;
+    if(current<=score){
+      const offset=circumference-(current/100)*circumference;
+      ring.setAttribute('stroke-dashoffset',offset);
+      document.getElementById('scNum').textContent=current;
+    }else{
+      clearInterval(interval);
+    }
+  },15);
+
+  const scoreCard=document.getElementById('scoreCard');
+  setTimeout(()=>scoreCard.classList.add('anim-in'),10);
+
+  if(data.findings&&data.findings.length>0){
+    const top3=data.findings.slice(0,3);
+    const tactics=document.getElementById('scTactics');
+    tactics.innerHTML=top3.map(f=>`<div class="sc-tactic" style="background:${f.severity==='high'?'var(--red-dim)':f.severity==='medium'?'var(--orange-dim)':'var(--teal-dim)'};color:${f.severity==='high'?'var(--red)':f.severity==='medium'?'var(--orange)':'var(--teal)'}">${f.name}</div>`).join('');
+  }
+
+  const engines=new Set();
+  if(data.findings){
+    data.findings.forEach(f=>{
+      const e=f.engine.toLowerCase();
+      if(e==='persuasion')engines.add('pers');
+      else if(e==='bias')engines.add('bias');
+      else if(e==='logic')engines.add('logic');
+      else if(e==='emotional')engines.add('emo');
+      else if(e==='power')engines.add('power');
+    });
+  }
+  const egHTML=[...engines].map(e=>`<div class="sc-engine"><div class="dot" style="background:${ENGINE_COLORS[e]}"></div>${ENGINE_LABELS[e]}</div>`).join('');
+  document.getElementById('scEngines').innerHTML=egHTML;
+
+  if(data.xray&&data.xray.length>0){
+    const orig=document.getElementById('origContent');
+    const dec=document.getElementById('decContent');
+
+    orig.innerHTML=data.xray.map((x,i)=>{
+      const hl=x.severity==='high'?'hl-red':x.severity==='medium'?'hl-orange':x.severity==='low'?'hl-yellow':'hl-clean';
+      return`<span class="hl ${hl}" onclick="toggleAnno(${i})">${x.original}</span> `;
+    }).join('');
+
+    dec.innerHTML=data.xray.map(x=>{
+      const cc=x.severity==='high'?'d-red':x.severity==='medium'?'d-orange':x.severity==='low'?'d-yellow':'d-gray';
+      return`<div class="decoded-line ${cc}">${x.decoded}</div>`;
+    }).join('');
+  }
+
+  const xray=document.getElementById('xray');
+  setTimeout(()=>xray.classList.add('anim-in'),150);
+
+  if(data.vibe){
+    const vibe=document.getElementById('vibeCheck');
+    vibe.innerHTML=`
+      <div class="vibe-item"><div class="vibe-label">🎯 Tone</div><div class="vibe-value">${data.vibe.tone||'—'}</div></div>
+      <div class="vibe-item"><div class="vibe-label">⚠️ Red Flags</div><div class="vibe-value">${data.vibe.red_flags||'—'}</div></div>
+      <div class="vibe-item"><div class="vibe-label">✅ Move</div><div class="vibe-value">${data.vibe.recommended_move||'—'}</div></div>
+      <div class="vibe-item"><div class="vibe-label">🎭 Pattern</div><div class="vibe-value">${data.vibe.pattern||'—'}</div></div>
+    `;
+    setTimeout(()=>vibe.classList.add('anim-in'),300);
+  }
+
+  if(data.findings&&data.findings.length>0){
+    const engines={};
+    data.findings.forEach(f=>{
+      const e=f.engine.toUpperCase();
+      if(!engines[e])engines[e]=[];
+      engines[e].push(f);
+    });
+
+    const tabs=document.getElementById('fTabs');
+    const body=document.getElementById('fBody');
+    const icons={PERSUASION:'🎭',BIAS:'🧠',LOGIC:'⚡',EMOTIONAL:'💔',POWER:'👑'};
+
+    tabs.innerHTML=Object.keys(engines).map((e,i)=>`<div class="f-tab ${i===0?'active':''}" onclick="switchFTab('${e}')">${icons[e]} ${e} <span class="f-cnt">${engines[e].length}</span></div>`).join('');
+
+    let html='';
+    Object.keys(engines).forEach((e,i)=>{
+      html+=`<div id="ftab-${e}" style="display:${i===0?'block':'none'}">`;
+      engines[e].forEach(f=>{
+        html+=`<div class="f-card ${f.severity}">
+          <div class="f-top">
+            <div class="f-name-wrap"><span class="f-icon">${icons[e]}</span><span class="f-name">${f.name}</span></div>
+            <div class="f-badge ${f.severity}">${f.severity.toUpperCase()}</div>
+          </div>
+          <div class="f-type">${f.engine}</div>
+          <div class="f-desc">${f.decoded}</div>
+          <div class="f-quote">"${f.quote}"</div>
+          <div class="f-legal">${f.legal}</div>
+          <div class="f-ask">${f.ask}</div>
+        </div>`;
+      });
+      html+='</div>';
+    });
+    body.innerHTML=html;
+
+    const findings=document.getElementById('findingsWrap');
+    setTimeout(()=>findings.classList.add('anim-in'),450);
+  }
+
+  if(data.response){
+    document.getElementById('responseText').textContent=data.response;
+    const resp=document.getElementById('responseBox');
+    setTimeout(()=>resp.classList.add('anim-in'),550);
+  }
+
+  if(data.legal_notes&&data.legal_notes.length>0){
+    document.getElementById('legalContent').innerHTML=data.legal_notes.map(n=>`<div class="legal-item">${n}</div>`).join('');
+    const legal=document.getElementById('legalBox');
+    setTimeout(()=>legal.classList.add('anim-in'),600);
+  }
+}
+
+window.switchFTab=function(e){
+  document.querySelectorAll('.f-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('[id^="ftab-"]').forEach(p=>p.style.display='none');
+  event.target.closest('.f-tab').classList.add('active');
+  document.getElementById(`ftab-${e}`).style.display='block';
+};
+
+window.copyEl=function(id){
+  const text=document.getElementById(id).textContent;
+  navigator.clipboard.writeText(text).then(()=>{
+    const btn=event.target;
+    const orig=btn.textContent;
+    btn.textContent='Copied!';
+    setTimeout(()=>{btn.textContent=orig;},1500);
+  });
+};
+
+window.copyResults=function(){
+  const text=document.getElementById('inputText').value;
+  const num=document.getElementById('scNum').textContent;
+  const verdict=document.getElementById('scVerdict').textContent;
+  const findings=Array.from(document.querySelectorAll('.f-card')).map(c=>c.textContent).join('\n\n');
+  const response=document.getElementById('responseText').textContent;
+  const report=`THE HUMAN FILTER v4.0 ANALYSIS\n\nScore: ${num}/100\nVerdict: ${verdict}\n\nOriginal Message:\n${text}\n\nFindings:\n${findings}\n\nSuggested Response:\n${response}`;
+  navigator.clipboard.writeText(report).then(()=>{
+    const btn=event.target;
+    const orig=btn.textContent;
+    btn.textContent='✓ Copied!';
+    setTimeout(()=>{btn.textContent=orig;},1500);
+  });
+};
+
+window.addEventListener('load',()=>{
+  setTimeout(()=>{
+    document.getElementById('inputText').value=PRESETS.guilt.text;
+    updateCC();
+    runAnalysis();
+  },800);
+});
 </script>
 </body>
 </html>
