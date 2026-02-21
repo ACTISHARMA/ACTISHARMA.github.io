@@ -246,6 +246,41 @@ input[type="file"]{display:none}
   .sc-score-wrap svg{width:100px;height:100px}
   .sc-num{font-size:1.9rem}
 }
+
+/* ===== EMBED MODE (?embed=true) ===== */
+body.embed-mode .header{display:none}
+body.embed-mode .hero{padding:10px 12px 8px}
+body.embed-mode .hero-badge{display:none}
+body.embed-mode .hero h1{font-size:1.1rem;margin-bottom:4px}
+body.embed-mode .hero-desc{font-size:0.72rem;display:none}
+body.embed-mode .input-section{padding:0 8px 8px}
+body.embed-mode .upload-zone{min-height:60px;padding:10px 10px}
+body.embed-mode .upload-icon{font-size:1.2rem}
+body.embed-mode .upload-label{font-size:0.68rem}
+body.embed-mode .upload-sub{display:none}
+body.embed-mode .input-area{min-height:60px;font-size:0.76rem}
+body.embed-mode .presets-wrap{padding:0 8px 6px}
+body.embed-mode .preset-chip{font-size:0.6rem;padding:3px 8px}
+body.embed-mode .decode-btn{width:calc(100% - 16px);margin:0 auto 10px;padding:10px;font-size:0.78rem}
+body.embed-mode .results{padding:0 8px 16px}
+body.embed-mode .score-card{padding:14px;margin-bottom:10px}
+body.embed-mode .sc-score-wrap{width:80px;height:80px}
+body.embed-mode .sc-score-wrap svg{width:80px;height:80px}
+body.embed-mode .sc-num{font-size:1.6rem}
+body.embed-mode .xray{margin-bottom:10px}
+body.embed-mode .xray-pane{max-height:200px;padding:10px}
+body.embed-mode .vibe-check{padding:10px;margin-bottom:10px;gap:6px}
+body.embed-mode .findings{margin-bottom:10px}
+body.embed-mode .f-tab{padding:6px 10px;font-size:0.6rem}
+body.embed-mode .response{display:none}
+body.embed-mode .legal-box{display:none}
+body.embed-mode .copy-btn{display:none}
+body.embed-mode .footer{display:none}
+body.embed-mode .embed-cta{display:block}
+body.embed-mode{overflow:hidden}
+
+.embed-cta{display:none;text-align:center;margin:4px auto;padding:8px 18px;font-size:0.72rem;font-weight:600;color:var(--gold);text-decoration:none;letter-spacing:0.5px}
+.embed-cta:hover{text-decoration:underline}
 </style>
 </head>
 <body>
@@ -336,6 +371,7 @@ input[type="file"]{display:none}
   <div class="legal-box" id="legalBox"><div class="section-head" style="color:var(--cyan)">⚖️ Legal Perspective</div><div id="legalContent"></div></div>
 
   <button class="copy-btn" onclick="copyResults()">📋 Copy Full Analysis</button>
+  <a class="embed-cta" href="/artifacts/influence-decoder.html" target="_top">See full analysis with legal perspective →</a>
 </section>
 
 <footer class="footer">
@@ -344,6 +380,9 @@ input[type="file"]{display:none}
 </footer>
 
 <script>
+// Embed mode detection
+if(new URLSearchParams(window.location.search).has('embed')){document.body.classList.add('embed-mode')}
+
 // ============================================================
 // THE HUMAN FILTER v3.5 — Gen Z Optimized Flagship
 // Built by Aakarsh Sharma | Human Layer AI
