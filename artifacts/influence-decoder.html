@@ -1453,7 +1453,7 @@
         }
 
         .legal-note::before {
-            content: 'Ã¢ÂÂÃ¯Â¸Â';
+            content: '&#x2696;&#xFE0F;';
             position: absolute;
             left: 0;
         }
@@ -1822,17 +1822,17 @@
                 <div class="input-wrapper">
                     <textarea id="messageInput" placeholder="Paste the message you want to analyze... or tap a preset above"></textarea>
                     <button class="input-camera-btn" id="cameraBtn" title="Scan with camera">
-                        <span class="input-camera-btn-icon">Ã°ÂÂÂ¸</span>
+                        <span class="input-camera-btn-icon">&#x1F4F8;</span>
                         <span class="input-camera-btn-label">Upload Screenshot</span>
                     </button>
                 </div>
-                <button class="mobile-camera-btn" id="mobileCameraBtn">Ã°ÂÂÂ¸ Upload Screenshot</button>
+                <button class="mobile-camera-btn" id="mobileCameraBtn">&#x1F4F8; Upload Screenshot</button>
             </div>
 
             <div class="rate-limit-notice" id="rateLimitNotice"></div>
 
             <div class="empty-state" id="emptyState">
-                <div class="empty-state-icon">Ã°ÂÂÂ</div>
+                <div class="empty-state-icon">&#x1F50D;</div>
                 <div>Tap a preset or paste a message to get started</div>
             </div>
 
@@ -1867,14 +1867,14 @@
             </div>
 
             <div style="display: flex; gap: 8px; flex-direction: column; margin-bottom: 32px;">
-                <button class="share-result-btn" id="shareResultBtn" style="display: none;">Ã°ÂÂÂ¤ Share Result</button>
-                <button class="copy-full-btn" id="copyFullBtn" style="display: none;">Ã°ÂÂÂ Copy Full Analysis</button>
-                <button class="save-analysis-btn" id="saveAnalysisBtn" style="display: none;">Ã°ÂÂÂ¾ Save as File</button>
+                <button class="share-result-btn" id="shareResultBtn" style="display: none;">&#x1F4E4; Share Result</button>
+                <button class="copy-full-btn" id="copyFullBtn" style="display: none;">&#x1F4CB; Copy Full Analysis</button>
+                <button class="save-analysis-btn" id="saveAnalysisBtn" style="display: none;">&#x1F4BE; Save as File</button>
             </div>
 
             <div class="post-result-cta" id="postResultCta" style="display: none;">
                 <p>That was a preset. Now paste <strong>the message that's been bothering YOU</strong>.</p>
-                <button class="cta-paste-btn" onclick="document.getElementById('messageInput').value=''; document.getElementById('messageInput').focus(); window.scrollTo({top: 0, behavior: 'smooth'});">Ã¢ÂÂ Paste Your Message</button>
+                <button class="cta-paste-btn" onclick="document.getElementById('messageInput').value=''; document.getElementById('messageInput').focus(); window.scrollTo({top: 0, behavior: 'smooth'});">&#x2191; Paste Your Message</button>
             </div>
         </div>
 
@@ -1888,7 +1888,7 @@
             <div class="scan-step" id="scanStep">Loading...</div>
         </div>
 
-        <div class="ocr-loading" id="ocrLoading">Ã°ÂÂÂ¸ Scanning image...</div>
+        <div class="ocr-loading" id="ocrLoading">&#x1F4F8; Scanning image...</div>
 
         <div class="highlight-popup" id="highlightPopup">
             <div class="highlight-popup-text" id="highlightPopupText"></div>
@@ -1901,11 +1901,11 @@
                     <div class="share-score" id="shareScore">75</div>
                     <div class="share-summary" id="shareSummary"></div>
                     <div class="share-tags" id="shareTags"></div>
-                    <div class="share-branding">Decoded by The Human Filter ÃÂ· humanlayerai.com</div>
+                    <div class="share-branding">Decoded by The Human Filter &#xB7; humanlayerai.com</div>
                 </div>
                 <div class="share-button-group">
-                    <button class="share-footer-btn" id="shareWebBtn">Ã°ÂÂÂ¤ Share</button>
-                    <button class="share-footer-btn secondary" id="saveImageBtn">Ã°ÂÂÂ¾ Save as Image</button>
+                    <button class="share-footer-btn" id="shareWebBtn">&#x1F4E4; Share</button>
+                    <button class="share-footer-btn secondary" id="saveImageBtn">&#x1F4BE; Save as Image</button>
                 </div>
             </div>
         </div>
@@ -1913,7 +1913,7 @@
         <div class="pwa-modal" id="pwaModal">
             <div class="pwa-modal-content">
                 <button class="pwa-modal-close" id="pwaModalClose">&times;</button>
-                <div class="pwa-header">Ã°ÂÂÂ± Add to Home Screen</div>
+                <div class="pwa-header">&#x1F4F1; Add to Home Screen</div>
                 <div class="pwa-instructions" id="pwaInstructions"></div>
                 <div class="pwa-modal-buttons">
                     <button class="secondary" id="pwaModalClose2">Close</button>
@@ -1924,13 +1924,12 @@
         <div class="footer">
             <div class="footer-content">
                 <div class="footer-section">
-                    v6.0 ÃÂ· The Human Filter <span class="footer-divider">ÃÂ·</span>
-                    <a href="#" onclick="showPWAModal(); return false;">Ã°ÂÂÂ± Add to Home Screen</a> <span class="footer-divider">ÃÂ·</span>
-                    <a href="https://humanlayerai.com" target="_blank">humanlayerai.com</a> <span class="footer-divider">ÃÂ·</span>
-                    <a href="#" onclick="promptForApiKey(); return false;">Ã°ÂÂÂ API Key</a>
+                    v6.0 &#xB7; The Human Filter <span class="footer-divider">&#xB7;</span>
+                    <a href="#" onclick="showPWAModal(); return false;">&#x1F4F1; Add to Home Screen</a> <span class="footer-divider">&#xB7;</span>
+                    <a href="https://humanlayerai.com" target="_blank">humanlayerai.com</a>
                 </div>
                 <div class="footer-section">
-                    Built by Aakarsh Sharma ÃÂ· Law ÃÂ Psychology ÃÂ AI
+                    Built by Aakarsh Sharma &#xB7; Law &#xD7; Psychology &#xD7; AI
                 </div>
                 <div class="footer-section" style="font-size: 10px;">
                     Analysis powered by AI. Your message is sent to OpenAI for processing.
@@ -1941,27 +1940,27 @@
 
     <script>
         const PRESETS = {
-            dating: { emoji: 'Ã°ÂÂÂ', label: 'Dating DM', text: `Hey gorgeous Ã°ÂÂÂ I know we just matched but I feel like I already know you. You're not like other girls on here Ã¢ÂÂ you actually seem real. I deleted the app btw, you're the only one I'm talking to. Can I get your number? I hate texting on here. Also my premium is expiring soon so we might lose this connection Ã°ÂÂÂ` },
-            guilt: { emoji: 'Ã°ÂÂÂ', label: 'Guilt Trip', text: `I guess I'm just not important enough for you to make time for me anymore. Remember when you used to call me every day? I sat by the phone all evening waiting. But it's fine, I'm used to being disappointed. Your father was the same way. Don't worry about me, I'll manage somehow. I always do. I just hope you don't regret this when I'm gone.` },
-            whatsapp: { emoji: 'Ã°ÂÂÂ¬', label: 'WhatsApp Scam', text: `Bro u there?? I need to talk to u urgently. Look I'm not supposed to tell anyone this but there's this crypto opportunity that's about to blow up. My cousin works at Binance and he said this coin is getting listed next week. If u put in even Ã¢ÂÂ¹50K now you'll 5x it easy. I already put in 2 lakhs. But u have to do it TODAY because the window closes at midnight. Don't tell anyone else ok this is insider info. Trust me bro when have I ever steered u wrong? Just use this link and deposit now. You'll thank me later Ã°ÂÂÂ` },
-            catfish: { emoji: 'Ã°ÂÂÂ£', label: 'Catfish DM', text: `Baby I miss you so much Ã°ÂÂ¥Âº I know we haven't video called yet but my camera is broken and I'm saving up for a new phone. You're the best thing that's ever happened to me. I've never felt this way about anyone. Hey so I'm in a really tough spot right now Ã¢ÂÂ my mom needs surgery and I'm $500 short. I hate asking but you're the only person I trust. I'll pay you back as soon as I get paid next week, I promise. Can you send it through Zelle? I love you Ã°ÂÂÂ` },
-            workfavor: { emoji: 'Ã°ÂÂÂ¼', label: 'Work Favor', text: `Hey! So I have a HUGE favor to ask and you're literally the only person who can help. I know you're swamped but this would only take "a few minutes" of your time. Remember when I covered for you during that meeting last month? Also, Sarah from leadership specifically mentioned your name for this. It would really look bad if we dropped the ball on this one. Can you take this on by EOD? I already told the client you'd handle it Ã°ÂÂÂ` },
-            scam: { emoji: 'Ã¢ÂÂ Ã¯Â¸Â', label: 'Suspicious Email', text: `Dear Beloved,\nI am Mrs. Margaret Patton, a widow of late Mr. Richard Patton who was a renowned oil magnate. Before my husband died, he deposited the sum of $12.5 Million USD in a Finance House. I am contacting you because I need a trustworthy foreign partner to receive these funds on my behalf due to political instability in my country.\nYou will receive 30% of the total amount for your assistance. All I need is your full name, bank details, and a small processing fee of $450 to initiate the transfer. Please respond urgently as time is of the essence.\nGod bless you,\nMrs. Margaret Patton` },
-            mlm: { emoji: 'Ã°ÂÂÂ', label: 'MLM Pitch', text: `Hey girl!! Ã°ÂÂÂ So I know we haven't talked since high school but I've been DYING to reach out! You've been looking AMAZING on Instagram lately! Ã°ÂÂÂ¥ So I recently started my own business (finally being my own boss! Ã°ÂÂÂ) and I immediately thought of YOU. I'm looking for just 3 more people to join my team this month. The starter kit is only $299 and most people make that back in their first week!! You'd be SO perfect for this. Can I send you more info? This opportunity literally changed my life! Ã°ÂÂÂÃ°ÂÂÂ°` },
-            fakejob: { emoji: 'Ã°ÂÂÂ¯', label: 'Fake Job', text: `Congratulations! You've been selected for a Remote Data Entry Specialist position at GlobalTech Solutions. Salary: $75-95/hr, work from home, flexible hours. No experience needed Ã¢ÂÂ we provide full training!\nTo secure your position, please complete the following:\n1. Purchase a home office setup kit ($199, reimbursed on first paycheck)\n2. Send your SSN and bank details for payroll setup\n3. Download our proprietary software from the link below\nThis offer expires in 24 hours. Reply ASAP to confirm your spot Ã¢ÂÂ only 3 positions remaining!` },
-            phishing: { emoji: 'Ã°ÂÂÂ', label: 'Phishing Email', text: `Ã¢ÂÂ Ã¯Â¸Â URGENT: Your Apple ID has been compromised! Unusual sign-in detected from Moscow, Russia at 3:47 AM.\nIf this wasn't you, your account will be permanently locked in 12 hours.\nÃ¢ÂÂ Click here to verify your identity: apple-id-secure-verify.com/restore\nDo NOT ignore this message. Failure to verify within 12 hours will result in permanent data loss and account termination.\nApple Security Team\nRef: #INC-2026-88431` },
-            landlord: { emoji: 'Ã°ÂÂÂ ', label: 'Landlord Pressure', text: `Hi tenant. Just wanted to give you a heads up that rent is going up $400/month starting next month. Market rates have gone up significantly. Also I'll need to come by this weekend to "inspect" the unit Ã¢ÂÂ no need to be home, I have a key. If you have a problem with the new rate, you're welcome to find somewhere else. I have a waiting list of people who'd love your unit. Let me know by Friday or I'll assume you agree.` },
-            sales: { emoji: 'Ã°ÂÂÂÃ¯Â¸Â', label: 'Sales Email', text: `Hi [Name],\nI wanted to reach out personally because we've been watching your company's growth closely, and frankly, we're impressed. Companies like yours that are scaling this fast typically hit a critical infrastructure bottleneck within 6-9 months Ã¢ÂÂ and by then, it's already too expensive to fix.\nWe've helped 247 companies in your space avoid exactly this problem, including [Well-Known Competitor] and [Industry Leader], who both saw 340% ROI within the first quarter.\nI know you're busy, so I'll be direct: we've reserved a spot for your team in our next cohort, but it closes Friday. Want me to hold it?` },
-            linkedin: { emoji: 'Ã°ÂÂÂ¼', label: 'LinkedIn DM', text: `Hi! I came across your profile and I'm really impressed by your background. We're building something revolutionary in the AI space and your skillset is exactly what we need. I can't share too many details publicly but this is backed by a top-tier VC firm. We're pre-revenue but growing 400% MoM. The equity package alone could be worth 7 figures in 2 years. Would love to hop on a quick 15-min call this week.` },
-            contract: { emoji: 'Ã°ÂÂÂ', label: 'Contract Clause', text: `The Contractor agrees to assign all intellectual property rights, including but not limited to patents, copyrights, trade secrets, and moral rights, for any work product created during or tangentially related to the engagement period, in perpetuity, throughout the universe. The Contractor waives any right to attribution. Non-compete period: 36 months post-termination within any industry the Company operates or plans to operate in. Disputes shall be resolved via binding arbitration in a jurisdiction of the Company's choosing, with costs borne by the Contractor.` },
-            creepy: { emoji: 'Ã°ÂÂÂ¬', label: 'Creepy DM', text: `Hey I noticed you at the coffee shop today. You probably didn't see me but I've seen you there a few times. You always look so good. I found your Instagram from the location tag. I know this might seem forward but life's too short right? We should hang out sometime. I'm a really nice guy, you'd see that if you gave me a chance. Don't leave me on read like other girls do. I just want to get to know you. What's your schedule like? I could come by when you're there again Ã°ÂÂÂ` },
-            job_posting: { emoji: 'Ã°ÂÂÂ', label: 'Job Posting', text: `We are looking for a self-motivated, detail-oriented marketing manager to join our fast-paced, dynamic team. Must be comfortable wearing many hats in an ambiguous environment. Competitive salary (DOE). Unlimited PTO. We work hard and play hard. This is a ground-floor opportunity with equity potential. Remote-friendly (2-3 days in office required).` },
-            breakup: { emoji: 'Ã°ÂÂÂ', label: 'Breakup Text', text: `I think we need to take a break. It's not you, it's me Ã¢ÂÂ I just need to find myself right now. You deserve someone better. Maybe in another life, things would be different. I still care about you so much. Can we still be friends? I don't want to lose you completely. Also can you Venmo me back for that concert ticket?` },
-            friend_favor: { emoji: 'Ã°ÂÂÂ', label: 'Friend Favor', text: `Hey so random question lol. You know how you're really good with tech stuff? My laptop has been acting weird and I was wondering if you could take a look? It would literally take you 5 minutes. Also my WiFi keeps dropping and my printer won't connect. Oh and while you're at it could you set up my new phone? You're the best! I owe you one (for real this time) Ã°ÂÂÂ` },
-            toxic_positivity: { emoji: 'Ã°ÂÂÂ', label: 'Toxic Positivity', text: `Everything happens for a reason! You just need to stay positive and manifest good vibes. When I lost my job, I just chose to be happy and look how it turned out! You're overthinking it. Just smile more and the universe will provide. Negative people attract negative energy. Maybe try gratitude journaling? It worked for me! Just choose happiness Ã°ÂÂÂÃ¢ÂÂ¨` }
+            dating: { emoji: '\uD83D\uDC95', label: 'Dating DM', text: `Hey gorgeous \uD83D\uDE0D I know we just matched but I feel like I already know you. You're not like other girls on here \u2014 you actually seem real. I deleted the app btw, you're the only one I'm talking to. Can I get your number? I hate texting on here. Also my premium is expiring soon so we might lose this connection \uD83D\uDE05` },
+            guilt: { emoji: '\uD83D\uDE14', label: 'Guilt Trip', text: `I guess I'm just not important enough for you to make time for me anymore. Remember when you used to call me every day? I sat by the phone all evening waiting. But it's fine, I'm used to being disappointed. Your father was the same way. Don't worry about me, I'll manage somehow. I always do. I just hope you don't regret this when I'm gone.` },
+            whatsapp: { emoji: '\uD83D\uDCAC', label: 'WhatsApp Scam', text: `Bro u there?? I need to talk to u urgently. Look I'm not supposed to tell anyone this but there's this crypto opportunity that's about to blow up. My cousin works at Binance and he said this coin is getting listed next week. If u put in even \u20B950K now you'll 5x it easy. I already put in 2 lakhs. But u have to do it TODAY because the window closes at midnight. Don't tell anyone else ok this is insider info. Trust me bro when have I ever steered u wrong? Just use this link and deposit now. You'll thank me later \uD83D\uDE80` },
+            catfish: { emoji: '\uD83C\uDFA3', label: 'Catfish DM', text: `Baby I miss you so much \uD83E\uDD7A I know we haven't video called yet but my camera is broken and I'm saving up for a new phone. You're the best thing that's ever happened to me. I've never felt this way about anyone. Hey so I'm in a really tough spot right now \u2014 my mom needs surgery and I'm $500 short. I hate asking but you're the only person I trust. I'll pay you back as soon as I get paid next week, I promise. Can you send it through Zelle? I love you \uD83D\uDC95` },
+            workfavor: { emoji: '\uD83D\uDCBC', label: 'Work Favor', text: `Hey! So I have a HUGE favor to ask and you're literally the only person who can help. I know you're swamped but this would only take "a few minutes" of your time. Remember when I covered for you during that meeting last month? Also, Sarah from leadership specifically mentioned your name for this. It would really look bad if we dropped the ball on this one. Can you take this on by EOD? I already told the client you'd handle it \uD83D\uDE0A` },
+            scam: { emoji: '\u26A0\uFE0F', label: 'Suspicious Email', text: `Dear Beloved,\nI am Mrs. Margaret Patton, a widow of late Mr. Richard Patton who was a renowned oil magnate. Before my husband died, he deposited the sum of $12.5 Million USD in a Finance House. I am contacting you because I need a trustworthy foreign partner to receive these funds on my behalf due to political instability in my country.\nYou will receive 30% of the total amount for your assistance. All I need is your full name, bank details, and a small processing fee of $450 to initiate the transfer. Please respond urgently as time is of the essence.\nGod bless you,\nMrs. Margaret Patton` },
+            mlm: { emoji: '\uD83D\uDCC8', label: 'MLM Pitch', text: `Hey girl!! \uD83D\uDC95 So I know we haven't talked since high school but I've been DYING to reach out! You've been looking AMAZING on Instagram lately! \uD83D\uDD25 So I recently started my own business (finally being my own boss! \uD83D\uDE4C) and I immediately thought of YOU. I'm looking for just 3 more people to join my team this month. The starter kit is only $299 and most people make that back in their first week!! You'd be SO perfect for this. Can I send you more info? This opportunity literally changed my life! \uD83D\uDE80\uD83D\uDCB0` },
+            fakejob: { emoji: '\uD83C\uDFAF', label: 'Fake Job', text: `Congratulations! You've been selected for a Remote Data Entry Specialist position at GlobalTech Solutions. Salary: $75-95/hr, work from home, flexible hours. No experience needed \u2014 we provide full training!\nTo secure your position, please complete the following:\n1. Purchase a home office setup kit ($199, reimbursed on first paycheck)\n2. Send your SSN and bank details for payroll setup\n3. Download our proprietary software from the link below\nThis offer expires in 24 hours. Reply ASAP to confirm your spot \u2014 only 3 positions remaining!` },
+            phishing: { emoji: '\uD83D\uDD17', label: 'Phishing Email', text: `\u26A0\uFE0F URGENT: Your Apple ID has been compromised! Unusual sign-in detected from Moscow, Russia at 3:47 AM.\nIf this wasn't you, your account will be permanently locked in 12 hours.\n\u2192 Click here to verify your identity: apple-id-secure-verify.com/restore\nDo NOT ignore this message. Failure to verify within 12 hours will result in permanent data loss and account termination.\nApple Security Team\nRef: #INC-2026-88431` },
+            landlord: { emoji: '\uD83C\uDFE0', label: 'Landlord Pressure', text: `Hi tenant. Just wanted to give you a heads up that rent is going up $400/month starting next month. Market rates have gone up significantly. Also I'll need to come by this weekend to "inspect" the unit \u2014 no need to be home, I have a key. If you have a problem with the new rate, you're welcome to find somewhere else. I have a waiting list of people who'd love your unit. Let me know by Friday or I'll assume you agree.` },
+            sales: { emoji: '\uD83D\uDECD\uFE0F', label: 'Sales Email', text: `Hi [Name],\nI wanted to reach out personally because we've been watching your company's growth closely, and frankly, we're impressed. Companies like yours that are scaling this fast typically hit a critical infrastructure bottleneck within 6-9 months \u2014 and by then, it's already too expensive to fix.\nWe've helped 247 companies in your space avoid exactly this problem, including [Well-Known Competitor] and [Industry Leader], who both saw 340% ROI within the first quarter.\nI know you're busy, so I'll be direct: we've reserved a spot for your team in our next cohort, but it closes Friday. Want me to hold it?` },
+            linkedin: { emoji: '\uD83D\uDCBC', label: 'LinkedIn DM', text: `Hi! I came across your profile and I'm really impressed by your background. We're building something revolutionary in the AI space and your skillset is exactly what we need. I can't share too many details publicly but this is backed by a top-tier VC firm. We're pre-revenue but growing 400% MoM. The equity package alone could be worth 7 figures in 2 years. Would love to hop on a quick 15-min call this week.` },
+            contract: { emoji: '\uD83D\uDCC4', label: 'Contract Clause', text: `The Contractor agrees to assign all intellectual property rights, including but not limited to patents, copyrights, trade secrets, and moral rights, for any work product created during or tangentially related to the engagement period, in perpetuity, throughout the universe. The Contractor waives any right to attribution. Non-compete period: 36 months post-termination within any industry the Company operates or plans to operate in. Disputes shall be resolved via binding arbitration in a jurisdiction of the Company's choosing, with costs borne by the Contractor.` },
+            creepy: { emoji: '\uD83D\uDE2C', label: 'Creepy DM', text: `Hey I noticed you at the coffee shop today. You probably didn't see me but I've seen you there a few times. You always look so good. I found your Instagram from the location tag. I know this might seem forward but life's too short right? We should hang out sometime. I'm a really nice guy, you'd see that if you gave me a chance. Don't leave me on read like other girls do. I just want to get to know you. What's your schedule like? I could come by when you're there again \uD83D\uDE0A` },
+            job_posting: { emoji: '\uD83D\uDCDD', label: 'Job Posting', text: `We are looking for a self-motivated, detail-oriented marketing manager to join our fast-paced, dynamic team. Must be comfortable wearing many hats in an ambiguous environment. Competitive salary (DOE). Unlimited PTO. We work hard and play hard. This is a ground-floor opportunity with equity potential. Remote-friendly (2-3 days in office required).` },
+            breakup: { emoji: '\uD83D\uDC94', label: 'Breakup Text', text: `I think we need to take a break. It's not you, it's me \u2014 I just need to find myself right now. You deserve someone better. Maybe in another life, things would be different. I still care about you so much. Can we still be friends? I don't want to lose you completely. Also can you Venmo me back for that concert ticket?` },
+            friend_favor: { emoji: '\uD83D\uDE4F', label: 'Friend Favor', text: `Hey so random question lol. You know how you're really good with tech stuff? My laptop has been acting weird and I was wondering if you could take a look? It would literally take you 5 minutes. Also my WiFi keeps dropping and my printer won't connect. Oh and while you're at it could you set up my new phone? You're the best! I owe you one (for real this time) \uD83D\uDE04` },
+            toxic_positivity: { emoji: '\uD83C\uDF08', label: 'Toxic Positivity', text: `Everything happens for a reason! You just need to stay positive and manifest good vibes. When I lost my job, I just chose to be happy and look how it turned out! You're overthinking it. Just smile more and the universe will provide. Negative people attract negative energy. Maybe try gratitude journaling? It worked for me! Just choose happiness \uD83D\uDE0A\u2728` }
         };
 
-        const CONTEXT_EMOJI = { dating: 'Ã°ÂÂÂ', personal: 'Ã°ÂÂÂ¥', business: 'Ã°ÂÂÂ¼', legal: 'Ã¢ÂÂÃ¯Â¸Â', crypto: 'Ã¢ÂÂ¿', scam: 'Ã¢ÂÂ Ã¯Â¸Â', harassment: 'Ã°ÂÂÂ¨', money: 'Ã°ÂÂÂ°', job: 'Ã°ÂÂÂ¯', general: 'Ã°ÂÂÂ' };
+        const CONTEXT_EMOJI = { dating: '\uD83D\uDC98', personal: '\uD83D\uDC65', business: '\uD83D\uDCBC', legal: '\u2696\uFE0F', crypto: '\u20BF', scam: '\u26A0\uFE0F', harassment: '\uD83D\uDEA8', money: '\uD83D\uDCB0', job: '\uD83C\uDFAF', general: '\uD83D\uDCCB' };
 
         let currentAnalysis = null;
         let deferredPrompt = null;
@@ -1976,7 +1975,7 @@
 
         const PROXY_URL = 'https://human-filter-proxy.actisharma.workers.dev';
         const MODEL = 'gpt-4o-mini';
-        const SYSTEM_PROMPT = `You are The Human Filter Ã¢ÂÂ an AI analysis engine built by a legal professional and behavioral psychologist. Analyze messages for hidden manipulation.
+        const SYSTEM_PROMPT = `You are The Human Filter \u2014 an AI analysis engine built by a legal professional and behavioral psychologist. Analyze messages for hidden manipulation.
 
 Analyze the message through these 5 engines:
 1. PERSUASION: Cialdini principles, dark patterns, manipulation tactics
@@ -2180,15 +2179,15 @@ CRITICAL: legal_notes MUST contain at least 3 specific legal observations. Never
             const engines = {};
             analysis.findings.forEach(f => { engines[f.engine] = true; });
             const engineList = [
-                { name: 'PERSUASION', icon: 'Ã°ÂÂÂ¯', color: '#f97316' },
-                { name: 'BIAS', icon: 'Ã°ÂÂ§Â ', color: '#a855f7' },
-                { name: 'LOGIC', icon: 'Ã¢ÂÂ¡', color: '#06b6d4' },
-                { name: 'EMOTIONAL', icon: 'Ã°ÂÂÂ', color: '#ec4899' },
-                { name: 'POWER', icon: 'Ã¢ÂÂÃ¯Â¸Â', color: '#ef4444' }
+                { name: 'PERSUASION', icon: '\uD83C\uDFAF', color: '#f97316' },
+                { name: 'BIAS', icon: '\uD83E\uDDE0', color: '#a855f7' },
+                { name: 'LOGIC', icon: '\u26A1', color: '#06b6d4' },
+                { name: 'EMOTIONAL', icon: '\uD83D\uDC94', color: '#ec4899' },
+                { name: 'POWER', icon: '\u2694\uFE0F', color: '#ef4444' }
             ].filter(e => engines[e.name]);
 
             const inputLength = document.getElementById('messageInput').value.length;
-            const shortNotice = inputLength < 20 ? '<div class="short-input-notice">Ã¢ÂÂ¡ Short message detected. Results may be less precise for brief texts.</div>' : '';
+            const shortNotice = inputLength < 20 ? '<div class="short-input-notice">\u26A1 Short message detected. Results may be less precise for brief texts.</div>' : '';
 
             return `<div class="context-badge">${CONTEXT_EMOJI[context]} ${contextLabel}</div><div class="score-display"><div class="score-ring-wrapper"><svg class="score-ring" viewBox="0 0 36 36"><circle class="score-ring-circle" cx="18" cy="18" r="${radius}"></circle><circle class="score-ring-fill" cx="18" cy="18" r="${radius}" style="stroke: ${scoreColor}; stroke-dashoffset: ${offset};"></circle></svg><div class="score-value">${Math.round(score)}</div></div><div class="score-info"><div class="verdict">${escapeHtml(analysis.verdict)}</div><div class="score-benchmark">Most everyday messages score 10-25</div><div class="top-tactics">${topTactics.split(', ').map(t => `<div class="tactic-pill">${escapeHtml(t)}</div>`).join('')}</div></div></div><div class="engine-dots">${engineList.map(e => `<div class="engine-dot"><div class="engine-dot-circle" style="background: ${e.color};"></div><div class="engine-dot-label">${e.icon}</div></div>`).join('')}</div>${shortNotice}<div class="watermark"><span>analyzed by the human filter v6</span><div class="human-filter-badge">THE HUMAN FILTER</div><span>humanlayerai.com</span></div>`;
         }
@@ -2229,14 +2228,14 @@ CRITICAL: legal_notes MUST contain at least 3 specific legal observations. Never
                 `;
             }).join('');
 
-            return `<div class="xray-header">Read Between The Lines Ã°ÂÂÂ</div><div class="xray-container"><div class="xray-items-grid">${itemsHtml}</div></div>`;
+            return `<div class="xray-header">Read Between The Lines \uD83D\uDC40</div><div class="xray-container"><div class="xray-items-grid">${itemsHtml}</div></div>`;
         }
 
         function renderVibeSection(analysis) {
             const vibe = analysis.vibe || {};
             const redFlagsStr = vibe.red_flags || 'None detected';
             const hasRedFlags = redFlagsStr.toLowerCase() !== 'none detected' && redFlagsStr !== '0';
-            return `<div class="vibe-header">Vibe Check</div><div class="vibe-grid"><div class="vibe-card"><div class="vibe-card-icon">Ã°ÂÂÂ¯</div><div class="vibe-card-label">Tone</div><div class="vibe-card-value">${escapeHtml(vibe.tone || 'N/A')}</div></div><div class="vibe-card ${hasRedFlags ? 'has-red-flags' : ''}"><div class="vibe-card-icon">Ã¢ÂÂ Ã¯Â¸Â</div><div class="vibe-card-label">Red Flags</div><div class="vibe-card-value">${escapeHtml(redFlagsStr)}</div></div><div class="vibe-card"><div class="vibe-card-icon">Ã¢ÂÂ</div><div class="vibe-card-label">Move</div><div class="vibe-card-value">${escapeHtml(vibe.recommended_move || 'No action needed')}</div></div><div class="vibe-card"><div class="vibe-card-icon">Ã°ÂÂÂ­</div><div class="vibe-card-label">Pattern</div><div class="vibe-card-value">${escapeHtml(vibe.pattern || 'Unknown')}</div></div></div>`;
+            return `<div class="vibe-header">Vibe Check</div><div class="vibe-grid"><div class="vibe-card"><div class="vibe-card-icon">\uD83C\uDFAF</div><div class="vibe-card-label">Tone</div><div class="vibe-card-value">${escapeHtml(vibe.tone || 'N/A')}</div></div><div class="vibe-card ${hasRedFlags ? 'has-red-flags' : ''}"><div class="vibe-card-icon">\u26A0\uFE0F</div><div class="vibe-card-label">Red Flags</div><div class="vibe-card-value">${escapeHtml(redFlagsStr)}</div></div><div class="vibe-card"><div class="vibe-card-icon">\u2705</div><div class="vibe-card-label">Move</div><div class="vibe-card-value">${escapeHtml(vibe.recommended_move || 'No action needed')}</div></div><div class="vibe-card"><div class="vibe-card-icon">\uD83C\uDFAD</div><div class="vibe-card-label">Pattern</div><div class="vibe-card-value">${escapeHtml(vibe.pattern || 'Unknown')}</div></div></div>`;
         }
 
         function renderFindingsSection(analysis) {
@@ -2247,17 +2246,17 @@ CRITICAL: legal_notes MUST contain at least 3 specific legal observations. Never
                 engineGroups[f.engine].push(f);
             });
             const engineOrder = ['PERSUASION', 'BIAS', 'LOGIC', 'EMOTIONAL', 'POWER'];
-            const engineIcons = { 'PERSUASION': 'Ã°ÂÂÂ¯', 'BIAS': 'Ã°ÂÂ§Â ', 'LOGIC': 'Ã¢ÂÂ¡', 'EMOTIONAL': 'Ã°ÂÂÂ', 'POWER': 'Ã¢ÂÂÃ¯Â¸Â' };
+            const engineIcons = { 'PERSUASION': '\uD83C\uDFAF', 'BIAS': '\uD83E\uDDE0', 'LOGIC': '\u26A1', 'EMOTIONAL': '\uD83D\uDC94', 'POWER': '\u2694\uFE0F' };
             const tabs = engineOrder.filter(e => engineGroups[e]).map((engine, idx) => `<button class="findings-tab ${idx === 0 ? 'active' : ''}" data-engine="${engine}"><span class="findings-tab-icon">${engineIcons[engine]}</span>${engine}<span class="findings-tab-badge">${engineGroups[engine].length}</span></button>`).join('');
             const contents = engineOrder.filter(e => engineGroups[e]).map((engine, idx) => {
                 const cards = engineGroups[engine].map(f => {
                     const cm = f.counter_moves || {};
-                    const counterHtml = cm.what_to_say ? `<div class="counter-moves"><div class="counter-move-item"><span class="counter-move-icon">Ã°ÂÂÂ¬</span><span class="counter-move-text"><strong>What to say back:</strong> ${escapeHtml(cm.what_to_say)}</span></div><div class="counter-move-item"><span class="counter-move-icon">Ã°ÂÂÂÃ¯Â¸Â</span><span class="counter-move-text"><strong>Recognize it:</strong> ${escapeHtml(cm.recognize_it || '')}</span></div><div class="counter-move-item"><span class="counter-move-icon">Ã°ÂÂÂ¡Ã¯Â¸Â</span><span class="counter-move-text"><strong>Protect yourself:</strong> ${escapeHtml(cm.protect_yourself || '')}</span></div></div>` : '';
-                    return `<div class="finding-card"><div class="finding-header"><div class="finding-icon">${engineIcons[engine]}</div><div class="finding-name">${escapeHtml(f.name)}</div></div><div class="finding-quote">"${escapeHtml(f.quote || '')}"</div><div class="finding-description">${escapeHtml(f.decoded || '')}</div><div class="finding-section-label">Legal Perspective</div><div class="finding-legal"><span>Ã¢ÂÂÃ¯Â¸Â</span><span class="finding-section-text">${escapeHtml(f.legal || '')}</span></div><div class="finding-section-label">Question to Ask Yourself</div><div class="finding-question"><span>Ã¢ÂÂ</span><span class="finding-section-text">${escapeHtml(f.ask || '')}</span></div>${counterHtml}</div>`;
+                    const counterHtml = cm.what_to_say ? `<div class="counter-moves"><div class="counter-move-item"><span class="counter-move-icon">\uD83D\uDCAC</span><span class="counter-move-text"><strong>What to say back:</strong> ${escapeHtml(cm.what_to_say)}</span></div><div class="counter-move-item"><span class="counter-move-icon">\uD83D\uDC41\uFE0F</span><span class="counter-move-text"><strong>Recognize it:</strong> ${escapeHtml(cm.recognize_it || '')}</span></div><div class="counter-move-item"><span class="counter-move-icon">\uD83D\uDEE1\uFE0F</span><span class="counter-move-text"><strong>Protect yourself:</strong> ${escapeHtml(cm.protect_yourself || '')}</span></div></div>` : '';
+                    return `<div class="finding-card"><div class="finding-header"><div class="finding-icon">${engineIcons[engine]}</div><div class="finding-name">${escapeHtml(f.name)}</div></div><div class="finding-quote">"${escapeHtml(f.quote || '')}"</div><div class="finding-description">${escapeHtml(f.decoded || '')}</div><div class="finding-section-label">Legal Perspective</div><div class="finding-legal"><span>\u2696\uFE0F</span><span class="finding-section-text">${escapeHtml(f.legal || '')}</span></div><div class="finding-section-label">Question to Ask Yourself</div><div class="finding-question"><span>\u2192</span><span class="finding-section-text">${escapeHtml(f.ask || '')}</span></div>${counterHtml}</div>`;
                 }).join('');
                 return `<div class="findings-content ${idx === 0 ? 'active' : ''}" data-engine="${engine}">${cards}</div>`;
             }).join('');
-            return `<div class="findings-header">Findings by Engine Ã°ÂÂÂ</div><div class="findings-tabs">${tabs}</div>${contents}`;
+            return `<div class="findings-header">Findings by Engine \uD83D\uDD0D</div><div class="findings-tabs">${tabs}</div>${contents}`;
         }
 
         function renderCognitiveDistortionsSection(analysis) {
@@ -2266,26 +2265,26 @@ CRITICAL: legal_notes MUST contain at least 3 specific legal observations. Never
 
             const items = distortions.map(d => `
                 <div class="distortion-item">
-                    <div class="distortion-name">Ã°ÂÂ§Â  ${escapeHtml(d.distortion)}</div>
+                    <div class="distortion-name">\uD83E\uDDE0 ${escapeHtml(d.distortion)}</div>
                     <div class="distortion-quote">"${escapeHtml(d.quote)}"</div>
                     <div class="distortion-reframe">
-                        <div class="distortion-reframe-label">Ã¢ÂÂ¨ Tell Yourself Instead</div>
+                        <div class="distortion-reframe-label">\u2728 Tell Yourself Instead</div>
                         <div>${escapeHtml(d.reframe)}</div>
                     </div>
                 </div>
             `).join('');
 
-            return `<div class="cognitive-header">Cognitive Distortions Being Used Ã°ÂÂ§Â </div><div>${items}</div>`;
+            return `<div class="cognitive-header">Cognitive Distortions Being Used \uD83E\uDDE0</div><div>${items}</div>`;
         }
 
         function renderResponseSection(analysis) {
-            return `<div class="response-header">Suggested Response Ã°ÂÂÂ</div><div class="response-box">${escapeHtml(analysis.response || '')}</div><button class="response-copy-btn" data-copy-response>Copy Response</button><div class="emotional-close"><div class="close-icon">Ã°ÂÂÂ¡Ã¯Â¸Â</div><p>Recognizing manipulation is the first step to protecting yourself. You're already doing that.</p><p class="close-sub">Save this analysis, set a boundary, and trust your instincts.</p></div>`;
+            return `<div class="response-header">Suggested Response \uD83D\uDCDD</div><div class="response-box">${escapeHtml(analysis.response || '')}</div><button class="response-copy-btn" data-copy-response>Copy Response</button><div class="emotional-close"><div class="close-icon">\uD83D\uDEE1\uFE0F</div><p>Recognizing manipulation is the first step to protecting yourself. You're already doing that.</p><p class="close-sub">Save this analysis, set a boundary, and trust your instincts.</p></div>`;
         }
 
         function renderLegalSection(analysis) {
             const notes = analysis.legal_notes || [];
             const items = notes.map(note => `<div class="legal-note">${escapeHtml(note)}</div>`).join('');
-            return `<div class="legal-header">Legal Perspective Ã¢ÂÂÃ¯Â¸Â</div>${items}`;
+            return `<div class="legal-header">Legal Perspective \u2696\uFE0F</div>${items}`;
         }
 
         function showResults(analysis) {
@@ -2340,7 +2339,7 @@ CRITICAL: legal_notes MUST contain at least 3 specific legal observations. Never
             if (copyResponseBtn) {
                 copyResponseBtn.addEventListener('click', () => {
                     navigator.clipboard.writeText(document.querySelector('.response-box').textContent);
-                    copyResponseBtn.textContent = 'Ã¢ÂÂ Copied';
+                    copyResponseBtn.textContent = '\u2713 Copied';
                     setTimeout(() => { copyResponseBtn.textContent = 'Copy Response'; }, 2000);
                 });
             }
@@ -2364,10 +2363,10 @@ CRITICAL: legal_notes MUST contain at least 3 specific legal observations. Never
                     text += `==================\n${analysis.response}\n`;
                     text += `\n\nLEGAL PERSPECTIVE:\n`;
                     text += `==================\n`;
-                    (analysis.legal_notes || []).forEach(note => { text += `Ã¢ÂÂ¢ ${note}\n`; });
+                    (analysis.legal_notes || []).forEach(note => { text += `\u2022 ${note}\n`; });
                     navigator.clipboard.writeText(text);
-                    copyFullBtn.textContent = 'Ã¢ÂÂ Copied to clipboard';
-                    setTimeout(() => { copyFullBtn.textContent = 'Ã°ÂÂÂ Copy Full Analysis'; }, 2000);
+                    copyFullBtn.textContent = '\u2713 Copied to clipboard';
+                    setTimeout(() => { copyFullBtn.textContent = '\uD83D\uDCCB Copy Full Analysis'; }, 2000);
                 });
             }
 
@@ -2388,14 +2387,14 @@ CRITICAL: legal_notes MUST contain at least 3 specific legal observations. Never
                     });
                     markdown += `## Cognitive Distortions\n\n`;
                     (analysis.cognitive_distortions || []).forEach(d => {
-                        markdown += `- **${d.distortion}**: "${d.quote}" Ã¢ÂÂ ${d.reframe}\n`;
+                        markdown += `- **${d.distortion}**: "${d.quote}" \u2192 ${d.reframe}\n`;
                     });
                     markdown += `\n## Suggested Response\n\n${analysis.response}\n\n`;
                     markdown += `## Legal Notes\n\n`;
                     (analysis.legal_notes || []).forEach(note => {
                         markdown += `- ${note}\n`;
                     });
-                    markdown += `\n---\nAnalyzed by The Human Filter v6.0 ÃÂ· humanlayerai.com`;
+                    markdown += `\n---\nAnalyzed by The Human Filter v6.0 \u00B7 humanlayerai.com`;
 
                     const element = document.createElement('a');
                     element.setAttribute('href', 'data:text/markdown;charset=utf-8,' + encodeURIComponent(markdown));
@@ -2451,7 +2450,7 @@ CRITICAL: legal_notes MUST contain at least 3 specific legal observations. Never
             if (isIPhone) {
                 html = `
                     <div class="pwa-step">
-                        <div class="pwa-step-title">Ã°ÂÂÂ± iPhone/iPad Instructions</div>
+                        <div class="pwa-step-title">\uD83D\uDCF1 iPhone/iPad Instructions</div>
                         <div class="pwa-step-content">
                             1. Tap the Share button (arrow icon) at bottom of screen<br>
                             2. Scroll down and tap "Add to Home Screen"<br>
@@ -2463,7 +2462,7 @@ CRITICAL: legal_notes MUST contain at least 3 specific legal observations. Never
             } else if (isAndroid) {
                 html = `
                     <div class="pwa-step">
-                        <div class="pwa-step-title">Ã°ÂÂÂ± Android Instructions</div>
+                        <div class="pwa-step-title">\uD83D\uDCF1 Android Instructions</div>
                         <div class="pwa-step-content">
                             1. Tap the Menu button (three dots) at top right<br>
                             2. Tap "Add to Home Screen" or "Install app"<br>
@@ -2475,10 +2474,10 @@ CRITICAL: legal_notes MUST contain at least 3 specific legal observations. Never
             } else {
                 html = `
                     <div class="pwa-step">
-                        <div class="pwa-step-title">Ã°ÂÂÂ» Desktop Instructions</div>
+                        <div class="pwa-step-title">\uD83D\uDCBB Desktop Instructions</div>
                         <div class="pwa-step-content">
                             Look for the "Install" button in your browser address bar,<br>
-                            or use the browser menu Ã¢ÂÂ "Install this site as an app"
+                            or use the browser menu \u2192 "Install this site as an app"
                         </div>
                     </div>
                 `;
