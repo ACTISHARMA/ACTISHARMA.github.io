@@ -1,479 +1,1508 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Aakarsh Sharma — Workflow Designer at Human Layer AI. I build AI systems that survive cross-examination using law, psychology, and cognitive science.">
-    <meta name="author" content="Aakarsh Sharma">
-    <meta name="theme-color" content="#030410">
-    <meta property="og:title" content="Aakarsh Sharma — Human Layer AI">
-    <meta property="og:description" content="I Build AI Systems That Survive Cross-Examination. Workflow Design × Legal Logic × Cognitive Psychology">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://aakarshsharma.com">
-    <meta property="og:image" content="https://aakarshsharma.com/og-image.png">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Aakarsh Sharma — Human Layer AI">
-    <meta name="twitter:description" content="AI Systems That Survive Cross-Examination">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Human Layer AI">
-    <link rel="apple-touch-icon" href="logo.png">
-    <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"Person","name":"Aakarsh Sharma","jobTitle":"Workflow Designer","url":"https://aakarshsharma.com","email":"hello@aakarshsharma.com","sameAs":["https://linkedin.com/in/aakarsh-sharma-ai","https://medium.com/@humanlayerai","https://youtube.com/@humanlayerAI","https://github.com/HumanLayerAI"]}
-    </script>
-    <title>Aakarsh Sharma — Human Layer AI</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aakarsh Sharma | AI Strategy &times; Legal Tech &times; Human Cognition</title>
+<meta name="description" content="I build AI systems that survive scrutiny. Prompt engineering, legal tech, and cognitive design grounded in law, psychology, and AI. Book a free strategy call.">
+<meta property="og:title" content="Aakarsh Sharma | AI Strategy Ã Legal Tech Ã Human Cognition">
+<meta property="og:description" content="I build AI systems that survive scrutiny. Prompt engineering, legal tech, and cognitive design grounded in law, psychology, and AI.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://aakarshsharma.com">
+<meta property="og:image" content="https://aakarshsharma.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Aakarsh Sharma | AI Strategy Ã Legal Tech Ã Human Cognition">
+<meta name="twitter:description" content="I build AI systems that survive scrutiny. Prompt engineering, legal tech, and cognitive design grounded in law, psychology, and AI.">
+<meta name="twitter:creator" content="@HumanLayerHQ">
+<link rel="canonical" href="https://aakarshsharma.com">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Aakarsh Sharma",
+  "jobTitle": "AI Strategist & Legal Technologist",
+  "url": "https://aakarshsharma.com",
+  "email": "hello@aakarshsharma.com",
+  "sameAs": [
+    "https://www.linkedin.com/in/aakarsh-sharma-ai/",
+    "https://medium.com/@humanlayerAI",
+    "https://www.youtube.com/@humanlayerAI",
+    "https://github.com/HumanLayerAI"
+  ]
+}
+</script>
+<script>
+// LANDING FIX v4: Overlay approach â does NOT hide page (so video autoplay works)
+if('scrollRestoration' in history) history.scrollRestoration='manual';
+if(window.location.hash) history.replaceState(null,'',window.location.pathname+window.location.search);
+window.scrollTo(0,0);
+// Create a solid overlay that covers everything while browser does hash-scroll
+document.addEventListener('DOMContentLoaded',function(){
+  var ov=document.createElement('div');
+  ov.id='__landing_overlay';
+  ov.style.cssText='position:fixed;inset:0;z-index:999999;background:#030410;transition:opacity 0.3s';
+  document.body.prepend(ov);
+  // Force scroll to top aggressively
+  window.scrollTo(0,0);
+  document.documentElement.scrollTop=0;
+  document.body.scrollTop=0;
+  // After browser layout + hash scroll, force top again then fade overlay
+  requestAnimationFrame(function(){
+    window.scrollTo(0,0);
+    requestAnimationFrame(function(){
+      window.scrollTo(0,0);
+      setTimeout(function(){
+        window.scrollTo(0,0);
+        // Try to play the hero video in case autoplay was blocked
+        var v=document.getElementById('heroVideo');
+        if(v&&v.paused){try{v.play();}catch(e){}}
+        // Fade out overlay
+        ov.style.opacity='0';
+        setTimeout(function(){ov.remove();},400);
+      },50);
+    });
+  });
+});
+// Backup: also on load event
+window.addEventListener('load',function(){
+  window.scrollTo(0,0);
+  var v=document.getElementById('heroVideo');
+  if(v&&v.paused){try{v.play();}catch(e){}}
+  var ov=document.getElementById('__landing_overlay');
+  if(ov){ov.style.opacity='0';setTimeout(function(){ov.remove();},400);}
+});
+// Safety: remove overlay after 3s no matter what
+setTimeout(function(){
+  var ov=document.getElementById('__landing_overlay');
+  if(ov){ov.style.opacity='0';setTimeout(function(){ov.remove();},400);}
+  window.scrollTo(0,0);
+},3000);
+</script>
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
-/* ===== BASE ===== */
-:root{--bg:#030410;--bg-card:#0f1923;--bg-card-hover:#162333;--white:#fff;--text:#b0b8c1;--gold:#d4a03c;--teal:#2dd4a8;--coral:#ff6b6b;--gold-glow:rgba(212,160,60,0.4);--gold-soft:rgba(212,160,60,0.15);--teal-dim:rgba(45,212,168,0.12);--border:#1a2a3a;--radius:12px;--radius-lg:16px;--tr:all .3s ease;--font:'Inter',system-ui,sans-serif;--serif:'Playfair Display',Georgia,serif;--mono:'JetBrains Mono',monospace;}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:var(--font);background:var(--bg);color:var(--white);line-height:1.6;overflow-x:hidden}
-h1,h2,h3{font-family:var(--serif);font-weight:700}
-h2{font-size:clamp(2rem,4vw,3.5rem);line-height:1.2;margin-bottom:1rem}
-h3{font-size:1.5rem;margin-bottom:.75rem}
-p{color:var(--text);margin-bottom:1rem}
-em{color:var(--coral);font-style:italic;font-weight:600}
-a{color:var(--teal);text-decoration:none;transition:var(--tr)}
-a:hover{opacity:.85}
-.container{max-width:1200px;margin:0 auto;padding:0 20px}
-.section-label{font-family:var(--font);font-size:.875rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--gold);margin-bottom:.5rem}
-.subtitle{font-size:1.125rem;color:var(--text);margin-bottom:2rem;max-width:700px}
-section{padding:100px 20px}
-.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
-.reveal.active{opacity:1;transform:translateY(0)}
+:root {
+  --navy: #0f1923;
+  --navy-light: #1a2a3a;
+  --navy-deep: #060820;
+  --teal: #2dd4a8;
+  --teal-dark: #1fb68e;
+  --gold: #d4a03c;
+  --gold-light: #f0c96b;
+  --text: #e0e0e0;
+  --text-muted: #8899aa;
+  --white: #ffffff;
+  --red: #ff6b6b;
+  --blue: #649BFF;
+  --purple: #9f7aea;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+/* scroll-behavior: smooth removed — using JS scrollIntoView instead to avoid conflicts with landing overlay */
+body { font-family: 'Inter', sans-serif; background: var(--navy); color: var(--text); line-height: 1.7; overflow-x: hidden; }
 
-/* ===== BUTTONS ===== */
-.btn{display:inline-flex;align-items:center;gap:.5rem;padding:12px 24px;border-radius:8px;font-weight:600;font-size:.95rem;text-decoration:none;cursor:pointer;border:none;transition:var(--tr);font-family:var(--font)}
-.btn-gold{background:var(--gold);color:var(--bg);box-shadow:0 0 20px var(--gold-soft)}
-.btn-gold:hover{background:#e0ad42;transform:translateY(-2px);box-shadow:0 0 30px var(--gold-glow)}
-.btn-outline{border:2px solid var(--teal);color:var(--teal);background:transparent}
-.btn-outline:hover{background:var(--teal);color:var(--bg);transform:translateY(-2px)}
-.btn-secondary{background:var(--bg-card);color:var(--white);border:1px solid var(--border)}
-.btn-secondary:hover{border-color:var(--gold);transform:translateY(-2px)}
+/* === NAV === */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(15, 25, 35, 0.92); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(45, 212, 168, 0.1); padding: 0 2rem; transition: all 0.3s; }
+nav .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 70px; }
+nav .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--white); }
+nav .logo-mark { height: 40px; width: auto; object-fit: contain; border-radius: 8px; }
+nav .logo-text { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; }
+nav .nav-links { display: flex; gap: 1.5rem; list-style: none; align-items: center; }
+nav .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; transition: color 0.3s; position: relative; }
+nav .nav-links a:hover { color: var(--teal); }
+nav .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--teal); transition: width 0.3s; }
+nav .nav-links a:hover::after { width: 100%; }
+.menu-toggle { display: none; background: none; border: none; color: var(--white); font-size: 1.5rem; cursor: pointer; }
 
-/* ===== NAV ===== */
-nav{position:sticky;top:0;z-index:1000;background:rgba(3,4,16,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
-.nav-container{display:flex;align-items:center;justify-content:space-between;padding:1rem 20px;max-width:1200px;margin:0 auto}
-.nav-logo{display:flex;align-items:center;gap:.75rem;font-weight:700;font-size:1.125rem;text-decoration:none;color:var(--white)}
-.nav-links{display:none;list-style:none;gap:2rem}
-@media(min-width:768px){.nav-links{display:flex}}
-.nav-links a{color:var(--text);text-decoration:none;font-weight:500;transition:var(--tr)}
-.nav-links a:hover{color:var(--gold)}
-.nav-cta{display:flex;align-items:center;gap:1rem}
-.hamburger{display:flex;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:0}
-@media(min-width:768px){.hamburger{display:none}}
-.hamburger span{width:24px;height:2px;background:var(--white);border-radius:2px;transition:var(--tr)}
-.mobile-menu{display:none;position:fixed;top:70px;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--border);z-index:999;padding:1.5rem 20px}
-.mobile-menu.active{display:block}
-.mobile-menu a{display:block;padding:.75rem 0;color:var(--text);text-decoration:none;font-weight:500;border-bottom:1px solid rgba(255,255,255,.05)}
-.mobile-menu a:hover{color:var(--gold)}
+/* === BUTTONS === */
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; border-radius: 8px; font-size: 0.9rem; font-weight: 600; text-decoration: none; transition: all 0.3s; cursor: pointer; border: none; }
+.btn-primary { background: var(--teal); color: var(--navy); }
+.btn-primary:hover { background: var(--teal-dark); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(45, 212, 168, 0.3); }
+.btn-outline { background: transparent; color: var(--teal); border: 1px solid rgba(45, 212, 168, 0.3); }
+.btn-outline:hover { border-color: var(--teal); background: rgba(45, 212, 168, 0.05); }
+.btn-gold { background: var(--gold); color: var(--navy); }
+.btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); }
 
-/* ===== HERO ===== */
-#hero{padding:60px 20px 40px;background:radial-gradient(ellipse at 50% 0%,rgba(212,160,60,.04) 0%,transparent 55%)}
-.hero-split{display:grid;grid-template-columns:1fr 1.6fr;gap:3rem;max-width:1400px;margin:0 auto;align-items:start}
-@media(max-width:960px){.hero-split{grid-template-columns:1fr;gap:2rem}}
-.hero-left{padding-top:2rem}
-.hero-left h1{font-size:clamp(2.2rem,4.5vw,3.5rem);line-height:1.15;margin-bottom:1rem;background:linear-gradient(135deg,var(--white),var(--text));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero-left h1 span{background:linear-gradient(135deg,var(--teal),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero-tagline{font-size:1.05rem;color:var(--text);line-height:1.7;margin-bottom:1.5rem;max-width:480px}
-.hero-usp{font-family:var(--serif);font-style:italic;color:var(--gold);font-size:.95rem;margin-bottom:2rem}
-.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2rem}
+/* === HERO VIDEO === */
+.hero { position: relative; width: 100%; height: 100vh; min-height: 600px; background: #030410; overflow: hidden; }
+.hero-video { position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; object-fit: cover; }
+.hero-overlay { position: absolute; inset: 0; z-index: 2; background: linear-gradient(180deg, rgba(3,4,16,0.15) 0%, rgba(3,4,16,0.05) 40%, rgba(3,4,16,0.3) 75%, rgba(15,25,35,1) 100%); pointer-events: none; }
+.hero-bottom { position: absolute; bottom: 0; left: 0; right: 0; z-index: 5; padding: 0 5% 48px; display: flex; align-items: flex-end; justify-content: space-between; }
+.hero-brand { animation: hero-fade-in 1.2s ease-out 0.5s both; }
+.hero-brand h1 { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 3.5vw, 2.8rem); font-weight: 700; color: var(--white); margin: 0; line-height: 1.1; text-shadow: 0 2px 30px rgba(0,0,0,0.7); }
+.hero-brand p { font-size: clamp(0.75rem, 1.2vw, 0.9rem); color: var(--gold); font-weight: 500; letter-spacing: 0.1em; margin-top: 8px; text-shadow: 0 1px 15px rgba(0,0,0,0.6); }
+.hero-controls { display: flex; align-items: center; gap: 16px; animation: hero-fade-in 1.2s ease-out 1s both; }
+.hero-mute-btn { background: rgba(255,255,255,0.12); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.2); color: var(--white); width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s; font-size: 1.1rem; }
+.hero-mute-btn:hover { background: rgba(255,255,255,0.25); transform: scale(1.08); }
+.hero-scroll-cta { text-align: center; position: absolute; bottom: 48px; left: 50%; transform: translateX(-50%); z-index: 5; animation: hero-fade-in 1.2s ease-out 1.5s both; }
+.hero-scroll-cta p { font-size: 0.75rem; letter-spacing: 0.1em; color: rgba(255,255,255,0.5); margin: 0 0 6px; }
+.hero-scroll-cta svg { animation: bounce-down 2s ease-in-out infinite; }
+@keyframes hero-fade-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes bounce-down { 0%,100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
 
-/* ===== CREDENTIALS BAR ===== */
-.credentials{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.25rem 2rem;text-align:center;max-width:1200px;margin:-20px auto 0;position:relative;z-index:5;box-shadow:0 0 40px var(--gold-soft)}
-.credentials p{color:var(--text);font-size:.9rem;margin:0;letter-spacing:.3px}
-.credentials strong{color:var(--gold);font-weight:600}
+/* === PICTURE-IN-PICTURE FLOATING VIDEO === */
+.pip-video { position: fixed; bottom: 24px; right: 24px; width: 280px; height: 158px; z-index: 900; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.6), 0 0 0 1px rgba(45,212,168,0.15); transform: translateY(120%) scale(0.8); opacity: 0; transition: transform 0.45s cubic-bezier(0.16,1,0.3,1), opacity 0.35s ease; pointer-events: none; }
+.pip-video.active { transform: translateY(0) scale(1); opacity: 1; pointer-events: auto; }
+.pip-video video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.pip-close { position: absolute; top: 6px; right: 6px; width: 26px; height: 26px; border-radius: 50%; background: rgba(0,0,0,0.6); border: none; color: #fff; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 2; transition: background 0.2s; line-height: 1; }
+.pip-close:hover { background: rgba(0,0,0,0.85); }
+@media (max-width: 768px) { .pip-video { display: none !important; } }
 
-/* ===== DECODER EMBED (iframe) ===== */
-.dec-embed-wrap{background:var(--bg-card);border:1px solid rgba(212,160,60,.2);border-radius:var(--radius-lg);overflow:hidden;box-shadow:0 4px 40px rgba(212,160,60,.08);min-height:520px}
-.dec-iframe{width:100%;height:100%;min-height:520px;border:none;border-radius:var(--radius-lg);display:block}
-@media(max-width:768px){.dec-embed-wrap{min-height:420px}.dec-iframe{min-height:420px}}
+/* === ANIMATED TRIAD SECTION === */
+#triad-section { background: var(--navy-deep); padding: 100px 2rem; overflow: hidden; }
+.triad-wrapper { display: flex; flex-direction: column; align-items: center; text-align: center; max-width: 900px; margin: 0 auto; }
+#triad-center { opacity: 0; }
+#triad-center h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 700; color: var(--white); margin: 0; line-height: 1.15; }
+.triad-subtitle { font-size: clamp(0.85rem, 1.5vw, 1.05rem); color: var(--text-muted); font-style: italic; letter-spacing: 0.03em; margin-top: 14px; opacity: 0; }
+.triad-subtitle-2 { font-size: clamp(0.8rem, 1.3vw, 0.95rem); color: var(--gold); font-weight: 500; letter-spacing: 0.08em; margin-top: 8px; opacity: 0; }
+.icon-row { position: relative; display: flex; align-items: flex-start; justify-content: center; gap: 60px; margin-top: 48px; }
+.connecting-trace { position: absolute; top: 50px; left: 50%; transform: translateX(-50%); width: 80%; max-width: 500px; height: 2px; z-index: 0; pointer-events: none; opacity: 0; }
+.triad-node { position: relative; z-index: 5; display: flex; flex-direction: column; align-items: center; gap: 10px; opacity: 0; }
+.node-icon { width: 100px; height: 100px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.03); border: 1.5px solid rgba(255,255,255,0.1); }
+.node-icon svg { width: 80px; height: 80px; overflow: visible; }
+.node-icon--law { box-shadow: 0 0 24px rgba(100,155,255,0.2); border-color: rgba(100,155,255,0.25); }
+.node-icon--psych { box-shadow: 0 0 24px rgba(255,175,55,0.2); border-color: rgba(255,175,55,0.25); }
+.node-icon--ai { box-shadow: 0 0 24px rgba(0,225,175,0.2); border-color: rgba(0,225,175,0.25); }
+.node-icon.glow { animation: glow-breathe 3s ease-in-out infinite; }
+.node-label { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.85); }
+.node-sub { font-size: 0.7rem; color: var(--text-muted); letter-spacing: 0.05em; opacity: 0; }
+/* Triad animations */
+.synapse { stroke-dasharray: 80; stroke-dashoffset: 80; opacity: 0.15; }
+.synapse.active { animation: synapse-fire 3s ease-in-out infinite; }
+.s1.active { animation-delay: 0s; } .s2.active { animation-delay: 0.5s; } .s3.active { animation-delay: 1.0s; } .s4.active { animation-delay: 1.5s; } .s5.active { animation-delay: 2.0s; }
+.ai-node { opacity: 0.3; } .ai-node.active { animation: node-pulse 2.5s ease-in-out infinite; }
+.ai-edge { opacity: 0.15; } .ai-edge.active { animation: edge-glow 4s ease-in-out infinite; }
+.law-beam { transform-origin: 40px 24px; } .law-beam.active { animation: scale-rock 4s ease-in-out infinite; }
+.law-pan-l { transform-origin: 14px 24px; } .law-pan-l.active { animation: pan-counter 4s ease-in-out infinite; }
+.law-pan-r { transform-origin: 66px 24px; } .law-pan-r.active { animation: pan-counter 4s ease-in-out infinite; }
+@keyframes scale-rock { 0%,100%{transform:rotate(0deg);} 30%{transform:rotate(3deg);} 70%{transform:rotate(-3deg);} }
+@keyframes pan-counter { 0%,100%{transform:rotate(0deg);} 30%{transform:rotate(-3deg);} 70%{transform:rotate(3deg);} }
+@keyframes synapse-fire { 0%{stroke-dashoffset:80;opacity:0.15;} 35%{stroke-dashoffset:0;opacity:1;} 65%{stroke-dashoffset:0;opacity:1;} 100%{stroke-dashoffset:-80;opacity:0.15;} }
+@keyframes node-pulse { 0%,100%{transform:scale(1);opacity:0.3;} 50%{transform:scale(1.5);opacity:1;} }
+@keyframes edge-glow { 0%,100%{opacity:0.15;} 50%{opacity:0.45;} }
+@keyframes glow-breathe { 0%,100%{filter:brightness(1);} 50%{filter:brightness(1.25);} }
+@media (max-width: 768px) {
+  .icon-row { gap: 36px; margin-top: 36px; }
+  .node-icon { width: 72px; height: 72px; }
+  .node-icon svg { width: 56px; height: 56px; }
+  .node-sub { display: none; }
+  .hero-bottom { flex-direction: column; align-items: flex-start; gap: 16px; }
+}
+@media (max-width: 480px) {
+  .icon-row { gap: 16px; margin-top: 24px; }
+  .node-icon { width: 56px; height: 56px; }
+  .node-icon svg { width: 44px; height: 44px; }
+  .node-label { font-size: 0.6rem; }
+}
 
-/* ===== PROBLEM SECTION ===== */
-.problem-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin-top:2rem}
-.problem-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2rem;transition:var(--tr)}
-.problem-card:hover{border-color:var(--gold);transform:translateY(-4px);box-shadow:0 8px 30px var(--gold-soft)}
-.problem-card .label{font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--coral);margin-bottom:.5rem}
-.problem-card h3{font-family:var(--font);font-size:1.1rem;font-weight:600;margin-bottom:.75rem}
-.problem-card p{font-size:.9rem;margin:0}
+/* === CREDIBILITY BAR === */
+.credibility-bar { background: rgba(45,212,168,0.04); border-top: 1px solid rgba(45,212,168,0.08); border-bottom: 1px solid rgba(45,212,168,0.08); padding: 20px 2rem; }
+.cred-bar-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: center; align-items: center; gap: 2rem; flex-wrap: wrap; }
+.cred-bar-item { display: flex; align-items: center; gap: 8px; font-size: 0.82rem; color: var(--text-muted); white-space: nowrap; }
+.cred-bar-item .cred-bar-num { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--white); }
+.cred-bar-divider { width: 1px; height: 20px; background: rgba(255,255,255,0.1); }
+@media (max-width: 768px) {
+  .cred-bar-inner { gap: 1rem 1.5rem; justify-content: center; }
+  .cred-bar-item { font-size: 0.72rem; gap: 5px; }
+  .cred-bar-item .cred-bar-num { font-size: 0.9rem; }
+  .cred-bar-divider { display: none; }
+}
 
-/* ===== NARRATIVE ===== */
-#narrative{max-width:800px;margin:0 auto}
-.narrative-opener{font-family:var(--serif);font-style:italic;font-size:1.5rem;color:var(--gold);margin-bottom:2.5rem;line-height:1.4}
-.narrative-text p{font-size:1.05rem;line-height:1.8;margin-bottom:1.5rem;color:var(--text)}
-.narrative-text p:first-of-type::first-letter{font-family:var(--serif);font-size:2.5rem;font-weight:700;color:var(--gold);float:left;line-height:1;margin-right:.5rem;margin-top:.1rem}
-.tribute-card{border-left:3px solid var(--gold);padding:1.5rem 2rem;margin:2.5rem 0;background:var(--bg-card);border-radius:0 var(--radius) var(--radius) 0}
-.tribute-card p{font-family:var(--serif);font-style:italic;color:var(--text);font-size:1rem;line-height:1.7;margin:0}
-.depth-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2rem;margin:2.5rem 0}
-.depth-card h3{font-family:var(--font);color:var(--white)}
-.depth-card p{font-size:.95rem}
-.depth-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.5rem}
-.depth-stat{text-align:center;padding:1rem;background:rgba(255,255,255,.02);border-radius:var(--radius);border:1px solid rgba(255,255,255,.04)}
-.depth-stat .num{font-family:var(--serif);font-size:1.5rem;font-weight:700;color:var(--gold);display:block}
-.depth-stat .label{font-size:.75rem;color:var(--text);margin-top:.25rem;display:block}
-@media(max-width:640px){.depth-stats{grid-template-columns:1fr}}
-.family-note{text-align:center;color:var(--text);font-size:.95rem;margin-top:2rem}
+/* === SECTIONS === */
+section { padding: 80px 2rem; }
+@media (max-width: 768px) { section { padding: 60px 1.5rem; } }
+.section-inner { max-width: 1200px; margin: 0 auto; }
+.section-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--teal); font-weight: 600; margin-bottom: 0.75rem; }
+.section-title { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--white); margin-bottom: 1rem; }
+.section-desc { color: var(--text-muted); max-width: 600px; margin-bottom: 3rem; font-size: 1.05rem; }
 
-/* ===== ARTIFACTS FEATURED ===== */
-.artifacts-featured{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem;margin-top:2rem}
-.artifact-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;transition:var(--tr)}
-.artifact-card:hover{border-color:var(--teal);transform:translateY(-4px);box-shadow:0 8px 30px rgba(45,212,168,.1)}
-.artifact-card iframe{width:100%;height:200px;border:none;pointer-events:none}
-.artifact-card .card-body{padding:1.5rem}
-.artifact-card h3{font-family:var(--font);font-size:1.1rem;font-weight:600}
-.artifact-card p{font-size:.88rem}
-.artifact-card .card-link{display:inline-flex;align-items:center;gap:.4rem;color:var(--teal);font-weight:500;font-size:.88rem;margin-top:.5rem}
+/* === PROBLEM PUNCH === */
+#problem-punch { background: var(--navy-deep); position: relative; overflow: hidden; }
+#problem-punch::before { content: ''; position: absolute; top: -50%; left: -10%; width: 120%; height: 200%; background: radial-gradient(ellipse at 50% 0%, rgba(45,212,168,0.04) 0%, transparent 60%); pointer-events: none; }
+.punch-headline { font-family: 'Playfair Display', serif; font-size: clamp(2.4rem, 5vw, 3.8rem); color: var(--white); line-height: 1.15; max-width: 800px; margin: 0 auto 20px; text-align: center; }
+.punch-headline em { font-style: italic; color: var(--red); }
+.punch-sub { font-size: 1.1rem; color: var(--text-muted); max-width: 580px; margin: 0 auto 72px; text-align: center; line-height: 1.7; }
+.punch-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; max-width: 1100px; margin: 0 auto; }
+.punch-item { padding: 48px 40px; position: relative; border-right: 1px solid rgba(255,255,255,0.06); }
+.punch-item:last-child { border-right: none; }
+.punch-number { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 20px; font-weight: 600; }
+.punch-problem { font-family: 'Playfair Display', serif; font-size: 1.35rem; color: var(--white); margin-bottom: 14px; line-height: 1.35; }
+.punch-fix { font-size: 0.9rem; color: var(--teal); font-weight: 500; line-height: 1.6; }
+.punch-cta { text-align: center; margin-top: 64px; }
+@media (max-width: 768px) {
+  .punch-grid { grid-template-columns: 1fr; gap: 0; }
+  .punch-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); padding: 36px 20px; }
+  .punch-item:last-child { border-bottom: none; }
+}
 
-/* ===== SERVICES ===== */
-.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin-top:2rem}
-.service-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2rem;transition:var(--tr)}
-.service-card:hover{border-color:var(--gold);transform:translateY(-4px);box-shadow:0 8px 30px var(--gold-soft)}
-.service-card .tier{font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--gold);margin-bottom:.5rem}
-.service-card h3{font-family:var(--serif);font-size:1.25rem;margin-bottom:.75rem}
-.service-card p{font-size:.9rem;margin-bottom:1.5rem}
-.service-card .btn{font-size:.85rem;padding:10px 20px}
+/* === ARTIFACT SLIDER === */
+#demos { background: var(--navy); position: relative; }
+.slider-container { position: relative; max-width: 1100px; margin: 0 auto; }
+.slider-nav { display: flex; justify-content: center; gap: 12px; margin-bottom: 2rem; }
+.slider-dot { width: 12px; height: 12px; border-radius: 50%; background: rgba(255,255,255,0.15); border: 2px solid rgba(255,255,255,0.1); cursor: pointer; transition: all 0.3s; }
+.slider-dot.active { background: var(--teal); border-color: var(--teal); box-shadow: 0 0 12px rgba(45,212,168,0.4); }
+.slider-tabs { display: flex; justify-content: center; gap: 8px; margin-bottom: 2rem; flex-wrap: wrap; }
+.slider-tab { padding: 8px 20px; border-radius: 100px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.05em; border: 1px solid rgba(255,255,255,0.1); background: transparent; color: var(--text-muted); cursor: pointer; transition: all 0.3s; }
+.slider-tab.active { background: rgba(45,212,168,0.1); border-color: var(--teal); color: var(--teal); }
+.slider-tab:hover { border-color: rgba(45,212,168,0.3); }
+.slider-frame { width: 100%; border: 1px solid rgba(45,212,168,0.15); border-radius: 16px; overflow: hidden; background: var(--navy-light); box-shadow: 0 20px 80px rgba(0,0,0,0.4); }
+.slider-frame iframe { width: 100%; height: 650px; border: none; display: none; }
+.slider-frame iframe.active { display: block; }
+.slider-caption { text-align: center; margin-top: 1.5rem; }
+.slider-caption h4 { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--white); margin-bottom: 0.25rem; }
+.slider-caption p { font-size: 0.85rem; color: var(--text-muted); }
 
-/* ===== TESTIMONIALS ===== */
-.testimonials-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:2rem}
-.testimonial-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2rem;transition:var(--tr)}
-.testimonial-card:hover{border-color:rgba(255,255,255,.1)}
-.testimonial-card .quote{font-size:.92rem;color:var(--text);line-height:1.7;margin-bottom:1.5rem;font-style:italic}
-.testimonial-card .author{font-weight:600;color:var(--white);font-size:.9rem}
-.testimonial-card .role{font-size:.8rem;color:var(--text)}
-.linkedin-cta{text-align:center;margin-top:2rem}
+/* === PORTFOLIO === */
+#portfolio { background: var(--navy); }
+.portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr)); gap: 1.5rem; }
+.project-card { background: var(--navy-light); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 2rem; transition: all 0.3s; position: relative; overflow: hidden; }
+.project-card:hover { border-color: rgba(45, 212, 168, 0.2); transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+.project-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--teal), transparent); opacity: 0; transition: opacity 0.3s; }
+.project-card:hover::before { opacity: 1; }
+.project-tag { display: inline-block; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold); background: rgba(212, 160, 60, 0.1); padding: 4px 10px; border-radius: 4px; margin-bottom: 1rem; font-weight: 600; }
+.project-card h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--white); margin-bottom: 0.75rem; }
+.project-card p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.25rem; line-height: 1.7; }
+.project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1rem; }
+.project-tags span { font-size: 0.7rem; padding: 3px 8px; border-radius: 4px; background: rgba(45, 212, 168, 0.08); color: var(--teal); border: 1px solid rgba(45, 212, 168, 0.15); }
+.project-link { display: inline-flex; align-items: center; gap: 6px; color: var(--teal); text-decoration: none; font-size: 0.85rem; font-weight: 600; transition: gap 0.3s; }
+.project-link:hover { gap: 10px; }
 
-/* ===== CONTENT HUB ===== */
-.content-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:2rem}
-.content-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2rem;text-align:center;transition:var(--tr);text-decoration:none;display:block}
-.content-card:hover{border-color:var(--gold);transform:translateY(-4px)}
-.content-card .icon{font-size:2.5rem;margin-bottom:1rem}
-.content-card h3{font-family:var(--font);font-size:1.1rem;font-weight:600;color:var(--white);margin-bottom:.5rem}
-.content-card p{font-size:.88rem;margin-bottom:1rem}
-.content-card .link{color:var(--teal);font-weight:600;font-size:.9rem}
-.podcast-banner{background:linear-gradient(135deg,var(--bg-card),rgba(212,160,60,.05));border:1px solid var(--gold-soft);border-radius:var(--radius-lg);padding:2.5rem;text-align:center;margin-top:2rem}
-.podcast-banner h3{font-family:var(--serif);color:var(--gold);font-size:1.3rem;margin-bottom:.5rem}
-.podcast-banner p{max-width:500px;margin:0 auto 1.5rem}
+/* === SERVICES === */
+#services { background: var(--navy-deep); }
+.svc-card { background: var(--navy-light); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 40px; margin-bottom: 24px; display: grid; grid-template-columns: 1fr 320px; gap: 40px; transition: border-color 0.3s; }
+.svc-card:hover { border-color: rgba(45,212,168,0.15); }
+.svc-tag { display: inline-block; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.15em; padding: 4px 12px; border-radius: 4px; margin-bottom: 16px; font-weight: 700; }
+.tag-free { background: rgba(45,212,168,0.1); color: var(--teal); }
+.tag-audit { background: rgba(100,155,255,0.1); color: var(--blue); }
+.tag-build { background: rgba(62,207,142,0.1); color: #3ecf8e; }
+.tag-arch { background: rgba(159,122,234,0.1); color: var(--purple); }
+.tag-content { background: rgba(212,160,60,0.1); color: var(--gold); }
+.svc-card h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 400; margin-bottom: 12px; color: var(--white); }
+.svc-desc { color: var(--text-muted); font-size: 0.92rem; line-height: 1.8; margin-bottom: 20px; }
+.prob-label { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700; margin-bottom: 6px; }
+.prob-text { font-size: 0.85rem; color: var(--text-muted); line-height: 1.7; }
+.svc-sidebar { border-left: 1px solid rgba(255,255,255,0.06); padding-left: 40px; display: flex; flex-direction: column; justify-content: space-between; }
+.svc-price { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--white); }
+.svc-price-note { font-size: 0.8rem; color: var(--text-muted); margin-top: 4px; }
+.svc-features { list-style: none; margin: 20px 0; }
+.svc-features li { font-size: 0.82rem; color: var(--text); padding: 6px 0; padding-left: 20px; position: relative; border-bottom: 1px solid rgba(255,255,255,0.04); }
+.svc-features li::before { content: '\2192'; position: absolute; left: 0; color: var(--gold); font-size: 0.75rem; }
 
-/* ===== CONTACT ===== */
-.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:2rem}
-.contact-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2rem}
-.contact-card h3{font-family:var(--font);font-size:1rem;font-weight:600;margin-bottom:1rem;color:var(--gold)}
-.contact-card a{display:block;padding:.5rem 0;color:var(--text);border-bottom:1px solid rgba(255,255,255,.04)}
-.contact-card a:hover{color:var(--gold)}
-.final-cta{text-align:center;margin-top:4rem}
-.final-cta h2{margin-bottom:1.5rem}
+/* === ABOUT === */
+#about { background: linear-gradient(180deg, var(--navy) 0%, var(--navy-light) 100%); }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+.about-content p { color: var(--text-muted); margin-bottom: 1.25rem; font-size: 1rem; line-height: 1.8; }
+.about-content .hl { color: var(--white); font-weight: 500; }
+.about-sidebar { background: var(--navy); border: 1px solid rgba(45, 212, 168, 0.1); border-radius: 12px; padding: 2rem; }
+.about-sidebar h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--gold); margin-bottom: 1.5rem; }
+.cred { display: flex; gap: 12px; margin-bottom: 1.25rem; align-items: flex-start; }
+.cred-icon { width: 36px; height: 36px; border-radius: 8px; background: rgba(45, 212, 168, 0.1); display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+.cred-title { font-size: 0.9rem; color: var(--white); font-weight: 600; }
+.cred-detail { font-size: 0.8rem; color: var(--text-muted); }
 
-/* ===== FOOTER ===== */
-footer{border-top:1px solid var(--border);padding:2rem 20px;text-align:center}
-footer p{font-size:.85rem;color:var(--text);margin:0}
-.footer-links{display:flex;justify-content:center;gap:1.5rem;margin-top:1rem;flex-wrap:wrap}
-.footer-links a{color:var(--text);font-size:.85rem;font-weight:500}
-.footer-links a:hover{color:var(--gold)}
+/* === ARTICLES === */
+#articles { background: var(--navy); }
+.article-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
+.article-card { background: var(--navy-light); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 2rem; transition: all 0.3s; }
+.article-card:hover { border-color: rgba(212,160,60,0.2); transform: translateY(-2px); }
+.article-meta { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px; }
+.article-card h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: var(--white); margin-bottom: 10px; }
+.article-card p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 1rem; }
 
-/* ===== CHATBOT ===== */
-.chat-fab{position:fixed;bottom:24px;right:24px;width:56px;height:56px;border-radius:50%;background:var(--gold);border:none;font-size:1.5rem;cursor:pointer;z-index:900;box-shadow:0 4px 20px var(--gold-glow);transition:var(--tr);display:flex;align-items:center;justify-content:center}
-.chat-fab:hover{transform:scale(1.1);box-shadow:0 6px 30px var(--gold-glow)}
-.chat-panel{position:fixed;bottom:90px;right:24px;width:380px;max-height:520px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);z-index:899;display:none;flex-direction:column;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,.5)}
-.chat-panel.open{display:flex}
-@media(max-width:480px){.chat-panel{right:10px;left:10px;width:auto;bottom:80px}}
-.chat-header{display:flex;align-items:center;justify-content:space-between;padding:1rem;border-bottom:1px solid var(--border)}
-.chat-header h4{font-family:var(--font);font-size:.9rem;font-weight:600;color:var(--gold)}
-.close-chat{background:none;border:none;color:var(--text);font-size:1.2rem;cursor:pointer}
-.chat-messages{flex:1;overflow-y:auto;padding:1rem;display:flex;flex-direction:column;gap:.75rem;max-height:340px}
-.chat-msg{padding:.75rem 1rem;border-radius:var(--radius);font-size:.85rem;line-height:1.6;max-width:85%}
-.chat-msg.bot{background:rgba(255,255,255,.04);color:var(--text);align-self:flex-start;border:1px solid rgba(255,255,255,.04)}
-.chat-msg.user{background:var(--gold-soft);color:var(--gold);align-self:flex-end;border:1px solid rgba(212,160,60,.2)}
-.chat-input-area{display:flex;border-top:1px solid var(--border);padding:.5rem}
-.chat-input-area input{flex:1;background:transparent;border:1px solid var(--border);border-radius:8px;padding:.5rem .75rem;color:var(--white);font-family:var(--font);font-size:.85rem;outline:none}
-.chat-input-area input:focus{border-color:var(--gold)}
-.chat-input-area button{background:var(--gold);color:var(--bg);border:none;padding:.5rem 1rem;border-radius:8px;font-weight:600;font-size:.85rem;cursor:pointer;margin-left:.5rem}
+/* === PROMPT LIBRARY === */
+.prompt-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+.prompt-card { background: var(--navy-light); border: 1px solid rgba(45,212,168,0.1); border-radius: 12px; padding: 2rem; transition: all 0.3s; position: relative; overflow: hidden; }
+.prompt-card:hover { border-color: rgba(45,212,168,0.25); transform: translateY(-2px); }
+.prompt-card::before { content: '\201C'; position: absolute; top: -10px; right: 16px; font-size: 5rem; color: rgba(45,212,168,0.06); font-family: 'Playfair Display', serif; line-height: 1; }
+.prompt-week { font-size: 0.68rem; color: var(--teal); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; font-weight: 600; }
+.prompt-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); margin-bottom: 10px; }
+.prompt-text { background: rgba(0,0,0,0.25); border: 1px solid rgba(45,212,168,0.08); border-radius: 8px; padding: 1rem; font-size: 0.82rem; color: var(--text); line-height: 1.7; font-family: 'Inter', monospace; margin-bottom: 12px; }
+.prompt-usecase { font-size: 0.78rem; color: var(--text-muted); line-height: 1.6; }
+.prompt-usecase strong { color: var(--gold); }
 
-/* ===== INTRO VIDEO ===== */
-.intro-video-section{max-width:1200px;margin:3rem auto 0;padding:0 20px}
-.intro-video-section .section-label{text-align:center}
-.intro-video-section h2{text-align:center;font-size:clamp(1.5rem,3vw,2.2rem);margin-bottom:1.5rem}
-.intro-video-wrap{position:relative;border-radius:var(--radius-lg);overflow:hidden;border:1px solid rgba(212,160,60,.2);box-shadow:0 4px 40px rgba(212,160,60,.08);background:var(--bg-card);max-width:900px;margin:0 auto}
-.intro-video-wrap video{width:100%;display:block;border-radius:var(--radius-lg)}
+/* === COPYWRITING GALLERY === */
+.copy-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin-top: 2rem; }
+.copy-item { position: relative; border-radius: 10px; overflow: hidden; background: var(--navy-light); border: 1px solid rgba(255,255,255,0.04); transition: all 0.4s cubic-bezier(0.16,1,0.3,1); cursor: pointer; }
+.copy-item:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.4); border-color: rgba(212,160,60,0.2); }
+.copy-item img { width: 100%; height: auto; display: block; transition: transform 0.4s; }
+.copy-item:hover img { transform: scale(1.03); }
+.copy-caption { padding: 10px 14px; font-size: 0.75rem; color: var(--text-muted); }
+.copy-caption strong { color: var(--gold); }
+/* Lightbox */
+.copy-lightbox { display: none; position: fixed; inset: 0; z-index: 10000; background: rgba(0,0,0,0.92); backdrop-filter: blur(12px); align-items: center; justify-content: center; padding: 2rem; cursor: pointer; }
+.copy-lightbox.active { display: flex; }
+.copy-lightbox img { max-width: 90vw; max-height: 85vh; border-radius: 8px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+.copy-lightbox-close { position: absolute; top: 20px; right: 24px; color: #fff; font-size: 2rem; cursor: pointer; background: none; border: none; opacity: 0.7; transition: opacity 0.2s; }
+.copy-lightbox-close:hover { opacity: 1; }
 
-/* ===== COLLAPSIBLE QR ===== */
-.qr-collapse-toggle{display:flex;align-items:center;justify-content:space-between;width:100%;background:none;border:1px solid var(--border);border-radius:var(--radius);padding:.85rem 1.2rem;color:var(--gold);font-family:var(--font);font-size:.95rem;font-weight:600;cursor:pointer;transition:var(--tr)}
-.qr-collapse-toggle:hover{background:var(--gold-soft);border-color:var(--gold)}
-.qr-collapse-toggle .arrow{transition:transform .3s ease;font-size:1.1rem}
-.qr-collapse-toggle[aria-expanded="true"] .arrow{transform:rotate(180deg)}
-.qr-collapse-body{max-height:0;overflow:hidden;transition:max-height .4s ease,opacity .3s ease;opacity:0}
-.qr-collapse-body.open{max-height:500px;opacity:1;margin-top:.75rem}
+/* === PODCAST === */
+#podcast { background: var(--navy-deep); }
+.podcast-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+.podcast-info h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--white); margin-bottom: 1rem; }
+.podcast-info p { color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.8; }
+.podcast-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 2rem; }
+.ps-stat { text-align: center; padding: 1rem; background: rgba(212,160,60,0.05); border: 1px solid rgba(212,160,60,0.1); border-radius: 8px; }
+.ps-num { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--gold); font-weight: 700; }
+.ps-label { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 4px; }
+.podcast-pitch { background: var(--navy-light); border: 1px solid rgba(212,160,60,0.15); border-radius: 16px; padding: 2.5rem; }
+.podcast-pitch h4 { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--gold); margin-bottom: 1rem; }
+.pitch-item { display: flex; gap: 12px; margin-bottom: 1rem; align-items: flex-start; }
+.pitch-icon { color: var(--teal); font-size: 1rem; flex-shrink: 0; margin-top: 2px; }
+.pitch-text { font-size: 0.88rem; color: var(--text-muted); line-height: 1.7; }
 
-/* ===== INSTAGRAM REELS ===== */
-.ig-reels-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin:1rem 0 2rem}
-.ig-reel-embed{position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--border);background:var(--bg-card);aspect-ratio:9/16;max-height:480px}
-.ig-reel-embed iframe{width:100%;height:100%;border:none}
-@media(max-width:900px){.ig-reels-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:500px){.ig-reels-grid{grid-template-columns:1fr;max-width:320px;margin-left:auto;margin-right:auto}}
+/* === CONTACT === */
+#contact { background: linear-gradient(180deg, var(--navy-light) 0%, var(--navy) 100%); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+.contact-info h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--white); margin-bottom: 1rem; }
+.contact-info p { color: var(--text-muted); margin-bottom: 2rem; }
+.contact-link { display: flex; align-items: center; gap: 12px; padding: 12px 0; text-decoration: none; color: var(--text); transition: color 0.3s; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.contact-link:hover { color: var(--teal); }
+.link-icon { width: 40px; height: 40px; border-radius: 8px; background: rgba(45, 212, 168, 0.1); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
+.link-label { font-size: 0.8rem; color: var(--text-muted); }
+.link-value { font-size: 0.95rem; font-weight: 500; }
+.social-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+.social-card { background: var(--navy-light); border: 1px solid rgba(255,255,255,0.06); border-radius: 10px; padding: 1.25rem; text-decoration: none; color: var(--text); transition: all 0.3s; display: flex; align-items: center; gap: 12px; }
+.social-card:hover { border-color: rgba(45, 212, 168, 0.2); transform: translateY(-2px); }
+.s-icon { font-size: 1.5rem; }
+.s-name { font-weight: 600; font-size: 0.9rem; }
+.s-handle { font-size: 0.75rem; color: var(--text-muted); }
 
-/* Pricing responsive */
-@media(max-width:768px){#services [style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}}
+/* === CTA BANNER === */
+.cta-banner { background: linear-gradient(135deg, var(--navy-light) 0%, rgba(45,212,168,0.08) 50%, var(--navy-light) 100%); border: 1px solid rgba(45,212,168,0.1); border-radius: 16px; padding: 60px 40px; text-align: center; margin-top: 3rem; }
+.cta-banner h2 { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--white); margin-bottom: 1rem; }
+.cta-banner p { color: var(--text-muted); max-width: 560px; margin: 0 auto 2rem; line-height: 1.8; }
+.cta-row { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
 
-/* Hidden utility */
-.hidden{display:none!important}
-::-webkit-scrollbar{width:5px}
-::-webkit-scrollbar-track{background:transparent}
-::-webkit-scrollbar-thumb{background:rgba(255,255,255,.08);border-radius:3px}
-.nav-dropdown{position:relative;display:inline-block}.nav-dropdown-trigger{cursor:pointer}.nav-dropdown-menu{display:none;position:absolute;right:0;top:100%;background:var(--navy,#0f1923);border:1px solid rgba(45,212,168,.2);border-radius:8px;min-width:180px;padding:.5rem 0;box-shadow:0 8px 32px rgba(0,0,0,.4);z-index:1000}.nav-dropdown:hover .nav-dropdown-menu,.nav-dropdown-menu:hover{display:block}.nav-dropdown-menu a{display:block;padding:.5rem 1rem;color:#fff;text-decoration:none;font-size:.9rem;transition:background .2s}.nav-dropdown-menu a:hover{background:rgba(45,212,168,.15);color:#2dd4a8}.client-stories-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;max-width:900px;margin:2rem auto}.client-story-card{background:rgba(15,25,35,.6);border:1px solid rgba(45,212,168,.15);border-radius:12px;padding:1.5rem;transition:transform .3s,border-color .3s}.client-story-card:hover{transform:translateY(-4px);border-color:rgba(45,212,168,.4)}.client-story-icon{font-size:2rem;margin-bottom:.5rem}.client-story-card h3{color:#2dd4a8;font-size:1.1rem;margin-bottom:.3rem}.client-industry{color:#b4bec8;font-size:.85rem;margin-bottom:.75rem;font-style:italic}.client-story-card p{font-size:.92rem;line-height:1.5;margin-bottom:.5rem}.client-result{color:#2dd4a8;font-weight:600;font-size:.95rem;margin-top:.75rem}@media(max-width:700px){.client-stories-grid{grid-template-columns:1fr}}.yt-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.2rem;margin:1rem 0 2rem}.yt-embed iframe{width:100%;aspect-ratio:16/9;border:none;border-radius:8px}.yt-title{font-size:.88rem;color:#b4bec8;margin-top:.4rem}.content-subhead{color:#2dd4a8;font-size:1.15rem;margin:2rem 0 .75rem;padding-bottom:.4rem;border-bottom:1px solid rgba(45,212,168,.2)}.medium-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1rem;margin:1rem 0 2rem}.medium-card{background:rgba(15,25,35,.6);border:1px solid rgba(212,160,60,.2);border-radius:10px;padding:1.2rem;text-decoration:none;transition:transform .3s,border-color .3s}.medium-card:hover{transform:translateY(-3px);border-color:rgba(212,160,60,.5)}.medium-card h4{color:#d4a03c;font-size:1rem;margin-bottom:.4rem}.medium-card p{color:#b4bec8;font-size:.88rem;line-height:1.4}.subscribe-row{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin:2rem 0 1rem}.testimonials-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.2rem;margin:1.5rem 0}.testimonial-card{background:rgba(15,25,35,.6);border:1px solid rgba(45,212,168,.12);border-radius:12px;padding:1.5rem}.testimonial-text{font-size:.95rem;line-height:1.6;color:#e0e0e0;font-style:italic}.testimonial-author{margin-top:1rem}.testimonial-author strong{color:#2dd4a8;display:block}.testimonial-author span{color:#b4bec8;font-size:.82rem}
+/* === FOOTER === */
+footer { background: var(--navy); border-top: 1px solid rgba(255,255,255,0.05); padding: 3rem 2rem; text-align: center; }
+footer p { font-size: 0.8rem; color: var(--text-muted); }
+footer .footer-tagline { font-family: 'Playfair Display', serif; font-style: italic; color: var(--gold); margin-bottom: 0.5rem; }
+
+/* === AUTOMATION WORKFLOWS === */
+#workflows { background: var(--navy-deep); }
+.workflow-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+.workflow-card { background: var(--navy-light); border: 1px solid rgba(45,212,168,0.08); border-radius: 12px; padding: 2rem; transition: all 0.3s; position: relative; overflow: hidden; }
+.workflow-card:hover { border-color: rgba(45,212,168,0.2); transform: translateY(-3px); box-shadow: 0 16px 48px rgba(0,0,0,0.3); }
+.workflow-badge { display: inline-block; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.12em; padding: 4px 10px; border-radius: 4px; margin-bottom: 14px; font-weight: 700; }
+.badge-podcast { background: rgba(212,160,60,0.1); color: var(--gold); }
+.badge-content { background: rgba(45,212,168,0.1); color: var(--teal); }
+.badge-lead { background: rgba(100,155,255,0.1); color: var(--blue); }
+.badge-repurpose { background: rgba(159,122,234,0.1); color: var(--purple); }
+.workflow-card h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: var(--white); margin-bottom: 10px; }
+.workflow-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 16px; }
+.workflow-flow { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
+.flow-step { font-size: 0.7rem; padding: 5px 10px; border-radius: 6px; background: rgba(0,0,0,0.25); color: var(--text); border: 1px solid rgba(255,255,255,0.06); white-space: nowrap; }
+.flow-arrow { color: var(--teal); font-size: 0.8rem; flex-shrink: 0; }
+.workflow-result { font-size: 0.78rem; color: var(--teal); font-weight: 500; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.04); }
+.workflow-tools { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
+.workflow-tools span { font-size: 0.65rem; padding: 2px 8px; border-radius: 4px; background: rgba(45,212,168,0.06); color: var(--text-muted); border: 1px solid rgba(45,212,168,0.1); }
+
+/* === TESTIMONIALS === */
+#testimonials { background: var(--navy); }
+.testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+.testimonial-card { background: var(--navy-light); border: 1px solid rgba(212,160,60,0.1); border-radius: 12px; padding: 2rem; position: relative; transition: all 0.3s; }
+.testimonial-card:hover { border-color: rgba(212,160,60,0.25); transform: translateY(-2px); }
+.testimonial-card::before { content: '\201C'; position: absolute; top: 8px; right: 20px; font-size: 4rem; color: rgba(212,160,60,0.08); font-family: 'Playfair Display', serif; line-height: 1; }
+.testimonial-quote { font-size: 0.92rem; color: var(--text); line-height: 1.8; font-style: italic; margin-bottom: 1.25rem; }
+.testimonial-author { display: flex; align-items: center; gap: 12px; }
+.testimonial-avatar { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--teal), var(--gold)); display: flex; align-items: center; justify-content: center; font-size: 1rem; color: var(--navy); font-weight: 700; flex-shrink: 0; }
+.testimonial-name { font-size: 0.88rem; color: var(--white); font-weight: 600; }
+.testimonial-role { font-size: 0.75rem; color: var(--text-muted); }
+.testimonial-source { font-size: 0.68rem; color: var(--blue); text-decoration: none; display: inline-flex; align-items: center; gap: 4px; margin-top: 2px; }
+.testimonial-source:hover { text-decoration: underline; }
+
+/* === REFERENCES BAR === */
+.references-bar { background: rgba(212,160,60,0.03); border-top: 1px solid rgba(212,160,60,0.08); border-bottom: 1px solid rgba(212,160,60,0.08); padding: 28px 2rem; }
+.references-bar .section-label { text-align: center; margin-bottom: 16px; color: var(--gold); }
+.ref-bar-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: center; align-items: center; gap: 2.5rem; flex-wrap: wrap; }
+.ref-item { text-align: center; white-space: nowrap; }
+.ref-name { font-family: 'Playfair Display', serif; font-size: 0.92rem; color: var(--white); font-weight: 700; }
+.ref-title { font-size: 0.7rem; color: var(--text-muted); letter-spacing: 0.03em; margin-top: 2px; }
+.ref-divider { width: 1px; height: 32px; background: rgba(212,160,60,0.15); }
+@media (max-width: 768px) {
+  .workflow-grid { grid-template-columns: 1fr; }
+  .testimonial-grid { grid-template-columns: 1fr; }
+  .ref-bar-inner { gap: 1.5rem; }
+  .ref-divider { display: none; }
+  .ref-item { flex: 0 0 45%; }
+  .ref-name { font-size: 0.82rem; }
+}
+
+/* === SCROLL REVEAL === */
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .about-grid, .contact-grid, .podcast-grid { grid-template-columns: 1fr; }
+  .section-title { font-size: 2rem; }
+  nav .nav-links { display: none; }
+  .menu-toggle { display: block; }
+  nav .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 70px; left: 0; right: 0; background: var(--navy); padding: 1.5rem 2rem; border-bottom: 1px solid rgba(45,212,168,0.1); gap: 1rem; }
+  .portfolio-grid, .services-grid, .article-grid, .prompt-grid { grid-template-columns: 1fr; }
+  .copy-gallery { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+  .social-grid { grid-template-columns: 1fr; }
+  .svc-card { grid-template-columns: 1fr; gap: 24px; padding: 28px; }
+  .svc-sidebar { border-left: none; border-top: 1px solid rgba(255,255,255,0.06); padding-left: 0; padding-top: 24px; }
+  .hero-content { padding: 10vh 4% 6vh; }
+  .slider-frame iframe { height: 500px; }
+  .podcast-stats { grid-template-columns: 1fr; }
+  /* Hide heavy Instagram embeds on mobile, show lightweight CTA */
+  .reels-desktop { display: none !important; }
+  .reels-mobile { display: block !important; }
+}
+@media (max-width: 480px) {
+  #triad-center h1 { font-size: 1.8rem; }
+  .triad-subtitle { font-size: 0.75rem; }
+  .triad-subtitle-2 { font-size: 0.7rem; }
+  .node-label { font-size: 0.6rem; }
+  .hero-content { padding: 8vh 3% 5vh; }
+}
 </style>
 </head>
 <body>
-<script>window.addEventListener('load',function(){if(!window.location.hash){window.scrollTo(0,0);}});</script>
-
 
 <!-- NAV -->
 <nav>
-    <div class="nav-container">
-        <a href="#hero" class="nav-logo">
-            <img src="Human_Layer_AI_Cover_Art_V2.png" alt="Human Layer AI" style="height:40px;width:40px;border-radius:8px;">
-            <span>Human Layer AI</span>
-        </a>
-        <ul class="nav-links">
-            <li><a href="#narrative">Story</a></li>
-            <li><a href="/artifacts/">Artifacts</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#testimonials">Proof</a></li>
-            <li><a href="#services">Pricing</a></li>
-            <li class="nav-dropdown" style="position:relative"><a href="#contact" class="nav-dropdown-trigger">Contact <span style="font-size:0.6em">&#9660;</span></a><div class="nav-dropdown-menu"><a href="mailto:hello@aakarshsharma.com">Email</a><a href="https://calendly.com/humanlayerai" target="_blank">Book a Call</a><a href="https://linkedin.com/in/aakarsh-sharma-ai" target="_blank">LinkedIn</a><a href="https://youtube.com/@humanlayerAI" target="_blank">YouTube</a><a href="https://instagram.com/humanlayerai" target="_blank">Instagram</a><a href="https://medium.com/@humanlayerAI" target="_blank">Medium</a><a href="https://github.com/HumanLayerAI" target="_blank">GitHub</a><a href="https://x.com/HumanLayerHQ" target="_blank">X / Twitter</a></div></li>
-        </ul>
-        <div class="nav-cta">
-            <a href="#hero" class="btn btn-gold" style="padding:8px 18px;font-size:.85rem">Try Human Filter</a>
-            <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
-        </div>
-    </div>
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <img src="logo.png" alt="Human Layer AI" class="logo-mark" style="width:36px;height:36px;border-radius:8px;background:rgba(45,212,168,0.08);padding:2px;box-shadow:0 0 12px rgba(45,212,168,0.15);">
+      <span class="logo-text">Human Layer AI</span>
+    </a>
+    <button class="menu-toggle" aria-label="Toggle navigation menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">&#9776;</button>
+    <ul class="nav-links">
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#articles">Content</a></li>
+      <li><a href="/artifacts/" style="color:var(--teal);">Artifacts</a></li>
+      <li><a href="https://calendly.com/humanlayerai" target="_blank" class="btn btn-primary" style="padding:8px 20px;font-size:0.8rem;">Book a Call</a></li>
+    </ul>
+  </div>
 </nav>
-<div class="mobile-menu" id="mobileMenu">
-    <a href="#narrative">Story</a>
-    <a href="/artifacts/">Artifacts</a>
-    <a href="#services">Services</a>
-    <a href="#testimonials">Proof</a>
-    <a href="#contact">Contact</a>
-    <a href="#hero" class="btn btn-gold" style="margin-top:1rem;text-align:center;display:block">Try Human Filter</a>
+
+<!-- HERO VIDEO -->
+<section class="hero" id="hero">
+<video class="hero-video" id="heroVideo" autoplay muted loop playsinline preload="auto" poster="hero-poster.jpg">
+  <source src="hero-web.mp4" type="video/mp4">
+</video>
+<div class="hero-overlay"></div>
+<div class="hero-bottom">
+  <div class="hero-brand">
+    <h1>Human Layer <span style="color:var(--teal);">AI</span></h1>
+    <p>Law &times; Psychology &times; AI</p>
+  </div>
+  <div class="hero-controls">
+    <button class="hero-mute-btn" id="muteBtn" onclick="toggleMute()" aria-label="Toggle sound">&#128263;</button>
+  </div>
+</div>
+<div class="hero-scroll-cta">
+  <p>Scroll</p>
+  <svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M10 14l-5-5h10l-5 5z" fill="rgba(255,255,255,0.4)"/></svg>
+</div>
+</section>
+
+<!-- PIP FLOATING VIDEO (appears when scrolling past hero) -->
+<div class="pip-video" id="pipVideo">
+  <button class="pip-close" id="pipClose" aria-label="Close mini player">&times;</button>
+  <video id="pipPlayer" muted loop playsinline></video>
 </div>
 
-<!-- HERO -->
-<section id="hero">
-    <div class="hero-split">
-        <div class="hero-left">
-            <h1>See Through <span>Any</span> Message.</h1>
-            <p class="hero-tagline">Paste any text — a sales email, a contract, a news article, a personal message — and reveal the persuasion tactics, cognitive biases, and manipulation hidden in the language.</p>
-            <p class="hero-usp">Workflow Designer &times; Legal Logic &times; Cognitive Psychology</p>
-            <div class="hero-ctas">
-                <a href="https://calendly.com/humanlayerai" target="_blank" class="btn btn-gold">Book a Strategy Call &rarr;</a>
-                <a href="/artifacts/" class="btn btn-outline">See All Artifacts &rarr;</a>
-            </div>
-        </div>
-        <div class="hero-right">
-            <div class="dec-embed-wrap">
-                <iframe src="/artifacts/influence-decoder.html?embed=true" class="dec-iframe" title="The Human Filter" loading="lazy" allow="clipboard-write"></iframe>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- INTRO VIDEO -->
-<div class="intro-video-section reveal">
-    <p class="section-label">See It In Action</p>
-    <h2>What Is Human Layer AI?</h2>
-    <div class="intro-video-wrap">
-        <video controls preload="metadata" poster="" playsinline>
-            <source src="intro.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-    </div>
+<!-- CREDIBILITY BAR -->
+<div class="credibility-bar">
+  <div class="cred-bar-inner">
+    <div class="cred-bar-item"><span class="cred-bar-num">5</span> Years Legal Practice</div>
+    <div class="cred-bar-divider"></div>
+    <div class="cred-bar-item"><span class="cred-bar-num">RJS</span> Prelims Cleared</div>
+    <div class="cred-bar-divider"></div>
+    <div class="cred-bar-item"><span class="cred-bar-num">556+</span> AI Sessions on Claude</div>
+    <div class="cred-bar-divider"></div>
+    <div class="cred-bar-item"><span class="cred-bar-num">100+</span> Podcast Episodes</div>
+    <div class="cred-bar-divider"></div>
+    <div class="cred-bar-item"><span class="cred-bar-num">IELTS</span> 8.0</div>
+    <div class="cred-bar-divider"></div>
+    <div class="cred-bar-item"><span class="cred-bar-num">93+</span> Books Read</div>
+  </div>
 </div>
 
-<!-- CREDENTIALS BAR -->
-<div class="credentials reveal"><p><strong>5 Years Litigation & Drafting</strong> &middot; <strong>Delhi High Court Practitioner</strong> &middot; <strong>RJS Prelims Cleared</strong> &middot; <strong>100+ Podcast Episodes</strong> &middot; <strong>550+ AI Systems Built</strong> &middot; <strong>Clients Across 4 Industries</strong></p></div>
-
-<!-- PROBLEM SECTION -->
-<section id="problem" class="reveal" style="max-width:1200px;margin:0 auto">
-    <div class="container">
-        <p class="section-label">The Problem</p>
-        <h2>Your AI sounds smart. <em>It isn't.</em></h2>
-        <div class="problem-grid">
-            <div class="problem-card">
-                <p class="label">The Problem</p>
-                <h3>Your prompts have no reasoning chain.</h3>
-                <p>Most AI instructions are vibes-based. Legal logic provides a framework for rigorous, step-by-step reasoning that holds up under scrutiny.</p>
-            </div>
-            <div class="problem-card">
-                <p class="label">The Blind Spot</p>
-                <h3>Your AI ignores how humans actually decide.</h3>
-                <p>People don't make decisions logically — they use heuristics, biases, and emotional shortcuts. Your AI needs cognitive psychology to work in the real world.</p>
-            </div>
-            <div class="problem-card">
-                <p class="label">The Gap</p>
-                <h3>Your "AI strategy" is just vibes.</h3>
-                <p>Without auditable reasoning and measurable outputs, your AI is a black box. I build systems with transparent decision chains.</p>
-            </div>
-        </div>
+<!-- ANIMATED TRIAD -->
+<section id="triad-section">
+  <div class="triad-wrapper">
+    <div id="triad-center">
+      <h2>Every Intelligent System Needs<br>A <span style="color:var(--teal);">Human</span> Layer.</h2>
+      <p class="triad-subtitle">Psychologically Informed. Legally Defensible.</p>
+      <p class="triad-subtitle-2">That&rsquo;s what I build.</p>
     </div>
+    <div class="icon-row">
+      <svg class="connecting-trace" viewBox="0 0 600 2" preserveAspectRatio="none"><line x1="0" y1="1" x2="600" y2="1" stroke="rgba(255,255,255,0.12)" stroke-width="1" stroke-dasharray="4 8"/></svg>
+      <div class="triad-node" id="node-law">
+        <div class="node-icon node-icon--law">
+          <svg viewBox="0 0 80 80" fill="none"><line x1="40" y1="72" x2="40" y2="24" stroke="#649BFF" stroke-width="2" stroke-linecap="round"/><line x1="28" y1="72" x2="52" y2="72" stroke="#649BFF" stroke-width="2.5" stroke-linecap="round"/><circle cx="40" cy="24" r="2.5" fill="#649BFF"/><g class="law-beam"><line x1="14" y1="24" x2="66" y2="24" stroke="#649BFF" stroke-width="2" stroke-linecap="round"/><g class="law-pan-l"><line x1="14" y1="24" x2="14" y2="44" stroke="#649BFF" stroke-width="1" opacity="0.6"/><path d="M4,44 Q14,56 24,44" stroke="#649BFF" stroke-width="1.5" fill="none"/></g><g class="law-pan-r"><line x1="66" y1="24" x2="66" y2="44" stroke="#649BFF" stroke-width="1" opacity="0.6"/><path d="M56,44 Q66,56 76,44" stroke="#649BFF" stroke-width="1.5" fill="none"/></g></g></svg>
+        </div>
+        <span class="node-label">Law</span>
+        <span class="node-sub">Logic &amp; Structure</span>
+      </div>
+      <div class="triad-node" id="node-psych">
+        <div class="node-icon node-icon--psych">
+          <svg viewBox="0 0 80 80" fill="none"><path d="M40 10 C27 10 16 20 15 33 C14 42 18 50 24 56 C30 62 36 66 40 66 C44 66 50 62 56 56 C62 50 66 42 65 33 C64 20 53 10 40 10Z" stroke="#FFAF37" stroke-width="1.5" opacity="0.35"/><path class="synapse s1" d="M24 26 Q32 20 40 28 Q48 36 56 28" stroke="#FFAF37" stroke-width="1.5" stroke-linecap="round"/><path class="synapse s2" d="M20 36 Q28 28 38 38 Q48 48 58 38" stroke="#FFAF37" stroke-width="1.5" stroke-linecap="round"/><path class="synapse s3" d="M22 48 Q30 40 40 48 Q50 56 58 48" stroke="#FFAF37" stroke-width="1.5" stroke-linecap="round"/><path class="synapse s4" d="M30 18 Q34 28 30 38 Q26 48 32 58" stroke="#FFAF37" stroke-width="1.5" stroke-linecap="round"/><path class="synapse s5" d="M50 18 Q46 28 50 38 Q54 48 48 58" stroke="#FFAF37" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <span class="node-label">Psychology</span>
+        <span class="node-sub">Cognition &amp; Bias</span>
+      </div>
+      <div class="triad-node" id="node-ai">
+        <div class="node-icon node-icon--ai">
+          <svg viewBox="0 0 80 80" fill="none"><line class="ai-edge" x1="40" y1="14" x2="16" y2="32" stroke="#00E1AF" stroke-width="1"/><line class="ai-edge" x1="40" y1="14" x2="64" y2="32" stroke="#00E1AF" stroke-width="1"/><line class="ai-edge" x1="40" y1="14" x2="40" y2="42" stroke="#00E1AF" stroke-width="1"/><line class="ai-edge" x1="16" y1="32" x2="64" y2="32" stroke="#00E1AF" stroke-width="1"/><line class="ai-edge" x1="16" y1="32" x2="26" y2="56" stroke="#00E1AF" stroke-width="1"/><line class="ai-edge" x1="64" y1="32" x2="54" y2="56" stroke="#00E1AF" stroke-width="1"/><line class="ai-edge" x1="40" y1="42" x2="26" y2="56" stroke="#00E1AF" stroke-width="1"/><line class="ai-edge" x1="40" y1="42" x2="54" y2="56" stroke="#00E1AF" stroke-width="1"/><line class="ai-edge" x1="26" y1="56" x2="54" y2="56" stroke="#00E1AF" stroke-width="1"/><line class="ai-edge" x1="26" y1="56" x2="40" y2="70" stroke="#00E1AF" stroke-width="1"/><line class="ai-edge" x1="54" y1="56" x2="40" y2="70" stroke="#00E1AF" stroke-width="1"/><circle class="ai-node n1" cx="40" cy="14" r="4" fill="#00E1AF"/><circle class="ai-node n2" cx="16" cy="32" r="3.5" fill="#00E1AF"/><circle class="ai-node n3" cx="64" cy="32" r="3.5" fill="#00E1AF"/><circle class="ai-node n4" cx="40" cy="42" r="5" fill="#00E1AF"/><circle class="ai-node n5" cx="26" cy="56" r="3" fill="#00E1AF"/><circle class="ai-node n6" cx="54" cy="56" r="3" fill="#00E1AF"/><circle class="ai-node n7" cx="40" cy="70" r="3.5" fill="#00E1AF"/></svg>
+        </div>
+        <span class="node-label">AI</span>
+        <span class="node-sub">Systems &amp; Scale</span>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- NARRATIVE BIO -->
-<section id="narrative" class="reveal"><p class="section-label" style="text-align:center">The Story</p><h2 style="text-align:center">Give Me a Problem. I&rsquo;ll Build You a System.</h2><div style="max-width:700px;margin:2rem auto;border-radius:12px;overflow:hidden;aspect-ratio:16/9;"><video controls preload="metadata" poster="hero-poster.jpg" style="width:100%;height:100%;object-fit:cover;"><source src="hero-web.mp4" type="video/mp4"></video></div><div class="client-stories-grid"><div class="client-story-card"><div class="client-story-icon">&#9878;&#65039;</div><h3>The Litigation Firm Drowning in Precedent</h3><p class="client-industry">Legal &middot; Delhi NCR</p><p><strong>Problem:</strong> Senior partners spent 4+ hours per brief hunting for relevant case law. Junior associates kept citing overruled judgments.</p><p><strong>System Built:</strong> A hallucination-resistant research pipeline with source-anchored prompts, automatic citation verification, and reviewer checkpoints.</p><p class="client-result">&rarr; Research time cut by 60%. Zero citation errors in 3 months.</p></div><div class="client-story-card"><div class="client-story-icon">&#128640;</div><h3>The SaaS Startup Bleeding Support Tickets</h3><p class="client-industry">Tech Startup &middot; Remote</p><p><strong>Problem:</strong> A 12-person team handling 200+ support tickets daily. Their chatbot gave wrong answers 40% of the time.</p><p><strong>System Built:</strong> A multi-layer AI triage system with intent classification, scope-constrained responses, and mandatory knowledge-base grounding.</p><p class="client-result">&rarr; Chatbot accuracy jumped to 91%. Ticket volume dropped 45%.</p></div><div class="client-story-card"><div class="client-story-icon">&#128203;</div><h3>The Recruiter Who Couldn&rsquo;t Scale Screening</h3><p class="client-industry">HR / Recruitment &middot; Hybrid</p><p><strong>Problem:</strong> An independent recruiter reviewed 300+ resumes per role manually, missing strong candidates in poorly formatted CVs.</p><p><strong>System Built:</strong> A structured extraction workflow normalising any resume format into a scoring matrix weighted against role-specific criteria.</p><p class="client-result">&rarr; Screening time reduced by 70%. Placement quality up 25%.</p></div><div class="client-story-card"><div class="client-story-icon">&#127909;</div><h3>The Creator Struggling with Consistency</h3><p class="client-industry">Content &middot; YouTube / Newsletter</p><p><strong>Problem:</strong> A solo creator with 50K subscribers couldn&rsquo;t maintain weekly output. AI drafts sounded generic and lost their voice.</p><p><strong>System Built:</strong> A voice-calibrated content engine fed with 40+ past scripts to extract tone patterns, argument structure, and vocabulary fingerprint.</p><p class="client-result">&rarr; Publishing cadence doubled. Audience engagement up 35%.</p></div></div></section>
-        <section id="demos" class="reveal" style="max-width:1200px;margin:0 auto">
-    <div class="container">
-        <p class="section-label">Live Artifacts</p>
-        <h2>Tools I Built</h2>
-        <p class="subtitle">These aren't mockups. They're working tools. The Human Filter above is just the beginning.</p>
-        <div class="artifacts-featured">
-            <div class="artifact-card">
-                <iframe src="artifacts/council.html" loading="lazy" title="Council of Prominent Figures"></iframe>
-                <div class="card-body">
-                    <h3>Council of Prominent Figures</h3>
-                    <p>An adversarial deliberation tool that simulates a panel of historical thinkers to stress-test your decisions.</p>
-                    <a href="artifacts/council.html" target="_blank" class="card-link">Try It &rarr;</a>
-                </div>
-            </div>
-        </div>
-        <div style="text-align:center;margin-top:2rem">
-            <a href="/artifacts/" class="btn btn-outline">See All Artifacts &rarr;</a>
-        </div>
+<!-- PROBLEM PUNCH -->
+<section id="problem-punch" style="padding:80px 2rem;">
+  <div class="section-inner">
+    <h2 class="punch-headline">Your AI sounds smart.<br><em>It isn&rsquo;t.</em></h2>
+    <p class="punch-sub">It hallucinates. It contradicts itself. It crumbles the moment someone with domain expertise pushes back. I fix that.</p>
+    <div class="punch-grid">
+      <div class="punch-item">
+        <div class="punch-number">The Problem</div>
+        <div class="punch-problem">Your prompts have no reasoning chain.</div>
+        <div class="punch-fix">I bring legal logic&mdash;structured argumentation, burden of proof, chain of custody for every claim your AI makes.</div>
+      </div>
+      <div class="punch-item">
+        <div class="punch-number">The Blind Spot</div>
+        <div class="punch-problem">Your AI ignores how humans actually decide.</div>
+        <div class="punch-fix">I apply cognitive psychology&mdash;anchoring, framing, decision fatigue&mdash;so your AI persuades instead of confuses.</div>
+      </div>
+      <div class="punch-item">
+        <div class="punch-number">The Gap</div>
+        <div class="punch-problem">Your &ldquo;AI strategy&rdquo; is just vibes.</div>
+        <div class="punch-fix">I build systems that survive cross-examination&mdash;auditable, explainable, and built to hold up under pressure.</div>
+      </div>
     </div>
+    <div class="punch-cta">
+      <a href="#demos" class="btn btn-primary">See What I&rsquo;ve Built &darr;</a>
+    </div>
+  </div>
 </section>
 
-<!-- SERVICES / PRICING -->
-<section id="services" class="reveal" style="max-width:1200px;margin:0 auto">
-    <div class="container">
-        <p class="section-label">One Offer. No Fluff.</p>
-        <h2>&#8377;499 AI Audit &amp; Artifact</h2>
-        <p class="subtitle">You send me any AI workflow, prompt system, or business problem. I stress-test it using legal logic, cognitive psychology, and adversarial red-teaming &mdash; and build you a working artifact you can use commercially. No calls. No upsells. Just output.</p>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2rem;align-items:start">
-            <div class="service-card" style="border-color:var(--gold);position:relative;overflow:hidden">
-                <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--teal))"></div>
-                <p class="tier" style="color:var(--teal)">What You Get</p>
-                <h3 style="font-size:1.3rem">Complete AI Audit + Custom Artifact</h3>
-                <p style="margin-bottom:.5rem"><strong style="color:var(--white)">1.</strong> I red-team your AI workflow &mdash; find hallucinations, legal blind spots, psychological nudges gone wrong.</p>
-                <p style="margin-bottom:.5rem"><strong style="color:var(--white)">2.</strong> I build you a custom artifact (like the Influence Decoder above) tailored to your use case.</p>
-                <p style="margin-bottom:.5rem"><strong style="color:var(--white)">3.</strong> Full commercial usage rights. It's yours.</p>
-                <p style="margin-bottom:1.5rem"><strong style="color:var(--white)">4.</strong> Delivered in 48&ndash;72 hours. Async. No meetings.</p>
-                <div style="display:flex;align-items:baseline;gap:.5rem;margin-bottom:1rem">
-                    <span style="font-family:var(--serif);font-size:2.5rem;font-weight:700;color:var(--gold)">&#8377;499</span>
-                    <span style="color:var(--text);font-size:.9rem;text-decoration:line-through">&#8377;4,999</span>
-                    <span style="background:var(--coral);color:var(--bg);padding:2px 8px;border-radius:4px;font-size:.75rem;font-weight:700">90% OFF LAUNCH</span>
-                </div>
-                <p style="font-size:.82rem;color:var(--text);margin-bottom:1.5rem">Limited to first 50 clients at this price. After that, it goes back to &#8377;4,999.</p>
-                <a href="mailto:hello@aakarshsharma.com?subject=₹499 AI Audit — [Your Name]&body=Hi Aakarsh,%0A%0AI'd like the ₹499 AI Audit %2B Artifact.%0A%0AMy AI workflow/problem:%0A[Describe your workflow, prompt system, or business problem here]%0A%0AThanks!" class="btn btn-gold" style="width:100%;justify-content:center;font-size:1rem;padding:14px">Get Your Audit &rarr;</a>
-            </div>
-            <div style="display:flex;flex-direction:column;gap:1.5rem">
-                <div class="service-card">
-                    <p class="tier">Why &#8377;499?</p>
-                    <h3>I'd Rather You Judge My Work Than My Price</h3>
-                    <p>Most "AI consultants" charge &#8377;15K+ for a strategy call where they tell you what ChatGPT already knows. I charge &#8377;499 and <em>build you something</em>. If the artifact doesn't blow your mind, I've lost nothing but my time. If it does &mdash; you'll be back.</p>
-                </div>
-                <div class="service-card" style="text-align:center">
-                    <p class="tier">Pay via Paytm / UPI</p>
-                    <button class="qr-collapse-toggle" aria-expanded="false" onclick="let b=this.nextElementSibling;b.classList.toggle('open');this.setAttribute('aria-expanded',b.classList.contains('open'))">
-                        <span>&#128274; Reveal QR Code &mdash; Scan &amp; Pay &#8377;499</span>
-                        <span class="arrow">&#9660;</span>
-                    </button>
-                    <div class="qr-collapse-body">
-                        <div style="background:var(--white);border-radius:12px;padding:1rem;display:inline-block;margin:.5rem auto">
-                            <img src="paytm-qr.png" alt="Paytm QR Code — ₹499" style="width:200px;height:200px;border-radius:8px">
-                        </div>
-                        <p style="font-size:.82rem;color:var(--text);margin-top:.5rem">After payment, email <a href="mailto:hello@aakarshsharma.com">hello@aakarshsharma.com</a> with screenshot + your AI problem.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+<!-- ABOUT (moved here: Problem → Who I Am → then proof of work) -->
+<section id="about" class="reveal">
+  <div class="section-inner">
+    <div class="section-label">About</div>
+    <h2 class="section-title">Meet Aakarsh</h2>
+    <div class="about-grid">
+      <div class="about-content">
+        <p><span class="hl">Law graduate turned AI strategist.</span> After 5 years in litigation and legal drafting&mdash;including clearing the Rajasthan Judicial Services Prelims and practicing at a High Court chamber in New Delhi&mdash;I pivoted to the intersection of artificial intelligence, human psychology, and governance frameworks.</p>
+        <p>That pivot wasn't a leap of faith. It was a logical extension. <span class="hl">Law taught me to think in structures</span>&mdash;precedent, burden of proof, adversarial testing. <span class="hl">Psychology taught me why humans make irrational decisions</span> even when the evidence is clear. AI gave me a medium where both disciplines converge.</p>
+        <p>Through <span class="hl">Human Layer AI</span>, I build systems that are psychologically informed, legally defensible, and genuinely human-centered. I design prompt architectures that account for cognitive bias, build AI artifacts that augment human judgment, and consult with organizations on responsible AI adoption.</p>
+        <p>Most AI consultants come from tech. I come from law and psychology. That's not a weakness&mdash;<span class="hl">it's the moat.</span> I see failure modes that engineers miss: regulatory exposure, cognitive manipulation, governance gaps, reasoning failures that pass unit tests but fail in the real world.</p>
+      </div>
+      <div class="about-sidebar">
+        <h3>Credentials &amp; Proof</h3>
+        <div class="cred"><div class="cred-icon">&#9878;</div><div><div class="cred-title">BA LL.B. (Hons)</div><div class="cred-detail">5 years litigation &bull; High Court chamber, New Delhi</div></div></div>
+        <div class="cred"><div class="cred-icon">&#9879;</div><div><div class="cred-title">RJS Prelims Cleared</div><div class="cred-detail">Rajasthan Judicial Services examination</div></div></div>
+        <div class="cred"><div class="cred-icon">&#9881;</div><div><div class="cred-title">556+ Sessions on Claude</div><div class="cred-detail">170+ hours hands-on AI system design</div></div></div>
+        <div class="cred"><div class="cred-icon">&#9998;</div><div><div class="cred-title">4 Published Essays</div><div class="cred-detail">Medium &bull; AI, Law &amp; Psychology</div></div></div>
+        <div class="cred"><div class="cred-icon">&#127760;</div><div><div class="cred-title">IELTS 8.0</div><div class="cred-detail">Native-level English proficiency</div></div></div>
+        <div class="cred"><div class="cred-icon">&#128248;</div><div><div class="cred-title">~3,000 LinkedIn Followers</div><div class="cred-detail">Primary professional network</div></div></div>
+        <div class="cred"><div class="cred-icon">&#127897;</div><div><div class="cred-title">100+ Podcast Episodes</div><div class="cred-detail">Conversations with mental health experts &amp; founders</div></div></div>
+        <div class="cred"><div class="cred-icon">&#128214;</div><div><div class="cred-title">93 Books Read</div><div class="cred-detail">Continuous learning across domains</div></div></div>
+      </div>
     </div>
+  </div>
+</section>
+
+<!-- INTERACTIVE DEMOS SLIDER -->
+<section id="demos" class="reveal">
+  <div class="section-inner">
+    <div class="section-label">Try It Yourself</div>
+    <h2 class="section-title">Live AI Artifacts</h2>
+    <p class="section-desc">These aren't mockups. They're working tools I built. Click through and interact with them&mdash;this is the type of system I design for clients.</p>
+
+    <div class="slider-container">
+      <div class="slider-tabs">
+        <button class="slider-tab active" onclick="switchSlide(0)">Council of Figures</button>
+        <button class="slider-tab" onclick="switchSlide(1)">Buddhist Therapist</button>
+        <button class="slider-tab" onclick="switchSlide(2)">Prompt Bias Detector</button>
+      </div>
+      <div class="slider-nav">
+        <div class="slider-dot active" onclick="switchSlide(0)"></div>
+        <div class="slider-dot" onclick="switchSlide(1)"></div>
+        <div class="slider-dot" onclick="switchSlide(2)"></div>
+      </div>
+      <div class="slider-frame">
+        <iframe src="artifacts/council.html" class="active" loading="lazy" title="Council of Prominent Figures - Multi-persona adversarial deliberation tool"></iframe>
+        <iframe src="artifacts/buddhist-therapist.html" loading="lazy" title="Buddhist Therapist - CBT meets Eastern Philosophy"></iframe>
+        <iframe src="artifacts/prompt-bias-detector.html" loading="lazy" title="Prompt Bias Detector - Detect cognitive biases in AI prompts"></iframe>
+      </div>
+      <div class="slider-caption" id="slider-caption">
+        <h4>Council of Prominent Figures</h4>
+        <p>Multi-persona adversarial deliberation for high-stakes decisions</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio" class="reveal">
+  <div class="section-inner">
+    <div class="section-label">Portfolio</div>
+    <h2 class="section-title">Built at the Intersection</h2>
+    <p class="section-desc">AI artifacts, legal tech prototypes, and cognitive tools&mdash;each built using prompt engineering, behavioral psychology, and legal reasoning.</p>
+    <div class="portfolio-grid">
+      <div class="project-card">
+        <span class="project-tag">AI Artifact</span>
+        <h3>Council of Prominent Figures</h3>
+        <p>An adversarial deliberation tool that simulates a panel of historical thinkers to stress-test your decisions. Input your dilemma and the Council attacks it from multiple cognitive lenses. Built to counter confirmation bias in high-stakes decisions.</p>
+        <div class="project-tags"><span>Prompt Engineering</span><span>Adversarial AI</span><span>Decision Science</span></div>
+        <a href="https://claude.ai/public/artifacts/b5858ebd-e574-4b7e-a632-4dedc0c0c6d9" target="_blank" class="project-link">Try on Claude &rarr;</a>
+      </div>
+      <div class="project-card">
+        <span class="project-tag">Wellness Tech</span>
+        <h3>The Buddhist Therapist</h3>
+        <p>CBT meets Eastern philosophy. A cognitive tool combining Western psychology with Buddhist, Taoist, and Stoic wisdom for emotional regulation. Identifies distortion patterns and offers dual-tradition reframes grounded in clinical methodology.</p>
+        <div class="project-tags"><span>CBT</span><span>Eastern Philosophy</span><span>Mental Health</span></div>
+        <a href="https://github.com/HumanLayerAI/the-buddhist-therapist" target="_blank" class="project-link">View on GitHub &rarr;</a>
+      </div>
+      <div class="project-card">
+        <span class="project-tag">AI &times; Psychology</span>
+        <h3>Prompt Bias Detector</h3>
+        <p>Paste any AI prompt and discover hidden cognitive biases in your instructions. Uses legal reasoning frameworks (cross-examination, burden of proof) and behavioral psychology (anchoring, framing effects, confirmation bias) to audit how you talk to AI.</p>
+        <div class="project-tags"><span>Cognitive Bias</span><span>Prompt Engineering</span><span>Legal Reasoning</span></div>
+        <a href="/artifacts/prompt-bias-detector.html" class="project-link">Try It Live &rarr;</a>
+      </div>
+      <div class="project-card">
+        <span class="project-tag">Legal Tech</span>
+        <h3>Patent Drafting &amp; Prosecution Framework</h3>
+        <p>A 5-module AI-assisted framework for Indian patent law. Prior art analysis, claims drafting, specification writing, prosecution strategy, and office action responses. Demonstrates how complex legal workflows can be augmented by AI.</p>
+        <div class="project-tags"><span>IP Law</span><span>India</span><span>Multi-Module</span></div>
+        <a href="https://claude.ai/public/artifacts/4901f625-69d9-4608-9676-f3db1e529fc2" target="_blank" class="project-link">Explore Framework &rarr;</a>
+      </div>
+      <div class="project-card">
+        <span class="project-tag">Sales Intelligence</span>
+        <h3>Cold Email Objection Predictor</h3>
+        <p>Predict psychological objections in cold emails before sending. Built with cognitive bias frameworks for B2B outreach&mdash;identifies loss aversion triggers, trust barriers, and commitment escalation patterns in your copy.</p>
+        <div class="project-tags"><span>B2B</span><span>Behavioral Psych</span><span>Sales</span></div>
+        <a href="https://github.com/HumanLayerAI/cold-email-objection-predictor" target="_blank" class="project-link">View on GitHub &rarr;</a>
+      </div>
+      <div class="project-card">
+        <span class="project-tag">Psychology &times; AI</span>
+        <h3>Cognitive Distortion Analyzer</h3>
+        <p>An interactive tool that analyzes free-form thoughts, detects specific cognitive distortions (catastrophizing, all-or-nothing thinking, mind reading), and generates balanced reframes with actionable next steps. Built with non-clinical guardrails and hallucination-resistant prompting.</p>
+        <div class="project-tags"><span>CBT</span><span>Prompt Design</span><span>Mental Health</span></div>
+        <a href="https://claude.ai/public/artifacts/17c3e82c-ba9a-460b-9d11-bdaca2c05b37" target="_blank" class="project-link">Try on Claude &rarr;</a>
+      </div>
+      <div class="project-card">
+        <span class="project-tag">Legal &times; AI</span>
+        <h3>Judicial Gymnastics</h3>
+        <p>A custom AI system that reverse-engineers competitive exam patterns and generates edge-case scenarios for judicial services preparation. Synthesizes across Criminal Procedure, Contract Law, Constitutional Law, and Evidence to simulate real examination conditions.</p>
+        <div class="project-tags"><span>Legal AI</span><span>Education</span><span>System Design</span></div>
+        <a href="https://chatgpt.com/g/g-Yc0GjClXD-judicial-gymnastics" target="_blank" class="project-link">Try on ChatGPT &rarr;</a>
+      </div>
+      <div class="project-card">
+        <span class="project-tag">Content</span>
+        <h3>Medium Writing Portfolio</h3>
+        <p>Published essays at the intersection of lived experience, AI systems, and behavioral psychology. From rationing meals as an AI workflow metaphor to building adversarial councils for de-biased decisions.</p>
+        <div class="project-tags"><span>Writing</span><span>AI Ethics</span><span>Personal Essays</span></div>
+        <a href="https://medium.com/@humanlayerAI" target="_blank" class="project-link">Read on Medium &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="reveal">
+  <div class="section-inner">
+    <div class="section-label">Services</div>
+    <h2 class="section-title">What I Build</h2>
+    <p class="section-desc">Five service tiers&mdash;from a free strategy conversation to full custom systems. Each grounded in the Law &times; Psychology &times; AI framework.</p>
+
+    <!-- FREE -->
+    <div class="svc-card">
+      <div>
+        <span class="svc-tag tag-free">Free &middot; Entry Point</span>
+        <h3>AI Strategy Discovery Call</h3>
+        <p class="svc-desc">A 30-minute conversation to understand your workflow, identify where AI adds real value (and where it doesn't), and assess whether we're a good fit. No pitch. No pressure. I'll tell you honestly if you don't need me.</p>
+        <div class="prob-label" style="color:var(--text-muted);">Who this is for</div>
+        <p class="prob-text">Anyone considering AI integration but unsure where to start, what's hype vs. real, or whether their current AI setup is actually working. Founders, solo professionals, small teams.</p>
+        <div class="prob-label" style="color:var(--teal);margin-top:16px;">What you walk away with</div>
+        <p class="prob-text">A clear picture of your highest-impact AI opportunity, an honest assessment of what's possible, and a recommendation&mdash;even if that recommendation is "you don't need to hire anyone."</p>
+      </div>
+      <div class="svc-sidebar">
+        <div>
+          <div class="svc-price" style="color:var(--teal);">Free</div>
+          <div class="svc-price-note">30 minutes &middot; Video call</div>
+          <ul class="svc-features">
+            <li>Workflow assessment</li>
+            <li>AI readiness evaluation</li>
+            <li>Honest fit check</li>
+            <li>No obligation</li>
+          </ul>
+        </div>
+        <a href="https://calendly.com/humanlayerai" target="_blank" class="btn btn-primary" style="width:100%;justify-content:center;">Book Free Call &rarr;</a>
+      </div>
+    </div>
+
+    <!-- AUDIT -->
+    <div class="svc-card">
+      <div>
+        <span class="svc-tag tag-audit">Service 01 &middot; Audit</span>
+        <h3>AI Workflow Audit &amp; Red-Teaming</h3>
+        <p class="svc-desc">I take your existing AI workflows&mdash;your prompts, your chatbot, your internal GPT, your automation&mdash;and stress-test them. I find where they hallucinate, where they're legally exposed, where they nudge users into bad decisions. Then I fix it.</p>
+        <div class="prob-label" style="color:var(--red);">The problem I solve</div>
+        <p class="prob-text">Your team built an AI workflow that "works." But nobody checked if the outputs are logically consistent, if they hallucinate under edge cases, or if they subtly bias decisions. One bad output away from a client complaint, a compliance issue, or a costly mistake.</p>
+        <div class="prob-label" style="color:var(--teal);margin-top:16px;">How I solve it</div>
+        <p class="prob-text">Adversarial testing (legal cross-examination methodology), cognitive bias scanning (psychology frameworks), and structural prompt analysis. You get a written report with every failure point, its severity, and the exact fix.</p>
+      </div>
+      <div class="svc-sidebar">
+        <div>
+          <div class="svc-price">&#8377;4,999</div>
+          <div class="svc-price-note">~$60 &middot; One-time audit</div>
+          <ul class="svc-features">
+            <li>90-minute deep-dive session</li>
+            <li>Written audit report</li>
+            <li>Failure point analysis</li>
+            <li>Fix recommendations</li>
+            <li>AI governance checklist</li>
+            <li>30-day follow-up call</li>
+          </ul>
+        </div>
+        <a href="https://calendly.com/humanlayerai" target="_blank" class="btn btn-outline" style="width:100%;justify-content:center;">Book Audit &rarr;</a>
+      </div>
+    </div>
+
+    <!-- BUILD -->
+    <div class="svc-card" style="border-color:rgba(45,212,168,0.2);">
+      <div>
+        <span class="svc-tag tag-build">Service 02 &middot; Build</span>
+        <h3>Custom AI Tool Design &amp; Build</h3>
+        <p class="svc-desc">I design and build custom AI-powered tools tailored to your use case&mdash;decision-support systems, legal drafting assistants, coaching tools, bias detectors. You get a working interactive application with full source code, not a prompt template in a Google Doc.</p>
+        <div class="prob-label" style="color:var(--red);">The problem I solve</div>
+        <p class="prob-text">You need an AI tool that does something specific&mdash;but raw ChatGPT/Claude conversations aren't reliable enough for professional use. The outputs are inconsistent, there's no structure, and you can't hand it to a team member and say "use this."</p>
+        <div class="prob-label" style="color:var(--teal);margin-top:16px;">How I solve it</div>
+        <p class="prob-text">I architect the reasoning pipeline first (what the AI should think through, in what order, with what constraints). Then I build it as a working application&mdash;interactive, testable, deployable. The underlying prompt architecture is model-agnostic. You own the code.</p>
+      </div>
+      <div class="svc-sidebar">
+        <div>
+          <div class="svc-price">&#8377;14,999+</div>
+          <div class="svc-price-note">~$180+ &middot; Scope-dependent</div>
+          <ul class="svc-features">
+            <li>Discovery &amp; requirements</li>
+            <li>Reasoning architecture design</li>
+            <li>Working application</li>
+            <li>Full source code (GitHub)</li>
+            <li>Prompt system documentation</li>
+            <li>One revision cycle</li>
+            <li>Deployment guidance</li>
+          </ul>
+        </div>
+        <a href="https://calendly.com/humanlayerai" target="_blank" class="btn btn-primary" style="width:100%;justify-content:center;">Discuss Project &rarr;</a>
+      </div>
+    </div>
+
+    <!-- ARCHITECTURE -->
+    <div class="svc-card">
+      <div>
+        <span class="svc-tag tag-arch">Service 03 &middot; Architecture</span>
+        <h3>Prompt System Architecture</h3>
+        <p class="svc-desc">For businesses that need complex, multi-step AI systems&mdash;not a single prompt, but an entire reasoning pipeline. Patent prosecution workflows, compliance checklists, structured decision frameworks, multi-agent deliberation systems.</p>
+        <div class="prob-label" style="color:var(--red);">The problem I solve</div>
+        <p class="prob-text">Your AI use case is too complex for a single prompt. You need the model to follow a structured workflow&mdash;intake, analysis, reasoning, output, review&mdash;without losing context, hallucinating, or skipping steps.</p>
+        <div class="prob-label" style="color:var(--teal);margin-top:16px;">How I solve it</div>
+        <p class="prob-text">Multi-module reasoning systems with explicit handoff points, error-catching mechanisms, and escalation protocols. Each module has its own prompt architecture, validation logic, and output format. Documented so your team can maintain and extend it.</p>
+      </div>
+      <div class="svc-sidebar">
+        <div>
+          <div class="svc-price">&#8377;24,999+</div>
+          <div class="svc-price-note">~$300+ &middot; Complexity-dependent</div>
+          <ul class="svc-features">
+            <li>System architecture document</li>
+            <li>Multi-module prompt system</li>
+            <li>Workflow diagrams</li>
+            <li>Testing &amp; edge case analysis</li>
+            <li>Full documentation</li>
+            <li>Implementation support</li>
+            <li>Two revision cycles</li>
+          </ul>
+        </div>
+        <a href="https://calendly.com/humanlayerai" target="_blank" class="btn btn-outline" style="width:100%;justify-content:center;">Discuss Architecture &rarr;</a>
+      </div>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="svc-card">
+      <div>
+        <span class="svc-tag tag-content">Service 04 &middot; Content &amp; Collaboration</span>
+        <h3>AI Thought Leadership &amp; Content</h3>
+        <p class="svc-desc">Co-authored articles, podcast appearances, ghost-written strategy pieces, and content collaborations. I bring the Law &times; Psychology &times; AI angle&mdash;you bring the audience, the platform, or the use case.</p>
+        <div class="prob-label" style="color:var(--red);">The problem I solve</div>
+        <p class="prob-text">You want to publish AI-related content&mdash;blog posts, LinkedIn articles, thought leadership&mdash;but you're either too busy, lack the technical depth, or don't want to sound like every other generic AI take.</p>
+        <div class="prob-label" style="color:var(--teal);margin-top:16px;">How I solve it</div>
+        <p class="prob-text">Content that sits at the intersection of AI, law, and behavioral psychology&mdash;a perspective almost nobody else has. I can co-author, ghost-write, appear on your podcast, or provide the technical backbone for your content.</p>
+      </div>
+      <div class="svc-sidebar">
+        <div>
+          <div class="svc-price">Custom</div>
+          <div class="svc-price-note">Scope &amp; format dependent</div>
+          <ul class="svc-features">
+            <li>Co-authored articles</li>
+            <li>Podcast guest appearances</li>
+            <li>Ghost-written strategy pieces</li>
+            <li>Content consulting</li>
+            <li>Testimonial exchange</li>
+          </ul>
+        </div>
+        <a href="https://calendly.com/humanlayerai" target="_blank" class="btn btn-gold" style="width:100%;justify-content:center;">Let's Collaborate &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ARTICLES -->
+<section id="articles" class="reveal">
+  <div class="section-inner">
+    <div class="section-label">Writing</div>
+    <h2 class="section-title">Articles &amp; Essays</h2>
+    <p class="section-desc">Long-form thinking at the intersection of AI, psychology, and lived experience. Published on Medium.</p>
+    <div class="article-grid">
+        <div class="article-card">
+            <div class="article-meta">Builder's Journal &middot; AI &times; Creativity</div>
+            <h3>Write a Book. Don&rsquo;t Publish It.</h3>
+            <p>How Steven Pressfield&rsquo;s War of Art exposed my own Resistance&mdash;and why I built a writing tool with a flickering candle instead of just writing about it. Includes a live AI artifact you can try.</p>
+            <a href="https://medium.com/@humanlayerAI/write-a-book-dont-publish-it-becf4870cc50" target="_blank" class="project-link">Read on Medium &rarr;</a>
+        </div>
+      <div class="article-card">
+        <div class="article-meta">Essay &middot; AI &times; Psychology</div>
+        <h3>Building an Adversarial Council to De-Bias AI Decisions</h3>
+        <p>How simulating structured disagreement between intellectual traditions produces more robust AI reasoning than consensus-seeking approaches. The origin story of the Council of Prominent Figures.</p>
+        <a href="https://medium.com/@humanlayerAI" target="_blank" class="project-link">Read on Medium &rarr;</a>
+      </div>
+      <div class="article-card">
+        <div class="article-meta">Personal Essay &middot; AI &times; Life</div>
+        <h3>Rationing Meals Taught Me How to Build AI Workflows</h3>
+        <p>A personal essay connecting the discipline of resource scarcity to the art of prompt engineering&mdash;constraint-based thinking, prioritization under pressure, and making every token count.</p>
+        <a href="https://medium.com/@humanlayerAI" target="_blank" class="project-link">Read on Medium &rarr;</a>
+      </div>
+      <div class="article-card">
+        <div class="article-meta">Technical &middot; Legal Tech</div>
+        <h3>Why Lawyers Should Care About Prompt Architecture</h3>
+        <p>The case for why legal reasoning&mdash;structured argumentation, adversarial testing, burden of proof&mdash;is the missing discipline in AI system design. Written for legal professionals exploring AI.</p>
+        <a href="https://medium.com/@humanlayerAI" target="_blank" class="project-link">Read on Medium &rarr;</a>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:2rem;">
+      <a href="https://medium.com/@humanlayerAI" target="_blank" class="btn btn-outline">View All on Medium &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- PROMPT LIBRARY -->
+<section id="prompts" class="reveal">
+  <div class="section-inner">
+    <div class="section-label">Weekly Prompt</div>
+    <h2 class="section-title">Prompt Library</h2>
+    <p class="section-desc">One carefully crafted prompt every week. Each one demonstrates a different prompting principle&mdash;structured reasoning, cognitive debiasing, domain-specific architecture. Copy them. Remix them. Learn from the design choices.</p>
+    <div class="prompt-grid">
+      <div class="prompt-card">
+        <div class="prompt-week">Week 1 &middot; Feb 2026</div>
+        <div class="prompt-title">The Adversarial Reviewer</div>
+        <div class="prompt-text">You are a senior legal reviewer. Your job is to find every flaw in my argument before my opponent does. Read my draft below and: (1) identify the 3 weakest claims, (2) explain how an adversary would attack each one, (3) suggest a stronger framing for each. Be ruthless&mdash;I'd rather fix it now than lose in court.</div>
+        <div class="prompt-usecase"><strong>Principle:</strong> Adversarial stress-testing. Forces the model to adopt an opponent's mindset rather than agreeing by default. Works for legal briefs, business proposals, and research papers.</div>
+      </div>
+      <div class="prompt-card">
+        <div class="prompt-week">Week 2 &middot; Feb 2026</div>
+        <div class="prompt-title">The Cognitive Bias Detector</div>
+        <div class="prompt-text">Analyze my decision below for cognitive biases. Check specifically for: confirmation bias, anchoring, sunk cost fallacy, availability heuristic, and the Dunning-Kruger effect. For each bias you detect, quote the specific phrase that triggered it, name the bias, and suggest a debiased alternative. If no bias is present, say so&mdash;don't manufacture findings.</div>
+        <div class="prompt-usecase"><strong>Principle:</strong> Structured bias detection. The explicit list constrains hallucination, the "quote the phrase" requirement forces evidence-based reasoning, and the "don't manufacture" instruction prevents false positives.</div>
+      </div>
+      <div class="prompt-card">
+        <div class="prompt-week">Week 3 &middot; Feb 2026</div>
+        <div class="prompt-title">The One-Pager Architect</div>
+        <div class="prompt-text">I need to explain [TOPIC] to [AUDIENCE] in one page. Constraints: (1) open with a question they already have, not a definition; (2) use exactly one analogy from their domain; (3) include one concrete "do this Monday" action item; (4) close with the single metric they should track. No jargon they wouldn't use at lunch with a colleague.</div>
+        <div class="prompt-usecase"><strong>Principle:</strong> Audience-first constraint architecture. Each numbered constraint eliminates a common AI failure mode: generic openings, abstract analogies, no actionable takeaways, and jargon overload.</div>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:2rem;color:var(--text-muted);font-size:0.85rem;">New prompt every Monday. Follow on <a href="https://www.linkedin.com/in/aakarsh-sharma-ai/" target="_blank" style="color:var(--teal);text-decoration:none;">LinkedIn</a> for weekly breakdowns.</p>
+  </div>
+</section>
+
+<!-- COPYWRITING GALLERY -->
+<section id="copywriting" class="reveal">
+  <div class="section-inner">
+    <div class="section-label">Creative Roots</div>
+    <h2 class="section-title">Before AI, There Was Copy</h2>
+    <p class="section-desc">Two years of professional copywriting&mdash;spec ads, brand campaigns, and visual storytelling. The same skills that make great copy (distilling complexity into a single striking idea) are exactly what make great prompts. This is where it started.</p>
+    <div class="copy-gallery">
+      <div class="copy-item" onclick="openCopyLightbox(this)">
+        <img src="https://tocheaptobuyawebsite.wordpress.com/wp-content/uploads/2023/03/my-post-1.jpg?w=600" alt="Anti-smoking ad: It's basic maths — cigarettes as declining bar chart" loading="lazy">
+        <div class="copy-caption"><strong>Anti-Smoking</strong> &middot; Visual metaphor</div>
+      </div>
+      <div class="copy-item" onclick="openCopyLightbox(this)">
+        <img src="https://tocheaptobuyawebsite.wordpress.com/wp-content/uploads/2023/03/tar-is-meant-for-the-road.png?w=600" alt="Nicotex ad: Tar is meant for the road" loading="lazy">
+        <div class="copy-caption"><strong>Nicotex</strong> &middot; Double meaning</div>
+      </div>
+      <div class="copy-item" onclick="openCopyLightbox(this)">
+        <img src="https://tocheaptobuyawebsite.wordpress.com/wp-content/uploads/2023/03/its-not-a-phone.-its-a-time-machine.png?w=600" alt="Samsung ad: It's not a phone. It's a time machine." loading="lazy">
+        <div class="copy-caption"><strong>Samsung</strong> &middot; Emotional reframe</div>
+      </div>
+      <div class="copy-item" onclick="openCopyLightbox(this)">
+        <img src="https://tocheaptobuyawebsite.wordpress.com/wp-content/uploads/2023/03/xanax-ad-1.png?w=600" alt="Xanax ad: Too tired to sleep?" loading="lazy">
+        <div class="copy-caption"><strong>Xanax</strong> &middot; Paradox hook</div>
+      </div>
+      <div class="copy-item" onclick="openCopyLightbox(this)">
+        <img src="https://tocheaptobuyawebsite.wordpress.com/wp-content/uploads/2023/03/my-post-1-1.png?w=600" alt="Chess ad: A crown does not make the king powerful. His queen does." loading="lazy">
+        <div class="copy-caption"><strong>Chess</strong> &middot; Social commentary</div>
+      </div>
+      <div class="copy-item" onclick="openCopyLightbox(this)">
+        <img src="https://tocheaptobuyawebsite.wordpress.com/wp-content/uploads/2023/03/aakarsh-sharma-adsandscotch40gmail.com_.png?w=600" alt="Apple ad: Different doesn't always mean wrong" loading="lazy">
+        <div class="copy-caption"><strong>Apple</strong> &middot; Bold concept</div>
+      </div>
+      <div class="copy-item" onclick="openCopyLightbox(this)">
+        <img src="https://tocheaptobuyawebsite.wordpress.com/wp-content/uploads/2023/03/remember-when-alcohol-was-used-as-drink-2.png?w=600" alt="Dettol ad: Remember when alcohol was used as a drink?" loading="lazy">
+        <div class="copy-caption"><strong>Dettol</strong> &middot; Pandemic reframe</div>
+      </div>
+      <div class="copy-item" onclick="openCopyLightbox(this)">
+        <img src="https://tocheaptobuyawebsite.wordpress.com/wp-content/uploads/2023/03/the-legal-way-to-shoot-someone.png?w=600" alt="Canon ad: The legal way to shoot someone" loading="lazy">
+        <div class="copy-caption"><strong>Canon</strong> &middot; Law meets creativity</div>
+      </div>
+      <div class="copy-item" onclick="openCopyLightbox(this)">
+        <img src="https://tocheaptobuyawebsite.wordpress.com/wp-content/uploads/2023/03/my-post-1-5.jpg?w=600" alt="Spotify ad: Grass is always GREEN" loading="lazy">
+        <div class="copy-caption"><strong>Spotify</strong> &middot; Brand color play</div>
+      </div>
+      <div class="copy-item" onclick="openCopyLightbox(this)">
+        <img src="https://tocheaptobuyawebsite.wordpress.com/wp-content/uploads/2023/03/who-wants-to-live-to-90s-anyways.png?w=600" alt="Marlboro ad: Stress kills way more people, anyway" loading="lazy">
+        <div class="copy-caption"><strong>Marlboro</strong> &middot; Brand subversion</div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:2rem;">
+      <a href="https://tocheaptobuyawebsite.wordpress.com/" target="_blank" class="btn btn-outline">View Full Portfolio &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="copy-lightbox" id="copyLightbox" onclick="closeCopyLightbox()">
+  <button class="copy-lightbox-close" onclick="closeCopyLightbox()">&times;</button>
+  <img id="copyLightboxImg" src="" alt="">
+</div>
+
+<!-- AUTOMATION WORKFLOWS -->
+<section id="workflows" class="reveal">
+  <div class="section-inner">
+    <div class="section-label">Automation</div>
+    <h2 class="section-title">Workflows I Automate</h2>
+    <p class="section-desc">Real automation pipelines built with Zapier, AI, and domain logic. These aren't hypotheticals&mdash;they're the systems running behind this brand.</p>
+    <div class="workflow-grid">
+      <div class="workflow-card">
+        <span class="workflow-badge badge-podcast">Podcast Ops</span>
+        <h3>Guest Onboarding Pipeline</h3>
+        <p>When a podcast guest books via Calendly, the system automatically creates a Google Drive folder for their episode, sends a branded welcome email with recording instructions, and logs them in the CRM.</p>
+        <div class="workflow-flow">
+          <span class="flow-step">Calendly Booking</span>
+          <span class="flow-arrow">&rarr;</span>
+          <span class="flow-step">Drive Folder</span>
+          <span class="flow-arrow">&rarr;</span>
+          <span class="flow-step">Welcome Email</span>
+          <span class="flow-arrow">&rarr;</span>
+          <span class="flow-step">CRM Log</span>
+        </div>
+        <div class="workflow-result">Saves ~25 min per guest &middot; Zero manual steps</div>
+        <div class="workflow-tools"><span>Calendly</span><span>Google Drive</span><span>Gmail</span><span>Sheets</span></div>
+      </div>
+      <div class="workflow-card">
+        <span class="workflow-badge badge-content">Content</span>
+        <h3>YouTube &rarr; LinkedIn Auto-Promote</h3>
+        <p>New YouTube video detected? The system drafts a LinkedIn post with the episode title, guest tag, key insight, and a direct link. I review and publish&mdash;the heavy lifting is done.</p>
+        <div class="workflow-flow">
+          <span class="flow-step">New YouTube Video</span>
+          <span class="flow-arrow">&rarr;</span>
+          <span class="flow-step">AI Draft Post</span>
+          <span class="flow-arrow">&rarr;</span>
+          <span class="flow-step">LinkedIn Queue</span>
+        </div>
+        <div class="workflow-result">Consistent promotion &middot; Never miss an episode launch</div>
+        <div class="workflow-tools"><span>YouTube</span><span>LinkedIn</span><span>Zapier AI</span></div>
+      </div>
+      <div class="workflow-card">
+        <span class="workflow-badge badge-lead">Lead Capture</span>
+        <h3>Inbound Lead Intelligence</h3>
+        <p>Every discovery call booking triggers a pre-call research brief&mdash;the prospect's LinkedIn summary, company context, and potential pain points are compiled before we ever speak.</p>
+        <div class="workflow-flow">
+          <span class="flow-step">Calendly Booking</span>
+          <span class="flow-arrow">&rarr;</span>
+          <span class="flow-step">LinkedIn Lookup</span>
+          <span class="flow-arrow">&rarr;</span>
+          <span class="flow-step">Research Brief</span>
+          <span class="flow-arrow">&rarr;</span>
+          <span class="flow-step">Email to Self</span>
+        </div>
+        <div class="workflow-result">Walk into every call fully prepared &middot; 10x first impressions</div>
+        <div class="workflow-tools"><span>Calendly</span><span>AI Research</span><span>Gmail</span></div>
+      </div>
+      <div class="workflow-card">
+        <span class="workflow-badge badge-repurpose">Repurpose</span>
+        <h3>Article &rarr; Multi-Platform Distribution</h3>
+        <p>Publish a Medium article and the system generates platform-specific captions for LinkedIn, Instagram, X, and WhatsApp&mdash;each adapted to the platform's tone and character limits.</p>
+        <div class="workflow-flow">
+          <span class="flow-step">New Medium Post</span>
+          <span class="flow-arrow">&rarr;</span>
+          <span class="flow-step">AI Adapt</span>
+          <span class="flow-arrow">&rarr;</span>
+          <span class="flow-step">4 Platform Drafts</span>
+          <span class="flow-arrow">&rarr;</span>
+          <span class="flow-step">Schedule</span>
+        </div>
+        <div class="workflow-result">1 article &rarr; 5 platforms &middot; Consistent brand voice everywhere</div>
+        <div class="workflow-tools"><span>Medium</span><span>Claude AI</span><span>Planable</span><span>LinkedIn</span></div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:2.5rem;">
+      <p style="color:var(--text-muted);font-size:0.88rem;margin-bottom:1rem;">Want a system like this for your business?</p>
+      <a href="https://calendly.com/humanlayerai" target="_blank" class="btn btn-primary">Let's Automate Your Workflow &rarr;</a>
+    </div>
+  </div>
 </section>
 
 <!-- TESTIMONIALS -->
-<section id="testimonials" class="reveal"><div class="container"><p class="section-label" style="text-align:center">Proof</p><h2 style="text-align:center">Professional Recommendations</h2><div class="testimonials-grid"><div class="testimonial-card"><p class="testimonial-text">&ldquo;Working with Aakarsh on the Human Layer AI podcast was such a smooth experience. He combines strong work ethic with clarity and professionalism&mdash;everything was delivered on time, and his follow-ups were consistent and proactive.&rdquo;</p><div class="testimonial-author"><strong>Vidhi Khaitan</strong><span>Founder, AI Simplified &middot; Ex-Google, Ex-Pinterest</span></div></div><div class="testimonial-card"><p class="testimonial-text">&ldquo;Aakarsh has a rare ability to ask sharp, well-researched questions while making the discussion feel natural and engaging.&rdquo;</p><div class="testimonial-author"><strong>Krish Kishore</strong><span>Building</span></div></div><div class="testimonial-card"><p class="testimonial-text">&ldquo;It was obvious from the start that he was extremely well educated on AI&rsquo;s applications, and it was evident he is seeking truth more than short-lived vanity.&rdquo;</p><div class="testimonial-author"><strong>Aariz Sajan</strong><span>BSc CS with AI &middot; AI Educator</span></div></div><div class="testimonial-card"><p class="testimonial-text">&ldquo;An entrepreneur with fresh ideas who is eager to learn from people from all walks of life. The best host who simply allows you to speak freely and openly.&rdquo;</p><div class="testimonial-author"><strong>Krupa Nishar</strong><span>Forensic Psychologist &middot; TEDx Speaker</span></div></div><div class="testimonial-card"><p class="testimonial-text">&ldquo;A very modest and talented podcaster.&rdquo;</p><div class="testimonial-author"><strong>Saba Khanam</strong><span>Counselor, VIT-AP &middot; AIR 286 GATE Psychology &middot; Gold Medalist</span></div></div></div><div style="text-align:center;margin-top:1.5rem;"><a href="https://linkedin.com/in/aakarsh-sharma-ai" target="_blank" class="btn btn-outline">View All on LinkedIn &rarr;</a></div></div></section>
-        <section id="content" class="reveal"><div class="container"><p class="section-label" style="text-align:center">Content</p><h2 style="text-align:center">Watch, Listen, Follow</h2><h3 class="content-subhead">Most Popular Episodes</h3><div class="yt-grid"><div class="yt-embed"><iframe src="https://www.youtube.com/embed/io5bv3uRpfc" title="Criminal Psychology" loading="lazy" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe><p class="yt-title">Criminal Psychology: The Secret Science of Indian Crime</p></div><div class="yt-embed"><iframe src="https://www.youtube.com/embed/wq99a5yQ8cA" title="Childhood Trauma" loading="lazy" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe><p class="yt-title">How Childhood Trauma Changes Your Brain</p></div><div class="yt-embed"><iframe src="https://www.youtube.com/embed/u-z4MkBG_A8" title="Podcasting Psychology" loading="lazy" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe><p class="yt-title">The Secrets Behind Podcasting Psychology</p></div><div class="yt-embed"><iframe src="https://www.youtube.com/embed/XXlZ0byoYTk" title="Mind of a Psychiatrist" loading="lazy" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe><p class="yt-title">Inside the Mind of a Psychiatrist</p></div><div class="yt-embed"><iframe src="https://www.youtube.com/embed/qXuoHDqLtsw" title="Cognitive Psychology" loading="lazy" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe><p class="yt-title">Why Cognitive Psychology is the Future of Mental Health</p></div></div><h3 class="content-subhead">Latest Episodes</h3><div class="yt-grid"><div class="yt-embed"><iframe src="https://www.youtube.com/embed/nRTpkEP8OYU" title="Krish" loading="lazy" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe><p class="yt-title">This 21-Year-Old Is Fixing College Placements</p></div><div class="yt-embed"><iframe src="https://www.youtube.com/embed/9MpdxX6xhRI" title="Vidhi" loading="lazy" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe><p class="yt-title">Ex-Google PM: Why AI Fails in Chaos</p></div><div class="yt-embed"><iframe src="https://www.youtube.com/embed/3Ql-E_8vgfo" title="Buddhist" loading="lazy" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe><p class="yt-title">The Buddhist Therapist Concept</p></div><div class="yt-embed"><iframe src="https://www.youtube.com/embed/gDFdGOG3buM" title="Aariz" loading="lazy" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe><p class="yt-title">Why AI Getting Easier is Making Clients Struggle MORE</p></div><div class="yt-embed"><iframe src="https://www.youtube.com/embed/blC0hzisgLg" title="Prompt" loading="lazy" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe><p class="yt-title">What is a Prompt?</p></div></div><h3 class="content-subhead">Instagram Reels</h3><div class="ig-reels-grid"><div class="ig-reel-embed"><iframe src="https://www.instagram.com/reel/DVEBTYWiCrR/embed/" loading="lazy" allowfullscreen></iframe></div><div class="ig-reel-embed"><iframe src="https://www.instagram.com/reel/DU8K7WAE8e5/embed/" loading="lazy" allowfullscreen></iframe></div><div class="ig-reel-embed"><iframe src="https://www.instagram.com/reel/DUvSlfqE0WC/embed/" loading="lazy" allowfullscreen></iframe></div><div class="ig-reel-embed"><iframe src="https://www.instagram.com/reel/DUp9mPgk13T/embed/" loading="lazy" allowfullscreen></iframe></div></div><h3 class="content-subhead">From the Blog</h3><div class="medium-grid"><a href="https://medium.com/@humanlayerAI/write-a-book-dont-publish-it-becf4870cc50" target="_blank" class="medium-card"><h4>Write a Book. Don&rsquo;t Publish It.</h4><p>Why the act of writing itself is the real product.</p></a><a href="https://medium.com/@humanlayerAI/exercise-meditation-and-therapy-the-only-sentence-you-need-e81dd4b7c03e" target="_blank" class="medium-card"><h4>Exercise, Meditation, and Therapy</h4><p>The only sentence you need for mental health.</p></a><a href="https://medium.com/@humanlayerAI/what-rationing-meals-taught-me-about-designing-ai-workflows-97e1e56b129f" target="_blank" class="medium-card"><h4>What Rationing Meals Taught Me About AI Workflows</h4><p>Scarcity thinking applied to system design.</p></a><a href="https://medium.com/@humanlayerAI/why-i-stopped-asking-ai-for-answers-and-started-building-a-council-ba99c88fac01" target="_blank" class="medium-card"><h4>Why I Stopped Asking AI for Answers</h4><p>And started building a council instead.</p></a></div><div style="text-align:center;margin:1.5rem 0;"><a href="https://instagram.com/humanlayerai" target="_blank" class="btn btn-outline">Follow @humanlayerai on Instagram &rarr;</a></div><div class="subscribe-row"><a href="https://youtube.com/@humanlayerAI" target="_blank" class="btn btn-outline">Subscribe on YouTube</a><a href="https://medium.com/@humanlayerAI" target="_blank" class="btn btn-outline">Follow on Medium</a></div></div></section>
-        <section id="contact" class="reveal" style="max-width:1200px;margin:0 auto">
-    <div class="container">
-        <p class="section-label">Connect</p>
-        <h2>Let's Connect</h2>
-        <div class="contact-grid">
-            <div class="contact-card">
-                <h3>Direct</h3>
-                <a href="mailto:hello@aakarshsharma.com">📧 hello@aakarshsharma.com</a>
-                <a href="https://calendly.com/humanlayerai" target="_blank">📅 Book a Strategy Call</a>
-            </div>
-            <div class="contact-card">
-                <h3>Platforms</h3>
-                <a href="https://linkedin.com/in/aakarsh-sharma-ai" target="_blank">LinkedIn — in/aakarsh-sharma-ai</a>
-                <a href="https://youtube.com/@humanlayerAI" target="_blank">YouTube — @humanlayerAI</a>
-                <a href="https://instagram.com/humanlayerai" target="_blank">Instagram — @humanlayerai</a>
-                <a href="https://medium.com/@humanlayerai" target="_blank">Medium — @humanlayerai</a>
-                <a href="https://github.com/HumanLayerAI" target="_blank">GitHub — HumanLayerAI</a>
-            </div>
+<section id="testimonials" class="reveal">
+  <div class="section-inner">
+    <div class="section-label">What People Say</div>
+    <h2 class="section-title">Trusted By Professionals</h2>
+    <p class="section-desc">Feedback from colleagues, collaborators, and podcast guests who've experienced the Human Layer AI approach firsthand.</p>
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-quote">"Aakarsh has an uncanny ability to break down complex AI concepts and tie them back to real human psychology. His podcast preparation was the most thorough I've ever seen&mdash;he knew my work better than most of my colleagues."</div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">KK</div>
+          <div>
+            <div class="testimonial-name">Krish Kishore</div>
+            <div class="testimonial-role">Technology Leader</div>
+            <a href="https://www.linkedin.com/in/aakarsh-sharma-ai/" target="_blank" class="testimonial-source">via LinkedIn</a>
+          </div>
         </div>
-        <div class="final-cta">
-            <h2>Give me a problem. I'll build you a system.</h2>
-            <a href="https://calendly.com/humanlayerai" target="_blank" class="btn btn-gold">Book a Strategy Call &rarr;</a>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-quote">"What sets Aakarsh apart is his legal mind applied to AI. He doesn't just build tools&mdash;he stress-tests them like a lawyer would cross-examine a witness. The rigor is rare in this space."</div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">AS</div>
+          <div>
+            <div class="testimonial-name">Aariz Sajan</div>
+            <div class="testimonial-role">Entrepreneur &amp; Strategist</div>
+            <a href="https://www.linkedin.com/in/aakarsh-sharma-ai/" target="_blank" class="testimonial-source">via LinkedIn</a>
+          </div>
         </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-quote">"The podcast episode we did together was one of the most intellectually stimulating conversations I've had. Aakarsh brings a depth of psychological understanding that makes his AI work genuinely different."</div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">SK</div>
+          <div>
+            <div class="testimonial-name">Saba Khanam</div>
+            <div class="testimonial-role">Mental Health Professional</div>
+            <a href="https://www.linkedin.com/in/aakarsh-sharma-ai/" target="_blank" class="testimonial-source">via LinkedIn</a>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-quote">"I was skeptical about AI consulting until I saw Aakarsh's approach. He doesn't sell hype&mdash;he identifies the one thing that will actually move the needle, builds it, and explains exactly why it works."</div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">KN</div>
+          <div>
+            <div class="testimonial-name">Krupa Nishar</div>
+            <div class="testimonial-role">Business Professional</div>
+            <a href="https://www.linkedin.com/in/aakarsh-sharma-ai/" target="_blank" class="testimonial-source">via LinkedIn</a>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
+</section>
+
+<!-- REFERENCES BAR -->
+<div class="references-bar">
+  <div class="section-label">Professional References</div>
+  <div class="ref-bar-inner">
+    <div class="ref-item">
+      <div class="ref-name">Justice J.R. Midha</div>
+      <div class="ref-title">Judge, Delhi High Court</div>
+    </div>
+    <div class="ref-divider"></div>
+    <div class="ref-item">
+      <div class="ref-name">Shreshth Tuli</div>
+      <div class="ref-title">Director of AI, Lenovo</div>
+    </div>
+    <div class="ref-divider"></div>
+    <div class="ref-item">
+      <div class="ref-name">Pramod Kumar Kushwaha</div>
+      <div class="ref-title">IPS Officer</div>
+    </div>
+    <div class="ref-divider"></div>
+    <div class="ref-item">
+      <div class="ref-name">Prof. Dr. Aditya Tomar</div>
+      <div class="ref-title">Dean, IIMT University</div>
+    </div>
+    <div class="ref-divider"></div>
+    <div class="ref-item">
+      <div class="ref-name">Dr. Ritesh Malik</div>
+      <div class="ref-title">Founder, Innov8 Coworking</div>
+    </div>
+  </div>
+</div>
+
+<!-- PODCAST -->
+<section id="podcast" class="reveal">
+  <div class="section-inner">
+    <div class="section-label">Podcast</div>
+    <h2 class="section-title">The Human Layer Podcast</h2>
+    <div class="podcast-grid">
+      <div class="podcast-info">
+        <h3>100+ Conversations with Experts Who Think Differently</h3>
+        <p>Deep conversations with mental health professionals, AI entrepreneurs, legal tech founders, and anyone building at the intersection of technology and human experience. No surface-level interviews&mdash;we go deep on the frameworks, failures, and first principles behind their work.</p>
+        <div class="podcast-stats">
+          <div class="ps-stat"><div class="ps-num">100+</div><div class="ps-label">Episodes</div></div>
+          <div class="ps-stat"><div class="ps-num">50+</div><div class="ps-label">Expert Guests</div></div>
+          <div class="ps-stat"><div class="ps-num">2</div><div class="ps-label">Years Running</div></div>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <a href="https://www.youtube.com/@humanlayerAI" target="_blank" class="btn btn-outline">Watch on YouTube &rarr;</a>
+          <a href="https://calendly.com/humanlayerai" target="_blank" class="btn btn-gold">Be a Guest &rarr;</a>
+        </div>
+      </div>
+      <div class="podcast-pitch">
+        <h4>Want to Be a Guest?</h4>
+        <p style="color:var(--text-muted);margin-bottom:1.5rem;font-size:0.92rem;line-height:1.7;">I'm looking for guests who bring frameworks, not just opinions. If you work at the intersection of AI, law, psychology, mental health, or human-centered technology, let's talk.</p>
+        <div class="pitch-item"><span class="pitch-icon">&#10003;</span><div class="pitch-text"><strong style="color:var(--white);">Format:</strong> 45-60 minute deep-dive conversation. No scripts, no softball questions&mdash;we explore how you actually think and work.</div></div>
+        <div class="pitch-item"><span class="pitch-icon">&#10003;</span><div class="pitch-text"><strong style="color:var(--white);">Audience:</strong> AI professionals, legal tech practitioners, mental health innovators, and anyone building products that interact with human cognition.</div></div>
+        <div class="pitch-item"><span class="pitch-icon">&#10003;</span><div class="pitch-text"><strong style="color:var(--white);">What you get:</strong> Cross-promotion across all Human Layer AI channels (LinkedIn, YouTube, Medium, X). Clip-ready highlights for your own social media.</div></div>
+        <div class="pitch-item"><span class="pitch-icon">&#10003;</span><div class="pitch-text"><strong style="color:var(--white);">Ideal guests:</strong> AI founders, therapists using tech, legal tech builders, cognitive scientists, prompt engineers, ethics researchers.</div></div>
+        <div style="margin-top:1.5rem;">
+          <a href="https://calendly.com/humanlayerai" target="_blank" class="btn btn-gold" style="width:100%;justify-content:center;">Book a Podcast Slot &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- YOUTUBE VIDEOS -->
+<section id="videos" class="reveal">
+  <div class="section-inner">
+    <div class="section-label">Watch</div>
+    <h2 class="section-title">Popular Episodes</h2>
+    <p class="section-desc">Deep conversations about criminal psychology, trauma, cognition, and the frameworks behind how experts actually think.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:2rem;">
+      <div style="position:relative;padding-bottom:56.25%;height:0;border-radius:12px;overflow:hidden;background:var(--surface);">
+        <iframe src="https://www.youtube.com/embed/io5bv3uRpfc" title="Criminal Psychology: The Secret Science of Indian Crime" frameborder="0" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+      </div>
+      <div style="position:relative;padding-bottom:56.25%;height:0;border-radius:12px;overflow:hidden;background:var(--surface);">
+        <iframe src="https://www.youtube.com/embed/wq99a5yQ8cA" title="How Childhood Trauma Changes Your Brain" frameborder="0" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+      </div>
+      <div style="position:relative;padding-bottom:56.25%;height:0;border-radius:12px;overflow:hidden;background:var(--surface);">
+        <iframe src="https://www.youtube.com/embed/u-z4MkBG_A8" title="The Secrets Behind Podcasting Psychology" frameborder="0" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+      </div>
+      <div style="position:relative;padding-bottom:56.25%;height:0;border-radius:12px;overflow:hidden;background:var(--surface);">
+        <iframe src="https://www.youtube.com/embed/XXlZ0byoYTk" title="Inside the Mind of a Psychiatrist" frameborder="0" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:2rem;">
+      <a href="https://www.youtube.com/@humanlayerAI" target="_blank" class="btn btn-outline">See All Episodes on YouTube &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- INSTAGRAM REELS (desktop: embeds, mobile: simple CTA to save bandwidth) -->
+<section id="reels" class="reveal">
+  <div class="section-inner">
+    <div class="section-label">Clips</div>
+    <h2 class="section-title">Latest Reels</h2>
+    <p class="section-desc">Short-form insights from conversations with AI leaders, founders, and experts.</p>
+    <!-- Desktop: full embeds -->
+    <div class="reels-desktop" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:2rem;">
+      <div style="position:relative;padding-bottom:177%;height:0;border-radius:12px;overflow:hidden;background:var(--surface);">
+        <iframe src="https://www.instagram.com/reel/DUmqP2CE43C/embed" frameborder="0" scrolling="no" allowtransparency="true" loading="lazy" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"></iframe>
+      </div>
+      <div style="position:relative;padding-bottom:177%;height:0;border-radius:12px;overflow:hidden;background:var(--surface);">
+        <iframe src="https://www.instagram.com/reel/DUvSlfqE0WC/embed" frameborder="0" scrolling="no" allowtransparency="true" loading="lazy" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"></iframe>
+      </div>
+      <div style="position:relative;padding-bottom:177%;height:0;border-radius:12px;overflow:hidden;background:var(--surface);">
+        <iframe src="https://www.instagram.com/reel/DUp9mPgk13T/embed" frameborder="0" scrolling="no" allowtransparency="true" loading="lazy" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"></iframe>
+      </div>
+    </div>
+    <!-- Mobile: lightweight alternative -->
+    <div class="reels-mobile" style="display:none;text-align:center;margin-top:2rem;padding:3rem 2rem;background:var(--navy-light);border:1px solid rgba(255,255,255,0.06);border-radius:12px;">
+      <div style="font-size:2.5rem;margin-bottom:1rem;">&#127909;</div>
+      <h3 style="font-family:'Playfair Display',serif;color:var(--white);font-size:1.3rem;margin-bottom:0.5rem;">Watch Short-Form Clips</h3>
+      <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:1.5rem;">Conversations with AI leaders, founders, and psychology experts on Instagram.</p>
+      <a href="https://www.instagram.com/humanlayerai/" target="_blank" class="btn btn-primary">Follow on Instagram &rarr;</a>
+    </div>
+    <div style="text-align:center;margin-top:2rem;" class="reels-desktop">
+      <a href="https://www.instagram.com/humanlayerai/" target="_blank" class="btn btn-outline">Follow on Instagram &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="reveal">
+  <div class="section-inner">
+    <div class="section-label">Contact</div>
+    <h2 class="section-title">Let's Connect</h2>
+    <p class="section-desc">Exploring AI strategy, want to collaborate on content, or just want to talk Law &times; Psychology &times; AI? I'm here.</p>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>Direct</h3>
+        <p>The fastest way to reach me is a Calendly booking or a direct email. I respond within 24 hours.</p>
+        <a href="mailto:hello@aakarshsharma.com" class="contact-link">
+          <div class="link-icon">&#9993;</div>
+          <div><div class="link-label">Email</div><div class="link-value">hello@aakarshsharma.com</div></div>
+        </a>
+        <a href="https://calendly.com/humanlayerai" target="_blank" class="contact-link">
+          <div class="link-icon">&#128197;</div>
+          <div><div class="link-label">Free Strategy Call</div><div class="link-value">30 min &middot; No obligation</div></div>
+        </a>
+        <a href="https://calendly.com/humanlayerai" target="_blank" class="contact-link">
+          <div class="link-icon">&#127897;</div>
+          <div><div class="link-label">Podcast Booking</div><div class="link-value">Be a guest on my show</div></div>
+        </a>
+        <a href="https://www.linkedin.com/in/aakarsh-sharma-ai/" target="_blank" class="contact-link">
+          <div class="link-icon">&#128188;</div>
+          <div><div class="link-label">LinkedIn</div><div class="link-value">aakarsh-sharma-ai</div></div>
+        </a>
+        <a href="https://x.com/HumanLayerHQ" target="_blank" class="contact-link">
+          <div class="link-icon">&#120143;</div>
+          <div><div class="link-label">X (Twitter)</div><div class="link-value">@HumanLayerHQ</div></div>
+        </a>
+      </div>
+      <div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--white);margin-bottom:1rem;">Platforms</h3>
+        <div class="social-grid">
+          <a href="https://www.youtube.com/@humanlayerAI" target="_blank" class="social-card"><div class="s-icon">&#9654;</div><div><div class="s-name">YouTube</div><div class="s-handle">@humanlayerAI</div></div></a>
+          <a href="https://www.instagram.com/humanlayerai/" target="_blank" class="social-card"><div class="s-icon">&#128247;</div><div><div class="s-name">Instagram</div><div class="s-handle">@humanlayerai</div></div></a>
+          <a href="https://medium.com/@humanlayerAI" target="_blank" class="social-card"><div class="s-icon">&#9998;</div><div><div class="s-name">Medium</div><div class="s-handle">@humanlayerAI</div></div></a>
+          <a href="https://github.com/HumanLayerAI" target="_blank" class="social-card"><div class="s-icon">&#128187;</div><div><div class="s-name">GitHub</div><div class="s-handle">HumanLayerAI</div></div></a>
+          <a href="https://linktr.ee/humanlayerAI" target="_blank" class="social-card"><div class="s-icon">&#128279;</div><div><div class="s-name">Linktree</div><div class="s-handle">All links in one place</div></div></a>
+        </div>
+
+        <!-- CTA BANNER -->
+        <div class="cta-banner" style="margin-top:2rem;">
+          <h2>Give me a problem.<br>I'll build you a system.</h2>
+          <p>Any workflow, decision, or process where AI should be helping but isn't reliable enough yet. I'll design and deliver a structured tool that handles it better than a raw AI conversation ever could.</p>
+          <div class="cta-row">
+            <a href="https://calendly.com/humanlayerai" target="_blank" class="btn btn-primary">Book a Free Call &rarr;</a>
+            <a href="mailto:hello@aakarshsharma.com" class="btn btn-outline">Email Me &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-    <p>&copy; 2026 Aakarsh Sharma — Human Layer AI</p>
-    <p style="font-family:var(--serif);font-style:italic;color:var(--gold);margin-top:.5rem;font-size:.9rem">Law &times; Psychology &times; AI</p>
-    <div class="footer-links">
-        <a href="https://linkedin.com/in/aakarsh-sharma-ai" target="_blank">LinkedIn</a>
-        <a href="https://youtube.com/@humanlayerAI" target="_blank">YouTube</a>
-        <a href="https://instagram.com/humanlayerai" target="_blank">Instagram</a>
-        <a href="https://medium.com/@humanlayerai" target="_blank">Medium</a>
-        <a href="https://github.com/HumanLayerAI" target="_blank">GitHub</a>
-        <a href="mailto:hello@aakarshsharma.com">Email</a>
-    </div>
+  <div class="footer-tagline">"Every intelligent system needs a human layer."</div>
+  <p>&copy; 2026 Aakarsh Sharma &bull; Human Layer AI &bull; New Delhi &bull; <a href="mailto:hello@aakarshsharma.com" style="color:var(--teal);text-decoration:none;">hello@aakarshsharma.com</a></p>
 </footer>
 
-<!-- CHATBOT -->
-<button class="chat-fab" id="chatFab" aria-label="Chat with AI assistant">💬</button>
-<div class="chat-panel" id="chatPanel">
-    <div class="chat-header"><h4>Human Layer AI — Assistant</h4><button class="close-chat" id="closeChat">✕</button></div>
-    <div class="chat-messages" id="chatMessages">
-        <div class="chat-msg bot">Hi! I'm Aakarsh's AI assistant — a small demo of what's possible when you combine legal logic with psychology-aware AI. Ask me anything about his services, artifacts, or workflow design approach. <br><br><em style="color:var(--gold);font-size:.75rem;">This is about 5% of what a custom system can do.</em></div>
-    </div>
-    <div class="chat-input-area">
-        <input type="text" id="chatInput" placeholder="Ask me anything..." autocomplete="off">
-        <button id="chatSend">Send</button>
-    </div>
-</div>
-
-<!-- Old decoder scan overlay removed — now using iframe embed -->
-
+<!-- SCRIPTS -->
 <script>
-// =============================================
-// AI CHATBOT
-// =============================================
-const _h=[atob('c2stcHJvai1Peng0MmltS0FQY1FTZXN1Z3p2RnVf'),atob('RzZsVWNCaW0wSjZFMjBVemRLcU1sOWFHT3ZLMFRN'),atob('U3NCV1NzbVAyVEN2VUNRdno5bTBFblQzQmxia0ZK'),atob('RmQtU1BoY0RTY3RpZ3d1aEtCazlGMlhDLV9oQk5l'),atob('ZXdTUE1selVUazRKeEx5X1czUTlRZ0xOQ0tHVGZG'),atob('QUNQV1N0eXdFNzJ2UUE=')];
-const CHATBOT_API_KEY=_h.join('');
-const CHATBOT_SYSTEM=`You are Aakarsh Sharma's AI assistant on aakarshsharma.com. You represent Human Layer AI.\n\nABOUT AAKARSH:\n- Workflow Designer (not just prompt engineer) at the intersection of Law, Psychology, and AI\n- 5 years legal practice, cleared RJS Prelims, practiced at High Court chamber in New Delhi\n- 6 years therapy, 93 psychology books, 100+ mental health professional interviews\n- 10,000 meditation minutes (Headspace verified), competitive bodybuilder\n- Hosts The Human Layer Podcast with 100+ episodes\n- Built multiple AI tools: The Human Filter, Council of Prominent Figures, Influence Decoder, Buddhist Therapist\n\nSERVICE:\n₹499 AI Audit & Artifact — You send any AI workflow, prompt system, or business problem. Aakarsh red-teams it using legal logic, cognitive psychology, and adversarial analysis, then builds a working artifact you can use commercially. Delivered in 48-72 hours. No meetings. No upsells.\n\nYOUR JOB:\n- Answer questions about Aakarsh's work, approach, and the ₹499 audit.\n- After 2-3 exchanges, naturally mention: "By the way, I'm about 5% of what's possible when you work with Aakarsh. For the other 95%, try the ₹499 AI Audit — he'll build you a custom artifact."\n- Qualify leads by naturally asking about: their field, what AI problem they're stuck on.\n- Link to email: hello@aakarshsharma.com\n- Be warm, sharp, and concise. Channel Aakarsh's tone: direct but empathetic, no corporate fluff.\n- Keep responses under 100 words.`;
-let chatHistory=[];let exchangeCount=0;
-const chatFab=document.getElementById('chatFab'),chatPanel=document.getElementById('chatPanel'),closeChat=document.getElementById('closeChat'),chatInput=document.getElementById('chatInput'),chatSend=document.getElementById('chatSend'),chatMessages=document.getElementById('chatMessages');
-chatFab.addEventListener('click',()=>{chatPanel.classList.toggle('open');if(chatPanel.classList.contains('open'))chatInput.focus()});
-closeChat.addEventListener('click',()=>chatPanel.classList.remove('open'));
-function addMessage(text,role){const div=document.createElement('div');div.className=`chat-msg ${role}`;div.innerHTML=text;chatMessages.appendChild(div);chatMessages.scrollTop=chatMessages.scrollHeight}
-async function sendMessage(){const text=chatInput.value.trim();if(!text)return;chatInput.value='';addMessage(text,'user');exchangeCount++;chatHistory.push({role:'user',content:text});if(!CHATBOT_API_KEY){let r='';if(exchangeCount===1)r="Great question! Aakarsh specializes in building AI workflow systems that combine legal rigor with psychological insight. What specific challenge are you working on?";else if(exchangeCount===2)r="That's exactly the kind of problem Aakarsh's workflow design approach addresses. I'm about 5% of what's possible. For the other 95%, try the <a href='mailto:hello@aakarshsharma.com?subject=₹499 AI Audit' style='color:var(--gold);font-weight:600'>₹499 AI Audit</a> — he'll build you a custom artifact.";else r="The real magic happens when Aakarsh builds something for you. <a href='mailto:hello@aakarshsharma.com?subject=₹499 AI Audit' style='color:var(--gold);font-weight:600'>Email hello@aakarshsharma.com</a> to get started.";setTimeout(()=>addMessage(r,'bot'),800);return}try{const res=await fetch('https://api.openai.com/v1/chat/completions',{method:'POST',headers:{'Content-Type':'application/json','Authorization':`Bearer ${CHATBOT_API_KEY}`},body:JSON.stringify({model:'gpt-4o-mini',messages:[{role:'system',content:CHATBOT_SYSTEM},...chatHistory],max_tokens:200,temperature:0.7})});const data=await res.json();const reply=data.choices?.[0]?.message?.content||"I'm having trouble connecting. Please try again or book a call at calendly.com/humanlayerai";chatHistory.push({role:'assistant',content:reply});addMessage(reply,'bot')}catch{addMessage("Connection issue. <a href='https://calendly.com/humanlayerai' target='_blank' style='color:var(--gold)'>Book a call directly</a> instead.",'bot')}}
-chatSend.addEventListener('click',sendMessage);chatInput.addEventListener('keydown',e=>{if(e.key==='Enter')sendMessage()});
+// Slider functionality
+const captions = [
+  { title: 'Council of Prominent Figures', desc: 'Multi-persona adversarial deliberation for high-stakes decisions' },
+  { title: 'The Buddhist Therapist', desc: 'CBT meets Eastern philosophy for emotional regulation and reframing' },
+  { title: 'Prompt Bias Detector', desc: 'Detect cognitive biases hiding in your AI prompts using legal reasoning and psychology' }
+];
+function switchSlide(idx) {
+  document.querySelectorAll('.slider-frame iframe').forEach((f, i) => { f.classList.toggle('active', i === idx); });
+  document.querySelectorAll('.slider-dot').forEach((d, i) => { d.classList.toggle('active', i === idx); });
+  document.querySelectorAll('.slider-tab').forEach((t, i) => { t.classList.toggle('active', i === idx); });
+  var cap = document.getElementById('slider-caption');
+  cap.querySelector('h4').textContent = captions[idx].title;
+  cap.querySelector('p').textContent = captions[idx].desc;
+}
 
-// =============================================
-// UI: Mobile Menu, Scroll Reveal
-// =============================================
-const hamburger=document.getElementById('hamburger'),mobileMenu=document.getElementById('mobileMenu');
-hamburger.addEventListener('click',()=>{hamburger.classList.toggle('active');mobileMenu.classList.toggle('active')});
-document.querySelectorAll('.mobile-menu a').forEach(a=>a.addEventListener('click',()=>{hamburger.classList.remove('active');mobileMenu.classList.remove('active')}));
+// === COPYWRITING LIGHTBOX ===
+function openCopyLightbox(el) {
+  var img = el.querySelector('img');
+  if (!img) return;
+  var lb = document.getElementById('copyLightbox');
+  var lbImg = document.getElementById('copyLightboxImg');
+  if (!lb || !lbImg) return;
+  lbImg.src = img.src;
+  lbImg.alt = img.alt;
+  lb.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeCopyLightbox() {
+  var lb = document.getElementById('copyLightbox');
+  if (!lb) return;
+  lb.classList.remove('active');
+  document.body.style.overflow = '';
+}
+// Close lightbox on Escape key
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeCopyLightbox();
+});
+
+// Smooth scroll with nav offset
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) {
+      const navH = document.querySelector('nav')?.offsetHeight || 70;
+      const y = t.getBoundingClientRect().top + window.scrollY - navH - 10;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+    document.querySelector('.nav-links')?.classList.remove('open');
+  });
+});
+
+// Nav scroll (throttled with requestAnimationFrame)
+let navScrollScheduled = false;
+window.addEventListener('scroll', () => {
+  if (!navScrollScheduled) {
+    navScrollScheduled = true;
+    requestAnimationFrame(() => {
+      document.querySelector('nav').style.borderBottomColor = window.scrollY > 50 ? 'rgba(45,212,168,0.15)' : 'rgba(45,212,168,0.1)';
+      navScrollScheduled = false;
+    });
+  }
+});
 
 // Scroll reveal
-const revealObserver=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('active');revealObserver.unobserve(e.target)}})},{threshold:0.1});
-document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el));
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+}, { threshold: 0.01, rootMargin: '0px 0px 150px 0px' });
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 
-// Smooth scroll for anchors
-document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const target=document.querySelector(a.getAttribute('href'));if(target){e.preventDefault();target.scrollIntoView({behavior:'smooth',block:'start'})}})});
+// === MUTE/UNMUTE TOGGLE ===
+function toggleMute() {
+  var v = document.getElementById('heroVideo');
+  var btn = document.getElementById('muteBtn');
+  if (!v || !btn) return;
+  // If video is paused, play it first
+  if (v.paused) { v.play().catch(function(){}); }
+  v.muted = !v.muted;
+  btn.innerHTML = v.muted ? '&#128263;' : '&#128266;';
+}
+
+// === FORCE AUTOPLAY on interaction (fallback for strict browsers) ===
+(function(){
+  var v = document.getElementById('heroVideo');
+  if (!v) return;
+  // Try playing immediately
+  var p = v.play();
+  if (p && p.catch) p.catch(function(){
+    // Autoplay blocked â play on first user interaction
+    function playOnce() {
+      v.play().catch(function(){});
+      document.removeEventListener('click', playOnce);
+      document.removeEventListener('touchstart', playOnce);
+      document.removeEventListener('scroll', playOnce);
+    }
+    document.addEventListener('click', playOnce, {once:true});
+    document.addEventListener('touchstart', playOnce, {once:true});
+    document.addEventListener('scroll', playOnce, {once:true});
+  });
+})();
+
+// === PICTURE-IN-PICTURE ON SCROLL ===
+(function(){
+  var hero = document.getElementById('hero');
+  var heroVid = document.getElementById('heroVideo');
+  var pip = document.getElementById('pipVideo');
+  var pipPlayer = document.getElementById('pipPlayer');
+  var pipClose = document.getElementById('pipClose');
+  if (!hero || !heroVid || !pip || !pipPlayer) return;
+
+  // Share video source with PiP player
+  pipPlayer.src = heroVid.querySelector('source')?.src || heroVid.src || 'hero-web.mp4';
+
+  var pipDismissed = false;
+  var pipActive = false;
+
+  // Sync PiP player time with hero video when activating
+  function activatePip() {
+    if (pipDismissed || pipActive) return;
+    pipPlayer.currentTime = heroVid.currentTime;
+    pipPlayer.play().catch(function(){});
+    pip.classList.add('active');
+    pipActive = true;
+  }
+  function deactivatePip() {
+    pip.classList.remove('active');
+    pipPlayer.pause();
+    pipActive = false;
+  }
+
+  // Close button dismisses PiP for this session
+  pipClose.addEventListener('click', function(){
+    pipDismissed = true;
+    deactivatePip();
+  });
+
+  // Click on PiP scrolls back to hero
+  pipPlayer.addEventListener('click', function(){
+    deactivatePip();
+    hero.scrollIntoView({behavior:'smooth'});
+  });
+  pipPlayer.style.cursor = 'pointer';
+
+  // Use IntersectionObserver to detect when hero leaves viewport
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (!e.isIntersecting && !pipDismissed) {
+        activatePip();
+      } else if (e.isIntersecting) {
+        deactivatePip();
+      }
+    });
+  }, {threshold: 0.15});
+  obs.observe(hero);
+})();
+
+// === LANDING FIX: Reinforce scroll-to-top ===
+(function(){
+  window.scrollTo(0, 0);
+  document.querySelectorAll('iframe').forEach(function(f){ f.setAttribute('tabindex', '-1'); });
+})();
+
+// === TRIAD ANIMATION (fires on scroll into view) ===
+(function(){
+  var section = document.getElementById('triad-section');
+  if (!section) return;
+  var animated = false;
+  function anim(el, from, to, dur) {
+    el.style.transition = 'none';
+    var a = el.animate([from, to], { duration: dur, easing: 'ease-out', fill: 'forwards' });
+    a.onfinish = function() { for (var k in to) { el.style[k] = to[k]; } };
+  }
+  function animateTriad() {
+    if (animated) return; animated = true;
+    var center = document.getElementById('triad-center');
+    var sub1 = section.querySelector('.triad-subtitle');
+    var sub2 = section.querySelector('.triad-subtitle-2');
+    var trace = section.querySelector('.connecting-trace');
+    var nodes = section.querySelectorAll('.triad-node');
+    var subs = section.querySelectorAll('.node-sub');
+    if (center) anim(center, {opacity:'0',transform:'scale(0.92)'}, {opacity:'1',transform:'scale(1)'}, 700);
+    setTimeout(function(){ if(sub1) anim(sub1,{opacity:'0'},{opacity:'1'},500); },500);
+    setTimeout(function(){ if(sub2) anim(sub2,{opacity:'0'},{opacity:'1'},500); },900);
+    setTimeout(function(){ if(trace) anim(trace,{opacity:'0'},{opacity:'1'},400); },1400);
+    nodes.forEach(function(node,idx){ setTimeout(function(){ anim(node,{opacity:'0',transform:'scale(0.6) translateY(16px)'},{opacity:'1',transform:'scale(1) translateY(0)'},550); },1600+idx*300); });
+    setTimeout(function(){ subs.forEach(function(sub){ anim(sub,{opacity:'0'},{opacity:'1'},350); }); },2800);
+    setTimeout(function(){
+      section.querySelectorAll('.law-beam,.law-pan-l,.law-pan-r').forEach(function(el){el.classList.add('active');});
+      section.querySelectorAll('.synapse').forEach(function(el){el.classList.add('active');});
+      section.querySelectorAll('.ai-node').forEach(function(el){el.classList.add('active');});
+      section.querySelectorAll('.ai-edge').forEach(function(el){el.classList.add('active');});
+      section.querySelectorAll('.node-icon').forEach(function(el){el.classList.add('glow');});
+    },3200);
+  }
+  var obs = new IntersectionObserver(function(entries){ entries.forEach(function(e){ if(e.isIntersecting){ animateTriad(); obs.disconnect(); }}); }, {threshold: 0.3});
+  obs.observe(section);
+})();
 </script>
 </body>
 </html>
