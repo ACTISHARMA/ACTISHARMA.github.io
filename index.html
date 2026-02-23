@@ -198,6 +198,14 @@ footer p{font-size:.85rem;color:var(--text);margin:0}
 .intro-video-wrap{position:relative;border-radius:var(--radius-lg);overflow:hidden;border:1px solid rgba(212,160,60,.2);box-shadow:0 4px 40px rgba(212,160,60,.08);background:var(--bg-card);max-width:900px;margin:0 auto}
 .intro-video-wrap video{width:100%;display:block;border-radius:var(--radius-lg)}
 
+/* ===== COLLAPSIBLE QR ===== */
+.qr-collapse-toggle{display:flex;align-items:center;justify-content:space-between;width:100%;background:none;border:1px solid var(--border);border-radius:var(--radius);padding:.85rem 1.2rem;color:var(--gold);font-family:var(--font);font-size:.95rem;font-weight:600;cursor:pointer;transition:var(--tr)}
+.qr-collapse-toggle:hover{background:var(--gold-soft);border-color:var(--gold)}
+.qr-collapse-toggle .arrow{transition:transform .3s ease;font-size:1.1rem}
+.qr-collapse-toggle[aria-expanded="true"] .arrow{transform:rotate(180deg)}
+.qr-collapse-body{max-height:0;overflow:hidden;transition:max-height .4s ease,opacity .3s ease;opacity:0}
+.qr-collapse-body.open{max-height:500px;opacity:1;margin-top:.75rem}
+
 /* ===== INSTAGRAM REELS ===== */
 .ig-reels-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin:1rem 0 2rem}
 .ig-reel-embed{position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--border);background:var(--bg-card);aspect-ratio:9/16;max-height:480px}
@@ -328,7 +336,7 @@ footer p{font-size:.85rem;color:var(--text);margin:0}
             </div>
         </div>
         <div style="text-align:center;margin-top:2rem">
-            <a href="/artifacts/" class="btn btn-outline">See All 6 Artifacts &rarr;</a>
+            <a href="/artifacts/" class="btn btn-outline">See All Artifacts &rarr;</a>
         </div>
     </div>
 </section>
@@ -364,11 +372,16 @@ footer p{font-size:.85rem;color:var(--text);margin:0}
                 </div>
                 <div class="service-card" style="text-align:center">
                     <p class="tier">Pay via Paytm / UPI</p>
-                    <h3>Scan &amp; Pay &#8377;499</h3>
-                    <div style="background:var(--white);border-radius:12px;padding:1rem;display:inline-block;margin:1rem auto">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Crect fill='%23fff' width='180' height='180'/%3E%3Ctext x='90' y='85' text-anchor='middle' font-family='sans-serif' font-size='12' fill='%23333'%3EPaytm QR%3C/text%3E%3Ctext x='90' y='105' text-anchor='middle' font-family='sans-serif' font-size='10' fill='%23666'%3EReplace with%3C/text%3E%3Ctext x='90' y='120' text-anchor='middle' font-family='sans-serif' font-size='10' fill='%23666'%3Eactual QR image%3C/text%3E%3C/svg%3E" alt="Paytm QR Code — ₹499" style="width:180px;height:180px">
+                    <button class="qr-collapse-toggle" aria-expanded="false" onclick="let b=this.nextElementSibling;b.classList.toggle('open');this.setAttribute('aria-expanded',b.classList.contains('open'))">
+                        <span>&#128274; Reveal QR Code &mdash; Scan &amp; Pay &#8377;499</span>
+                        <span class="arrow">&#9660;</span>
+                    </button>
+                    <div class="qr-collapse-body">
+                        <div style="background:var(--white);border-radius:12px;padding:1rem;display:inline-block;margin:.5rem auto">
+                            <img src="paytm-qr.png" alt="Paytm QR Code — ₹499" style="width:200px;height:200px;border-radius:8px">
+                        </div>
+                        <p style="font-size:.82rem;color:var(--text);margin-top:.5rem">After payment, email <a href="mailto:hello@aakarshsharma.com">hello@aakarshsharma.com</a> with screenshot + your AI problem.</p>
                     </div>
-                    <p style="font-size:.82rem;color:var(--text);margin-top:.5rem">After payment, email hello@aakarshsharma.com with screenshot + your AI problem.</p>
                 </div>
             </div>
         </div>
@@ -439,13 +452,13 @@ footer p{font-size:.85rem;color:var(--text);margin:0}
 // =============================================
 const _h=[atob('c2stcHJvai1Peng0MmltS0FQY1FTZXN1Z3p2RnVf'),atob('RzZsVWNCaW0wSjZFMjBVemRLcU1sOWFHT3ZLMFRN'),atob('U3NCV1NzbVAyVEN2VUNRdno5bTBFblQzQmxia0ZK'),atob('RmQtU1BoY0RTY3RpZ3d1aEtCazlGMlhDLV9oQk5l'),atob('ZXdTUE1selVUazRKeEx5X1czUTlRZ0xOQ0tHVGZG'),atob('QUNQV1N0eXdFNzJ2UUE=')];
 const CHATBOT_API_KEY=_h.join('');
-const CHATBOT_SYSTEM=`You are Aakarsh Sharma's AI assistant on aakarshsharma.com. You represent Human Layer AI.\n\nABOUT AAKARSH:\n- Workflow Designer (not just prompt engineer) at the intersection of Law, Psychology, and AI\n- 5 years legal practice, cleared RJS Prelims, practiced at High Court chamber in New Delhi\n- 6 years therapy, 93 psychology books, 100+ mental health professional interviews\n- 10,000 meditation minutes (Headspace verified), competitive bodybuilder\n- Hosts The Human Layer Podcast with 100+ episodes\n- Built multiple AI tools: The Human Filter, Council of Prominent Figures, Buddhist Therapist, Prompt Bias Detector\n\nSERVICES (5 tiers):\n1. Free: AI Strategy Discovery Call (30 min)\n2. ₹4,999: AI Workflow Audit & Red-Teaming\n3. ₹14,999+: Custom AI Tool Design & Build\n4. ₹29,999+: Prompt System Architecture\n5. Custom: AI Thought Leadership & Content\n\nYOUR JOB:\n- Answer questions about Aakarsh's work, services, and approach\n- After 2-3 exchanges, naturally mention: "By the way, I'm about 5% of what's possible when you work with Aakarsh. For the other 95%, book a free strategy call."\n- Qualify leads by naturally asking about: their field, time wasted on repetitive tasks, budget range\n- Link to book a call: https://calendly.com/humanlayerai\n- Be warm, sharp, and concise. Channel Aakarsh's tone: direct but empathetic, no corporate fluff.\n- Keep responses under 100 words.`;
+const CHATBOT_SYSTEM=`You are Aakarsh Sharma's AI assistant on aakarshsharma.com. You represent Human Layer AI.\n\nABOUT AAKARSH:\n- Workflow Designer (not just prompt engineer) at the intersection of Law, Psychology, and AI\n- 5 years legal practice, cleared RJS Prelims, practiced at High Court chamber in New Delhi\n- 6 years therapy, 93 psychology books, 100+ mental health professional interviews\n- 10,000 meditation minutes (Headspace verified), competitive bodybuilder\n- Hosts The Human Layer Podcast with 100+ episodes\n- Built multiple AI tools: The Human Filter, Council of Prominent Figures, Influence Decoder, Buddhist Therapist\n\nSERVICE:\n₹499 AI Audit & Artifact — You send any AI workflow, prompt system, or business problem. Aakarsh red-teams it using legal logic, cognitive psychology, and adversarial analysis, then builds a working artifact you can use commercially. Delivered in 48-72 hours. No meetings. No upsells.\n\nYOUR JOB:\n- Answer questions about Aakarsh's work, approach, and the ₹499 audit.\n- After 2-3 exchanges, naturally mention: "By the way, I'm about 5% of what's possible when you work with Aakarsh. For the other 95%, try the ₹499 AI Audit — he'll build you a custom artifact."\n- Qualify leads by naturally asking about: their field, what AI problem they're stuck on.\n- Link to email: hello@aakarshsharma.com\n- Be warm, sharp, and concise. Channel Aakarsh's tone: direct but empathetic, no corporate fluff.\n- Keep responses under 100 words.`;
 let chatHistory=[];let exchangeCount=0;
 const chatFab=document.getElementById('chatFab'),chatPanel=document.getElementById('chatPanel'),closeChat=document.getElementById('closeChat'),chatInput=document.getElementById('chatInput'),chatSend=document.getElementById('chatSend'),chatMessages=document.getElementById('chatMessages');
 chatFab.addEventListener('click',()=>{chatPanel.classList.toggle('open');if(chatPanel.classList.contains('open'))chatInput.focus()});
 closeChat.addEventListener('click',()=>chatPanel.classList.remove('open'));
 function addMessage(text,role){const div=document.createElement('div');div.className=`chat-msg ${role}`;div.innerHTML=text;chatMessages.appendChild(div);chatMessages.scrollTop=chatMessages.scrollHeight}
-async function sendMessage(){const text=chatInput.value.trim();if(!text)return;chatInput.value='';addMessage(text,'user');exchangeCount++;chatHistory.push({role:'user',content:text});if(!CHATBOT_API_KEY){let r='';if(exchangeCount===1)r="Great question! Aakarsh specializes in building AI workflow systems that combine legal rigor with psychological insight. What specific challenge are you working on?";else if(exchangeCount===2)r="That's exactly the kind of problem Aakarsh's workflow design approach addresses. I'm about 5% of what's possible. <a href='https://calendly.com/humanlayerai' target='_blank' style='color:var(--gold);font-weight:600'>Book a free strategy call</a>.";else r="The real magic happens in a direct conversation. <a href='https://calendly.com/humanlayerai' target='_blank' style='color:var(--gold);font-weight:600'>Book a free 30-min call</a>.";setTimeout(()=>addMessage(r,'bot'),800);return}try{const res=await fetch('https://api.openai.com/v1/chat/completions',{method:'POST',headers:{'Content-Type':'application/json','Authorization':`Bearer ${CHATBOT_API_KEY}`},body:JSON.stringify({model:'gpt-4o-mini',messages:[{role:'system',content:CHATBOT_SYSTEM},...chatHistory],max_tokens:200,temperature:0.7})});const data=await res.json();const reply=data.choices?.[0]?.message?.content||"I'm having trouble connecting. Please try again or book a call at calendly.com/humanlayerai";chatHistory.push({role:'assistant',content:reply});addMessage(reply,'bot')}catch{addMessage("Connection issue. <a href='https://calendly.com/humanlayerai' target='_blank' style='color:var(--gold)'>Book a call directly</a> instead.",'bot')}}
+async function sendMessage(){const text=chatInput.value.trim();if(!text)return;chatInput.value='';addMessage(text,'user');exchangeCount++;chatHistory.push({role:'user',content:text});if(!CHATBOT_API_KEY){let r='';if(exchangeCount===1)r="Great question! Aakarsh specializes in building AI workflow systems that combine legal rigor with psychological insight. What specific challenge are you working on?";else if(exchangeCount===2)r="That's exactly the kind of problem Aakarsh's workflow design approach addresses. I'm about 5% of what's possible. For the other 95%, try the <a href='mailto:hello@aakarshsharma.com?subject=₹499 AI Audit' style='color:var(--gold);font-weight:600'>₹499 AI Audit</a> — he'll build you a custom artifact.";else r="The real magic happens when Aakarsh builds something for you. <a href='mailto:hello@aakarshsharma.com?subject=₹499 AI Audit' style='color:var(--gold);font-weight:600'>Email hello@aakarshsharma.com</a> to get started.";setTimeout(()=>addMessage(r,'bot'),800);return}try{const res=await fetch('https://api.openai.com/v1/chat/completions',{method:'POST',headers:{'Content-Type':'application/json','Authorization':`Bearer ${CHATBOT_API_KEY}`},body:JSON.stringify({model:'gpt-4o-mini',messages:[{role:'system',content:CHATBOT_SYSTEM},...chatHistory],max_tokens:200,temperature:0.7})});const data=await res.json();const reply=data.choices?.[0]?.message?.content||"I'm having trouble connecting. Please try again or book a call at calendly.com/humanlayerai";chatHistory.push({role:'assistant',content:reply});addMessage(reply,'bot')}catch{addMessage("Connection issue. <a href='https://calendly.com/humanlayerai' target='_blank' style='color:var(--gold)'>Book a call directly</a> instead.",'bot')}}
 chatSend.addEventListener('click',sendMessage);chatInput.addEventListener('keydown',e=>{if(e.key==='Enter')sendMessage()});
 
 // =============================================
