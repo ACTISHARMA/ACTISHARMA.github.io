@@ -41,7 +41,8 @@ em{color:var(--coral);font-style:italic;font-weight:600}
 a{color:var(--teal);text-decoration:none;transition:var(--tr)}
 a:hover{opacity:.85}
 .container{max-width:1200px;margin:0 auto;padding:0 20px}
-.section-label{font-family:var(--font);font-size:.875rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--gold);margin-bottom:.5rem}
+.section-label{font-family:var(--font);font-size:.875rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--gold);margin-bottom:.5rem;display:flex;align-items:center;gap:.75rem}
+.section-label::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--gold),transparent);max-width:200px}
 .subtitle{font-size:1.125rem;color:var(--text);margin-bottom:2rem;max-width:700px}
 section{padding:100px 20px}
 .reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
@@ -49,8 +50,8 @@ section{padding:100px 20px}
 
 /* ===== BUTTONS ===== */
 .btn{display:inline-flex;align-items:center;gap:.5rem;padding:12px 24px;border-radius:8px;font-weight:600;font-size:.95rem;text-decoration:none;cursor:pointer;border:none;transition:var(--tr);font-family:var(--font)}
-.btn-gold{background:var(--gold);color:var(--bg);box-shadow:0 0 20px var(--gold-soft)}
-.btn-gold:hover{background:#e0ad42;transform:translateY(-2px);box-shadow:0 0 30px var(--gold-glow)}
+.btn-gold{background:linear-gradient(135deg,var(--gold),#e8b84c);color:var(--bg);box-shadow:0 0 20px var(--gold-soft);text-shadow:0 1px 1px rgba(0,0,0,.15)}
+.btn-gold:hover{background:linear-gradient(135deg,#e0ad42,var(--gold));transform:translateY(-2px);box-shadow:0 0 40px var(--gold-glow),0 4px 20px rgba(212,160,60,.25)}
 .btn-outline{border:2px solid var(--teal);color:var(--teal);background:transparent}
 .btn-outline:hover{background:var(--teal);color:var(--bg);transform:translateY(-2px)}
 .btn-secondary{background:var(--bg-card);color:var(--white);border:1px solid var(--border)}
@@ -65,6 +66,8 @@ nav{position:sticky;top:0;z-index:1000;background:rgba(3,4,16,.95);backdrop-filt
 .nav-links a{color:var(--text);text-decoration:none;font-weight:500;transition:var(--tr)}
 .nav-links a:hover{color:var(--gold)}
 .nav-cta{display:flex;align-items:center;gap:1rem}
+.nav-cta .btn-gold{animation:ctaPulse 3s ease-in-out infinite}
+@keyframes ctaPulse{0%,100%{box-shadow:0 0 20px var(--gold-soft)}50%{box-shadow:0 0 35px var(--gold-glow),0 0 60px rgba(212,160,60,.15)}}
 .hamburger{display:flex;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:0}
 @media(min-width:768px){.hamburger{display:none}}
 .hamburger span{width:24px;height:2px;background:var(--white);border-radius:2px;transition:var(--tr)}
@@ -85,7 +88,7 @@ nav{position:sticky;top:0;z-index:1000;background:rgba(3,4,16,.95);backdrop-filt
 .hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2rem}
 
 /* ===== CREDENTIALS BAR ===== */
-.credentials{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.25rem 2rem;text-align:center;max-width:1200px;margin:-20px auto 0;position:relative;z-index:5;box-shadow:0 0 40px var(--gold-soft)}
+.credentials{background:linear-gradient(135deg,var(--bg-card) 0%,rgba(26,42,74,.4) 100%);border:1px solid rgba(212,160,60,.2);border-radius:var(--radius-lg);padding:1.25rem 2rem;text-align:center;max-width:1200px;margin:-20px auto 0;position:relative;z-index:5;box-shadow:0 0 40px var(--gold-soft),inset 0 1px 0 rgba(212,160,60,.1)}
 .credentials p{color:var(--text);font-size:.9rem;margin:0;letter-spacing:.3px}
 .credentials strong{color:var(--gold);font-weight:600}
 
@@ -136,8 +139,10 @@ nav{position:sticky;top:0;z-index:1000;background:rgba(3,4,16,.95);backdrop-filt
 
 /* ===== SERVICES ===== */
 .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin-top:2rem}
-.service-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2rem;transition:var(--tr)}
+.service-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2rem;transition:var(--tr);position:relative;overflow:hidden}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity .3s}
 .service-card:hover{border-color:var(--gold);transform:translateY(-4px);box-shadow:0 8px 30px var(--gold-soft)}
+.service-card:hover::before{opacity:1}
 .service-card .tier{font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--gold);margin-bottom:.5rem}
 .service-card h3{font-family:var(--serif);font-size:1.25rem;margin-bottom:.75rem}
 .service-card p{font-size:.9rem;margin-bottom:1.5rem}
@@ -226,11 +231,11 @@ footer p{font-size:.85rem;color:var(--text);margin:0}
 /* ===== COPYWRITING GALLERY ===== */
 .copy-gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-top:2rem}
 .copy-item{position:relative;border-radius:10px;overflow:hidden;background:var(--bg-card);border:1px solid var(--border);transition:var(--tr);cursor:pointer}
-.copy-item:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.4);border-color:rgba(212,160,60,.2)}
+.copy-item:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.4),0 0 20px rgba(212,160,60,.08);border-color:rgba(212,160,60,.3)}
 .copy-item img{width:100%;height:auto;display:block;transition:transform .4s}
 .copy-item:hover img{transform:scale(1.03)}
-.copy-caption{padding:10px 14px;font-size:.75rem;color:var(--text)}
-.copy-caption strong{color:var(--gold)}
+.copy-caption{padding:10px 14px;font-size:.78rem;color:var(--text);background:linear-gradient(transparent,rgba(3,4,16,.3))}
+.copy-caption strong{color:var(--gold);font-weight:600}
 .copy-lightbox{display:none;position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.92);backdrop-filter:blur(12px);align-items:center;justify-content:center;padding:2rem;cursor:pointer}
 .copy-lightbox.active{display:flex}
 .copy-lightbox img{max-width:90vw;max-height:85vh;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
@@ -417,9 +422,9 @@ footer p{font-size:.85rem;color:var(--text);margin:0}
         <p class="subtitle">You send me any AI workflow, prompt system, or business problem. I stress-test it using legal logic, cognitive psychology, and adversarial red-teaming &mdash; and build you a working artifact you can use commercially. No calls. No upsells. Just output.</p>
         <!-- Anchor pricing: show what others charge, then reveal yours -->
         <div style="display:flex;justify-content:center;gap:2rem;margin:2rem 0 1rem;flex-wrap:wrap">
-            <span style="font-size:1.1rem;color:var(--coral);text-decoration:line-through;font-weight:500">Typical AI Consultant: &#8377;15,000&ndash;50,000</span>
-            <span style="font-size:1.1rem;color:var(--coral);text-decoration:line-through;font-weight:500">Strategy Call Package: &#8377;9,999</span>
-            <span style="font-size:1.1rem;color:var(--coral);text-decoration:line-through;font-weight:500">Prompt Audit Only: &#8377;4,999</span>
+            <span style="font-size:1.25rem;color:var(--coral);text-decoration:line-through;font-weight:600;opacity:0.85;text-decoration-thickness:2px">Typical AI Consultant: &#8377;15,000&ndash;50,000</span>
+            <span style="font-size:1.25rem;color:var(--coral);text-decoration:line-through;font-weight:600;opacity:0.85;text-decoration-thickness:2px">Strategy Call Package: &#8377;9,999</span>
+            <span style="font-size:1.25rem;color:var(--coral);text-decoration:line-through;font-weight:600;opacity:0.85;text-decoration-thickness:2px">Prompt Audit Only: &#8377;4,999</span>
         </div>
 
         <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.5rem;margin-top:1.5rem;align-items:start">
@@ -459,7 +464,7 @@ footer p{font-size:.85rem;color:var(--text);margin:0}
                 <div class="service-card">
                     <p class="tier">Why &#8377;499?</p>
                     <h3>Judge My Work, Not My Price</h3>
-                    <p>Most "AI consultants" charge <span style="text-decoration:line-through;opacity:.6">&#8377;15K+</span> for a strategy call where they tell you what ChatGPT already knows. I charge &#8377;499 and <em>build you something</em>. If it doesn't blow your mind, I've lost nothing but my time.</p>
+                    <p>Most "AI consultants" charge <span style="text-decoration:line-through;opacity:.8;color:var(--coral);text-decoration-thickness:2px">&#8377;15K+</span> for a strategy call where they tell you what ChatGPT already knows. I charge &#8377;499 and <em>build you something</em>. If it doesn't blow your mind, I've lost nothing but my time.</p>
                 </div>
                 <div class="service-card" style="text-align:center">
                     <p class="tier">Pay via Paytm / UPI</p>
@@ -483,7 +488,7 @@ footer p{font-size:.85rem;color:var(--text);margin:0}
 
 <!-- FREE ARTIFACT REQUEST -->
 <section class="reveal" style="max-width:800px;margin:0 auto;padding:60px 20px">
-    <div style="background:var(--bg-card);border:1px solid rgba(45,212,168,.2);border-radius:var(--radius-lg);padding:2.5rem;text-align:center">
+    <div style="background:linear-gradient(135deg,var(--bg-card),rgba(45,212,168,.03));border:1px solid rgba(45,212,168,.25);border-radius:var(--radius-lg);padding:2.5rem;text-align:center;box-shadow:0 0 40px rgba(45,212,168,.08)">
         <p class="section-label" style="color:var(--teal)">Free Offer</p>
         <h2 style="font-size:clamp(1.5rem,3vw,2rem);margin-bottom:.75rem">Want a Custom Artifact? <span style="color:var(--teal)">Free.</span></h2>
         <p style="color:var(--text);max-width:550px;margin:0 auto 1.5rem">Tell me what problem you're solving. I'll build you a working artifact — no charge. I'm building my portfolio and want real-world use cases. You get a free tool; I get proof of concept. Win-win.</p>
