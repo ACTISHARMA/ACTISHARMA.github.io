@@ -1619,7 +1619,7 @@
                 <div class="feedback-section" style="margin-top:2rem;padding:1.5rem;background:rgba(26,26,46,0.4);border:1px solid rgba(0,217,255,0.1);border-radius:12px;text-align:center;">
                     <h3 style="color:var(--fg-primary);margin-bottom:0.5rem;">Help us improve</h3>
                     <p style="color:var(--fg-secondary);font-size:0.9rem;margin-bottom:1rem;">Your feedback shapes the next version.</p>
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfHumanFilterFeedback/viewform" id="feedbackFormLink" target="_blank" class="btn btn-primary" style="display:inline-flex;text-decoration:none;">Share Feedback →</a>
+                    <a href="mailto:hello@aakarshsharma.com?subject=Human%20Filter%20Feedback&body=Score%3A%20%0AWhat%20worked%3A%20%0AWhat%20didn%27t%3A%20" id="feedbackFormLink" target="_blank" class="btn btn-primary" style="display:inline-flex;text-decoration:none;">Share Feedback →</a>
                 </div>
             </div>
         </div>
@@ -2028,7 +2028,10 @@
             if (findings.high_severity.length >= 3) score += 10;
             if (findings.patterns_found.length >= 5) score += 8;
             score = Math.min(score, 100);
-            if (findings.patterns_found.length === 0) score = Math.floor(Math.random() * 10) + 5;
+            // Context-aware scoring adjustment
+            const ctxSel = typeof document !== 'undefined' ? document.getElementById('contextSelect') : null;
+            const userCtx = ctxSel ? ctxSel.value : 'auto';
+            if (findings.patterns_found.length === 0) { let h=0; for(let i=0;i<text.length;i++){h=((h<<5)-h)+text.charCodeAt(i);h|=0;} score = 5 + (Math.abs(h) % 10); }
 
             // Add analysis layers
             const context = detectContext(text);
@@ -2131,9 +2134,20 @@
             document.getElementById('clearBtn').onclick = () => {
                 document.getElementById('messageInput').value = '';
                 document.getElementById('resultsContainer').classList.remove('show');
+                // Clear ALL tab content to prevent stale data
+                document.querySelectorAll('.tab-content').forEach(t => t.innerHTML = '');
+                document.getElementById('scoreSection').innerHTML = '';
+                document.getElementById('shareSection').innerHTML = '';
+                // Reset rephrase output
+                const ro = document.getElementById('rephraseOutput');
+                if (ro) { ro.style.display = 'none'; ro.innerHTML = ''; }
+                const ri = document.getElementById('rephraseInput');
+                if (ri) ri.value = '';
                 if (typeof clearUpload === 'function') clearUpload();
                 document.getElementById('realtimeBarFill').style.width = '0%';
                 document.getElementById('realtimeHint').textContent = '';
+                window.__lastResult = null;
+                window.currentAnalysis = null;
             };
 
             // Rephrase mode uses onclick in HTML
@@ -2143,6 +2157,8 @@
 
         function analyzeMessage() {
             const text = document.getElementById('messageInput').value;
+            // Clear previous results before new analysis
+            document.querySelectorAll('.tab-content').forEach(t => t.innerHTML = '');
             const result = analyze(text);
 
             if (!result) {
@@ -2219,19 +2235,19 @@
             // Tabs
             const tabsContainer = document.getElementById('tabs');
             tabsContainer.innerHTML = `
-                <button class="tab-btn active" onclick="switchTab('xray')">
+                <button class="tab-btn active" onclick="switchTab('xray', this)">
                     X-Ray
                     <div class="tab-subtitle">What they really meant</div>
                 </button>
-                <button class="tab-btn" onclick="switchTab('findings')">
+                <button class="tab-btn" onclick="switchTab('findings', this)">
                     Findings
                     <div class="tab-subtitle">Tactics detected</div>
                 </button>
-                <button class="tab-btn" onclick="switchTab('profile')">
+                <button class="tab-btn" onclick="switchTab('profile', this)">
                     Profile
                     <div class="tab-subtitle">Psychological breakdown</div>
                 </button>
-                <button class="tab-btn" onclick="switchTab('coach')">
+                <button class="tab-btn" onclick="switchTab('coach', this)">
                     Coach
                     <div class="tab-subtitle">Your strategic response</div>
                 </button>
@@ -2248,7 +2264,7 @@
                         </div>
                         <div>
                             <div class="xray-label">${getMirrorLabels().meant}</div>
-                            <div class="xray-decode">${item.decoded}</div>
+                            <div class="xray-decode">${mirrorMode ? generateMirrorDecode(item) : item.decoded}</div>
                         </div>
                     </div>
                 `).join('') + `</div>`;
@@ -2327,8 +2343,26 @@
                 ` : ''}
             `;
 
-            // Coach tab
+            // Coach tab — mirror-mode aware
             const coachTab = document.getElementById('coachTab');
+            if (mirrorMode && result.findings.patterns_found.length > 0) {
+                const inputText = document.getElementById('messageInput').value;
+                const rephrased = buildRephrase(inputText, result);
+                const rephrasedResult = analyze(rephrased);
+                coachTab.innerHTML = `
+                <div class="coach-grid">
+                    <div class="coach-item" style="grid-column: 1 / -1;">
+                        <h4 style="color:#ff6b7a;">&#129694; What You Wrote (Score: ${result.score})</h4>
+                        <p style="line-height:1.8;color:var(--fg-secondary);">${inputText.replace(/</g,'&lt;')}</p>
+                    </div>
+                    <div class="coach-item" style="grid-column: 1 / -1; border: 1px solid var(--success); background: rgba(46,213,115,0.05);">
+                        <h4 style="color:var(--success);">&#10024; Cleaner Version (Score: ${rephrasedResult.score})</h4>
+                        <p style="font-style:italic;line-height:1.8;margin-bottom:1rem;" id="mirrorRephrasedText">${rephrased.replace(/</g,'&lt;')}</p>
+                        <button class="btn btn-secondary btn-small" onclick="navigator.clipboard.writeText(document.getElementById('mirrorRephrasedText').textContent);showToast('Copied!');">Copy Clean Version</button>
+                    </div>
+                    ${result.findings.patterns_found.map(f => '<div class="coach-item"><h4 style="color:#ffb23a;">&#9888;&#65039; ' + f.name + '</h4><p style="color:var(--fg-secondary);">This may come across as ' + f.name.toLowerCase() + '. Consider rephrasing to be more direct.</p></div>').join('')}
+                </div>`;
+            } else {
             const suggestedReply = generateSuggestedReply(result.context, result.findings);
             coachTab.innerHTML = `
                 <div class="coach-grid">
@@ -2351,6 +2385,7 @@
                     ` : ''}
                 </div>
             `;
+            } // end mirror mode else
 
             // Share section
             document.getElementById('shareSection').innerHTML = `
@@ -2367,12 +2402,17 @@
             window.currentAnalysis = result;
         }
 
-        function switchTab(tab) {
+        function switchTab(tab, btnEl) {
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
             document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
 
-            event.target.closest('.tab-btn').classList.add('active');
-            document.getElementById(tab + 'Tab').classList.add('active');
+            // Use passed element reference instead of fragile event.target
+            if (btnEl) {
+                const btn = btnEl.closest ? btnEl.closest('.tab-btn') : btnEl;
+                if (btn) btn.classList.add('active');
+            }
+            const tabEl = document.getElementById(tab + 'Tab');
+            if (tabEl) tabEl.classList.add('active');
         }
 
         function showFrameworkTooltip(framework) {
@@ -2461,13 +2501,23 @@
                 flattery_excessive: [/((you're|you are) (so|really|truly|honestly|genuinely|incredibly|absolutely|literally) (smart|talented|brilliant|amazing|wonderful|beautiful|special|unique|gifted)|nobody (else )?(is like you|compares|comes close))/gi, ''],
                 gaslighting: [/((you're|you are) (overreacting|imagining|too sensitive|being dramatic|crazy)|I never said that|that (didn't|did not) happen|calm down|it was just a joke|(can't|cannot) you take a joke)/gi, ''],
                 implicit_threat: [/((I'd|I would) hate to|it would be a shame|think carefully|(wouldn't|would not) want to|others would kill for|easily replaced|your (funeral|call))/gi, ''],
+                passive_aggression: [/((I'll|I will) just (do it myself|stay home|clean up|wait|go to bed|deal with it)|do whatever you want|you always do anyway|but sure|what do I know|(I'm|I am) just your (mother|father)|no (it's|it is) fine|totally fine|I (didn't|did not) want to go anyway|(it's|it is) not like|have fun with your friends)/gi, ''],
+                boundary_violation: [/(only person I trust|figure it out (somehow|yourself)|make it happen|I (wouldn't|would not) ask if it (wasn't|was not) important|last minute but|I know (it's|it is) (a lot|short notice)|I need you to|drop everything|cancel your)/gi, ''],
+                commitment: [/(not fully committed|commit (fully|completely)|no half measures|all in or nothing|believes in the vision)/gi, ''],
+                social_proof: [/(everyone (is|says|knows|agrees|thinks|does|else)|most people|all my friends|nobody else|any reasonable person)/gi, ''],
+                authority: [/(studies show|experts agree|research proves|according to|scientifically proven|doctors recommend)/gi, ''],
+                reciprocity: [/(after all I('ve| have) done|you owe|I helped you|return the favor|remember when I)/gi, ''],
+                liking: [/(you('ve| have) been (chosen|selected|picked)|we see something (special|unique) in you|not everyone gets this)/gi, ''],
+                future_faking: [/(your life is about to (change|transform)|life.?changing|this will change everything)/gi, ''],
+                toxic_positivity: [/(everything happens for a reason|raise your vibration|negative energy|blocking your blessings|just be positive|good vibes only)/gi, ''],
+                weaponized_therapy: [/(set a boundary|triggers my trauma|pour from an empty cup|protect my peace|work on your emotional regulation|you need therapy)/gi, ''],
             };
             result.findings.patterns_found.forEach(f => {
                 if (rules[f.key]) {
                     clean = clean.replace(rules[f.key][0], rules[f.key][1]);
                 }
             });
-            clean = clean.replace(/\s{2,}/g, ' ').replace(/\s+([.,!?])/g, '$1').trim();
+            clean = clean.replace(/\s{2,}/g, ' ').replace(/\s+([.,!?])/g, '$1').replace(/^\.\s*/,'').replace(/\.\.+/g,'.').replace(/,,+/g,',').trim();
             if (clean.length < 20) {
                 clean = "I'd like to discuss this with you. Can we talk about it calmly and honestly?";
             }
@@ -2902,6 +2952,8 @@
             document.getElementById('analyzeBtn').innerHTML = mirrorMode
                 ? '<span>&#129694;</span> Check My Message'
                 : '<span>&#128269;</span> Analyze';
+            // Clear previous results when switching modes
+            document.getElementById('resultsContainer').classList.remove('show');
             if (mirrorMode) showToast('Mirror Mode ON - analyzing YOUR writing');
             else showToast('Defense Mode - analyzing incoming messages');
         }
@@ -2909,6 +2961,29 @@
             return mirrorMode
                 ? { said: 'You wrote:', meant: 'How this might land:', flagTitle: 'Patterns in YOUR writing', coachTitle: 'How to say it better' }
                 : { said: 'They said:', meant: 'What this really means:', flagTitle: 'Psychological Profile', coachTitle: 'Your strategic response' };
+        }
+        function generateMirrorDecode(item) {
+            // In mirror mode, reframe the decode as self-awareness advice
+            const reframes = {
+                'scarcity': 'You used artificial urgency. The recipient may feel pressured rather than motivated.',
+                'deadline': 'Your deadline language creates pressure. Consider giving the reader genuine time to decide.',
+                'fear': 'Fear-based language can damage trust. Try framing what they gain instead of what they lose.',
+                'guilt': 'Guilt appeals erode relationships over time. Express your needs directly instead.',
+                'love_bomb': 'Intense emotional language early on can feel overwhelming. Let feelings develop naturally.',
+                'flattery_excessive': 'Over-the-top compliments can feel insincere. Be specific about what you genuinely appreciate.',
+                'gaslighting': 'Dismissing someone\'s experience is harmful. Acknowledge their perspective even if you disagree.',
+                'implicit_threat': 'Veiled threats damage trust. State consequences transparently or express your concerns directly.',
+                'passive_aggression': 'Passive-aggressive language creates confusion. Say what you actually mean and feel.',
+                'boundary_violation': 'This language pressures someone past their limits. Respect their capacity and ask, don\'t demand.',
+                'commitment': 'Demanding commitment can feel coercive. Let people decide on their own terms.',
+                'toxic_positivity': 'Dismissing negative emotions invalidates the other person. Acknowledge their struggle first.',
+                'weaponized_therapy': 'Using therapy language as a weapon undermines genuine mental health work.',
+            };
+            // Try to match by checking if any key appears in the decoded text
+            for (const [key, reframe] of Object.entries(reframes)) {
+                if (item.decoded && item.decoded.toLowerCase().includes(key.replace('_',' '))) return reframe;
+            }
+            return 'This phrasing may come across differently than you intend. Consider how the reader might feel.';
         }
 
         // === FEATURE 7: REAL-TIME TYPING PREVIEW ===
