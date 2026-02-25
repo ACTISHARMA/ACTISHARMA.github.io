@@ -1,4 +1,4 @@
-const CACHE_NAME = 'human-filter-v9';
+const CACHE_NAME = 'human-filter-v9.1';
 const ASSETS = [
   '/human-filter-v9.html',
   '/FINAL_LOGO.png',
@@ -23,22 +23,33 @@ self.addEventListener('activate', event => {
   );
 });
 
-// Fetch — cache-first for assets, network-first for pages
+// Fetch — network-first for HTML, cache-first for static assets
 self.addEventListener('fetch', event => {
-  event.respondWith(
-    caches.match(event.request).then(cached => {
-      return cached || fetch(event.request).then(response => {
+  const isHTML = event.request.mode === 'navigate' || event.request.url.endsWith('.html');
+
+  if (isHTML) {
+    // Network-first for HTML — always get latest version
+    event.respondWith(
+      fetch(event.request).then(response => {
         if (response.status === 200) {
           const clone = response.clone();
           caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
         }
         return response;
-      });
-    }).catch(() => {
-      // Offline fallback
-      if (event.request.mode === 'navigate') {
-        return caches.match('/human-filter-v9.html');
-      }
-    })
-  );
+      }).catch(() => caches.match(event.request) || caches.match('/human-filter-v9.html'))
+    );
+  } else {
+    // Cache-first for static assets (fonts, images)
+    event.respondWith(
+      caches.match(event.request).then(cached => {
+        return cached || fetch(event.request).then(response => {
+          if (response.status === 200) {
+            const clone = response.clone();
+            caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
+          }
+          return response;
+        });
+      }).catch(() => {})
+    );
+  }
 });

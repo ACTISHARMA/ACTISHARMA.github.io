@@ -12,6 +12,7 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'><rect fill='%230f0f1e' width='180' height='180'/><circle cx='90' cy='90' r='70' fill='none' stroke='%2300d9ff' stroke-width='3'/><path d='M 90 50 Q 110 70 90 90 Q 70 70 90 50' fill='%2300d9ff'/></svg>">
     <title>The Human Filter - Manipulation Detection</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -184,6 +185,14 @@
             background-clip: text;
         }
 
+        .logo-tagline {
+            font-size: 0.65rem;
+            color: var(--fg-secondary);
+            opacity: 0.7;
+            font-style: italic;
+            letter-spacing: 0.5px;
+        }
+
         .level-badge {
             display: flex;
             align-items: center;
@@ -196,6 +205,71 @@
             font-weight: 600;
             color: var(--accent-purple);
             animation: fadeIn 0.6s ease-out 0.2s both;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .level-tooltip {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            background: var(--bg-secondary);
+            border: 1px solid rgba(167, 139, 250, 0.3);
+            border-radius: 12px;
+            padding: 1rem;
+            font-size: 0.75rem;
+            font-weight: 400;
+            color: var(--fg-secondary);
+            line-height: 1.8;
+            width: 220px;
+            z-index: 200;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+        }
+
+        .level-badge:hover .level-tooltip,
+        .level-tooltip.show {
+            display: block;
+        }
+
+        /* Image upload area */
+        .upload-area {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .upload-btn {
+            padding: 0.6rem 1.2rem;
+            background: rgba(167, 139, 250, 0.1);
+            border: 1px dashed rgba(167, 139, 250, 0.4);
+            border-radius: 8px;
+            color: var(--accent-purple);
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .upload-btn:hover {
+            background: rgba(167, 139, 250, 0.2);
+            border-color: var(--accent-purple);
+        }
+
+        .upload-status {
+            font-size: 0.8rem;
+            color: var(--fg-secondary);
+        }
+
+        .upload-preview {
+            max-width: 200px;
+            max-height: 100px;
+            border-radius: 8px;
+            border: 1px solid rgba(0, 217, 255, 0.2);
         }
 
         @keyframes fadeIn {
@@ -490,6 +564,150 @@
             font-style: italic;
         }
 
+        /* === ANIMATED SCORE === */
+        .score-ring-progress { transition: stroke-dashoffset 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        .score-number.animating { animation: scoreGlow 1.8s ease-out; }
+        @keyframes scoreGlow {
+            0% { filter: blur(2px); opacity: 0.5; }
+            50% { filter: blur(0); opacity: 1; text-shadow: 0 0 20px rgba(0,217,255,0.5); }
+            100% { filter: blur(0); opacity: 1; text-shadow: none; }
+        }
+        .score-container.revealed .score-ring-wrapper { animation: scorePop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 1.6s both; }
+        @keyframes scorePop { from { transform: scale(1); } 50% { transform: scale(1.08); } to { transform: scale(1); } }
+
+        /* === CONTEXT SELECTOR === */
+        .context-selector {
+            display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;
+            padding: 0.75rem 1rem; background: rgba(26,26,46,0.4);
+            border: 1px solid rgba(0,217,255,0.1); border-radius: 10px;
+        }
+        .context-selector label { color: var(--fg-secondary); font-size: 0.85rem; white-space: nowrap; }
+        .context-selector select {
+            flex: 1; padding: 0.6rem 1rem; background: rgba(0,217,255,0.05);
+            border: 1px solid rgba(0,217,255,0.15); border-radius: 8px;
+            color: var(--fg-primary); font-size: 0.9rem; font-family: 'Inter', sans-serif;
+            cursor: pointer; appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2300d9ff' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat; background-position: right 0.75rem center;
+        }
+        .context-selector select option { background: #1a1a2e; color: var(--fg-primary); }
+
+        /* === SHARE SCORE CARD === */
+        .share-score-btn {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 0.7rem 1.2rem; background: linear-gradient(135deg, var(--accent-purple), var(--accent-cyan));
+            border: none; border-radius: 8px; color: white; font-weight: 600;
+            font-size: 0.85rem; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .share-score-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(0,217,255,0.3); }
+
+        /* === ONBOARDING TOUR === */
+        .tour-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 9998; }
+        .tour-tooltip {
+            position: fixed; z-index: 9999; background: linear-gradient(135deg, #1a1a3e, #0f0f2e);
+            border: 1px solid var(--accent-cyan); border-radius: 12px;
+            padding: 1.25rem 1.5rem; max-width: 300px; box-shadow: 0 8px 30px rgba(0,217,255,0.2);
+            animation: tourFadeIn 0.3s ease-out;
+        }
+        @keyframes tourFadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .tour-tooltip h4 { color: var(--accent-cyan); margin: 0 0 0.5rem; font-size: 0.95rem; }
+        .tour-tooltip p { color: var(--fg-secondary); font-size: 0.85rem; margin: 0 0 1rem; line-height: 1.5; }
+        .tour-tooltip .tour-nav { display: flex; gap: 0.5rem; justify-content: flex-end; }
+        .tour-tooltip .tour-btn {
+            padding: 0.4rem 1rem; border-radius: 6px; font-size: 0.8rem;
+            cursor: pointer; font-weight: 600; border: none;
+        }
+        .tour-tooltip .tour-btn-next { background: var(--accent-cyan); color: #0f0f1e; }
+        .tour-tooltip .tour-btn-skip { background: transparent; color: var(--fg-secondary); border: 1px solid rgba(255,255,255,0.1); }
+        .tour-tooltip .tour-step { color: var(--fg-secondary); font-size: 0.7rem; margin-bottom: 0.5rem; }
+        .tour-highlight { position: relative; z-index: 9999; box-shadow: 0 0 0 4px rgba(0,217,255,0.4), 0 0 20px rgba(0,217,255,0.2); border-radius: 12px; }
+
+        /* === MICRO-ANIMATIONS === */
+        .finding-card, .xray-item, .red-flag-card { opacity: 0; transform: translateY(20px); animation: cardSlideIn 0.4s ease-out forwards; }
+        .finding-card:nth-child(1), .xray-item:nth-child(1), .red-flag-card:nth-child(1) { animation-delay: 0.05s; }
+        .finding-card:nth-child(2), .xray-item:nth-child(2), .red-flag-card:nth-child(2) { animation-delay: 0.15s; }
+        .finding-card:nth-child(3), .xray-item:nth-child(3), .red-flag-card:nth-child(3) { animation-delay: 0.25s; }
+        .finding-card:nth-child(4), .xray-item:nth-child(4), .red-flag-card:nth-child(4) { animation-delay: 0.35s; }
+        .finding-card:nth-child(5), .xray-item:nth-child(5) { animation-delay: 0.45s; }
+        .finding-card:nth-child(6), .xray-item:nth-child(6) { animation-delay: 0.55s; }
+        @keyframes cardSlideIn { to { opacity: 1; transform: translateY(0); } }
+        .severity-badge { animation: badgePulse 0.3s ease-out 0.8s both; }
+        @keyframes badgePulse { 0% { transform: scale(0.8); } 50% { transform: scale(1.15); } 100% { transform: scale(1); } }
+
+        /* === MIRROR MODE === */
+        .mirror-toggle {
+            display: flex; align-items: center; gap: 0.75rem;
+            padding: 0.6rem 1rem; background: rgba(26,26,46,0.4);
+            border: 1px solid rgba(168,85,247,0.15); border-radius: 10px;
+            margin-top: 0.75rem; cursor: pointer; transition: all 0.3s;
+        }
+        .mirror-toggle:hover { border-color: rgba(168,85,247,0.4); }
+        .mirror-toggle.active { border-color: var(--accent-purple); background: rgba(168,85,247,0.08); }
+        .mirror-toggle .mirror-icon { font-size: 1.2rem; }
+        .mirror-toggle .mirror-label { font-size: 0.85rem; color: var(--fg-secondary); }
+        .mirror-toggle.active .mirror-label { color: var(--accent-purple); }
+        .mirror-toggle .mirror-switch {
+            width: 36px; height: 20px; background: rgba(255,255,255,0.1);
+            border-radius: 10px; position: relative; margin-left: auto; transition: background 0.3s;
+        }
+        .mirror-toggle.active .mirror-switch { background: var(--accent-purple); }
+        .mirror-toggle .mirror-switch::after {
+            content: ''; position: absolute; width: 16px; height: 16px;
+            background: white; border-radius: 50%; top: 2px; left: 2px;
+            transition: transform 0.3s;
+        }
+        .mirror-toggle.active .mirror-switch::after { transform: translateX(16px); }
+
+        /* === REAL-TIME PREVIEW BAR === */
+        .realtime-bar {
+            height: 4px; border-radius: 2px; background: rgba(255,255,255,0.05);
+            margin-top: 0.5rem; overflow: hidden; transition: opacity 0.3s;
+        }
+        .realtime-bar-fill {
+            height: 100%; width: 0%; border-radius: 2px;
+            transition: width 0.4s ease-out, background 0.4s;
+            background: var(--success);
+        }
+        .realtime-hint {
+            font-size: 0.75rem; color: var(--fg-secondary); margin-top: 0.3rem;
+            min-height: 1.1em; transition: color 0.3s;
+        }
+
+        /* === THEME TOGGLE === */
+        .theme-toggle {
+            width: 32px; height: 32px; border-radius: 50%;
+            border: 1px solid rgba(0,217,255,0.2); background: rgba(0,217,255,0.05);
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            font-size: 1rem; transition: all 0.3s; margin-right: 0.75rem;
+        }
+        .theme-toggle:hover { border-color: var(--accent-cyan); background: rgba(0,217,255,0.1); }
+
+        /* Light mode overrides */
+        body.light-mode { --bg-primary: #f5f5fa; --bg-secondary: #e8e8f0; --fg-primary: #1a1a2e; --fg-secondary: #555570; }
+        body.light-mode .main-container { background: rgba(255,255,255,0.85); }
+        body.light-mode header { background: rgba(245,245,250,0.9); border-bottom-color: rgba(0,0,0,0.08); }
+        body.light-mode .preset-btn { background: rgba(0,0,0,0.04); border-color: rgba(0,0,0,0.08); color: #333; }
+        body.light-mode .preset-btn:hover { background: rgba(0,0,0,0.08); }
+        body.light-mode textarea { background: rgba(0,0,0,0.03); border-color: rgba(0,0,0,0.1); color: #1a1a2e; }
+        body.light-mode .score-container, body.light-mode .compare-toggle,
+        body.light-mode .context-selector, body.light-mode .mirror-toggle { background: rgba(0,0,0,0.03); border-color: rgba(0,0,0,0.08); }
+        body.light-mode .tab-btn { color: #666; }
+        body.light-mode .tab-btn.active { color: var(--accent-purple); }
+        body.light-mode .finding-card, body.light-mode .xray-item { background: rgba(0,0,0,0.02); border-color: rgba(0,0,0,0.06); }
+        body.light-mode .fact-box { background: rgba(0,217,255,0.05); }
+        body.light-mode .vibe-title, body.light-mode .score-info { color: #1a1a2e; }
+        body.light-mode .particle-bg { opacity: 0.15; }
+
+        /* === DASHBOARD STATS === */
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+        .stat-card {
+            padding: 1rem; text-align: center; border-radius: 10px;
+            background: rgba(0,217,255,0.04); border: 1px solid rgba(0,217,255,0.1);
+        }
+        .stat-value { font-size: 1.8rem; font-weight: 700; color: var(--accent-cyan); font-family: 'Space Grotesk', sans-serif; }
+        .stat-label { font-size: 0.75rem; color: var(--fg-secondary); margin-top: 0.25rem; }
+        .streak-fire { color: #ff6b7a; font-size: 1.5rem; }
+
         /* Tabs */
         .tabs {
             display: flex;
@@ -560,7 +778,6 @@
             cursor: pointer;
             position: relative;
             overflow: hidden;
-            animation: slideUp 0.6s ease-out;
         }
 
         @keyframes slideUp {
@@ -695,7 +912,6 @@
             border-radius: 12px;
             backdrop-filter: blur(var(--glass-blur));
             transition: all 0.3s ease;
-            animation: slideUp 0.6s ease-out;
         }
 
         .xray-item:hover {
@@ -1160,11 +1376,24 @@
 
             .header-content {
                 flex-direction: column;
-                gap: 1rem;
+                gap: 0.75rem;
             }
 
             .logo-text {
                 font-size: 1.1rem;
+            }
+
+            .logo-tagline {
+                font-size: 0.6rem;
+            }
+
+            .upload-area {
+                flex-wrap: wrap;
+            }
+
+            .level-tooltip {
+                right: -20px;
+                width: 200px;
             }
 
             .content {
@@ -1237,18 +1466,29 @@
                 gap: 0.5rem;
             }
 
-            .preset-card {
+            .preset-btn {
                 padding: 0.6rem;
                 font-size: 0.75rem;
+                min-height: 44px;
             }
 
-            .preset-card .preset-icon {
+            .preset-btn .preset-icon {
                 font-size: 1.2rem;
             }
 
-            .tab {
-                padding: 0.6rem 0.8rem;
-                font-size: 0.75rem;
+            .tab-btn {
+                padding: 0.75rem 1rem;
+                font-size: 0.8rem;
+                min-height: 44px;
+            }
+
+            .btn {
+                min-height: 44px;
+            }
+
+            .share-btn {
+                min-height: 44px;
+                padding: 0.6rem 1rem;
             }
 
             .score-ring-wrapper {
@@ -1266,12 +1506,24 @@
             <div class="header-content">
                 <div class="logo-section">
                     <div class="logo-icon">ϕ</div>
-                    <div class="logo-text">HUMAN FILTER</div>
+                    <div>
+                        <div class="logo-text">HUMAN FILTER</div>
+                        <div class="logo-tagline">because the bullshit detector was taken</div>
+                    </div>
                 </div>
-                <div class="level-badge">
+                <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Toggle light/dark mode">🌙</button>
+                <div class="level-badge" id="levelBadge" onclick="showLevelTooltip()">
                     <span class="level-number" id="levelNumber">1</span>
                     <div>
                         <div class="level-name" id="levelName">Novice</div>
+                    </div>
+                    <div class="level-tooltip" id="levelTooltip">
+                        <strong>Your Detection Level</strong><br>
+                        Scan more messages to level up!<br><br>
+                        <span style="color:var(--accent-purple)">Lv 1</span> Novice (0-5 scans)<br>
+                        <span style="color:var(--accent-blue)">Lv 2</span> Aware (6-15 scans)<br>
+                        <span style="color:var(--accent-cyan)">Lv 3</span> Decoder (16-30 scans)<br>
+                        <span style="color:var(--success)">Lv 4</span> Master Filter (30+ scans)
                     </div>
                 </div>
             </div>
@@ -1282,10 +1534,35 @@
             <p class="subtitle">Paste any message. We analyze the psychology behind it.</p>
 
             <div class="input-section">
+                <div class="context-selector">
+                    <label for="contextSelect">Who sent this?</label>
+                    <select id="contextSelect">
+                        <option value="auto">Auto-detect</option>
+                        <option value="boss">Boss / Manager</option>
+                        <option value="date">Date / Romantic Interest</option>
+                        <option value="family">Family Member</option>
+                        <option value="stranger">Stranger / Cold DM</option>
+                        <option value="sales">Salesperson / Recruiter</option>
+                        <option value="friend">Friend / Peer</option>
+                        <option value="ex">Ex-Partner</option>
+                        <option value="social">Social Media / Influencer</option>
+                    </select>
+                </div>
                 <div class="presets-grid" id="presetsGrid"></div>
 
                 <div class="input-wrapper">
-                    <textarea id="messageInput" placeholder="Paste a message, email, DM, post, or any text you want to analyze. We'll decode what they really mean."></textarea>
+                    <textarea id="messageInput" placeholder="Paste a message, email, DM, post, or any text you want to analyze. We'll decode what they really mean." oninput="updateRealtimePreview()"></textarea>
+                    <div class="realtime-bar"><div class="realtime-bar-fill" id="realtimeBarFill"></div></div>
+                    <div class="realtime-hint" id="realtimeHint"></div>
+                </div>
+
+                <div class="upload-area">
+                    <label class="upload-btn" for="imageUpload">
+                        <span>📷</span> Upload Screenshot
+                    </label>
+                    <input type="file" id="imageUpload" accept="image/*" style="display:none;" onchange="handleImageUpload(event)">
+                    <span class="upload-status" id="uploadStatus"></span>
+                    <img id="uploadPreview" class="upload-preview" style="display:none;">
                 </div>
 
                 <div class="controls">
@@ -1303,6 +1580,12 @@
                     <strong>Compare Mode</strong><br>
                     <small>Analyze two messages side-by-side</small>
                 </div>
+            </div>
+
+            <div class="mirror-toggle" id="mirrorToggle" onclick="toggleMirrorMode()">
+                <span class="mirror-icon">🪞</span>
+                <span class="mirror-label">Mirror Mode — Analyze your own writing</span>
+                <div class="mirror-switch"></div>
             </div>
 
             <div id="compareInputs" style="display: none; margin-bottom: 2rem;">
@@ -1335,21 +1618,39 @@
                 <div class="history-section" id="historySection"></div>
 
                 <!-- Feedback -->
-                <div class="feedback-section">
-                <h3 class="feedback-title">Help us improve</h3>
-                <form class="feedback-form" id="feedbackForm">
-                    <div>
-                        <label style="display: block; margin-bottom: 1rem; color: var(--fg-secondary);">How helpful was this analysis?</label>
-                        <div class="rating-group" id="ratingGroup"></div>
-                    </div>
-                    <textarea class="feedback-textarea" id="feedbackComment" placeholder="Any feedback? (optional)"></textarea>
-                    <button type="submit" class="btn btn-primary">Submit Feedback</button>
-                </form>
+                <div class="feedback-section" style="margin-top:2rem;padding:1.5rem;background:rgba(26,26,46,0.4);border:1px solid rgba(0,217,255,0.1);border-radius:12px;text-align:center;">
+                    <h3 style="color:var(--fg-primary);margin-bottom:0.5rem;">Help us improve</h3>
+                    <p style="color:var(--fg-secondary);font-size:0.9rem;margin-bottom:1rem;">Your feedback shapes the next version.</p>
+                    <a href="https://forms.gle/PLACEHOLDER_FORM_ID" target="_blank" class="btn btn-primary" style="display:inline-flex;text-decoration:none;">Share Feedback →</a>
+                </div>
             </div>
         </div>
 
-        <footer>
-            <p>Built by Aakarsh Sharma · Human Layer AI · Law × Psychology × AI</p>
+        <footer style="padding:2rem 1.5rem;border-top:1px solid rgba(0,217,255,0.1);text-align:center;">
+            <div style="max-width:1000px;margin:0 auto;">
+                <!-- Add to Home Screen CTA -->
+                <div style="margin-bottom:2rem;padding:1.25rem;background:linear-gradient(135deg,rgba(167,139,250,0.1),rgba(0,217,255,0.1));border:1px solid rgba(167,139,250,0.2);border-radius:12px;">
+                    <div style="font-size:1.2rem;margin-bottom:0.5rem;">📱 Add to Home Screen</div>
+                    <p style="color:var(--fg-secondary);font-size:0.85rem;line-height:1.6;margin-bottom:0.5rem;">Use The Human Filter like an app — no app store needed.</p>
+                    <p style="color:var(--fg-secondary);font-size:0.8rem;line-height:1.8;">
+                        <strong style="color:var(--fg-primary);">iPhone:</strong> Tap Share ↗ → Add to Home Screen<br>
+                        <strong style="color:var(--fg-primary);">Android:</strong> Tap ⋮ → Add to Home Screen<br>
+                        <strong style="color:var(--fg-primary);">Desktop:</strong> Click install icon in address bar
+                    </p>
+                </div>
+
+                <!-- Social links -->
+                <div style="display:flex;justify-content:center;gap:1.25rem;flex-wrap:wrap;margin-bottom:1.5rem;">
+                    <a href="https://www.linkedin.com/in/aakarsh-sharma-ai/" target="_blank" style="color:var(--accent-cyan);text-decoration:none;font-size:0.85rem;">LinkedIn</a>
+                    <a href="https://www.youtube.com/@humanlayerAI" target="_blank" style="color:var(--accent-cyan);text-decoration:none;font-size:0.85rem;">YouTube</a>
+                    <a href="https://www.instagram.com/humanlayerai/" target="_blank" style="color:var(--accent-cyan);text-decoration:none;font-size:0.85rem;">Instagram</a>
+                    <a href="https://medium.com/@humanlayerAI" target="_blank" style="color:var(--accent-cyan);text-decoration:none;font-size:0.85rem;">Medium</a>
+                    <a href="mailto:hello@aakarshsharma.com" style="color:var(--accent-cyan);text-decoration:none;font-size:0.85rem;">Email</a>
+                    <a href="https://calendly.com/humanlayerai" target="_blank" style="color:var(--accent-cyan);text-decoration:none;font-size:0.85rem;">Book a Call</a>
+                </div>
+
+                <p style="color:var(--fg-secondary);font-size:0.8rem;">Built by <a href="https://aakarshsharma.com" style="color:var(--accent-purple);text-decoration:none;">Aakarsh Sharma</a> · Human Layer AI · Law × Psychology × AI</p>
+            </div>
         </footer>
     </div>
 
@@ -1736,10 +2037,10 @@
 
         function initializeUI() {
             initializePresets();
-            initializeRating();
             initializeParticles();
             checkOnboarding();
             loadLevel();
+            loadTheme();
             setupEventListeners();
         }
 
@@ -1793,6 +2094,8 @@
                 document.getElementById('onboardingOverlay').classList.add('show');
                 localStorage.setItem('hasVisited', 'true');
             }
+            // Start guided tour for users who haven't completed it
+            startOnboardingTour();
         }
 
         function setupEventListeners() {
@@ -1805,7 +2108,6 @@
             document.getElementById('compareToggle').onclick = toggleCompare;
             document.getElementById('compareAnalyzeBtn').onclick = compareMessages;
 
-            document.getElementById('feedbackForm').onsubmit = submitFeedback;
             document.getElementById('historyBtn').onclick = showHistory;
         }
 
@@ -1818,23 +2120,25 @@
                 return;
             }
 
+            playScanSound();
             saveToHistory(text, result.score);
             displayResults(result);
             updateLevel();
+            setTimeout(() => playResultSound(result.score), 1800);
             showToast('Analysis complete!');
         }
 
         function displayResults(result) {
             const container = document.getElementById('resultsContainer');
+            window.__lastResult = result; // store for share card
 
-            // Score section
+            // Score section — animated reveal
             const scoreSection = document.getElementById('scoreSection');
-            const scoreColor = result.score > 70 ? '#ff6b7a' : result.score > 40 ? '#ffb23a' : '#6edd89';
             const circumference = 2 * Math.PI * 62;
-            const offset = circumference - (result.score / 100) * circumference;
+            const finalOffset = circumference - (result.score / 100) * circumference;
 
             scoreSection.innerHTML = `
-                <div class="score-container">
+                <div class="score-container" id="scoreAnimContainer">
                     <div class="score-ring-wrapper">
                         <svg class="score-ring" viewBox="0 0 140 140">
                             <defs>
@@ -1844,10 +2148,10 @@
                                 </linearGradient>
                             </defs>
                             <circle class="score-ring-bg" cx="70" cy="70" r="62"></circle>
-                            <circle class="score-ring-progress" cx="70" cy="70" r="62" style="stroke-dasharray: ${circumference}; stroke-dashoffset: ${offset};"></circle>
+                            <circle class="score-ring-progress" id="scoreRingAnim" cx="70" cy="70" r="62" style="stroke-dasharray: ${circumference}; stroke-dashoffset: ${circumference};"></circle>
                         </svg>
                         <div class="score-text">
-                            <div class="score-number">${result.score}</div>
+                            <div class="score-number animating" id="scoreNumAnim">0</div>
                             <div class="score-label">Manipulation<br>Score</div>
                         </div>
                     </div>
@@ -1855,9 +2159,32 @@
                         <div class="vibe-title">${result.vibe.vibe}</div>
                         <div class="vibe-text">${result.findings.patterns_found.length} manipulation patterns detected.</div>
                         <div class="fact-box">💡 ${result.fact}</div>
+                        <button class="share-score-btn" onclick="generateScoreCard()" style="margin-top:1rem;">📸 Share Score Card</button>
                     </div>
                 </div>
             `;
+
+            // Animate score ring + number count-up
+            requestAnimationFrame(() => {
+                const ring = document.getElementById('scoreRingAnim');
+                const numEl = document.getElementById('scoreNumAnim');
+                if (ring) ring.style.strokeDashoffset = finalOffset;
+                // Count-up animation
+                let current = 0;
+                const target = result.score;
+                const duration = 1600;
+                const start = performance.now();
+                function countUp(now) {
+                    const elapsed = now - start;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+                    current = Math.round(eased * target);
+                    if (numEl) numEl.textContent = current;
+                    if (progress < 1) requestAnimationFrame(countUp);
+                    else document.getElementById('scoreAnimContainer')?.classList.add('revealed');
+                }
+                requestAnimationFrame(countUp);
+            });
 
             // Tabs
             const tabsContainer = document.getElementById('tabs');
@@ -1871,8 +2198,8 @@
                     <div class="tab-subtitle">Tactics detected</div>
                 </button>
                 <button class="tab-btn" onclick="switchTab('profile')">
-                    Profile
-                    <div class="tab-subtitle">Sender psychology</div>
+                    Red Flags
+                    <div class="tab-subtitle">What to watch for</div>
                 </button>
                 <button class="tab-btn" onclick="switchTab('coach')">
                     Coach
@@ -1886,11 +2213,11 @@
                 xrayTab.innerHTML = `<div class="xray-list">` + result.xray.map(item => `
                     <div class="xray-item">
                         <div class="xray-original">
-                            <div class="xray-label">They said:</div>
+                            <div class="xray-label">${getMirrorLabels().said}</div>
                             <div class="xray-text">"${item.original}"</div>
                         </div>
                         <div>
-                            <div class="xray-label">They meant:</div>
+                            <div class="xray-label">${getMirrorLabels().meant}</div>
                             <div class="xray-decode">${item.decoded}</div>
                         </div>
                     </div>
@@ -1917,42 +2244,41 @@
                 findingsTab.innerHTML = '<p style="color: var(--fg-secondary); padding: 2rem;">No manipulation patterns detected!</p>';
             }
 
-            // Profile tab
+            // Red Flags tab
             const profileTab = document.getElementById('profileTab');
-            profileTab.innerHTML = `
-                <div class="profile-grid">
-                    <div class="profile-item">
-                        <div class="profile-label">Context</div>
-                        <div class="profile-value">${result.context.join(', ')}</div>
-                    </div>
-                    <div class="profile-item">
-                        <div class="profile-label">Decision Mode</div>
-                        <div class="profile-value">${result.kahneman.dominant}</div>
-                        <div class="profile-description">They're targeting ${result.kahneman.system1 > result.kahneman.system2 ? 'emotion' : 'logic'}.</div>
-                    </div>
-                    <div class="profile-item">
-                        <div class="profile-label">Dark Triad Score</div>
-                        <div class="profile-value">${(result.darkTriad.machiavellianism + result.darkTriad.narcissism + result.darkTriad.psychopathy) / 3 | 0}/10</div>
-                        <div class="profile-description">Machiavellianism: ${result.darkTriad.machiavellianism}, Narcissism: ${result.darkTriad.narcissism}, Psychopathy: ${result.darkTriad.psychopathy}</div>
-                    </div>
-                    ${result.neuro.length > 0 ? `
-                    <div class="profile-item">
-                        <div class="profile-label">Neurochemical Triggers</div>
-                        <div class="profile-value">${result.neuro.map(n => n.neuro).join(', ')}</div>
-                    </div>
-                    ` : ''}
-                    ${result.laws.length > 0 ? `
-                    <div class="profile-item">
-                        <div class="profile-label">48 Laws Detected</div>
-                        <div class="profile-value">${result.laws.length}</div>
-                        <div class="profile-description">${result.laws[0]}</div>
-                    </div>
-                    ` : ''}
+            const redFlags = result.findings.patterns_found
+                .sort((a, b) => (b.severity === 'high' ? 3 : b.severity === 'medium' ? 2 : 1) - (a.severity === 'high' ? 3 : a.severity === 'medium' ? 2 : 1));
+
+            profileTab.innerHTML = redFlags.length > 0 ? `
+                <div style="margin-bottom:1.5rem;">
+                    <h3 style="color:var(--danger);margin-bottom:0.5rem;">🚩 ${redFlags.length} Red Flag${redFlags.length > 1 ? 's' : ''} Found</h3>
+                    <p style="color:var(--fg-secondary);font-size:0.9rem;">Ranked by severity. The higher the flag, the more you should pay attention.</p>
                 </div>
-            `;
+                <div class="findings-grid">
+                    ${redFlags.map((f, i) => `
+                    <div class="finding-card" style="border-left:3px solid ${f.severity === 'high' ? 'var(--danger)' : f.severity === 'medium' ? 'var(--warning)' : 'var(--fg-secondary)'};">
+                        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;">
+                            <span style="font-size:1.1rem;font-weight:700;color:var(--fg-primary);">#${i+1} ${f.name}</span>
+                            <span class="finding-severity severity-${f.severity}">${f.severity}</span>
+                        </div>
+                        <p style="color:var(--fg-secondary);margin-bottom:0.75rem;line-height:1.6;">${f.decode}</p>
+                        <div style="padding:0.6rem;background:rgba(0,217,255,0.05);border-radius:6px;font-size:0.8rem;color:var(--accent-cyan);">
+                            ⚖️ ${f.legal}
+                        </div>
+                    </div>
+                    `).join('')}
+                </div>
+                ${result.legalNotes.length > 0 ? `
+                <div style="margin-top:1.5rem;padding:1rem;background:rgba(255,71,87,0.1);border:1px solid rgba(255,71,87,0.2);border-radius:8px;">
+                    <strong style="color:var(--danger);">⚠️ Legal Advisory</strong>
+                    ${result.legalNotes.map(n => `<p style="color:var(--fg-secondary);margin-top:0.5rem;font-size:0.85rem;">• ${n}</p>`).join('')}
+                </div>
+                ` : ''}
+            ` : '<p style="color:var(--fg-secondary);padding:2rem;">No red flags detected. This message appears clean.</p>';
 
             // Coach tab
             const coachTab = document.getElementById('coachTab');
+            const suggestedReply = generateSuggestedReply(result.context, result.findings);
             coachTab.innerHTML = `
                 <div class="coach-grid">
                     ${result.responses.map((r, i) => `
@@ -1961,6 +2287,11 @@
                         <p>${r}</p>
                     </div>
                     `).join('')}
+                    <div class="coach-item" style="grid-column: 1 / -1; border: 1px solid var(--accent-cyan); background: rgba(0,217,255,0.05);">
+                        <h4 style="color:var(--accent-cyan);">💬 Suggested Response</h4>
+                        <p style="font-style:italic;line-height:1.8;margin-bottom:1rem;">"${suggestedReply}"</p>
+                        <button class="btn btn-secondary btn-small" onclick="navigator.clipboard.writeText('${suggestedReply.replace(/'/g, "\\'")}');showToast('Response copied!');">Copy Response</button>
+                    </div>
                     ${result.legalNotes.length > 0 ? `
                     <div class="coach-item" style="grid-column: 1 / -1;">
                         <h4>Legal Context</h4>
@@ -1976,6 +2307,8 @@
                     <button class="share-btn" onclick="shareToWhatsApp()">WhatsApp</button>
                     <button class="share-btn" onclick="copyShareLink()">Copy Link</button>
                     <button class="share-btn" onclick="shareToTwitter()">Twitter/X</button>
+                    <button class="share-btn" onclick="shareToLinkedIn()">LinkedIn</button>
+                    <button class="share-btn" onclick="shareToInstagram()">Instagram</button>
                 </div>
             `;
 
@@ -2050,11 +2383,37 @@
 
         function displayComparison(comparison) {
             const container = document.getElementById('resultsContainer');
+            const scoreSection = document.getElementById('scoreSection');
+            const a = comparison.messages[0].result;
+            const b = comparison.messages[1].result;
+            const winner = comparison.moreToxic === 0 ? 'Message A' : 'Message B';
+
+            scoreSection.innerHTML = `
+                <h3 style="margin-bottom:1.5rem;color:var(--accent-cyan);">Comparison Results</h3>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;">
+                    <div style="padding:1.5rem;background:rgba(26,26,46,0.4);border:1px solid ${a.score > b.score ? 'var(--danger)' : 'rgba(0,217,255,0.1)'};border-radius:12px;">
+                        <div style="font-weight:700;margin-bottom:0.5rem;color:var(--accent-purple);">Message A</div>
+                        <div style="font-size:2.5rem;font-weight:700;color:${a.score > 70 ? '#ff6b7a' : a.score > 40 ? '#ffb23a' : '#6edd89'}">${a.score}</div>
+                        <div style="color:var(--fg-secondary);font-size:0.85rem;">${a.findings.patterns_found.length} patterns</div>
+                        <div style="margin-top:0.75rem;font-size:0.8rem;color:var(--fg-secondary);">${a.findings.patterns_found.slice(0,3).map(f => f.name).join(', ') || 'None'}</div>
+                    </div>
+                    <div style="padding:1.5rem;background:rgba(26,26,46,0.4);border:1px solid ${b.score > a.score ? 'var(--danger)' : 'rgba(0,217,255,0.1)'};border-radius:12px;">
+                        <div style="font-weight:700;margin-bottom:0.5rem;color:var(--accent-cyan);">Message B</div>
+                        <div style="font-size:2.5rem;font-weight:700;color:${b.score > 70 ? '#ff6b7a' : b.score > 40 ? '#ffb23a' : '#6edd89'}">${b.score}</div>
+                        <div style="color:var(--fg-secondary);font-size:0.85rem;">${b.findings.patterns_found.length} patterns</div>
+                        <div style="margin-top:0.75rem;font-size:0.8rem;color:var(--fg-secondary);">${b.findings.patterns_found.slice(0,3).map(f => f.name).join(', ') || 'None'}</div>
+                    </div>
+                </div>
+                <div style="margin-top:1.5rem;padding:1rem;background:rgba(255,107,122,0.1);border-radius:8px;text-align:center;">
+                    <strong>${winner}</strong> is more manipulative by <strong>${comparison.difference} points</strong>.
+                </div>
+            `;
+
+            // Clear tab content and hide tabs for comparison view
+            document.getElementById('tabs').innerHTML = '';
+            document.querySelectorAll('.tab-content').forEach(t => { t.innerHTML = ''; t.classList.remove('active'); });
             container.classList.add('show');
-
-            // Render comparison
-            // (simplified for space - full version would show side-by-side analysis)
-
+            scoreSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
             showToast('Comparison complete!');
         }
 
@@ -2080,6 +2439,268 @@
             }
         }
 
+        function shareToLinkedIn() {
+            const url = 'https://aakarshsharma.com/human-filter-v9.html';
+            window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`);
+        }
+
+        function shareToInstagram() {
+            // Instagram doesn't have a direct share URL, so copy text for them
+            if (window.currentAnalysis) {
+                const text = `🔍 Manipulation Score: ${window.currentAnalysis.score}/100\n${window.currentAnalysis.findings.patterns_found.length} tactics detected.\n\nTry it: aakarshsharma.com/human-filter-v9.html\n\n#HumanFilter #ManipulationDetection #Psychology`;
+                navigator.clipboard.writeText(text);
+                showToast('Caption copied! Paste in Instagram.');
+            }
+        }
+
+        function showLevelTooltip() {
+            const tooltip = document.getElementById('levelTooltip');
+            tooltip.classList.toggle('show');
+            setTimeout(() => tooltip.classList.remove('show'), 4000);
+        }
+
+        async function handleImageUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const status = document.getElementById('uploadStatus');
+            const preview = document.getElementById('uploadPreview');
+
+            // Show preview
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                preview.src = e.target.result;
+                preview.style.display = 'block';
+            };
+            reader.readAsDataURL(file);
+
+            // OCR
+            status.textContent = 'Extracting text...';
+            status.style.color = 'var(--accent-cyan)';
+
+            try {
+                const result = await Tesseract.recognize(file, 'eng', {
+                    logger: m => {
+                        if (m.status === 'recognizing text') {
+                            status.textContent = `Extracting... ${Math.round(m.progress * 100)}%`;
+                        }
+                    }
+                });
+
+                const extractedText = result.data.text.trim();
+                if (extractedText) {
+                    document.getElementById('messageInput').value = extractedText;
+                    status.textContent = `✓ Extracted ${extractedText.split(' ').length} words`;
+                    status.style.color = 'var(--success)';
+                    showToast('Text extracted! Click Analyze.');
+                } else {
+                    status.textContent = 'No text found in image';
+                    status.style.color = 'var(--warning)';
+                }
+            } catch (err) {
+                status.textContent = 'OCR failed. Try a clearer image.';
+                status.style.color = 'var(--danger)';
+            }
+        }
+
+        function generateSuggestedReply(context, findings) {
+            const ctx = context[0] || 'general';
+            const hasHighSeverity = findings.high_severity.length > 0;
+            const patternNames = findings.patterns_found.map(p => p.key);
+
+            const replies = {
+                sales: hasHighSeverity
+                    ? "Thanks for reaching out. I appreciate the offer, but I need to review this with my advisor before making any commitments. I'll get back to you within a week."
+                    : "Interesting — can you send me the full details in writing? I like to review things carefully before committing.",
+                dating: patternNames.includes('love_bomb')
+                    ? "I appreciate the kind words, but I prefer to take things slow and get to know someone naturally. Let's keep chatting and see where it goes."
+                    : "Thanks for the message! I'm open to chatting more, but I like to take my time getting to know people. No rush.",
+                legal: "I've received your message. I'm forwarding this to my legal counsel for review. Please direct all further communication to them.",
+                job: "Thank you for the opportunity. I'm interested, but I'll need at least a week to review the full offer details, speak with current team members, and make a thoughtful decision.",
+                crypto: "I appreciate you sharing this, but I only invest after doing my own due diligence. I'll pass on this one.",
+                scam: "I'm not going to engage with this. If this is legitimate, please provide verifiable credentials and I'll have my attorney review it.",
+                clickbait: "I don't forward unverified information. If this is real, I'll wait for a credible news source to report on it.",
+                general: hasHighSeverity
+                    ? "I've noted what you said, but I need time to think about this. I don't make decisions under pressure, and I'd appreciate if you respect that."
+                    : "Thanks for your message. Let me take some time to think this through and I'll get back to you."
+            };
+
+            // Also check context selector override
+            const selectorCtx = document.getElementById('contextSelect')?.value;
+            if (selectorCtx && selectorCtx !== 'auto') {
+                const ctxMap = { boss:'job', date:'dating', family:'general', stranger:'scam',
+                    sales:'sales', friend:'general', ex:'dating', social:'clickbait' };
+                const mapped = ctxMap[selectorCtx] || 'general';
+                return replies[mapped] || replies.general;
+            }
+            return replies[ctx] || replies.general;
+        }
+
+        // === SHARE SCORE CARD (Canvas PNG export) ===
+        function generateScoreCard() {
+            const r = window.__lastResult;
+            if (!r) return showToast('Analyze a message first');
+            const canvas = document.createElement('canvas');
+            canvas.width = 600; canvas.height = 400;
+            const ctx = canvas.getContext('2d');
+
+            // Background gradient
+            const bg = ctx.createLinearGradient(0, 0, 600, 400);
+            bg.addColorStop(0, '#0f0f1e'); bg.addColorStop(1, '#1a1a3e');
+            ctx.fillStyle = bg; ctx.fillRect(0, 0, 600, 400);
+
+            // Border glow
+            ctx.strokeStyle = 'rgba(0,217,255,0.3)'; ctx.lineWidth = 2;
+            ctx.roundRect(10, 10, 580, 380, 16); ctx.stroke();
+
+            // Title
+            ctx.font = 'bold 20px "Space Grotesk", sans-serif';
+            ctx.fillStyle = '#00d9ff'; ctx.fillText('THE HUMAN FILTER', 30, 50);
+            ctx.font = '12px Inter, sans-serif';
+            ctx.fillStyle = '#8892b0'; ctx.fillText('aakarshsharma.com/human-filter-v9.html', 30, 70);
+
+            // Score circle
+            const cx = 120, cy = 190, rad = 65;
+            ctx.beginPath(); ctx.arc(cx, cy, rad, 0, Math.PI * 2);
+            ctx.strokeStyle = 'rgba(0,217,255,0.1)'; ctx.lineWidth = 8; ctx.stroke();
+            // Score arc
+            const startAngle = -Math.PI / 2;
+            const endAngle = startAngle + (r.score / 100) * Math.PI * 2;
+            const grad = ctx.createLinearGradient(cx-rad, cy-rad, cx+rad, cy+rad);
+            grad.addColorStop(0, '#a855f7'); grad.addColorStop(1, '#00d9ff');
+            ctx.beginPath(); ctx.arc(cx, cy, rad, startAngle, endAngle);
+            ctx.strokeStyle = grad; ctx.lineWidth = 8; ctx.lineCap = 'round'; ctx.stroke();
+            // Score number
+            ctx.font = 'bold 40px "Space Grotesk", sans-serif';
+            ctx.fillStyle = '#ffffff';
+            const scoreStr = String(r.score);
+            const sw = ctx.measureText(scoreStr).width;
+            ctx.fillText(scoreStr, cx - sw/2, cy + 10);
+            ctx.font = '11px Inter, sans-serif';
+            ctx.fillStyle = '#8892b0';
+            const label = 'Manipulation Score';
+            const lw = ctx.measureText(label).width;
+            ctx.fillText(label, cx - lw/2, cy + 30);
+
+            // Verdict
+            ctx.font = 'bold 16px "Space Grotesk", sans-serif';
+            ctx.fillStyle = '#ffffff';
+            const vibeLines = wrapText(ctx, r.vibe.vibe, 350);
+            vibeLines.forEach((line, i) => ctx.fillText(line, 210, 140 + i * 22));
+
+            // Top patterns
+            ctx.font = '13px Inter, sans-serif';
+            const topPatterns = r.findings.patterns_found.slice(0, 3);
+            topPatterns.forEach((p, i) => {
+                const y = 190 + i * 30;
+                const sevColor = p.severity === 'high' ? '#ff6b7a' : p.severity === 'medium' ? '#ffb23a' : '#6edd89';
+                ctx.fillStyle = sevColor;
+                ctx.fillText('●', 210, y);
+                ctx.fillStyle = '#ccd6f6';
+                ctx.fillText(`${p.name} (${p.severity})`, 230, y);
+            });
+
+            // Footer
+            ctx.font = '11px Inter, sans-serif';
+            ctx.fillStyle = '#4a5568';
+            ctx.fillText('Built by Aakarsh Sharma · Law × Psychology × AI', 30, 370);
+            ctx.fillText('Try it: aakarshsharma.com/human-filter-v9.html', 350, 370);
+
+            // Download
+            const link = document.createElement('a');
+            link.download = `human-filter-score-${r.score}.png`;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+            showToast('Score card downloaded! Share it on socials.');
+        }
+
+        function wrapText(ctx, text, maxWidth) {
+            const words = text.split(' ');
+            const lines = []; let line = '';
+            words.forEach(word => {
+                const test = line + word + ' ';
+                if (ctx.measureText(test).width > maxWidth && line) {
+                    lines.push(line.trim()); line = word + ' ';
+                } else { line = test; }
+            });
+            if (line) lines.push(line.trim());
+            return lines;
+        }
+
+        // === ONBOARDING TOUR ===
+        function startOnboardingTour() {
+            if (localStorage.getItem('tourCompleted')) return;
+            const steps = [
+                { target: '.context-selector', title: 'Set the Context', text: 'Tell us who sent the message — it makes the analysis and response suggestions way more accurate.', pos: 'bottom' },
+                { target: '#messageInput', title: 'Paste Any Message', text: 'Drop in a text, email, DM, or WhatsApp forward. Or use Upload Screenshot for images.', pos: 'bottom' },
+                { target: '.presets-grid', title: 'Or Try a Preset', text: 'Not sure what to test? Tap any preset to see the engine in action with real-world examples.', pos: 'bottom' },
+                { target: '#levelBadge', title: 'Level Up!', text: 'Every scan earns XP. Keep scanning to unlock Aware, Decoder, and Master Filter levels.', pos: 'left' },
+            ];
+            let currentStep = 0;
+
+            function showStep(i) {
+                // Clean previous
+                document.querySelectorAll('.tour-overlay,.tour-tooltip,.tour-highlight').forEach(el => el.remove());
+                document.querySelectorAll('.tour-highlight').forEach(el => el.classList.remove('tour-highlight'));
+
+                if (i >= steps.length) {
+                    localStorage.setItem('tourCompleted', 'true');
+                    showToast('You\'re all set! Start scanning.');
+                    return;
+                }
+
+                const step = steps[i];
+                const targetEl = document.querySelector(step.target);
+                if (!targetEl) { showStep(i + 1); return; }
+
+                // Overlay
+                const overlay = document.createElement('div');
+                overlay.className = 'tour-overlay';
+                document.body.appendChild(overlay);
+
+                // Highlight target
+                targetEl.classList.add('tour-highlight');
+                targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                // Tooltip
+                setTimeout(() => {
+                    const rect = targetEl.getBoundingClientRect();
+                    const tooltip = document.createElement('div');
+                    tooltip.className = 'tour-tooltip';
+                    tooltip.innerHTML = `
+                        <div class="tour-step">Step ${i+1} of ${steps.length}</div>
+                        <h4>${step.title}</h4>
+                        <p>${step.text}</p>
+                        <div class="tour-nav">
+                            <button class="tour-btn tour-btn-skip" onclick="endTour()">Skip</button>
+                            <button class="tour-btn tour-btn-next" onclick="nextTourStep()">${i === steps.length - 1 ? 'Got it!' : 'Next →'}</button>
+                        </div>
+                    `;
+
+                    // Position
+                    if (step.pos === 'bottom') {
+                        tooltip.style.top = (rect.bottom + 12) + 'px';
+                        tooltip.style.left = Math.max(10, rect.left) + 'px';
+                    } else {
+                        tooltip.style.top = rect.top + 'px';
+                        tooltip.style.right = (window.innerWidth - rect.left + 12) + 'px';
+                    }
+                    document.body.appendChild(tooltip);
+                }, 400);
+
+                currentStep = i;
+            }
+
+            window.nextTourStep = () => showStep(currentStep + 1);
+            window.endTour = () => {
+                document.querySelectorAll('.tour-overlay,.tour-tooltip').forEach(el => el.remove());
+                document.querySelectorAll('.tour-highlight').forEach(el => el.classList.remove('tour-highlight'));
+                localStorage.setItem('tourCompleted', 'true');
+            };
+
+            setTimeout(() => showStep(0), 800);
+        }
+
         function saveToHistory(text, score) {
             let history = JSON.parse(localStorage.getItem('filterHistory') || '[]');
             history.unshift({
@@ -2103,8 +2724,28 @@
                 return;
             }
 
+            const stats = getStreakData();
             historySection.innerHTML = `
-                <h3 style="margin-bottom: 1.5rem; color: var(--fg-primary);">Recent Analyses</h3>
+                <h3 style="margin-bottom: 1.5rem; color: var(--fg-primary);">Your Dashboard</h3>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value">${stats.totalScans}</div>
+                        <div class="stat-label">Total Scans</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">${stats.avgScore}</div>
+                        <div class="stat-label">Avg Score</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">${stats.streak} <span class="streak-fire">${stats.streak > 0 ? '🔥' : ''}</span></div>
+                        <div class="stat-label">Day Streak</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">${stats.highestScore}</div>
+                        <div class="stat-label">Highest Score</div>
+                    </div>
+                </div>
+                <h4 style="margin-bottom: 1rem; color: var(--fg-secondary); font-size: 0.9rem;">Recent Scans</h4>
                 <div class="history-timeline">
                     ${history.map((item, i) => `
                     <div class="history-item" onclick="reloadAnalysis('${i}')">
@@ -2167,6 +2808,138 @@
             document.getElementById('feedbackForm').reset();
             document.querySelectorAll('.star-btn').forEach(btn => btn.classList.remove('active'));
             showToast('Thank you for your feedback!');
+        }
+
+        // === FEATURE 6: MIRROR MODE ===
+        let mirrorMode = false;
+        function toggleMirrorMode() {
+            mirrorMode = !mirrorMode;
+            document.getElementById('mirrorToggle').classList.toggle('active', mirrorMode);
+            const textarea = document.getElementById('messageInput');
+            textarea.placeholder = mirrorMode
+                ? "Paste YOUR OWN message to analyze how it might be perceived..."
+                : "Paste a message, email, DM, post, or any text you want to analyze. We'll decode what they really mean.";
+            if (mirrorMode) showToast('Mirror Mode: Analyzing YOUR writing');
+        }
+        function getMirrorLabels() {
+            return mirrorMode
+                ? { said: 'You wrote:', meant: 'They might perceive:', flagTitle: 'Patterns in YOUR writing', coachTitle: 'How to improve your message' }
+                : { said: 'They said:', meant: 'They meant:', flagTitle: 'Red Flags Found', coachTitle: 'Your strategic response' };
+        }
+
+        // === FEATURE 7: REAL-TIME TYPING PREVIEW ===
+        let realtimeTimeout = null;
+        function updateRealtimePreview() {
+            clearTimeout(realtimeTimeout);
+            realtimeTimeout = setTimeout(() => {
+                const text = document.getElementById('messageInput').value;
+                const bar = document.getElementById('realtimeBarFill');
+                const hint = document.getElementById('realtimeHint');
+                if (!text || text.length < 15) {
+                    bar.style.width = '0%';
+                    hint.textContent = '';
+                    return;
+                }
+                // Quick pattern scan (lightweight — not full analysis)
+                let quickHits = 0;
+                const quickPatterns = [
+                    /\b(urgent|immediately|act now|limited time|expires|deadline)\b/i,
+                    /\b(guarantee|risk.?free|double your|100%)\b/i,
+                    /\b(everyone|nobody|always|never)\b/i,
+                    /\b(trust me|believe me|honestly)\b/i,
+                    /\b(only you|special|exclusive|selected)\b/i,
+                    /\b(don't tell|secret|confidential)\b/i,
+                    /\b(if you don't|you'll regret|miss out|lose)\b/i,
+                ];
+                quickPatterns.forEach(p => { if (p.test(text)) quickHits++; });
+                const pct = Math.min(100, Math.round((quickHits / quickPatterns.length) * 100));
+                bar.style.width = pct + '%';
+                bar.style.background = pct > 60 ? '#ff6b7a' : pct > 30 ? '#ffb23a' : 'var(--success)';
+                if (quickHits === 0) hint.textContent = 'Looking clean so far...';
+                else if (quickHits <= 2) hint.textContent = `${quickHits} potential flag${quickHits > 1 ? 's' : ''} — hit Analyze for details`;
+                else hint.textContent = `⚠️ ${quickHits} red flags detected — analyze this message`;
+                hint.style.color = pct > 60 ? '#ff6b7a' : pct > 30 ? '#ffb23a' : 'var(--fg-secondary)';
+            }, 300);
+        }
+
+        // === FEATURE 8: DARK/LIGHT THEME TOGGLE ===
+        function toggleTheme() {
+            const isLight = document.body.classList.toggle('light-mode');
+            document.getElementById('themeToggle').textContent = isLight ? '☀️' : '🌙';
+            localStorage.setItem('theme', isLight ? 'light' : 'dark');
+        }
+        function loadTheme() {
+            const saved = localStorage.getItem('theme');
+            if (saved === 'light') {
+                document.body.classList.add('light-mode');
+                document.getElementById('themeToggle').textContent = '☀️';
+            }
+        }
+
+        // === FEATURE 9: SCAN HISTORY DASHBOARD ===
+        function getStreakData() {
+            const history = JSON.parse(localStorage.getItem('filterHistory') || '[]');
+            const totalScans = history.length;
+            const avgScore = totalScans ? Math.round(history.reduce((s, h) => s + h.score, 0) / totalScans) : 0;
+            // Streak: consecutive days with scans
+            const today = new Date().toDateString();
+            let streak = 0;
+            const daySet = new Set(history.map(h => new Date(h.timestamp).toDateString()));
+            const d = new Date();
+            while (daySet.has(d.toDateString())) {
+                streak++;
+                d.setDate(d.getDate() - 1);
+            }
+            const highestScore = totalScans ? Math.max(...history.map(h => h.score)) : 0;
+            return { totalScans, avgScore, streak, highestScore };
+        }
+
+        // Override showHistory to include dashboard
+        const _origShowHistory = typeof showHistory === 'function' ? showHistory : null;
+
+        // === FEATURE 10: SOUND DESIGN + HAPTICS ===
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        let audioCtx = null;
+        function ensureAudio() { if (!audioCtx) audioCtx = new AudioCtx(); return audioCtx; }
+
+        function playTone(freq, duration, type='sine', vol=0.08) {
+            try {
+                const ctx = ensureAudio();
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.type = type;
+                osc.frequency.value = freq;
+                gain.gain.setValueAtTime(vol, ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + duration);
+                osc.connect(gain).connect(ctx.destination);
+                osc.start(); osc.stop(ctx.currentTime + duration);
+            } catch(e) {}
+        }
+
+        function playScanSound() {
+            // Quick ascending arpeggio
+            playTone(400, 0.15, 'sine', 0.06);
+            setTimeout(() => playTone(600, 0.15, 'sine', 0.06), 100);
+            setTimeout(() => playTone(800, 0.2, 'sine', 0.06), 200);
+        }
+
+        function playResultSound(score) {
+            if (score > 70) {
+                // Danger: descending tones
+                playTone(600, 0.2, 'square', 0.04);
+                setTimeout(() => playTone(400, 0.3, 'square', 0.04), 150);
+                // Haptic
+                if (navigator.vibrate) navigator.vibrate([100, 50, 100]);
+            } else if (score > 40) {
+                // Warning: two-tone
+                playTone(500, 0.2, 'triangle', 0.05);
+                setTimeout(() => playTone(450, 0.25, 'triangle', 0.05), 200);
+                if (navigator.vibrate) navigator.vibrate(80);
+            } else {
+                // Safe: pleasant ding
+                playTone(800, 0.3, 'sine', 0.06);
+                setTimeout(() => playTone(1000, 0.4, 'sine', 0.05), 150);
+            }
         }
 
         function showToast(message) {
