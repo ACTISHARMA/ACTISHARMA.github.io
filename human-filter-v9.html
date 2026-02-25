@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="The Human Filter - Decode manipulation, understand psychology, respond strategically.">
+    <meta name="description" content="The Human Filter — AI-powered manipulation detection engine. Decode cognitive biases, emotional tactics, and persuasion patterns in any message.">
     <meta name="theme-color" content="#0f0f1e">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Human Filter">
     <link rel="manifest" href="/manifest.json">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'><rect fill='%230f0f1e' width='180' height='180'/><circle cx='90' cy='90' r='70' fill='none' stroke='%2300d9ff' stroke-width='3'/><path d='M 90 50 Q 110 70 90 90 Q 70 70 90 50' fill='%2300d9ff'/></svg>">
-    <title>The Human Filter - Manipulation Detection</title>
+    <title>The Human Filter — Decode Manipulation in Real-Time</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
     <style>
@@ -1622,6 +1622,76 @@
                 min-height: 44px;
             }
         }
+
+        /* === v10 MOBILE UX FIXES === */
+        @media (max-width: 600px) {
+            h1 { font-size: 1.6rem; }
+            .subtitle { font-size: 0.9rem; margin-bottom: 1.25rem; }
+            .content { padding: 1rem 0.75rem; }
+            .score-container { flex-direction: column; align-items: center; gap: 1.25rem; padding: 1.5rem 1rem; }
+            .score-ring-wrapper { width: 120px; height: 120px; }
+            .score-number { font-size: 2rem; }
+            .score-info { min-width: unset; width: 100%; text-align: center; }
+            .stats-grid { grid-template-columns: repeat(3, 1fr); }
+            .stat-card { padding: 0.75rem 0.5rem; }
+            .stat-value { font-size: 1.4rem; }
+            .findings-grid { grid-template-columns: 1fr; gap: 1rem; }
+            .coach-grid { grid-template-columns: 1fr; }
+            .finding-card { padding: 1.25rem; }
+            .finding-decode { font-size: 0.9rem; }
+            .finding-counter { font-size: 0.85rem; }
+            .xray-item { padding: 1rem; }
+            .xray-text, .xray-decode { font-size: 0.9rem; }
+            .presets-grid { grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 0.5rem; }
+            .preset-btn { padding: 0.6rem 0.4rem; font-size: 0.8rem; }
+            .preset-icon { font-size: 1.2rem; }
+            .controls { gap: 0.75rem; }
+            .btn { padding: 0.75rem 1.25rem; font-size: 0.9rem; }
+            .share-section { gap: 0.5rem; }
+            .share-btn { padding: 0.4rem 0.75rem; font-size: 0.8rem; }
+            textarea { min-height: 120px; padding: 1rem; font-size: 0.95rem; }
+            .header-content { padding: 0; }
+            header { padding: 1rem 0.75rem; }
+            .logo-text { font-size: 1rem; }
+            .level-badge { padding: 0.4rem 0.75rem; font-size: 0.75rem; }
+            .mirror-toggle { padding: 0.5rem 0.75rem; }
+            .context-selector { padding: 0.6rem 0.75rem; flex-wrap: wrap; }
+            .context-selector label { font-size: 0.8rem; }
+            .upload-area { flex-wrap: wrap; }
+            .compare-toggle { padding: 0.75rem 1rem; }
+            .vibe-title { font-size: 1.1rem; }
+            .vibe-text { font-size: 0.9rem; }
+            .coach-item { padding: 1rem; }
+            .coach-item h4 { font-size: 0.9rem; }
+            .coach-item p { font-size: 0.9rem; }
+            .share-score-btn { font-size: 0.8rem; padding: 0.6rem 1rem; }
+            .feedback-section { padding: 1.25rem; }
+            .star-btn { width: 40px; height: 40px; font-size: 1.2rem; }
+        }
+
+        /* === SMOOTH SECTION TRANSITIONS === */
+        #xrayTab, #findingsTab, #coachTab {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: sectionReveal 0.5s ease-out forwards;
+        }
+        #xrayTab { animation-delay: 0.3s; }
+        #findingsTab { animation-delay: 0.6s; }
+        #coachTab { animation-delay: 0.9s; }
+        @keyframes sectionReveal {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* === QUOTE STYLING === */
+        .awareness-quote {
+            padding: 1rem 1.25rem;
+            background: rgba(167,139,250,0.06);
+            border-left: 3px solid var(--accent-purple);
+            border-radius: 0 8px 8px 0;
+            font-size: 0.9rem;
+            margin-top: 1.25rem;
+        }
+
     </style>
 </head>
 <body>
@@ -1634,7 +1704,7 @@
                     <div class="logo-icon">&#x3D5;</div>
                     <div>
                         <div class="logo-text">HUMAN FILTER</div>
-                        <div class="logo-tagline">because the bullshit detector was taken</div>
+                        <div class="logo-tagline">because the bullshit detector was taken &middot; <span style="color:var(--accent-cyan);font-weight:600;">BETA</span></div>
                     </div>
                 </div>
                 <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Toggle light/dark mode">&#x1F319;</button>
@@ -1711,7 +1781,7 @@
 
             <div class="mirror-toggle" id="mirrorToggle" onclick="toggleMirrorMode()">
                 <span class="mirror-icon">&#x1FA9E;</span>
-                <span class="mirror-label">Mirror Mode &mdash; Analyze your own writing</span>
+                <span class="mirror-label">Mirror Mode — Analyze your own writing</span>
                 <div class="mirror-switch"></div>
             </div>
 
@@ -1755,7 +1825,7 @@
                 <!-- Add to Home Screen CTA -->
                 <div style="margin-bottom:2rem;padding:1.25rem;background:linear-gradient(135deg,rgba(167,139,250,0.1),rgba(0,217,255,0.1));border:1px solid rgba(167,139,250,0.2);border-radius:12px;">
                     <div style="font-size:1.2rem;margin-bottom:0.5rem;">&#x1F4F1; Add to Home Screen</div>
-                    <p style="color:var(--fg-secondary);font-size:0.85rem;line-height:1.6;margin-bottom:0.5rem;">Use The Human Filter like an app &mdash; no app store needed.</p>
+                    <p style="color:var(--fg-secondary);font-size:0.85rem;line-height:1.6;margin-bottom:0.5rem;">Use The Human Filter like an app — no app store needed.</p>
                     <p style="color:var(--fg-secondary);font-size:0.8rem;line-height:1.8;">
                         <strong style="color:var(--fg-primary);">iPhone:</strong> Tap Share &#x2197; &#x2192; Add to Home Screen<br>
                         <strong style="color:var(--fg-primary);">Android:</strong> Tap &#x22EE; &#x2192; Add to Home Screen<br>
@@ -1773,6 +1843,11 @@
                     <a href="https://calendly.com/humanlayerai" target="_blank" style="color:var(--accent-cyan);text-decoration:none;font-size:0.85rem;">Book a Call</a>
                 </div>
 
+                <div style="margin-bottom:1.25rem;padding:0.75rem 1.25rem;background:rgba(0,217,255,0.05);border:1px solid rgba(0,217,255,0.15);border-radius:8px;display:inline-block;">
+                    <span style="color:var(--accent-cyan);font-size:0.8rem;font-weight:600;letter-spacing:0.5px;">BETA</span>
+                    <span style="color:var(--fg-secondary);font-size:0.8rem;margin-left:0.5rem;">Open to investors & collaborators</span>
+                    <a href="https://calendly.com/humanlayerai" target="_blank" style="color:var(--accent-purple);text-decoration:none;font-size:0.8rem;margin-left:0.5rem;font-weight:600;">Let's Talk &rarr;</a>
+                </div>
                 <p style="color:var(--fg-secondary);font-size:0.8rem;">Built by <a href="https://aakarshsharma.com" style="color:var(--accent-purple);text-decoration:none;">Aakarsh Sharma</a> &middot; Human Layer AI &middot; Law &#xD7; Psychology &#xD7; AI</p>
             </div>
         </footer>
@@ -1784,7 +1859,7 @@
             <div class="onboarding-step active">
                 <div class="onboarding-icon">&#x1F4DD;</div>
                 <h2 class="onboarding-title">Paste Any Message</h2>
-                <p class="onboarding-text">DMs, emails, posts, forwarded texts&mdash;if it feels off, paste it here. We'll analyze what's really going on.</p>
+                <p class="onboarding-text">DMs, emails, posts, forwarded texts—if it feels off, paste it here. We'll analyze what's really going on.</p>
                 <div class="onboarding-controls">
                     <button class="btn btn-primary" onclick="nextOnboardingStep()">Next</button>
                     <button class="btn btn-secondary" onclick="skipOnboarding()">Skip</button>
@@ -1822,6 +1897,31 @@
         // ========================
         // PATTERNS & ANALYSIS ENGINE
         // ========================
+
+
+        // === AWARENESS QUOTES (Capitalism, Marketing, Psychology) ===
+        const AWARENESS_QUOTES = [
+            { text: "It is not what happens, but what the public sees, that matters.", author: "Niccolò Machiavelli" },
+            { text: "The conscious and intelligent manipulation of the organized habits and opinions of the masses is an important element in democratic society.", author: "Edward Bernays, Propaganda" },
+            { text: "People don\'t buy for logical reasons. They buy for emotional reasons.", author: "Zig Ziglar" },
+            { text: "The best way to predict behavior is to understand the invisible forces shaping it.", author: "Daniel Kahneman" },
+            { text: "We are not thinking machines that feel; we are feeling machines that think.", author: "Antonio Damasio" },
+            { text: "Every advertisement is an exercise in psychological warfare.", author: "Jerry Della Femina" },
+            { text: "The things you own end up owning you.", author: "Chuck Palahniuk, Fight Club" },
+            { text: "In the factory we make cosmetics; in the store we sell hope.", author: "Charles Revson" },
+            { text: "There is no such thing as a free lunch.", author: "Milton Friedman" },
+            { text: "The first principle is that you must not fool yourself \u2014 and you are the easiest person to fool.", author: "Richard Feynman" },
+            { text: "Your margin is my opportunity.", author: "Jeff Bezos" },
+            { text: "Think about how stupid the average person is, and then realize that half of them are stupider than that.", author: "George Carlin" },
+            { text: "The medium is the message.", author: "Marshall McLuhan" },
+            { text: "Attention is the new currency. Guard yours.", author: "Tim Wu, The Attention Merchants" },
+            { text: "If you\'re not paying for the product, you are the product.", author: "Andrew Lewis" },
+            { text: "The greatest trick the devil ever pulled was convincing the world he didn\'t exist.", author: "Charles Baudelaire" },
+            { text: "Doubt is not a pleasant condition, but certainty is absurd.", author: "Voltaire" },
+            { text: "We don\'t see things as they are, we see them as we are.", author: "Ana\u00efs Nin" },
+            { text: "The most dangerous worldview is the worldview of those who have not viewed the world.", author: "Alexander von Humboldt" },
+            { text: "A lie told often enough becomes the truth.", author: "Vladimir Lenin" },
+        ];
 
         const PATTERNS = {
             // === PERSUASION ENGINE (Cialdini) ===
@@ -1869,10 +1969,34 @@
             advance_fee: { re: /\b(dear (friend|sir|madam|beloved|one)|I am (writing|contacting) you|my late (husband|wife|father|mother)|sum of \$?[\d,.]+\s*(million|USD|GBP|EUR)|next of kin|beneficiary|inheritance|unclaimed (funds|money|account|estate)|deposit(ed)? (in|with|at) (a |the )?(bank|vault)|send (your|me) (details|information|account|address)|trusted person|confidential|God-?fearing|your (full name|address|phone|bank)|contact (me|my (attorney|lawyer|barrister))|I ('ve |have )?(chosen|selected|picked) you|wire transfer|processing fee|transaction fee|clearance fee|upfront (payment|fee|cost)|pay (a |the )?(small |modest )?(fee|amount|sum)|transfer the (funds|money|sum)|percentage.{0,20}(share|split|yours)|compensation for (your|the)|I (shall|will) give you|share.{0,15}(percentage|ratio|split)|Mrs\.?|Mr\.?|Barrister|Reverend|widow of|diplomat|consignment|trunk box|security company|diplomatic bag|dying wish|last wish|before (I |my )?(death|pass|die))\b/gi, engine: 'BIAS', name: 'Advance-Fee Scam', sev: 'high', decode: 'Classic advance-fee fraud pattern — they promise a fortune in exchange for a small upfront payment. The money doesn\u0027t exist.', legal: 'Advance-fee fraud is a criminal offense under fraud statutes in virtually every jurisdiction worldwide.' },
             advance_fee_2: { re: /\b(bank of (africa|nigeria|ghana|london|england)|west africa|foreign account|oversea|diplomat(ic)?|consign|trunk box|security vault|courier (service|company)|modalities|next of kin|late client|deceased|probate|your (private|personal) email|send (me |us )?(your|the) (private|personal|direct))\b/gi, engine: 'BIAS', name: 'Nigerian Scam Signals', sev: 'high', decode: 'Contains specific language patterns associated with 419/Nigerian advance-fee fraud.', legal: 'These are textbook indicators of advance-fee fraud (Section 419 of the Nigerian Criminal Code).' },
             moving_goalposts: { re: /\b((that's|that is) not (what I meant|enough|the point)|I never said (that|exactly)|the real issue is|but what about|yes but|okay but (still|what about)|even (so|still|if)|that doesn't (matter|count|change)|beside the point|missing the point|(you're|you are) (missing|avoiding)|not the (point|issue|problem)|changing the|shifting|new (condition|requirement|standard))\b/gi, engine: 'LOGIC', name: 'Moving Goalposts', sev: 'medium', decode: 'Constantly shifting criteria so you can never meet expectations.', legal: 'Changing contract terms after agreement may constitute breach of contract or bad faith dealing.' },
+
+            // === COGNITIVE BIAS ENGINE (Kahneman, Ariely, Thaler, Dobelli, McRaney) ===
+            sunk_cost: { re: /\b(come this far|invested (so much|too much|everything)|too late to (stop|quit|turn back|change)|might as well|in too deep|can('t| not) (stop|quit|walk away) now|already (put|sunk|invested|spent|poured).{0,20}(into|on|in) (this|it)|throwing away everything|waste everything|all for nothing|don't let it go to waste|see it through|finish what you started|you've already|after all (the|this) (time|money|effort|work)|point of no return)\b/gi, engine: 'BIAS', name: 'Sunk Cost Fallacy', sev: 'high', decode: 'Pressuring continued investment based on past spending rather than future value. What you already spent is gone regardless.', legal: 'Sunk cost arguments in business contexts may indicate a failing venture disguised as opportunity.' },
+            loss_aversion: { re: /\b(you('ll| will) lose|losing (your|this|the)|don't throw away|slip(ping)? away|miss(ing)? out|FOMO|left behind|fall behind|get left|won't get (this|another)|never (get|have|see) (this|another|a) (chance|opportunity)|pass you by|train (is|has) left|ship (has|is) sail(ed|ing)|door (is|will be) clos(ed|ing)|wave without you|while you hesitate|your competitors are|others are already|everyone else (is|has)|they're getting ahead|you're falling behind)\b/gi, engine: 'EMOTIONAL', name: 'Loss Aversion', sev: 'high', decode: 'Framing the decision as losing something rather than gaining — losses hurt 2x more than equivalent gains (Kahneman).', legal: 'Loss-framed marketing may constitute manipulative advertising under consumer protection laws.' },
+            default_bias: { re: /\b(pre-?selected|already (chosen|enrolled|signed up|opted|included)|unless you (opt out|cancel|unsubscribe)|automatically (enrolled|subscribed|renewed|charged|billed)|default (setting|option|plan|package)|standard (package|plan|agreement|terms)|comes with|included (in|with)|you('ve| have) been (enrolled|subscribed|added)|will (auto-?renew|continue unless)|assumed (consent|agreement|acceptance))\b/gi, engine: 'BIAS', name: 'Default Bias', sev: 'medium', decode: 'Pre-selecting choices knowing most people won\'t actively override defaults (Thaler & Sunstein, Nudge).', legal: 'Pre-checked consent boxes and auto-enrollment may violate GDPR, CAN-SPAM, and consumer protection regulations.' },
+            survivorship_bias: { re: /\b(success stor(y|ies)|self-?made|people who made it|look at (him|her|them|this person)|proof (it|this|that) works|case stud(y|ies) show|testimonial|before.?and.?after|transformation|I (did it|made it)|went from.{0,30}to|rags to riches|started from (nothing|zero|the bottom)|if (I|they|she|he) (can|could) do it|results (speak|don't lie)|real (people|results)|changed (my|their|her|his) life|living proof|here's what happened)\b/gi, engine: 'BIAS', name: 'Survivorship Bias', sev: 'medium', decode: 'Showcasing only successes while hiding the 95% who failed. You\'re seeing the lottery winners, not the millions who lost (Dobelli).', legal: 'Selective testimonials without disclosure of typical results violate FTC endorsement guidelines.' },
+            zero_price: { re: /\b(completely free|100% free|absolutely free|totally free|free (gift|bonus|trial|sample|consultation|assessment|audit|call|session|webinar|masterclass|ebook|download|access|preview|demo)|at no (cost|charge|obligation)|no (strings|catch|obligation|commitment)|risk-?free|money-?back guarantee|nothing to lose|what do you have to lose|try (it )?for free|free of charge|complimentary|on the house|no payment (required|needed|necessary))\b/gi, engine: 'PERSUASION', name: 'Zero-Price Effect', sev: 'medium', decode: 'The word "free" triggers irrational demand — we overvalue free things by ~300% vs. even $0.01 (Ariely, Predictably Irrational).', legal: '"Free" offers with hidden conditions may violate advertising standards and consumer protection laws.' },
+            planning_fallacy: { re: /\b(just takes|only takes|won't take long|five minutes|quick (call|chat|meeting|question|favor)|super (easy|simple|quick)|no big deal|barely any (time|effort|work)|piece of cake|walk in the park|straightforward|nothing to it|easy (money|win|fix)|simple (fix|solution|task|thing)|not that (hard|complicated|difficult)|how hard can it be|anyone can|it's not rocket science|basically (nothing|free|easy)|low.?hanging fruit|quick win)\b/gi, engine: 'BIAS', name: 'Planning Fallacy', sev: 'low', decode: 'Minimizing complexity/effort to get your commitment before the true scope reveals itself (Kahneman).', legal: 'Misrepresenting scope of work or time commitment may constitute fraudulent inducement.' },
+            priming: { re: /\b(imagine (if|this|that|yourself|a world|having|being|waking up)|picture this|visualize|think about (what|how|a world)|close your eyes|what (if|would) (it|life|things) (be|look|feel) like|before (I|we) (get|dive|jump|start|begin)|first (consider|think about|imagine|let me)|let me (ask|paint|set the scene)|how would (you|it) feel|wouldn't (it|you|that) be|what would you (do|say|think|give)|have you ever (wished|wanted|dreamed|imagined))\b/gi, engine: 'PERSUASION', name: 'Priming', sev: 'medium', decode: 'Strategically planting ideas before the ask so your mind is already leaning their way (Cialdini, Pre-Suasion).', legal: 'Priming in sales contexts is a recognized persuasion technique that may undermine informed consent.' },
+            ingroup_pressure: { re: /\b(us (vs|versus|against|or) them|real (patriots|Americans|Christians|men|women|people|fans|believers)|true (believer|fan|supporter|patriot)|our (kind|people|tribe|community|movement)|the enemy|outsider|they (don't|do not) (get|understand) (us|it|this)|you're (either|one of us)|with us or (against|not)|traitor|sellout|fake|poser|if you (really|truly) (cared|believed|were one of us)|part of the (family|team|tribe|movement|community)|loyalty|show your (loyalty|commitment|allegiance)|don't betray|stand with)\b/gi, engine: 'POWER', name: 'Ingroup Pressure', sev: 'high', decode: 'Creating tribal identity to enforce conformity — disagree and you\'re an outsider (Cialdini, Pre-Suasion).', legal: 'Ingroup pressure in employment or organizational contexts may constitute coercion or undue influence.' },
+            regret_aversion: { re: /\b(you('ll| will) (wish|kick yourself|wonder|always wonder|look back|hate yourself|regret)|don't (live with|carry) regret|imagine looking back|years from now|when you're (old|older|retired)|on your deathbed|what will you tell|how will you explain|future (you|self) will (thank|hate|judge)|haunted by|live with that|can you live with|sleep at night|forgive yourself|forever wonder)\b/gi, engine: 'EMOTIONAL', name: 'Regret Aversion', sev: 'medium', decode: 'Weaponizing hypothetical future regret to override your present rational analysis (Thaler, Misbehaving).', legal: 'Emotional pressure based on hypothetical regret does not create a valid basis for contractual obligation.' },
+            fairness_exploit: { re: /\b(only fair|fair (price|deal|offer|share|exchange)|that's (not|un)fair|deserve (better|more|this)|owe it to (yourself|your family|your kids)|you (deserve|earned|worked for) (this|it|better)|don't (you|I) deserve|after everything.{0,20}deserve|rip.?off|being cheated|taken advantage|getting (screwed|played|robbed|cheated|ripped)|they're (stealing|robbing|cheating)|justice|injustice|it's only (right|fair|just))\b/gi, engine: 'PERSUASION', name: 'Fairness Exploitation', sev: 'medium', decode: 'Invoking your sense of fairness to justify extracting concessions or compliance (Thaler, Misbehaving).', legal: 'Appeals to fairness do not override contractual obligations or market pricing.' },
+            confirmation_exploit: { re: /\b(as you (already |probably )?(know|suspect|thought|figured|guessed)|I knew you('d| would) (agree|understand|see|get it)|see\?? I (told|knew|said)|proves (my|the|our) point|exactly (what|as|like) (I|we) (said|predicted|warned|expected)|just as (I|we) (thought|suspected|predicted|said|expected)|I hate to say I told you so|called it|what did I (tell|say)|everyone knows (that|this)|obviously|of course|goes without saying|needless to say|it's (obvious|clear|evident|apparent)|undeniable|indisputable|no one (can|would) deny|let's be (real|honest|serious))\b/gi, engine: 'BIAS', name: 'Confirmation Bias', sev: 'low', decode: 'Selectively presenting information that confirms what you already believe to short-circuit critical thinking (Dobelli).', legal: 'Cherry-picked evidence in legal or financial contexts may constitute misrepresentation.' },
+            endowment_effect: { re: /\b(yours (to keep|forever|already|now)|it's (already |now )?yours|don't (give up|let go of|lose|surrender)|you already (have|own)|take it away|lose (what|everything) you('ve| have)|imagine (losing|giving up|not having)|after you('ve| have) (had|experienced|tasted|tried|seen)|hard to go back|can('t| not) go back to|once you (try|taste|experience|have|see|know)|you('ll| will) never want to (go back|give it up|return))\b/gi, engine: 'BIAS', name: 'Endowment Effect', sev: 'medium', decode: 'Making you feel you already own something so losing it feels painful — we value what we "have" 2x more (Kahneman & Thaler).', legal: 'Trial periods designed to trigger the endowment effect may constitute manipulative marketing practices.' },
+            status_quo: { re: /\b(why (change|fix|rock the boat|mess with)|if it (ain't|isn't|is not) broke|it's always been (this way|like this|done this way)|that's (how|the way) (it's always|we've always|things have always)|tradition|the way things are|don't (rock|upset|change|fix) (the boat|things|what works)|tried and (true|tested)|proven (method|approach|system)|we've always (done it|operated)|never (had|been) a problem|standard (practice|procedure|protocol)|normal|this is how we do (things|it) here|established (process|procedure|protocol|practice))\b/gi, engine: 'BIAS', name: 'Status Quo Bias', sev: 'medium', decode: 'Leveraging your natural preference for the familiar to prevent you from considering alternatives (Thaler & Sunstein, Nudge).', legal: 'Status quo arguments in employment contexts may mask discriminatory practices or resistance to legally required changes.' },
+            just_world: { re: /\b(got what (they|he|she|you) deserved|had it coming|brought it on (themselves|himself|herself|yourself)|their (own )?fault|karma|what goes around|reap what you sow|you made your bed|play stupid games|actions have consequences|shouldn't have|if (they|you) had (just|only)|that's what (happens|you get)|blame (yourself|themselves)|victim mentality|stop (complaining|whining|playing victim)|toughen up|life('s| is) (not |un)fair|deal with it|suck it up|man up|grow up)\b/gi, engine: 'LOGIC', name: 'Just-World Fallacy', sev: 'medium', decode: 'Blaming victims for their misfortune to justify doing nothing — the world isn\'t fair, but they need you to believe it is (McRaney).', legal: 'Just-world reasoning in legal proceedings may constitute victim-blaming, which is inadmissible in many jurisdictions.' },
+
+            // === MORE COGNITIVE BIASES (Cialdini Pre-Suasion, Ariely, McRaney) ===
+            halo_effect: { re: /\b(attractive|good-?looking|beautiful|handsome|well-?dressed|charismatic|charming|prestigious|luxury|premium|high-?end|exclusive brand|designer|first impression|looks? (trustworthy|reliable|professional|legit(imate)?)|seems? (nice|genuine|honest|legit)|comes across|vibes? (are|feel)|energy feels|aura)\b/gi, engine: 'BIAS', name: 'Halo Effect', sev: 'low', decode: 'Letting one positive trait (attractiveness, prestige) color your entire judgment of someone (Dobelli, Kahneman).', legal: 'Halo effect exploitation is a documented manipulation technique in sales and confidence schemes.' },
+            decoy_effect: { re: /\b(best value|most popular|recommended|our pick|best seller|compared to|middle (option|tier|plan|package)|standard (plan|tier|option)|premium (plan|tier|option)|basic (plan|tier|option)|why (would|not) you|makes? (more|no|perfect) sense|obvious choice|no-?brainer|why settle|upgrade|for (just|only) \$?\d+ more)\b/gi, engine: 'PERSUASION', name: 'Decoy Effect', sev: 'medium', decode: 'Adding a strategically inferior option to make their preferred choice look better by comparison (Ariely, Predictably Irrational).', legal: 'Decoy pricing strategies, while common, may constitute manipulative commercial practices in some jurisdictions.' },
+            dunning_kruger: { re: /\b(I know (more|better) than|they (don.t|do not) (know|understand|get|realize)|so simple|it.s (obvious|simple|easy|common sense)|any (idiot|fool|child) (could|can|knows)|wake up (sheeple|people)|do your (own )?(research|homework)|I.ve done my (research|homework|due diligence)|educate yourself|think for yourself|use (your|common) (brain|sense|logic)|open your eyes|the truth is (simple|obvious|clear)|how (hard|difficult) (is|can) (it|that) be)\b/gi, engine: 'BIAS', name: 'Dunning-Kruger Exploit', sev: 'low', decode: 'Weaponizing false confidence \u2014 the less someone knows, the more certain they sound (McRaney, You Are Not So Smart).', legal: 'Claims of superior knowledge without credentials may constitute misrepresentation in advisory contexts.' },
+            foot_in_door: { re: /\b(start(ing)? with|just (one|a) (small|tiny|quick|little|simple)|to (start|begin)|first step|baby step|all (I|we) (need|ask|want) is|small (ask|favor|thing|request)|can you just|would you just|tiny favor|one (small|little|quick|simple) (thing|favor|question|task)|while (you.re|you are) (at it|here|doing that)|since (you.re|you are) already|one more (thing|quick)|and also|oh and|might as well also|before you go|actually (one|can you) more)\b/gi, engine: 'PERSUASION', name: 'Foot-in-the-Door', sev: 'low', decode: 'Getting a small yes first, then escalating \u2014 agreeing to small requests makes you 3x more likely to agree to big ones (Cialdini).', legal: 'Graduated commitment techniques in contracts may indicate unfair terms or bait-and-switch tactics.' },
+            bandwagon_fomo: { re: /\b(everyone (else )?(is|has)|the world is|the future is|get (on board|with the program)|adapt or (die|perish|get left)|behind the (times|curve)|the new (normal|standard|way)|revolution|disruption|movement|wave|shift|next (big thing|wave)|early (mover|adopter|bird)|first.?mover|be (part|ahead) of|join the (movement|revolution|wave|future)|this is (where|how) (things are|the world is) (going|heading|moving)|history is being (made|written))\b/gi, engine: 'PERSUASION', name: 'Bandwagon / FOMO', sev: 'medium', decode: 'Leveraging herd mentality \u2014 we evolved to follow the crowd because being an outsider meant death (Cialdini, Pre-Suasion).', legal: 'Bandwagon claims without substantiation may violate advertising standards.' },
+            spotlight_shame: { re: /\b(everyone (is|will be) (watching|looking|judging|laughing)|what will (people|they|others|everyone|your friends|your family|the neighbors) (think|say)|imagine what|how (will|would) (it|that) look|embarrass(ing|ment|ed)?|humiliat(ing|ion|ed)?|laugh(ing)? at (you|us)|public(ly)?|reputation|face|save face|lose face|look (stupid|foolish|weak|bad|pathetic|ridiculous)|people (will|are going to) talk|word gets out|the whole (town|office|school|world|internet) will know|social suicide|cancel(led)?)\b/gi, engine: 'EMOTIONAL', name: 'Spotlight Shame', sev: 'medium', decode: 'Exploiting your fear of social judgment — you massively overestimate how much others notice or care (McRaney, Spotlight Effect).', legal: 'Threats of public humiliation or reputation damage may constitute blackmail or coercion.' },
         };
 
         // ========================
-        // STRUCTURAL INDICATORS &mdash; Catch manipulation STRUCTURES, not just phrases
+        // STRUCTURAL INDICATORS — Catch manipulation STRUCTURES, not just phrases
         // These detect multi-part patterns (setup + payoff) that PATTERNS miss
         // ========================
         const INDICATORS = {
@@ -1957,7 +2081,7 @@
             monitoring: {
                 re: /\b(give me your (phone|password|email|login)|went through your (phone|messages|email|diary|texts)|you've been (acting|being) (suspicious|different|weird|distant)|have nothing to hide|where (were|are) you|who (were|are) you (with|talking|texting)|let me see your (phone|messages))\b/gi,
                 score: 18, name: 'Monitoring/Control', engine: 'POWER', sev: 'high',
-                decode: 'Surveillance disguised as concern &mdash; a hallmark of controlling behavior.',
+                decode: 'Surveillance disguised as concern — a hallmark of controlling behavior.',
                 legal: 'Unauthorized access to devices or accounts may violate computer fraud and privacy laws.'
             },
             universalize: {
@@ -1976,9 +2100,9 @@
                 re: /\b(you (made|forced|drove|pushed) me|if you hadn't|you provoked|you brought this on|it's your (own )?fault|you asked for (it|this)|what did you expect|you (knew|know) what (you were|this was))\b/gi,
                 score: 18, name: 'Victim Blaming', engine: 'EMOTIONAL', sev: 'high',
                 decode: 'Shifting responsibility for their actions onto you.',
-                legal: 'Victim-blaming is legally irrelevant &mdash; abusers are responsible for their own actions.'
+                legal: 'Victim-blaming is legally irrelevant — abusers are responsible for their own actions.'
             },
-            // === EVASIVE INDICATORS &mdash; catch natural-language manipulation ===
+            // === EVASIVE INDICATORS — catch natural-language manipulation ===
             memory_question: {
                 re: /\b(are you sure (you|that's|that|this)|you (sure|certain) (about|that)|remembering (this|that|it) right|mixing up (some |the )?(details|facts|events|things)|misremember|that's not (even close|what happened|how it went|how I remember)|completely different (event|conversation|story)|two different conversations)\b/gi,
                 score: 15, name: 'Memory Questioning', engine: 'EMOTIONAL', sev: 'medium',
@@ -2110,7 +2234,7 @@
         const FRAMEWORKS = {
             cialdini: { title: 'Cialdini\'s 6 Principles', text: 'Robert Cialdini identified 6 principles of persuasion: Scarcity, Authority, Social Proof, Reciprocity, Liking, and Commitment. Marketers and manipulators use these daily.' },
             system: { title: 'System 1 / System 2', text: 'Daniel Kahneman\'s dual-process theory: System 1 is fast, emotional, automatic. System 2 is slow, rational, deliberate. Manipulation targets System 1.' },
-            triad: { title: 'Dark Triad', text: 'Three personality traits linked to manipulation: Machiavellianism (strategic scheming), Narcissism (grandiosity), Psychopathy (callous disregard). This isn\'t a diagnosis &mdash; it\'s a pattern check.' },
+            triad: { title: 'Dark Triad', text: 'Three personality traits linked to manipulation: Machiavellianism (strategic scheming), Narcissism (grandiosity), Psychopathy (callous disregard). This isn\'t a diagnosis — it\'s a pattern check.' },
             laws: { title: '48 Laws of Power', text: 'Robert Greene\'s book on power dynamics. We detect which "laws" the sender appears to be using against you.' },
         };
 
@@ -2119,7 +2243,7 @@
             'Anchoring bias: the first number you hear becomes your reference point for everything after.',
             'The backfire effect: being told you\'re wrong can actually strengthen false beliefs.',
             'Reciprocity works instantly. Give something small, and people feel obligated to give back something big.',
-            'Scarcity (real or fake) activates your amygdala&mdash;the fear center of your brain.',
+            'Scarcity (real or fake) activates your amygdala—the fear center of your brain.',
             'Authority figures don\'t need credentials. Just confidence and a suit.',
             'Social proof (FOMO) overrides logic faster than any logical argument.',
             'Commitment/consistency: once you say "yes" to something small, you\'re more likely to say "yes" to something big.',
@@ -2129,10 +2253,10 @@
 
         const PRESETS = [
             { name: 'Tesla Offer', icon: '&#x26A1;', text: 'Hey, we\'re offering Tesla owners $50K to refer friends. Only 10 spots left in your area and they\'re going FAST. Lock yours in now before this closes. Can\'t hold it after tomorrow.' },
-            { name: 'Crypto Pitch', icon: '&#x20BF;', text: 'Early access closing TONIGHT. This token is moving fast&mdash;early investors 5x\'d in 48 hours. We usually don\'t tell people about this but you\'re different. Wire NOW or miss life-changing wealth. Only 24 hours.' },
-            { name: 'Job Offer', icon: '&#x1F4BC;', text: 'We want you on the team. The role is amazing&mdash;equity, flexibility, and you\'ll be learning from founders who sold their last company for $200M. But we need your decision by Friday. Someone else is interested too.' },
+            { name: 'Crypto Pitch', icon: '&#x20BF;', text: 'Early access closing TONIGHT. This token is moving fast—early investors 5x\'d in 48 hours. We usually don\'t tell people about this but you\'re different. Wire NOW or miss life-changing wealth. Only 24 hours.' },
+            { name: 'Job Offer', icon: '&#x1F4BC;', text: 'We want you on the team. The role is amazing—equity, flexibility, and you\'ll be learning from founders who sold their last company for $200M. But we need your decision by Friday. Someone else is interested too.' },
             { name: 'Relationship', icon: '&#x1F494;', text: 'I\'ve never felt this way before. You\'re the only person who gets me. We\'re meant to be together. I know we just met but I swear our connection is different. Let\'s skip the games and just be us.' },
-            { name: 'MLM Pitch', icon: '&#x1F4CA;', text: 'You\'re perfect for this. Make $10K/month from home with zero experience. Everyone in my network is doing it and making serious money. I\'m only asking because I see potential in you&mdash;most people aren\'t cut out for this.' },
+            { name: 'MLM Pitch', icon: '&#x1F4CA;', text: 'You\'re perfect for this. Make $10K/month from home with zero experience. Everyone in my network is doing it and making serious money. I\'m only asking because I see potential in you—most people aren\'t cut out for this.' },
             { name: 'Influencer DM', icon: '&#x2B50;', text: 'Your content is FIRE. I run a brand and we only work with top creators. I\'m breaking my rules just for you. We usually need 100K followers but I see something special here. DM back in 24 hours to lock in your partnership.' },
             { name: 'Legal Threat', icon: '&#x2696;&#xFE0F;', text: 'You owe us money. If you don\'t wire $5,000 by tomorrow, we\'re filing a lawsuit. We have your IP address and full legal team. This is your final notice before we proceed. Do not ignore this.' },
             { name: 'Fake News', icon: '&#x1F4F0;', text: 'BREAKING: Banks are crashing. Government covered this up. Your account could be frozen. Share this to 10 people or you\'re on your own. They don\'t want you to see this. Act NOW.' },
@@ -2401,7 +2525,7 @@
             });
 
             // ========================
-            // SCORING v2 &mdash; Redesigned for accuracy
+            // SCORING v2 — Redesigned for accuracy
             // Old formula: high=18, med=12, low=5 &#x2192; 1 high pattern = 18pts (rated "low")
             // New formula: high=30, med=20, low=10 &#x2192; 1 high pattern = 30pts (rated "medium")
             // Thresholds: 0-19 = low, 20-44 = medium, 45+ = high
@@ -2643,251 +2767,185 @@
 
         function displayResults(result) {
             const container = document.getElementById('resultsContainer');
-            window.__lastResult = result; // store for share card
+            window.__lastResult = result;
 
-            // Score section &mdash; animated reveal
+            // === AWARENESS QUOTE ===
+            const quote = AWARENESS_QUOTES[Math.floor(Math.random() * AWARENESS_QUOTES.length)];
+
+            // === SCORE SECTION ===
             const scoreSection = document.getElementById('scoreSection');
             const circumference = 2 * Math.PI * 62;
             const finalOffset = circumference - (result.score / 100) * circumference;
+            const scoreColor = result.score >= 60 ? '#ff4757' : result.score >= 30 ? '#ffa502' : '#2ed573';
 
             scoreSection.innerHTML = `
-                <div class="score-container" id="scoreAnimContainer">
+                <div class="score-container" id="scoreContainer">
                     <div class="score-ring-wrapper">
                         <svg class="score-ring" viewBox="0 0 140 140">
                             <defs>
                                 <linearGradient id="scoreGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style="stop-color: var(--accent-purple); stop-opacity: 1" />
-                                    <stop offset="100%" style="stop-color: var(--accent-cyan); stop-opacity: 1" />
+                                    <stop offset="0%" style="stop-color:${result.score >= 60 ? '#ff4757' : result.score >= 30 ? '#ffa502' : '#2ed573'}" />
+                                    <stop offset="100%" style="stop-color:${result.score >= 60 ? '#ff6b7a' : result.score >= 30 ? '#ffb23a' : '#6edd89'}" />
                                 </linearGradient>
                             </defs>
-                            <circle class="score-ring-bg" cx="70" cy="70" r="62"></circle>
-                            <circle class="score-ring-progress" id="scoreRingAnim" cx="70" cy="70" r="62" style="stroke-dasharray: ${circumference}; stroke-dashoffset: ${circumference};"></circle>
+                            <circle class="score-ring-bg" cx="70" cy="70" r="62"/>
+                            <circle class="score-ring-progress" cx="70" cy="70" r="62"
+                                stroke-dasharray="${circumference}"
+                                stroke-dashoffset="${circumference}"
+                                style="stroke: ${scoreColor}; -webkit-background-clip: unset; background-clip: unset;"/>
                         </svg>
                         <div class="score-text">
-                            <div class="score-number animating" id="scoreNumAnim">0</div>
-                            <div class="score-label">Manipulation<br>Score</div>
+                            <div class="score-number" id="scoreNumber">0</div>
+                            <div class="score-label">/ 100</div>
                         </div>
                     </div>
                     <div class="score-info">
-                        <div class="vibe-title">${result.vibe.vibe}</div>
-                        <div class="vibe-text">${result.findings.patterns_found.length} manipulation patterns detected.</div>
-                        <div class="fact-box">&#x1F4A1; ${result.fact}</div>
-                        <button class="share-score-btn" onclick="generateScoreCard()" style="margin-top:1rem;">&#x1F4F8; Share Score Card</button>
+                        <div class="vibe-title" style="color:${scoreColor};">${result.vibe.vibe}</div>
+                        <div class="vibe-text">${result.vibe.tone}</div>
+                        <div class="stats-grid" style="margin-bottom:0.75rem;">
+                            <div class="stat-card"><div class="stat-value">${result.findings.patterns_found.length}</div><div class="stat-label">Tactics</div></div>
+                            <div class="stat-card"><div class="stat-value">${result.findings.high_severity.length}</div><div class="stat-label">High Risk</div></div>
+                            <div class="stat-card"><div class="stat-value">${[...new Set(result.findings.patterns_found.map(f=>f.engine))].length}</div><div class="stat-label">Engines</div></div>
+                        </div>
+                        <button class="share-score-btn" onclick="generateScoreCard()">\u{1F4F8} Share Score Card</button>
                     </div>
+                </div>
+                <div style="margin-top:1.25rem;padding:1rem 1.25rem;background:rgba(167,139,250,0.06);border-left:3px solid var(--accent-purple);border-radius:0 8px 8px 0;font-size:0.9rem;">
+                    <span style="color:var(--fg-primary);font-style:italic;">"${quote.text}"</span>
+                    <span style="color:var(--fg-secondary);font-size:0.8rem;margin-left:0.5rem;">\u2014 ${quote.author}</span>
                 </div>
             `;
 
-            // Animate score ring + number count-up
-            requestAnimationFrame(() => {
-                const ring = document.getElementById('scoreRingAnim');
-                const numEl = document.getElementById('scoreNumAnim');
-                if (ring) ring.style.strokeDashoffset = finalOffset;
-                // Count-up animation
-                let current = 0;
-                const target = result.score;
-                const duration = 1600;
-                const start = performance.now();
-                function countUp(now) {
-                    const elapsed = now - start;
-                    const progress = Math.min(elapsed / duration, 1);
-                    const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
-                    current = Math.round(eased * target);
-                    if (numEl) numEl.textContent = current;
-                    if (progress < 1) requestAnimationFrame(countUp);
-                    else document.getElementById('scoreAnimContainer')?.classList.add('revealed');
+            // Animate score
+            setTimeout(() => {
+                const ring = document.querySelector('.score-ring-progress');
+                if (ring) ring.setAttribute('stroke-dashoffset', finalOffset);
+                const numEl = document.getElementById('scoreNumber');
+                if (numEl) {
+                    numEl.classList.add('animating');
+                    let current = 0;
+                    const step = Math.max(1, Math.ceil(result.score / 40));
+                    const interval = setInterval(() => {
+                        current = Math.min(current + step, result.score);
+                        numEl.textContent = current;
+                        if (current >= result.score) clearInterval(interval);
+                    }, 30);
                 }
-                requestAnimationFrame(countUp);
-            });
+                const sc = document.getElementById('scoreContainer');
+                if (sc) sc.classList.add('revealed');
+            }, 200);
 
-            // Tabs
-            const tabsContainer = document.getElementById('tabs');
-            tabsContainer.innerHTML = `
-                <button class="tab-btn active" onclick="switchTab('xray', this)">
-                    X-Ray
-                    <div class="tab-subtitle">What they really meant</div>
-                </button>
-                <button class="tab-btn" onclick="switchTab('findings', this)">
-                    Findings
-                    <div class="tab-subtitle">Tactics detected</div>
-                </button>
-                <button class="tab-btn" onclick="switchTab('profile', this)">
-                    Playbook
-                    <div class="tab-subtitle">Their strategy decoded</div>
-                </button>
-                <button class="tab-btn" onclick="switchTab('coach', this)">
-                    Coach
-                    <div class="tab-subtitle">Your strategic response</div>
-                </button>
-            `;
+            // === SINGLE FLOW: X-Ray + Tactics + Coach ===
+            // Remove old tabs
+            const tabsEl = document.getElementById('tabs');
+            if (tabsEl) tabsEl.style.display = 'none';
 
-            // X-Ray tab
+            // Build all content in one flow
             const xrayTab = document.getElementById('xrayTab');
-            if (result.xray.length > 0) {
-                xrayTab.innerHTML = `<div class="xray-list">` + result.xray.map(item => `
-                    <div class="xray-item">
-                        <div class="xray-original">
-                            <div class="xray-label">${getMirrorLabels().said}</div>
-                            <div class="xray-text">"${item.original}"</div>
-                        </div>
-                        <div>
-                            <div class="xray-label">${getMirrorLabels().meant}</div>
-                            <div class="xray-decode">${mirrorMode ? generateMirrorDecode(item) : item.decoded}</div>
-                        </div>
-                    </div>
-                `).join('') + `</div>`;
-            } else {
-                xrayTab.innerHTML = '<p style="color: var(--fg-secondary); padding: 2rem;">No clear manipulation patterns in sentence-level analysis.</p>';
-            }
-
-            // Findings tab
             const findingsTab = document.getElementById('findingsTab');
-            if (result.findings.patterns_found.length > 0) {
-                findingsTab.innerHTML = `<div class="findings-grid">` + result.findings.patterns_found.map(f => `
-                    <div class="finding-card">
-                        <div class="finding-header">
-                            <div class="finding-name">${f.name}</div>
-                            <div class="finding-severity severity-${f.severity}">${f.severity}</div>
-                        </div>
-                        <div class="finding-principle tooltip-trigger" onclick="showFrameworkTooltip('${f.principle || f.engine}')">${f.principle || f.engine}</div>
-                        <div class="finding-decode">${f.decode}</div>
-                        <div class="finding-counter">${f.legal}</div>
-                    </div>
-                `).join('') + `</div>`;
-            } else {
-                findingsTab.innerHTML = '<p style="color: var(--fg-secondary); padding: 2rem;">No manipulation patterns detected!</p>';
-            }
-
-            // Playbook tab — engaging breakdown of the manipulator's strategy
             const profileTab = document.getElementById('profileTab');
-            const enginesUsed = {};
-            result.findings.patterns_found.forEach(f => {
-                enginesUsed[f.engine] = (enginesUsed[f.engine] || 0) + 1;
+            const coachTab = document.getElementById('coachTab');
+
+            // Show all sections
+            [xrayTab, findingsTab, coachTab].forEach(el => {
+                if (el) { el.classList.add('active'); el.style.display = 'block'; }
             });
-            const dtScore = result.darkTriad;
+            // Hide profile tab (removed)
+            if (profileTab) { profileTab.classList.remove('active'); profileTab.style.display = 'none'; }
 
-            // Build the "playbook" narrative
-            const playbookMoves = result.findings.patterns_found.slice(0, 5).map((f, i) => {
-                const icons = { high: '\u{1F534}', medium: '\u{1F7E1}', low: '\u{1F7E2}' };
-                return `<div style="display:flex;gap:0.75rem;padding:1rem;background:rgba(167,139,250,0.05);border-radius:8px;border-left:3px solid ${f.severity === 'high' ? '#ff6b7a' : f.severity === 'medium' ? '#ffb23a' : '#6edd89'};">
-                    <div style="font-size:1.5rem;flex-shrink:0;">${icons[f.severity] || '\u26AA'}</div>
-                    <div>
-                        <div style="font-weight:700;color:var(--fg-primary);margin-bottom:0.25rem;">Move ${i+1}: ${f.name}</div>
-                        <div style="color:var(--fg-secondary);font-size:0.9rem;line-height:1.5;">${f.decode}</div>
-                    </div>
-                </div>`;
-            }).join('');
-
-            // Brain target summary
-            const brainTarget = result.kahneman.system1 > result.kahneman.system2
-                ? '\u{1F9E0} Targeting your <strong style="color:#ff6b7a;">gut reaction</strong> — wants you to feel, not think.'
-                : result.kahneman.system2 > 0
-                ? '\u{1F9E0} Targeting your <strong style="color:#ffb23a;">logical brain</strong> — using reason-sounding arguments with hidden hooks.'
-                : '\u{1F9E0} <strong style="color:var(--success);">No obvious brain targeting</strong> — message appears straightforward.';
-
-            // Neuro cocktail
-            const neuroCocktail = result.neuro.length > 0
-                ? `<div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:0.75rem;">${result.neuro.map(n =>
-                    `<span style="padding:0.4rem 0.8rem;background:rgba(0,217,255,0.1);border:1px solid rgba(0,217,255,0.2);border-radius:20px;font-size:0.85rem;color:var(--accent-cyan);">\u{1F9EA} ${n.neuro}: ${n.desc}</span>`
-                ).join('')}</div>`
-                : '<div style="color:var(--fg-secondary);font-size:0.9rem;margin-top:0.5rem;">No neurochemical manipulation detected.</div>';
-
-            // Dark Triad meter
-            const dtTotal = dtScore.machiavellianism + dtScore.narcissism + dtScore.psychopathy;
-            const dtEmoji = dtTotal >= 6 ? '\u{1F608}' : dtTotal >= 3 ? '\u{1F612}' : '\u{1F60C}';
-            const dtLabel = dtTotal >= 6 ? 'High Dark Triad signals' : dtTotal >= 3 ? 'Moderate manipulation personality markers' : 'Low personality red flags';
-
-            profileTab.innerHTML = `
-                <div style="margin-bottom:1.5rem;">
-                    <h3 style="font-family:'Space Grotesk',sans-serif;color:var(--accent-cyan);margin-bottom:0.5rem;">\u{1F3AF} Their Playbook</h3>
-                    <p style="color:var(--fg-secondary);font-size:0.9rem;margin-bottom:1rem;">Here's the step-by-step strategy this message uses on you:</p>
-                    <div style="display:flex;flex-direction:column;gap:0.75rem;">${playbookMoves || '<p style="color:var(--fg-secondary);">No manipulation moves detected.</p>'}</div>
-                </div>
-
-                <div style="padding:1rem;background:rgba(15,15,30,0.5);border-radius:8px;margin-bottom:1.5rem;">
-                    <div style="margin-bottom:0.75rem;line-height:1.6;">${brainTarget}</div>
-                    ${neuroCocktail}
-                </div>
-
-                <div style="padding:1rem;background:rgba(15,15,30,0.5);border-radius:8px;margin-bottom:1.5rem;">
-                    <div style="font-weight:700;color:var(--fg-primary);margin-bottom:0.5rem;">${dtEmoji} Personality Check: ${dtLabel}</div>
-                    <div style="display:flex;gap:1.5rem;flex-wrap:wrap;">
-                        <div style="text-align:center;">
-                            <div style="font-size:1.5rem;font-weight:700;color:${dtScore.machiavellianism > 1 ? '#ff6b7a' : 'var(--fg-secondary)'};">${dtScore.machiavellianism}</div>
-                            <div style="font-size:0.75rem;color:var(--fg-secondary);">Machiavelli</div>
+            // --- X-RAY SECTION ---
+            xrayTab.innerHTML = `
+                <div style="margin-bottom:2.5rem;">
+                    <h3 style="font-family:'Space Grotesk',sans-serif;font-size:1.2rem;font-weight:700;color:var(--accent-cyan);margin-bottom:1.25rem;display:flex;align-items:center;gap:0.5rem;">
+                        \u{1F9EC} X-Ray Decode
+                        <span style="font-size:0.75rem;font-weight:400;color:var(--fg-secondary);font-family:'Inter',sans-serif;">Sentence-by-sentence analysis</span>
+                    </h3>
+                    <div class="xray-list">
+                        ${result.xray.map(item => `
+                        <div class="xray-item">
+                            <div class="xray-original">
+                                <div class="xray-label">They Said</div>
+                                <div class="xray-text">${item.original}</div>
+                            </div>
+                            <div>
+                                <div class="xray-label">What It Means</div>
+                                <div class="xray-decode">${item.decoded || 'No manipulation detected in this sentence.'}</div>
+                            </div>
                         </div>
-                        <div style="text-align:center;">
-                            <div style="font-size:1.5rem;font-weight:700;color:${dtScore.narcissism > 1 ? '#ffb23a' : 'var(--fg-secondary)'};">${dtScore.narcissism}</div>
-                            <div style="font-size:0.75rem;color:var(--fg-secondary);">Narcissism</div>
-                        </div>
-                        <div style="text-align:center;">
-                            <div style="font-size:1.5rem;font-weight:700;color:${dtScore.psychopathy > 1 ? '#ff6b7a' : 'var(--fg-secondary)'};">${dtScore.psychopathy}</div>
-                            <div style="font-size:0.75rem;color:var(--fg-secondary);">Psychopathy</div>
-                        </div>
+                        `).join('')}
                     </div>
                 </div>
-
-                ${result.laws.length > 0 ? `
-                <div style="padding:1rem;background:rgba(167,139,250,0.05);border:1px solid rgba(167,139,250,0.15);border-radius:8px;margin-bottom:1.5rem;">
-                    <div style="font-weight:700;color:var(--accent-purple);margin-bottom:0.5rem;">\u{1F4D6} 48 Laws of Power Detected</div>
-                    ${result.laws.slice(0,3).map(l => `<div style="color:var(--fg-secondary);font-size:0.9rem;padding:0.25rem 0;">\u2022 ${l}</div>`).join('')}
-                </div>` : ''}
-
-                ${result.distortions.length > 0 ? `
-                <div style="padding:1rem;background:rgba(255,165,2,0.05);border:1px solid rgba(255,165,2,0.15);border-radius:8px;margin-bottom:1.5rem;">
-                    <div style="font-weight:700;color:#ffb23a;margin-bottom:0.5rem;">\u{1F4A1} Cognitive Distortions Used</div>
-                    <div style="color:var(--fg-secondary);font-size:0.9rem;">${result.distortions.join(' \u2022 ')}</div>
-                </div>` : ''}
-
-                ${result.legalNotes.length > 0 ? `
-                <div style="padding:1rem;background:rgba(255,71,87,0.1);border:1px solid rgba(255,71,87,0.2);border-radius:8px;">
-                    <strong style="color:var(--danger);">\u2696\uFE0F Legal Advisory</strong>
-                    ${result.legalNotes.map(n => `<p style="color:var(--fg-secondary);margin-top:0.5rem;font-size:0.85rem;">\u2022 ${n}</p>`).join('')}
-                </div>` : ''}
             `;
 
-            // Coach tab &mdash; mirror-mode aware
-            const coachTab = document.getElementById('coachTab');
+            // --- TACTICS SECTION ---
+            findingsTab.innerHTML = `
+                <div style="margin-bottom:2.5rem;">
+                    <h3 style="font-family:'Space Grotesk',sans-serif;font-size:1.2rem;font-weight:700;color:var(--accent-purple);margin-bottom:1.25rem;display:flex;align-items:center;gap:0.5rem;">
+                        \u{1F3AF} Tactics Detected
+                        <span style="font-size:0.75rem;font-weight:400;color:var(--fg-secondary);font-family:'Inter',sans-serif;">${result.findings.patterns_found.length} patterns identified</span>
+                    </h3>
+                    <div class="findings-grid">
+                        ${result.findings.patterns_found.map(f => `
+                        <div class="finding-card">
+                            <div class="finding-header">
+                                <div class="finding-name">${f.name}</div>
+                                <span class="finding-severity severity-${f.severity} severity-badge">${f.severity}</span>
+                            </div>
+                            ${f.principle ? `<span class="finding-principle tooltip-trigger" onclick="showFrameworkTooltip('${f.principle}')">${f.principle}</span>` : `<span class="finding-principle">${f.engine}</span>`}
+                            <div class="finding-decode">${f.decode}</div>
+                            <div class="finding-counter">\u{1F6E1}\uFE0F ${f.legal || 'Document this interaction for your records.'}</div>
+                        </div>
+                        `).join('')}
+                    </div>
+                    ${result.legalNotes.length > 0 ? `
+                    <div style="padding:1rem;background:rgba(255,71,87,0.08);border:1px solid rgba(255,71,87,0.15);border-radius:8px;margin-bottom:1rem;">
+                        <strong style="color:var(--danger);">\u2696\uFE0F Legal Advisory</strong>
+                        ${result.legalNotes.map(n => '<p style="color:var(--fg-secondary);margin-top:0.5rem;font-size:0.85rem;">\u2022 ' + n + '</p>').join('')}
+                    </div>` : ''}
+                </div>
+            `;
+
+            // --- COACH SECTION ---
             if (mirrorMode && result.findings.patterns_found.length > 0) {
                 const inputText = document.getElementById('messageInput').value;
                 const rephrased = buildRephrase(inputText, result);
                 const rephrasedResult = analyze(rephrased);
                 coachTab.innerHTML = `
-                <div class="coach-grid">
-                    <div class="coach-item" style="grid-column: 1 / -1;">
-                        <h4 style="color:#ff6b7a;">&#129694; What You Wrote (Score: ${result.score})</h4>
-                        <p style="line-height:1.8;color:var(--fg-secondary);">${inputText.replace(/</g,'&lt;')}</p>
+                <div style="margin-bottom:2.5rem;">
+                    <h3 style="font-family:'Space Grotesk',sans-serif;font-size:1.2rem;font-weight:700;color:#ff6b7a;margin-bottom:1.25rem;display:flex;align-items:center;gap:0.5rem;">
+                        \u{1FA9E} Mirror Mode \u2014 Your Message Decoded
+                    </h3>
+                    <div class="coach-grid">
+                        <div class="coach-item" style="grid-column: 1 / -1;">
+                            <h4 style="color:#ff6b7a;">\u{1F6A9} What You Wrote (Score: ${result.score})</h4>
+                            <p style="line-height:1.8;color:var(--fg-secondary);">${inputText.replace(/</g,'&lt;')}</p>
+                        </div>
+                        <div class="coach-item" style="grid-column: 1 / -1; border: 1px solid var(--success); background: rgba(46,213,115,0.05);">
+                            <h4 style="color:var(--success);">\u2728 Cleaner Version (Score: ${rephrasedResult.score})</h4>
+                            <p style="font-style:italic;line-height:1.8;margin-bottom:1rem;" id="mirrorRephrasedText">${rephrased.replace(/</g,'&lt;')}</p>
+                            <button class="btn btn-secondary btn-small" onclick="navigator.clipboard.writeText(document.getElementById('mirrorRephrasedText').textContent);showToast('Copied!');">Copy Clean Version</button>
+                        </div>
+                        ${result.findings.patterns_found.map(f => '<div class="coach-item"><h4 style="color:#ffb23a;">\u26A0\uFE0F ' + f.name + '</h4><p style="color:var(--fg-secondary);">This may come across as ' + f.name.toLowerCase() + '. Consider rephrasing to be more direct.</p></div>').join('')}
                     </div>
-                    <div class="coach-item" style="grid-column: 1 / -1; border: 1px solid var(--success); background: rgba(46,213,115,0.05);">
-                        <h4 style="color:var(--success);">&#10024; Cleaner Version (Score: ${rephrasedResult.score})</h4>
-                        <p style="font-style:italic;line-height:1.8;margin-bottom:1rem;" id="mirrorRephrasedText">${rephrased.replace(/</g,'&lt;')}</p>
-                        <button class="btn btn-secondary btn-small" onclick="navigator.clipboard.writeText(document.getElementById('mirrorRephrasedText').textContent);showToast('Copied!');">Copy Clean Version</button>
-                    </div>
-                    ${result.findings.patterns_found.map(f => '<div class="coach-item"><h4 style="color:#ffb23a;">&#9888;&#65039; ' + f.name + '</h4><p style="color:var(--fg-secondary);">This may come across as ' + f.name.toLowerCase() + '. Consider rephrasing to be more direct.</p></div>').join('')}
                 </div>`;
             } else {
-            const suggestedReply = generateSuggestedReply(result.context, result.findings);
-            coachTab.innerHTML = `
-                <div class="coach-grid">
-                    ${result.responses.map((r, i) => `
-                    <div class="coach-item">
-                        <h4>Move ${i + 1}</h4>
-                        <p>${r}</p>
+                const suggestedReply = generateSuggestedReply(result.context, result.findings);
+                coachTab.innerHTML = `
+                <div style="margin-bottom:2.5rem;">
+                    <h3 style="font-family:'Space Grotesk',sans-serif;font-size:1.2rem;font-weight:700;color:var(--accent-teal);margin-bottom:1.25rem;display:flex;align-items:center;gap:0.5rem;">
+                        \u{1F9E0} Strategic Coach
+                        <span style="font-size:0.75rem;font-weight:400;color:var(--fg-secondary);font-family:'Inter',sans-serif;">How to respond</span>
+                    </h3>
+                    <div class="coach-grid">
+                        ${result.responses.map((r, i) => '<div class="coach-item"><h4>Move ' + (i + 1) + '</h4><p>' + r + '</p></div>').join('')}
+                        <div class="coach-item" style="grid-column: 1 / -1; border: 1px solid var(--accent-cyan); background: rgba(0,217,255,0.05);">
+                            <h4 style="color:var(--accent-cyan);">\u{1F4AC} Suggested Response</h4>
+                            <p style="font-style:italic;line-height:1.8;margin-bottom:1rem;">"${suggestedReply}"</p>
+                            <button class="btn btn-secondary btn-small" onclick="navigator.clipboard.writeText('${suggestedReply.replace(chr(39), chr(92)+chr(39))}');showToast('Response copied!');">Copy Response</button>
+                        </div>
                     </div>
-                    `).join('')}
-                    <div class="coach-item" style="grid-column: 1 / -1; border: 1px solid var(--accent-cyan); background: rgba(0,217,255,0.05);">
-                        <h4 style="color:var(--accent-cyan);">&#x1F4AC; Suggested Response</h4>
-                        <p style="font-style:italic;line-height:1.8;margin-bottom:1rem;">"${suggestedReply}"</p>
-                        <button class="btn btn-secondary btn-small" onclick="navigator.clipboard.writeText('${suggestedReply.replace(/'/g, "\\'")}');showToast('Response copied!');">Copy Response</button>
-                    </div>
-                    ${result.legalNotes.length > 0 ? `
-                    <div class="coach-item" style="grid-column: 1 / -1;">
-                        <h4>Legal Context</h4>
-                        <p>${result.legalNotes.map(n => '&#x2022; ' + n).join('<br>')}</p>
-                    </div>
-                    ` : ''}
-                </div>
-            `;
-            } // end mirror mode else
+                </div>`;
+            }
 
             // Share section
             document.getElementById('shareSection').innerHTML = `
@@ -2900,21 +2958,20 @@
                 </div>
             `;
 
+            // Reset all tab content visibility for single-flow
+            document.querySelectorAll('.tab-content').forEach(tc => {
+                if (tc.id !== 'profileTab') { tc.classList.add('active'); tc.style.display = 'block'; }
+                else { tc.classList.remove('active'); tc.style.display = 'none'; }
+            });
             container.classList.add('show');
             window.currentAnalysis = result;
+
+            // Play scan sound
+            playScanSound();
         }
 
         function switchTab(tab, btnEl) {
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-
-            // Use passed element reference instead of fragile event.target
-            if (btnEl) {
-                const btn = btnEl.closest ? btnEl.closest('.tab-btn') : btnEl;
-                if (btn) btn.classList.add('active');
-            }
-            const tabEl = document.getElementById(tab + 'Tab');
-            if (tabEl) tabEl.classList.add('active');
+            // Legacy stub - tabs removed in v10
         }
 
         function showFrameworkTooltip(framework) {
@@ -3189,7 +3246,7 @@
             const replies = {
                 sales: hasHighSeverity
                     ? "Thanks for reaching out. I appreciate the offer, but I need to review this with my advisor before making any commitments. I'll get back to you within a week."
-                    : "Interesting &mdash; can you send me the full details in writing? I like to review things carefully before committing.",
+                    : "Interesting — can you send me the full details in writing? I like to review things carefully before committing.",
                 dating: patternNames.includes('love_bomb')
                     ? "I appreciate the kind words, but I prefer to take things slow and get to know someone naturally. Let's keep chatting and see where it goes."
                     : "Thanks for the message! I'm open to chatting more, but I like to take my time getting to know people. No rush.",
@@ -3328,7 +3385,7 @@
         function startOnboardingTour() {
             if (localStorage.getItem('tourCompleted')) return;
             const steps = [
-                { target: '.context-selector', title: 'Set the Context', text: 'Tell us who sent the message &mdash; it makes the analysis and response suggestions way more accurate.', pos: 'bottom' },
+                { target: '.context-selector', title: 'Set the Context', text: 'Tell us who sent the message — it makes the analysis and response suggestions way more accurate.', pos: 'bottom' },
                 { target: '#messageInput', title: 'Paste Any Message', text: 'Drop in a text, email, DM, or WhatsApp forward. Or use Upload Screenshot for images.', pos: 'bottom' },
                 { target: '.presets-grid', title: 'Or Try a Preset', text: 'Not sure what to test? Tap any preset to see the engine in action with real-world examples.', pos: 'bottom' },
                 { target: '#levelBadge', title: 'Level Up!', text: 'Every scan earns XP. Keep scanning to unlock Aware, Decoder, and Master Filter levels.', pos: 'left' },
@@ -3566,7 +3623,7 @@
                     hint.textContent = '';
                     return;
                 }
-                // Quick pattern scan (lightweight &mdash; not full analysis)
+                // Quick pattern scan (lightweight — not full analysis)
                 let quickHits = 0;
                 const quickPatterns = [
                     /\b(urgent|immediately|act now|limited time|expires|deadline|hurry|last chance|before (it's|it is) gone|closing soon|(don't|do not) wait)\b/i,
@@ -3587,8 +3644,8 @@
                 bar.style.width = pct + '%';
                 bar.style.background = pct > 60 ? '#ff6b7a' : pct > 30 ? '#ffb23a' : 'var(--success)';
                 if (quickHits === 0) hint.textContent = text.length > 50 ? 'No obvious flags yet - hit Analyze for deep scan' : 'Type more for preview...';
-                else if (quickHits <= 2) hint.textContent = `${quickHits} potential flag${quickHits > 1 ? 's' : ''} &mdash; hit Analyze for details`;
-                else hint.textContent = `&#x26A0;&#xFE0F; ${quickHits} red flags detected &mdash; analyze this message`;
+                else if (quickHits <= 2) hint.textContent = `${quickHits} potential flag${quickHits > 1 ? 's' : ''} — hit Analyze for details`;
+                else hint.textContent = `&#x26A0;&#xFE0F; ${quickHits} red flags detected — analyze this message`;
                 hint.style.color = pct > 60 ? '#ff6b7a' : pct > 30 ? '#ffb23a' : 'var(--fg-secondary)';
             }, 300);
         }
