@@ -1700,8 +1700,8 @@
         const PATTERNS = {
             // === PERSUASION ENGINE (Cialdini) ===
             scarcity: { re: /\b(only \d|limited|last chance|running out|few (spots|seats|left)|deadline (today|tomorrow|approaching|expires|is (today|tomorrow|soon|close|near))|expires|window closes|price (doubles|increases)|act now|before (it's|it is) gone|(won't|will not) last|exclusive access|\d+ hours|moving fast|spots? left|oversubscribed|not for everyone|lot of interest|deposit today|while (supplies|stocks?) last|selling out|almost gone|hurry|(don't|do not) miss|closing soon|offer ends|first come|seats? filling|one.?time|disappear|vanishing|dwindling|scarce)\b/gi, principle: 'Scarcity', engine: 'PERSUASION', sev: 'high', decode: 'Creating artificial urgency to bypass your rational decision-making.', legal: 'Artificial scarcity in commercial contexts may constitute deceptive trade practices under consumer protection laws.' },
-            authority: { re: /\b(CEO|expert|doctor|scientist|research shows|studies (show|prove|indicate)|according to|professor|certified|award-winning|years of experience|personally asked|top VCs?|industry leader|Harvard|Stanford|MIT|PhD|M\.?D\.?|board certified|published|peer.?reviewed|leading authority|world.?renowned|bestselling author|as seen on|featured in|endorsed by|backed by science)\b/gi, principle: 'Authority', engine: 'PERSUASION', sev: 'medium', decode: 'Leveraging authority figures or credentials to make claims seem unquestionable.', legal: 'False claims of authority or credentials may violate advertising standards and professional licensing laws.' },
-            social_proof: { re: /\b(everyone (is|says|knows|agrees|thinks|does|else)|others would|millions|most people|trending|viral|inner circle|handpick(ed)?|join (\d+\+?|thousands)|best-selling|top-rated|others are|people love|would never treat|six figures|from home|most (brides|people|clients|users) choose|no one will ever|waking up|people are saying|the whole team|everybody knows|all my friends|nobody does that|who does that|normal people|any reasonable person|the consensus|widely accepted|growing movement|wave of support|bandwagon|herd)\b/gi, principle: 'Social Proof', engine: 'PERSUASION', sev: 'medium', decode: 'Using the behavior of others to pressure you into conformity.', legal: 'Fabricated testimonials or social proof claims can violate FTC endorsement guidelines.' },
+            authority: { re: /\b(CEO|expert|doctors? (say|recommend|hate|suggest|advise|agree|confirm|warn|don't want)|scientist|research shows|studies (show|prove|indicate)|according to|professor|certified|award-winning|years of experience|personally asked|top VCs?|industry leader|Harvard|Stanford|MIT|PhD|M\.?D\.?|board certified|published|peer.?reviewed|leading authority|world.?renowned|bestselling author|as seen on|featured in|endorsed by|backed by science)\b/gi, principle: 'Authority', engine: 'PERSUASION', sev: 'medium', decode: 'Leveraging authority figures or credentials to make claims seem unquestionable.', legal: 'False claims of authority or credentials may violate advertising standards and professional licensing laws.' },
+            social_proof: { re: /\b(everyone (is|says|knows|agrees|thinks|does|else)|others would|millions|most people|trending|viral|inner circle|handpick(ed)?|join (\d+\+?|thousands)|best-selling|top-rated|others are|people love|would never treat|most (brides|people|clients|users) choose|no one will ever|waking up|people are saying|the whole team|everybody knows|all my friends|nobody does that|who does that|normal people|any reasonable person|the consensus|widely accepted|growing movement|wave of support|bandwagon|herd)\b/gi, principle: 'Social Proof', engine: 'PERSUASION', sev: 'medium', decode: 'Using the behavior of others to pressure you into conformity.', legal: 'Fabricated testimonials or social proof claims can violate FTC endorsement guidelines.' },
             reciprocity: { re: /\b(I('ve| have) (done|given|sacrificed|gone out of my way)|after everything|I gave up|my sacrifices|I did this for you|you owe|repay|as a favor|making an exception|holding it for you|I went out of my way|I put in effort|I (spent|invested) (time|money|energy)|the least you (can|could)|I dropped everything|I rearranged|I made time|I prioritized you|I chose you over|remember when I)\b/gi, principle: 'Reciprocity', engine: 'PERSUASION', sev: 'high', decode: 'Creating a sense of obligation by highlighting past favors - real or exaggerated.', legal: 'Emotional debts have no legal standing. Past voluntary actions don\'t create enforceable obligations.' },
             liking: { re: /\b(I('ve| have) never felt|(you're|you are) (different|special|the only|perfect|amazing|interesting|incredible|brilliant|talented|gifted|so smart|so good)|we (click|connect)|I feel like (I('ve| have) known you|we already know)|really impressed|(you'd|you would) be perfect|yours stood out|love what you|see potential in you|believe in your|(don't|do not) usually (message|reach out|do this)|something about (you|your)|spoke to me|FIRE|amazing energy|stood out|(you're|you are) not like|I admire|you inspire|I respect you so much|I look up to you|(I'm|I am) in awe|what a (great|wonderful|fantastic|brilliant) (person|mind|job|idea|point)|you always know|(you're|you are) the best|no one (else )?(does it|can|could)|you have (such|a) (gift|talent|way|knack)|I learn so much from you|(you're|you are) literally|obsessed with your|love your (energy|vibe|work|mind|style)|you have been (chosen|selected|picked|handpicked)|we see something (special|unique|different) in you|not everyone gets (this|an?))\b/gi, principle: 'Liking', engine: 'PERSUASION', sev: 'medium', decode: 'Flattery and manufactured connection to lower your defenses.', legal: 'While flattery itself isn\'t illegal, it\'s a common precursor to fraud and undue influence.' },
             commitment: { re: /\b(you (agreed|promised|committed)|you said you (would|will|could)|sign(ing)? (by|below|now|today)|(don't|do not) go back on|you already|consistent with|maintain your|standard agreement|you (irrevocably )?agree|you gave your word|you shook on it|we had a deal|remember you said|but you told me|you (can't|cannot) just change|flip.?flop|make up your mind|stick with|follow through|honor your|keep your promise|not fully committed|(are|aren't|are not) you committed|if you (are not|aren't) (all in|fully|100%)|believes in the (vision|mission|project)|commit (fully|completely|100)|no half measures|all in or (all out|nothing))\b/gi, principle: 'Commitment/Consistency', engine: 'PERSUASION', sev: 'medium', decode: 'Locking you into escalating commitments by referencing prior agreement.', legal: 'Contracts signed under pressure or without adequate review time may be voidable.' },
@@ -1710,10 +1710,10 @@
             guilt: { re: /\b(disappointed|after everything|sacrificed|how you repay|meant something|ungrateful|selfish|(don't|do not) care|ashamed|your fault|blame yourself|if you (really )?loved me|gave up everything|I guess (I'm|I|my)|not (good|important) enough|you (don't|do not) (appreciate|value|care|respect)|throwing it away|slap in the face|how could you|I (can't|cannot) believe you|(you're|you are) breaking my|tearing this family|all I've done|is this how you|so much for|thanks for nothing|way to show|nice to know where I stand|clearly I (don't|do not) matter|I thought (we|I|you)|you used to|what happened to us|you've changed|not the person I|(do not|don't) (abandon|leave|give up on) me|only (thing|person) keeping me (going|alive|sane)|what (will|would) I do without you|(do not|don't) know what I (will|would) do|I (cannot|can't) (go on|do this|live|survive|make it) without you|I only (raised|supported|helped|cared for) you|everyone is making sacrifices|making sacrifices|we all (sacrifice|have to|need to)|have a better life|everything I (did|do) (was|is) for you)\b/gi, engine: 'EMOTIONAL', name: 'Guilt-Tripping', sev: 'high', decode: 'Weaponizing guilt to control your behavior and override your boundaries.', legal: 'Systematic guilt-tripping in workplace contexts may constitute emotional harassment.' },
             fear: { re: /\b(URGENT|(you'd|you would) be crazy|miss this|before (this|it) gets|taken down|too late|never again|last warning|consequences|fired|lose|threat|risk everything|permanently deleted|account.{0,20}compromised|regret|(don't|do not) want to regret|going FAST|at risk|be frozen|on your own|do not ignore|final notice|(we're|we are) filing|lawsuit|proceed|irreversible|permanent|point of no return|damage is done|window is closing|clock is ticking|(you'll|you will) wish you|(can't|cannot) undo|no turning back|there will be consequences|I (wouldn't|would not) want to be|watch what happens|be careful|tread lightly|think very carefully|you (don't|do not) want to|(wouldn't|would not) want anything to|for your own (good|sake|safety))\b/gi, engine: 'EMOTIONAL', name: 'Fear Induction', sev: 'high', decode: 'Triggering your fight-or-flight response to prevent rational evaluation.', legal: 'Threats, even veiled ones, may constitute coercion or duress, potentially voiding agreements.' },
             love_bomb: { re: /\b(never felt this way|only person who understands|soulmate|destiny|meant to be|(can't|cannot) live without|obsessed with you|you complete me|love at first|skip your friend|(you're|you are) different|just met|known you forever|planned something special|already know each other|have a feeling about|never opened up|skip the (small talk|games)|connection is different|I have a feeling|(you're|you are) my person|twin flame|universe brought us|stars aligned|I've been looking for someone like you|where have you been all my|you make me want to be|I've never (told anyone|shared this|opened up|been this|felt so)|I trust you more than|with you (it's|it is) different|I feel (safe|complete|whole|alive) with you|you understand me like no one|I could talk to you forever|(cannot|can not) stop thinking about you|you are the only (one|person)|I need you in my life|no one (has ever|ever) made me feel|when you know you know)\b/gi, engine: 'EMOTIONAL', name: 'Love Bombing', sev: 'high', decode: 'Overwhelming affection designed to create emotional dependency quickly.', legal: 'Love bombing is a recognized precursor to domestic abuse and coercive control.' },
-            gaslighting: { re: /\b(I never said|(you're|you are) (imagining|overreacting|too sensitive|being dramatic|crazy|paranoid|delusional|insecure|jealous|reading into)|that (didn't|did not) happen|(I'm|I am) not angry|just (disappointed|saying|asking)|(we're|we are) a family here|keep bringing up|I thought you were|not looking for anything serious|you knew what this was|(that's|that is) not what I meant|I (didn't|did not) say that|(you're|you are) (making|blowing) (this|it|things) (up|out of proportion)|calm down|relax|chill|it was just a joke|(can't|cannot) you take a joke|(you're|you are) being (irrational|emotional|hysterical|ridiculous)|stop making everything about you|nobody else has a problem|you always do this|there you go again|why do you always|(you're|you are) twisting my words|(that's|that is) not how it went|you must have misunderstood|I think you need help|you have issues|maybe you should see someone|everyone thinks you're|people are worried about you|sacrifices (need|have) to be made|team player|not a (good|right) (fit|culture fit)|this is how (we do things|it works) here|get with the program|adapt or)\b/gi, engine: 'EMOTIONAL', name: 'Gaslighting', sev: 'high', decode: 'Redefining reality to make you doubt your own perception and judgment.', legal: 'Gaslighting in relationships is recognized as psychological abuse in many jurisdictions.' },
+            gaslighting: { re: /\b(I never said|that never happened|(you're|you are) (imagining|overreacting|too sensitive|being dramatic|crazy|paranoid|delusional|insecure|jealous|reading into|confused|mistaken|misremembering)|that (didn't|did not) happen|(I'm|I am) not angry|just (disappointed|saying|asking)|(we're|we are) a family here|keep bringing up|I thought you were|not looking for anything serious|you knew what this was|(that's|that is) not what I meant|I (didn't|did not) say that|(you're|you are) (making|blowing) (this|it|things) (up|out of proportion)|calm down|relax|chill|it was just a joke|(can't|cannot) you take a joke|(you're|you are) being (irrational|emotional|hysterical|ridiculous)|stop making everything about you|nobody else has a problem|you always do this|there you go again|why do you always|(you're|you are) twisting my words|(that's|that is) not how it went|you must have misunderstood|you always misremember|I think you need help|you have issues|maybe you should see someone|everyone thinks you're|people are worried about you|sacrifices (need|have) to be made|team player|not a (good|right) (fit|culture fit)|this is how (we do things|it works) here|get with the program|adapt or)\b/gi, engine: 'EMOTIONAL', name: 'Gaslighting', sev: 'high', decode: 'Redefining reality to make you doubt your own perception and judgment.', legal: 'Gaslighting in relationships is recognized as psychological abuse in many jurisdictions.' },
             future_faking: { re: /\b(equity will be worth|millionaire|5x|10x|guaranteed returns|by tomorrow|going to revolutionize|change your life|changing (their|your) lives?|retirement|financial freedom|I('ve| have) changed|get in early|your chance to|soon (I'll|we'll|things will|it will|everything will)|once (I|we|this) (make it|succeed|get there|get rich|get promoted)|when (I|we) (get|have|make|finish).{0,20}(everything|promise|you'll see|trust me)|next (month|year|time) (I promise|things will|it will|we will|everything will|you'll see)|I promise (I'll|things will|it will)|(it's|it is) going to be (different|better|amazing)|just wait (until|and see|till)|trust the process|big things coming|the best is yet to come|(I'm|I am) working on (myself|it|things|us)|give me (time|a chance|one more)|things are about to|on the verge of|almost there|so close to|your life is about to (change|transform)|life.?changing|this will change everything)\b/gi, engine: 'EMOTIONAL', name: 'Future Faking', sev: 'high', decode: 'Painting an unrealistic future to exploit present decision-making.', legal: 'Promises of guaranteed returns violate securities regulations in most jurisdictions.' },
             passive_aggression: { re: /\b((don't|do not) worry about me|I('ll| will) (just |be )?(sit here|fine|manage|stay home|clean up|wait|go to bed|deal with it)|I guess|used to being|(I'm|I am) used to|no one (ever|cares)|go enjoy yourself|have fun without me|I'll survive|not trying hard enough|of course (that's|that is) fine|ruining the vibe|I thought you were chill|kind of ruining|if (you're|you are) gonna keep|(you're|you are) (being|making this|making it) (weird|awkward|difficult)|whatever you say|if (that's|that is) what you think|sure (fine|whatever|okay)|good for you|must be nice|wish I could|some of us|not all of us|at least (I|some people)|(I'm|I am) just saying|no offense but|just an observation|I mean you do you|clearly you've made up your mind|I would(n't| not) (do|say|have done) (that|it|this|things) (that way|like that|but)|lol okay|interesting choice|bold move|(you're|you are) so (brave|confident) for|(that's|that is) one way to|oh interesting|I see|noted|okay then|well then|suit yourself|your (choice|call|loss|problem)|do whatever you want|you always do (anyway|what you want)|but sure|what do I know|(I am|I'm) just your (mother|father|parent|friend)|no (no )?it is fine|no (it is|it's) (fine|okay|cool|whatever)|totally fine|yeah (totally|completely|absolutely) fine|I (did not|didn't) (want|need|care) to go (anyway|anyhow)|it is not like|have fun with your (friends|family|buddies)|you go (and )?have fun|not like (we|I|it) (had|have|matter)|or anything)\b/gi, engine: 'EMOTIONAL', name: 'Passive Aggression', sev: 'medium', decode: 'Expressing hostility through veiled victimhood - designed to make you feel guilty without a direct accusation.', legal: 'Chronic passive-aggressive behavior in workplaces may contribute to a hostile work environment claim.' },
-            emotional_overwhelm: { re: /\b(could save|will change|transform|you need to see|must (read|watch|know)|cannot ignore|life-changing|mind-blowing|earth-shattering|once in a lifetime|never been done|revolutionary|groundbreaking|game.?changer|paradigm shift|world.?changing|history.?making|unprecedented|unbelievable|jaw.?dropping)\b/gi, engine: 'EMOTIONAL', name: 'Emotional Overwhelm', sev: 'medium', decode: 'Escalating the emotional stakes to prevent you from pausing and evaluating calmly.', legal: 'Exaggerated claims of impact may constitute deceptive advertising in commercial contexts.' },
+            emotional_overwhelm: { re: /\b(could save|will change|transform|you need to see|must (read|watch|know)|cannot ignore|life-changing|mind-blowing|earth-shattering|once.in.a.lifetime|never been done|revolutionary|groundbreaking|game.?changer|paradigm shift|world.?changing|history.?making|unprecedented|unbelievable|jaw.?dropping)\b/gi, engine: 'EMOTIONAL', name: 'Emotional Overwhelm', sev: 'medium', decode: 'Escalating the emotional stakes to prevent you from pausing and evaluating calmly.', legal: 'Exaggerated claims of impact may constitute deceptive advertising in commercial contexts.' },
             silent_treatment: { re: /\b(I (need|want) (space|time|some time)|I (can't|cannot) (talk|do this) right now|leaving you on read|not (ready|going) to (talk|discuss|engage)|when (I'm|I am) ready|(don't|do not) (contact|call|text|message) me|I'll (reach out|come to you|let you know) when|talk to the hand|(don't|do not) bother|blocked|muted)\b/gi, engine: 'EMOTIONAL', name: 'Silent Treatment', sev: 'medium', decode: 'Withdrawing communication as punishment to create anxiety and force compliance.', legal: 'Persistent stonewalling in professional settings may constitute constructive dismissal.' },
             triangulation: { re: /\b(my (ex|friend|coworker|mom|dad|therapist) (says|thinks|agrees|told me)|everyone (else )?(agrees|thinks|says)|other people (have|are|would)|someone else (wants|is interested|would love)|I've been (talking|venting) to|people are (saying|talking|worried)|you should hear what|compared to (my ex|other|them|her|him)|at least (she|he|they) (would|does|did|can)|unlike you|wish you were more like)\b/gi, engine: 'EMOTIONAL', name: 'Triangulation', sev: 'high', decode: 'Bringing third parties into the dynamic to create jealousy, insecurity, or pressure.', legal: 'Triangulation in workplace settings can create a hostile environment and may be considered bullying.' },
 
@@ -1725,7 +1725,7 @@
             deadline: { re: /\b(by EOD|sign (by|now|today)|expires? (today|tomorrow|soon)|hours? left|\d+ hours|clock is ticking|today only|act (fast|now)|(don't|do not) wait|limited time|hold this spot|end of (week|day)|by (Friday|Monday|tomorrow|tonight)|immediately|right now|before (this|it) closes|(can't|cannot) hold|after tomorrow|closing (tonight|soon|today)|lock.{0,10}(in|now)|going fast|decision by|need.{0,10}(answer|decision)|DM back in|in the next \d+|respond (by|within|before)|answer me (now|today)|I need to know (now|today|by)|waiting for your (answer|decision|response)|how long do I have to wait|finalizing (today|tomorrow|this week|by)|offer tonight|put in your offer|decision (tonight|today|by tomorrow))\b/gi, engine: 'POWER', name: 'Deadline Pressure', sev: 'high', decode: 'Artificial time pressure to prevent you from seeking advice or alternatives.', legal: 'Pressured signing timelines may indicate unfair contract terms. Most jurisdictions allow cooling-off periods.' },
             info_asymmetry: { re: /\b((can't|cannot) (name|tell|reveal|disclose)|NDA|confidential|secret|between us|insider|private information|(don't|do not) tell|off the record|I (shouldn't|should not) be telling you|keep this between|you (didn't|did not) hear this from me|I could get in trouble for|this is privileged|not supposed to share|(I'm|I am) risking|(don't|do not) share this|eyes only|classified)\b/gi, engine: 'POWER', name: 'Information Asymmetry', sev: 'medium', decode: 'Controlling what information you have access to in order to maintain power.', legal: 'Withholding material information in contractual negotiations may constitute fraud or misrepresentation.' },
             implicit_threat: { re: /\b(maybe (this|the) role|(isn't|is not) the right (fit|place|role|environment)|not the right (fit|place|role|environment) for you|maybe this (isn't|is not) (the right|for you|where you belong)|others would kill for|(people|candidates|applicants) who would (kill|love|die)|kill for your (spot|position|role|job|seat)|easily replaced|plenty of (people|candidates|others)|I could|think carefully|(wouldn't|would not) want to|reconsider|(can't|cannot) keep turning|someone (else|on the waitlist)|give your (spot|allocation)|before reviews|something to think about|just something to|(I'd|I would) hate (to|for) (see|have to|you to miss|you to lose|this to)|it would be a shame|I hope (it|this) doesn't|you might want to (reconsider|rethink|think about)|(I'm|I am) sure you (wouldn't|(don't|do not)) want|let's hope it doesn't come to|(I'd|I would) hate for (this|things) to|between you and (me|HR|management)|this could go (either|both) way|your (call|choice|decision|funeral)|others in your (position|place|shoes) would|most people would (jump|love|kill)|just want to make sure (you are|you're) (the right|a good)|make sure (this is|you are) (the right|a good) fit)\b/gi, engine: 'POWER', name: 'Implicit Threat', sev: 'high', decode: 'Veiled threats disguised as observations or suggestions.', legal: 'Implicit threats in employment contexts may constitute constructive dismissal or workplace intimidation.' },
-            boundary_violation: { re: /\b(skip your|cancel your|drop everything|I (need|want) you to|you should|why (can't|cannot) you|just do it|is that too much|do this for me|I need you (here|now|today)|(you're|you are) (coming|doing it)|not (taking|accepting) no|this (isn't|is not) (optional|negotiable|a request)|I (don't|do not) care (what you|about your|if you)|your plans can wait|this is more important|rearrange your|make it work|figure it out|no excuses|I expect you to|you will|(you're|you are) going to|(only|the one) person I (trust|can count on|rely on|depend on)|figure it out (somehow|yourself)|make it happen|just (handle|deal with|take care of) it|I (would not|wouldn't) ask if (it|this) (was not|wasn't|were not|weren't) important|last minute but|I know (it is|it's|this is) (a lot|short notice|last minute))\b/gi, engine: 'POWER', name: 'Boundary Violation', sev: 'medium', decode: 'Asking you to override your own plans, needs, or limits for their benefit.', legal: 'Persistent boundary violations in professional settings may establish a pattern of harassment.' },
+            boundary_violation: { re: /\b(skip your|cancel your|drop everything|I (need|want) you to|you should|why (can't|cannot) you|just do it|is that too much|do this for me|I need you (here|now|today)|(you're|you are) (coming|doing it)|not (taking|accepting) no|this (isn't|is not) (optional|negotiable|a request)|I (don't|do not) care (what you|about your|if you)|your plans can wait|this is more important|rearrange your|make it work|figure it out|no excuses|I expect you to|you will|(you're|you are) going to|(only|the one) person I (trust|can count on|rely on|depend on)|figure it out (somehow|yourself)|make it happen|just (handle|deal with|take care of) it|I (would not|wouldn't) ask if (it|this) (was not|wasn't|were not|weren't) important|last minute but|I know (it is|it's|this is) (a lot|short notice|last minute))\b/gi, engine: 'POWER', name: 'Boundary Violation', sev: 'high', decode: 'Asking you to override your own plans, needs, or limits for their benefit.', legal: 'Persistent boundary violations in professional settings may establish a pattern of harassment.' },
             perpetual_rights: { re: /\b(perpetual|irrevocable|worldwide rights|all (work product|intellectual property|IP)|unlimited license|in perpetuity|exclusive(ly)? (rights|to us|license)|transfer of ownership|belongs exclusively|all industries|covering all)\b/gi, engine: 'POWER', name: 'Rights Grab', sev: 'high', decode: 'Claiming permanent, unrestricted ownership of your work.', legal: 'Perpetual, irrevocable rights clauses are considered onerous. Negotiate limited, purpose-specific licenses.' },
             non_compete: { re: /\b(non-?compete|non-?solicitation|restraint of trade|cannot work|restricted from|24 months? post|any related field)\b/gi, engine: 'POWER', name: 'Non-Compete Overreach', sev: 'high', decode: 'Broad non-compete clauses designed to limit your future career options.', legal: 'Many jurisdictions have banned or severely restricted non-compete agreements, especially for employees.' },
             forced_arbitration: { re: /\b(binding arbitration|waive (your )?right|class action waiver|our jurisdiction|sole discretion|dispute resolution|arbitrat)\b/gi, engine: 'POWER', name: 'Forced Arbitration', sev: 'high', decode: 'Removing your right to take legal action in court.', legal: 'Forced arbitration clauses may be unconscionable depending on jurisdiction. You may still have statutory rights.' },
@@ -1739,8 +1739,117 @@
             curiosity_gap: { re: /\b(you (won't|will not) believe|the truth about|what (no one|nobody) tells|what happens next|the real reason|one weird trick|discover|shocking truth|doctors hate|number \d+ will|(you'll|you will) never guess|I (can't|cannot) believe|wait (till|until) you (see|hear)|what I found out|the secret to|what they're hiding|the thing about|here's (the thing|what no one)|most people (don't|do not) (know|realize))\b/gi, engine: 'BIAS', name: 'Curiosity Gap', sev: 'medium', decode: 'Creating an information gap that feels urgent to close.', legal: 'Content that uses curiosity gaps to drive clicks to misleading content may violate consumer protection standards.' },
             whataboutism: { re: /\b(what about (when you|the time you|your)|you (also|did the same|do it too)|at least I (don't|didn't|never)|(that's|that is) rich coming from|look who's talking|pot calling|(you're|you are) one to talk|and what about you|nice try but|let's talk about (you|your)|before you judge|clean your own|check yourself|glass house)\b/gi, engine: 'LOGIC', name: 'Whataboutism', sev: 'medium', decode: 'Redirecting blame or criticism back at you instead of addressing the actual issue.', legal: 'Deflection in legal proceedings can indicate consciousness of guilt or bad faith negotiation.' },
             toxic_positivity: { re: /\b(everything happens for a reason|the universe (is|has)|raise your (vibration|frequency|energy)|stay positive|positive vibes only|good vibes only|negative energy|blocking your (blessings|abundance|manifestation)|manifest|law of attraction|just (be|stay|think) (positive|grateful|happy)|choose (gratitude|happiness|joy)|surround myself with (people who|positive)|match my (frequency|energy|vibration)|your (energy|vibe|attitude) is (blocking|negative|toxic|bringing)|if you (just|would) (believe|trust the process|let go)|meant to be|not meant to be|the universe has a plan|everything (will|is going to) work out|toxic (people|energy|vibes))\b/gi, engine: 'EMOTIONAL', name: 'Toxic Positivity', sev: 'medium', decode: 'Dismissing legitimate emotions by enforcing relentless optimism. Invalidates real pain while positioning the speaker as spiritually superior.', legal: 'Toxic positivity in therapeutic or workplace settings can constitute emotional invalidation and professional negligence.' },
-            weaponized_therapy: { re: /\b(I (need to |am going to )?(set|establish|enforce|hold) (a |my )?boundar(y|ies)|triggers? my (trauma|anxiety|response)|holding space|pour from an empty cup|(protect|protecting) my (peace|energy|space)|work on your (emotional|anger|self)|emotional (regulation|intelligence|labor)|you (need|should) (therapy|help|a therapist|to work on)|safe space|my (truth|lived experience)|doing the (work|inner work)|I (validate|hear|see) (you|your feelings) but|toxic (for me|to my|energy))\b/gi, engine: 'EMOTIONAL', name: 'Weaponized Therapy Speak', sev: 'medium', decode: 'Using therapeutic language as a weapon to shut down legitimate concerns while maintaining moral high ground. Real boundaries do not come with ultimatums.', legal: 'Using psychological terminology to deflect legitimate grievances in professional settings may indicate bad faith communication.' },
+            weaponized_therapy: { re: /\b(I (need to |am going to )?(set|establish|enforce|hold) (a |my )?boundar(y|ies)|triggers? (my|your|their) (trauma|anxiety|response|responsibility)|your triggers|holding space|pour from an empty cup|(protect|protecting) (my|your) (peace|energy|space)|work on your (emotional|anger|self)|emotional (regulation|intelligence|labor)|you (need|should) (therapy|help|a therapist|to work on)|safe space|my (truth|lived experience)|doing the (work|inner work)|I (validate|hear|see) (you|your feelings) but|toxic (for me|to my|energy)|not my (responsibility|problem|job) to (manage|fix|heal|deal with) your)\b/gi, engine: 'EMOTIONAL', name: 'Weaponized Therapy Speak', sev: 'medium', decode: 'Using therapeutic language as a weapon to shut down legitimate concerns while maintaining moral high ground. Real boundaries do not come with ultimatums.', legal: 'Using psychological terminology to deflect legitimate grievances in professional settings may indicate bad faith communication.' },
             moving_goalposts: { re: /\b((that's|that is) not (what I meant|enough|the point)|I never said (that|exactly)|the real issue is|but what about|yes but|okay but (still|what about)|even (so|still|if)|that doesn't (matter|count|change)|beside the point|missing the point|(you're|you are) (missing|avoiding)|not the (point|issue|problem)|changing the|shifting|new (condition|requirement|standard))\b/gi, engine: 'LOGIC', name: 'Moving Goalposts', sev: 'medium', decode: 'Constantly shifting criteria so you can never meet expectations.', legal: 'Changing contract terms after agreement may constitute breach of contract or bad faith dealing.' },
+        };
+
+        // ========================
+        // STRUCTURAL INDICATORS — Catch manipulation STRUCTURES, not just phrases
+        // These detect multi-part patterns (setup + payoff) that PATTERNS miss
+        // ========================
+        const INDICATORS = {
+            guilt_leverage: {
+                re: /\b(I (did|gave|sacrificed|stayed|drove|helped|supported|spent|put up with|went through|sat by|was there|waited|held|nursed|took care|looked after|stood by|picked you up|covered for|lied for|fought for)|after (all|everything) (I|we)|for (you|this family|this relationship|us)|I('ve| have) (done|given|sacrificed|spent|been through))\b[\s\S]{0,80}\b(and (now|yet)|but you|can't even|won't even|don't even|this is (the thanks|how you)|you (can't|won't|don't)|is this how|so this is)\b/gi,
+                score: 22, name: 'Guilt Leverage', engine: 'EMOTIONAL', sev: 'high',
+                decode: 'Setting up past sacrifices as ammunition to demand compliance now.',
+                legal: 'Past voluntary actions do not create enforceable obligations.'
+            },
+            conditional_love: {
+                re: /\b(if you (really|truly|actually) (loved|cared|wanted|appreciated|respected)|if you were a (real|true|good) (friend|partner|son|daughter|wife|husband|man|woman)|a real \w+ would)\b/gi,
+                score: 18, name: 'Conditional Love', engine: 'EMOTIONAL', sev: 'high',
+                decode: 'Making love or approval contingent on compliance.',
+                legal: 'Conditional affection is a recognized pattern in coercive control.'
+            },
+            passive_martyr: {
+                re: /\b(it's (fine|okay|whatever)|no worries|don't worry about (me|it)|I'll (manage|survive|be (fine|okay|alright))|I'm used to (it|this|being))\b[\s\S]{0,60}\b(alone|by myself|without (you|anyone|help)|I guess|I suppose|as (usual|always)|like always|on my own|nobody|no one)\b/gi,
+                score: 18, name: 'Passive Martyrdom', engine: 'EMOTIONAL', sev: 'high',
+                decode: 'Performing self-sacrifice to induce guilt without making a direct request.',
+                legal: 'Passive-aggressive martyrdom in workplaces may constitute emotional manipulation.'
+            },
+            diminishment: {
+                re: /\b(without me|nothing without|you'd be nothing|who (else|would) (put up with|deal with|want|bother with|tolerate)|good luck (finding|getting|with)|you'll (never find|regret|realize|see)|no one (else|will ever)|who else would)\b/gi,
+                score: 22, name: 'Diminishment', engine: 'EMOTIONAL', sev: 'high',
+                decode: 'Destroying self-worth to create dependency.',
+                legal: 'Systematic diminishment is a hallmark of coercive control in domestic abuse law.'
+            },
+            comparative: {
+                re: /\b(your (brother|sister|mother|father|friend|friends|ex|cousin|coworker)|everyone else|other (people|couples|families)|normal people|my ex|unlike you)\b[\s\S]{0,50}\b(never|always|would|wouldn't|at least|manages to|makes time|doesn't|doesn't complain)\b/gi,
+                score: 15, name: 'Unfair Comparison', engine: 'EMOTIONAL', sev: 'medium',
+                decode: 'Using others as a weapon to make you feel inadequate.',
+                legal: 'Persistent unfavorable comparisons in workplaces may constitute bullying.'
+            },
+            isolation: {
+                re: /\b(you don't need (them|friends|anyone|anybody)|I'm (all|the only (one|person)) you need|they (don't|do not) (care|understand|know)|only I (understand|know|care|get)|no one (understands|knows|cares about) you like|I'm the (only|best) (thing|person))\b/gi,
+                score: 22, name: 'Isolation Tactics', engine: 'POWER', sev: 'high',
+                decode: 'Cutting off your support network to increase dependency.',
+                legal: 'Isolation is a primary indicator of coercive control, criminalized in many jurisdictions.'
+            },
+            concern_wrap: {
+                re: /\b(I (say|do|mention) this because|because I (love|care about) you|for your own (good|benefit|sake)|I'm (only|just) (trying to|looking out)|this (is|comes from) (a place of|out of) (love|concern)|I (wouldn't|won't) say this if I didn't care)\b/gi,
+                score: 12, name: 'Concern-Wrapped Criticism', engine: 'EMOTIONAL', sev: 'medium',
+                decode: 'Wrapping criticism in fake concern to make it unchallengeable.',
+                legal: 'Concern-wrapping is a recognized manipulation technique in psychological literature.'
+            },
+            emotional_debt: {
+                re: /\b(I've given (you|this)|all I('m| am) asking|one (small|little|simple) thing|is that (really|too much)|the (least|one thing) you (could|can)|all I (want|need|ask))\b/gi,
+                score: 15, name: 'Emotional Debt', engine: 'EMOTIONAL', sev: 'medium',
+                decode: 'Framing a request as a tiny repayment for massive (often inflated) sacrifices.',
+                legal: 'Emotional debts have no legal standing.'
+            },
+            catastrophize: {
+                re: /\b(you'll regret|rest of your life|things (will|are going to) get (bad|worse|ugly)|I'm warning you|mark my words|you'll (see|learn|realize)|come crawling back|one day you'll|going to (be sorry|regret this|wish))\b/gi,
+                score: 15, name: 'Catastrophizing Threats', engine: 'EMOTIONAL', sev: 'medium',
+                decode: 'Predicting doom to paralyze you with fear of future consequences.',
+                legal: 'Veiled threats of future consequences may constitute intimidation.'
+            },
+            prosperity: {
+                re: /\b(changed my life|from (my phone|anywhere)|passive income|financial freedom|my (mentor|coach)|this (system|method|blueprint|program)|making \$?\d+[kK]?\+? (a|per) (month|week|day|year)|six figures|results already|from the sidelines|be your own boss|work from (home|anywhere) .{0,30}(income|money|earn|make|passive|freedom|boss)|quit (my|your) (job|9.?to.?5)|my exact (method|system|blueprint|strategy)|DM me|link in bio)\b/gi,
+                score: 15, name: 'Prosperity Pattern', engine: 'BIAS', sev: 'medium',
+                decode: 'MLM/hustle culture language designed to sell a dream, not a product.',
+                legal: 'Income claims without substantiation violate FTC guidelines.'
+            },
+            weaponized_vuln: {
+                re: /\b(I (don't|do not) know what I'll do|can't (live|go on|survive|function) without|if you leave|please don't (go|leave|do this)|what (will|would) I do|I'll (die|break|fall apart)|I (need|can't live without) you)\b/gi,
+                score: 18, name: 'Weaponized Vulnerability', engine: 'EMOTIONAL', sev: 'high',
+                decode: 'Using emotional fragility as a hostage situation.',
+                legal: 'Threatening self-harm to control a partner is recognized as coercive control.'
+            },
+            stonewalling: {
+                re: /\b(you (should|already) know|figure it out (yourself)?|I shouldn't have to (tell|explain|say)|not going to dignify|talk to me when you're (ready|reasonable|calm)|you know what you did|if you (don't|can't) (see|figure|understand))\b/gi,
+                score: 15, name: 'Stonewalling', engine: 'EMOTIONAL', sev: 'medium',
+                decode: 'Refusing to communicate as a punishment and power move.',
+                legal: 'Stonewalling in professional mediation may indicate bad faith.'
+            },
+            sarcastic_obs: {
+                re: /\b(I (just )?find it (funny|interesting|curious|telling|ironic)|it's (funny|interesting|telling) (how|that)|isn't it (funny|interesting|strange)|must be nice|oh,? (you|so you))\b/gi,
+                score: 12, name: 'Sarcastic Deflection', engine: 'EMOTIONAL', sev: 'medium',
+                decode: 'Using sarcasm to attack without being directly accountable.',
+                legal: 'Persistent sarcastic undermining may contribute to hostile environment claims.'
+            },
+            monitoring: {
+                re: /\b(give me your (phone|password|email|login)|went through your (phone|messages|email|diary|texts)|you've been (acting|being) (suspicious|different|weird|distant)|have nothing to hide|where (were|are) you|who (were|are) you (with|talking|texting)|let me see your (phone|messages))\b/gi,
+                score: 18, name: 'Monitoring/Control', engine: 'POWER', sev: 'high',
+                decode: 'Surveillance disguised as concern — a hallmark of controlling behavior.',
+                legal: 'Unauthorized access to devices or accounts may violate computer fraud and privacy laws.'
+            },
+            universalize: {
+                re: /\b(everyone (thinks|knows|says|agrees|can see)|nobody (else|thinks|has|would)|no one (else|agrees|has|would|complains)|you're the only (one|person) (who|that)|am I the only one|anyone (else|can see))\b/gi,
+                score: 15, name: 'False Universalizing', engine: 'LOGIC', sev: 'medium',
+                decode: 'Claiming everyone agrees with them to make you feel like the outlier.',
+                legal: 'False consensus claims may constitute manipulation in negotiation contexts.'
+            },
+            abandonment_threat: {
+                re: /\b(leave like everyone else|people always leave|go ahead (and|,) leave|see if I care|you'll be (sorry|alone)|don't come (crawling|running) back|this is your (last|final) chance|done with (you|this|us)|walking away|through with you)\b/gi,
+                score: 18, name: 'Abandonment Threat', engine: 'EMOTIONAL', sev: 'high',
+                decode: 'Threatening to leave as a control mechanism.',
+                legal: 'Abandonment threats in domestic settings are indicators of coercive control.'
+            },
+            victim_blame: {
+                re: /\b(you (made|forced|drove|pushed) me|if you hadn't|you provoked|you brought this on|it's your (own )?fault|you asked for (it|this)|what did you expect|you (knew|know) what (you were|this was))\b/gi,
+                score: 18, name: 'Victim Blaming', engine: 'EMOTIONAL', sev: 'high',
+                decode: 'Shifting responsibility for their actions onto you.',
+                legal: 'Victim-blaming is legally irrelevant — abusers are responsible for their own actions.'
+            },
         };
 
         const FRAMEWORKS = {
@@ -1903,10 +2012,10 @@
 
         function generateVibe(findings, score) {
             const vibes = [
-                { threshold: 80, vibe: 'Extremely manipulative. Multiple high-severity tactics layered.', tone: 'danger' },
-                { threshold: 60, vibe: 'Highly manipulative. Clear intent to influence or pressure.', tone: 'danger' },
-                { threshold: 40, vibe: 'Moderately manipulative. Some persuasion tactics present.', tone: 'warning' },
-                { threshold: 20, vibe: 'Slightly manipulative. Minor influence attempts.', tone: 'warning' },
+                { threshold: 75, vibe: 'Extremely manipulative. Multiple high-severity tactics layered.', tone: 'danger' },
+                { threshold: 33, vibe: 'Highly manipulative. Clear intent to influence or pressure.', tone: 'danger' },
+                { threshold: 20, vibe: 'Moderately manipulative. Some persuasion tactics present.', tone: 'warning' },
+                { threshold: 10, vibe: 'Slightly manipulative. Minor influence attempts.', tone: 'warning' },
                 { threshold: 0, vibe: 'Authentic and straightforward. No red flags detected.', tone: 'success' },
             ];
 
@@ -1989,7 +2098,7 @@
                 low_severity: [],
             };
 
-            // Detect patterns
+            // Detect PATTERNS (phrase-level)
             Object.entries(PATTERNS).forEach(([key, pattern]) => {
                 const matches = text.match(pattern.re);
                 if (matches && matches.length > 0) {
@@ -2002,6 +2111,7 @@
                         decode: pattern.decode,
                         legal: pattern.legal,
                         severity: pattern.sev,
+                        source: 'pattern',
                     });
 
                     if (pattern.sev === 'high') findings.high_severity.push(key);
@@ -2010,28 +2120,65 @@
                 }
             });
 
-            // Calculate score (match v8 scoring: per-pattern + combo bonuses)
+            // Detect INDICATORS (structural multi-part patterns)
+            Object.entries(INDICATORS).forEach(([key, ind]) => {
+                const matches = text.match(ind.re);
+                if (matches && matches.length > 0) {
+                    // Avoid duplicate if a PATTERN already caught the same engine+name
+                    const isDup = findings.patterns_found.some(p => p.key === key || (p.name === ind.name && p.engine === ind.engine));
+                    if (!isDup) {
+                        findings.patterns_found.push({
+                            key: 'ind_' + key,
+                            name: ind.name,
+                            principle: ind.name,
+                            engine: ind.engine,
+                            count: matches.length,
+                            decode: ind.decode,
+                            legal: ind.legal,
+                            severity: ind.sev,
+                            source: 'indicator',
+                        });
+                        if (ind.sev === 'high') findings.high_severity.push('ind_' + key);
+                        else if (ind.sev === 'medium') findings.medium_severity.push('ind_' + key);
+                        else findings.low_severity.push('ind_' + key);
+                    }
+                }
+            });
+
+            // ========================
+            // SCORING v2 — Redesigned for accuracy
+            // Old formula: high=18, med=12, low=5 → 1 high pattern = 18pts (rated "low")
+            // New formula: high=30, med=20, low=10 → 1 high pattern = 30pts (rated "medium")
+            // Thresholds: 0-19 = low, 20-44 = medium, 45+ = high
+            // ========================
             let score = 0;
             findings.patterns_found.forEach(p => {
-                const sevScore = p.severity === 'high' ? 18 : p.severity === 'medium' ? 12 : 5;
+                // Base score per severity
+                const sevScore = p.severity === 'high' ? 30 : p.severity === 'medium' ? 20 : 10;
                 score += sevScore;
-                // Density bonus: multiple matches within same pattern = more manipulative
-                if (p.count >= 5) score += 14;
+                // Density bonus: repeated matches within one pattern
+                if (p.count >= 5) score += 15;
                 else if (p.count >= 4) score += 10;
                 else if (p.count >= 3) score += 6;
                 else if (p.count >= 2) score += 3;
+                // Indicator bonus: structural patterns are higher-signal
+                if (p.source === 'indicator') score += 5;
             });
             // Combo bonuses
             const engines = new Set(findings.patterns_found.map(f => f.engine));
-            if (engines.size >= 3) score += 12;
-            else if (engines.size >= 2) score += 6;
-            if (findings.high_severity.length >= 3) score += 10;
-            if (findings.patterns_found.length >= 5) score += 8;
+            if (engines.size >= 3) score += 15;
+            else if (engines.size >= 2) score += 8;
+            if (findings.high_severity.length >= 3) score += 12;
+            else if (findings.high_severity.length >= 2) score += 6;
+            if (findings.patterns_found.length >= 5) score += 10;
+            else if (findings.patterns_found.length >= 3) score += 5;
             score = Math.min(score, 100);
-            // Context-aware scoring adjustment
-            const ctxSel = typeof document !== 'undefined' ? document.getElementById('contextSelect') : null;
-            const userCtx = ctxSel ? ctxSel.value : 'auto';
-            if (findings.patterns_found.length === 0) { let h=0; for(let i=0;i<text.length;i++){h=((h<<5)-h)+text.charCodeAt(i);h|=0;} score = 5 + (Math.abs(h) % 10); }
+            // If nothing detected at all, assign a low baseline
+            if (findings.patterns_found.length === 0) {
+                let h = 0;
+                for (let i = 0; i < text.length; i++) { h = ((h << 5) - h) + text.charCodeAt(i); h |= 0; }
+                score = 3 + (Math.abs(h) % 8);
+            }
 
             // Add analysis layers
             const context = detectContext(text);
