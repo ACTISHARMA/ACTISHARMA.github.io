@@ -3084,5 +3084,18 @@
             setTimeout(() => { if (banner.parentNode) banner.remove(); }, 15000);
         }
     </script>
+    <script>
+    // Embed mode: hide header/footer when loaded in iframe
+    (function() {
+        if (new URLSearchParams(window.location.search).has('embed')) {
+            var h = document.querySelector('header');
+            var f = document.querySelector('footer');
+            if (h) h.style.display = 'none';
+            if (f) f.style.display = 'none';
+            document.body.style.paddingTop = '0';
+            document.body.style.background = 'transparent';
+        }
+    })();
+    </script>
 </body>
 </html>
