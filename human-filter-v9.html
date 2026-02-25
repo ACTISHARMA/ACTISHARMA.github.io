@@ -1850,6 +1850,109 @@
                 decode: 'Shifting responsibility for their actions onto you.',
                 legal: 'Victim-blaming is legally irrelevant — abusers are responsible for their own actions.'
             },
+            // === EVASIVE INDICATORS — catch natural-language manipulation ===
+            memory_question: {
+                re: /\b(are you sure (you|that's|that|this)|you (sure|certain) (about|that)|remembering (this|that|it) right|mixing up (some |the )?(details|facts|events|things)|misremember|that's not (even close|what happened|how it went|how I remember)|completely different (event|conversation|story)|two different conversations)\b/gi,
+                score: 15, name: 'Memory Questioning', engine: 'EMOTIONAL', sev: 'medium',
+                decode: 'Subtly questioning your memory to make you doubt your own experience.',
+                legal: 'Persistent reality-denial is a recognized form of psychological abuse.'
+            },
+            emotion_dismiss: {
+                re: /\b(worked up|take a breather|calm yourself|getting (upset|heated|emotional|worked up) (about|over)|worth (getting upset|being angry|stressing|worrying) (about|over)|step back (and|from)|deep breath|not (worth|that) (serious|big|important)|blown out of proportion|not that deep|not a big deal|is it really (that|worth|this))\b/gi,
+                score: 12, name: 'Emotion Dismissal', engine: 'EMOTIONAL', sev: 'medium',
+                decode: 'Minimizing your emotions to avoid addressing the real issue.',
+                legal: 'Systematic emotional invalidation may constitute psychological abuse.'
+            },
+            soft_surveillance: {
+                re: /\b(check in with me (before|when)|noticed you were (online|up|out|away|active)|where (did you go|have you been|were you)|saw you were (online|up|active|posting)|who (did you go|were you out|are you texting|was that)|just (want|need) to know where|just (checking|making sure) (you're|you are) (safe|okay|alright))\b/gi,
+                score: 15, name: 'Soft Surveillance', engine: 'POWER', sev: 'medium',
+                decode: 'Monitoring your movements and activity under the guise of care.',
+                legal: 'Covert monitoring and tracking behaviors are hallmarks of coercive control.'
+            },
+            appearance_control: {
+                re: /\b(are you (sure|really going to|going to) wear (that|this)|that (outfit|dress|shirt|look) is.{0,20}(bold|a lot|a choice|interesting|different)|you'd look (better|nicer|more|great) (in|with|if)|just want you to (look|feel) (your best|confident|good)|maybe (change|wear something|try something))\b/gi,
+                score: 12, name: 'Appearance Control', engine: 'POWER', sev: 'medium',
+                decode: 'Controlling what you wear or how you look, disguised as care.',
+                legal: 'Controlling a partner\'s appearance is a recognized form of coercive control.'
+            },
+            implicit_punishment: {
+                re: /\b(I'll (probably |just )?be (asleep|gone|out|busy|unavailable)|don't (expect|wait up for|bother)|I (might|may) not be (here|around|available|home|awake)|if you (go|do that|choose|leave|decide).{0,30}(I'll|I might|don't expect|I won't))\b/gi,
+                score: 15, name: 'Implicit Punishment', engine: 'EMOTIONAL', sev: 'medium',
+                decode: 'Signaling withdrawal or punishment for your choices without making a direct threat.',
+                legal: 'Withdrawal as punishment is a recognized pattern of emotional abuse.'
+            },
+            rapid_intimacy: {
+                re: /\b(never connected.{0,20}(like this|this (way|level|deep))|scares me how (well|much|deep)|can't (explain|describe) (this|it|what|the) (connection|feeling|bond)|feel like I've known you|already (feel|know|sense) (like|that)|everything (makes sense|fell into place|clicked)|pieces (fell|falling) into place|rare (connection|thing|bond)|I don't (usually|normally|ever) (feel|open up|share|connect) (like this|this way|this much))\b/gi,
+                score: 15, name: 'Manufactured Intimacy', engine: 'EMOTIONAL', sev: 'medium',
+                decode: 'Creating a false sense of deep connection to accelerate emotional dependency.',
+                legal: 'Love bombing and rapid intimacy are recognized precursors to emotional abuse.'
+            },
+            contrast_guilt: {
+                re: /\b(I (cleared|cancelled|rearranged|gave up|moved|changed|adjusted|freed up).{0,30}(but|and you|yet you|only for)|had time for (that|them|your friends|everything else) but not|worth it\. I (ended up|had to|was left)|interesting (that|how) you (had|found|have) time.{0,20}but not)\b/gi,
+                score: 15, name: 'Contrast Guilt', engine: 'EMOTIONAL', sev: 'medium',
+                decode: 'Highlighting what they did vs. what you didn\'t to induce guilt.',
+                legal: 'Emotional debts created through voluntary sacrifice have no legal standing.'
+            },
+            veiled_threat: {
+                re: /\b(I (remember|don't forget|keep track of) everything|just so you know|let's just say (they|it|people)|I (do )?(know|have) people (who|that)|people who('ve| have) (crossed|wronged|underestimated) me|this (could|might|may) (affect|impact|change)|would be (unfortunate|a shame|sad|too bad)|I'd hate for (one|this|a single).{0,30}(overshadow|ruin|affect|impact))\b/gi,
+                score: 15, name: 'Veiled Threat', engine: 'POWER', sev: 'medium',
+                decode: 'Making threats through implication rather than direct statement.',
+                legal: 'Implied threats can constitute intimidation or coercion under criminal law.'
+            },
+            despair_signal: {
+                re: /\b(haven't been (sleeping|eating|functioning|getting out|leaving)|stare at the (ceiling|wall|floor)|sat in the dark|what's (even )?the (point|reason|purpose)|breaking point|everything (feels|is) (empty|pointless|meaningless|dark)|since you (left|went|moved|said)|don't (see|know) (the point|why|what|how to))\b/gi,
+                score: 15, name: 'Despair Signaling', engine: 'EMOTIONAL', sev: 'medium',
+                decode: 'Describing emotional collapse to make you feel responsible for their suffering.',
+                legal: 'Using self-harm signals to control a partner is recognized as coercive control.'
+            },
+            mindset_blame: {
+                re: /\b(shift(ed)? your (mindset|perspective|attitude|thinking|energy)|stopped being a victim|accept the lesson|choose (to be|happiness|positivity|joy|your attitude)|your (mindset|attitude|energy|thinking) is (holding|keeping|what's)|if you (just|would just|simply) (change|shift|adjust|fix) (your|the way you)|it's (all )?about (your |how you )?perspective|victim (mentality|mindset|thinking))\b/gi,
+                score: 12, name: 'Mindset Blame', engine: 'EMOTIONAL', sev: 'medium',
+                decode: 'Blaming your circumstances on your mindset rather than addressing real problems.',
+                legal: 'Attributing systemic issues to individual mindset may constitute victim-blaming.'
+            },
+            shutdown_dismiss: {
+                re: /\b(this (decision|matter|issue) has (already |been )?been (made|decided|settled)|above (both of us|your pay grade|your level)|not (your|up for|open to|available for) (call|decision|discussion|debate)|I appreciate your (feedback|input|thoughts) but|that ship has sailed|it is what it is|nothing (you|we) can do (about|now)|water under the bridge)\b/gi,
+                score: 12, name: 'Input Shutdown', engine: 'POWER', sev: 'medium',
+                decode: 'Dismissing your input or concerns by claiming the matter is already resolved.',
+                legal: 'Silencing dissent in workplaces may indicate suppression of protected activity.'
+            },
+            bad_influence: {
+                re: /\b((your |those |these )?(friends|people|crowd|group|circle) (are|is) (a bad|not a good|negative|toxic|a terrible)|you're different (when|around|after|with)|bad influence (on you|for you)|they (bring|drag) (out|you down)|changed (since|after|when) you (started|began)|I (liked|preferred|miss) (you|the old you|who you were) (before|when|better))\b/gi,
+                score: 15, name: 'Social Interference', engine: 'POWER', sev: 'medium',
+                decode: 'Attacking your relationships to isolate you and increase dependency.',
+                legal: 'Social isolation tactics are a primary indicator of coercive control.'
+            },
+            competence_attack: {
+                re: /\b(do you even know how to|I('m| am) (starting|beginning) to wonder if you (can|know|even)|sometimes I feel like I'm the only (adult|one|person)|the only (adult|grown.?up|responsible one|one who)|have to (do|handle|manage|take care of) everything (myself|around here|by myself))\b/gi,
+                score: 12, name: 'Competence Attack', engine: 'EMOTIONAL', sev: 'medium',
+                decode: 'Undermining your confidence by questioning your basic competence.',
+                legal: 'Persistent competence attacks may constitute emotional abuse or workplace bullying.'
+            },
+            disappointed_withdrawal: {
+                re: /\b(guess I was wrong about you|clearly I was (wrong|the only one|mistaken)|thought (we had|you were|this was)|I was wrong (about|to trust|to believe)|my mistake for (thinking|believing|trusting)|should have known (better|you'd|you wouldn't)|I expected (more|better|too much) from you)\b/gi,
+                score: 12, name: 'Disappointed Withdrawal', engine: 'EMOTIONAL', sev: 'medium',
+                decode: 'Expressing disappointment as a way to punish and induce guilt.',
+                legal: 'Withdrawal of approval as control is a recognized manipulation pattern.'
+            },
+            reciprocity_prime: {
+                re: /\b(remember (that time|when I|how I)|you know (how much|what|all) I (did|do|gave|give)|just (thought|thinking|wanted to mention) (you should|before you say|before you)|I (was up|stayed up|stayed late|took time|took a day) .{0,30}(for you|to help you|your))\b/gi,
+                score: 12, name: 'Reciprocity Priming', engine: 'PERSUASION', sev: 'medium',
+                decode: 'Subtly reminding you of past favors right before asking for something.',
+                legal: 'Priming reciprocity is a recognized influence technique with no legal obligation.'
+            },
+            love_but: {
+                re: /\b(I (love|care about|adore) you,? but.{0,40}(exhausting|draining|hard|difficult|impossible|tiring|too much|overwhelming)|I (love|respect|admire) you.{0,10}but (sometimes|honestly|I))\b/gi,
+                score: 12, name: 'Love-But Diminishment', engine: 'EMOTIONAL', sev: 'medium',
+                decode: 'Using affection as a shield to deliver criticism or diminishment.',
+                legal: 'Conditional affirmation paired with criticism is a recognized emotional manipulation tactic.'
+            },
+            anti_pitch: {
+                re: /\b(I'm not (going to|gonna|trying to) (pitch|sell|pressure|convince) you|this isn't a (pitch|sales|marketing)|I know how (it|this) (sounds|looks)|not (trying|here) to sell|hear me out (before|just)|just (going to|gonna) share|the (numbers|results|data|facts) speak for themselves)\b/gi,
+                score: 12, name: 'Anti-Pitch Framing', engine: 'BIAS', sev: 'medium',
+                decode: 'Framing a pitch as "not a pitch" to lower your defenses.',
+                legal: 'Pre-emptive objection handling is a recognized sales manipulation technique.'
+            },
         };
 
         const FRAMEWORKS = {
