@@ -2941,7 +2941,7 @@
                         <div class="coach-item" style="grid-column: 1 / -1; border: 1px solid var(--accent-cyan); background: rgba(0,217,255,0.05);">
                             <h4 style="color:var(--accent-cyan);">\u{1F4AC} Suggested Response</h4>
                             <p style="font-style:italic;line-height:1.8;margin-bottom:1rem;">"${suggestedReply}"</p>
-                            <button class="btn btn-secondary btn-small" onclick="navigator.clipboard.writeText('${suggestedReply.replace(chr(39), chr(92)+chr(39))}');showToast('Response copied!');">Copy Response</button>
+                            <button class="btn btn-secondary btn-small" onclick="navigator.clipboard.writeText('${suggestedReply.replace(/'/g, "\\'")}');showToast('Response copied!');">Copy Response</button>
                         </div>
                     </div>
                 </div>`;
