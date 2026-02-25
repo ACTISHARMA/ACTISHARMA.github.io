@@ -2491,28 +2491,70 @@
         }
 
         function buildRephrase(text, result) {
-            let clean = text;
-            // Use the SAME regex from PATTERNS to strip manipulation phrases
+            if (!result.findings.patterns_found.length) return text;
+
+            // Collect all pattern regexes that were detected
+            const patternRegexes = [];
             result.findings.patterns_found.forEach(f => {
                 if (PATTERNS[f.key] && PATTERNS[f.key].re) {
-                    // Get the pattern regex and use it to strip matches
-                    const re = PATTERNS[f.key].re;
-                    // Need a fresh regex with global flag
-                    const globalRe = new RegExp(re.source, 'gi');
-                    clean = clean.replace(globalRe, '');
+                    patternRegexes.push(new RegExp(PATTERNS[f.key].re.source, 'gi'));
                 }
             });
-            // Clean up orphaned punctuation, extra spaces, broken sentences
-            clean = clean
-                .replace(/\s{2,}/g, ' ')           // collapse multiple spaces
-                .replace(/\s+([.,!?])/g, '$1')     // remove space before punctuation
-                .replace(/^[.,!?\s]+/, '')          // remove leading punctuation
-                .replace(/\.\s*\./g, '.')           // collapse double periods
-                .replace(/,\s*,/g, ',')             // collapse double commas
-                .replace(/\s+/g, ' ')               // final space cleanup
-                .trim();
-            if (clean.length < 20 || clean.split(' ').length < 4) {
-                clean = "I\'d like to discuss this with you. Can we talk about it calmly and honestly?";
+            if (!patternRegexes.length) return text;
+
+            // Split into sentences (preserve the delimiter)
+            const sentences = text.match(/[^.!?]*[.!?]+|[^.!?]+$/g) || [text];
+            const cleanSentences = [];
+
+            sentences.forEach(sentence => {
+                const trimmed = sentence.trim();
+                if (!trimmed) return;
+
+                // Calculate total matched character coverage in this sentence
+                let totalMatchLen = 0;
+                let strippedSentence = trimmed;
+                patternRegexes.forEach(re => {
+                    // Fresh regex each time
+                    const freshRe = new RegExp(re.source, 'gi');
+                    const matches = trimmed.match(freshRe);
+                    if (matches) {
+                        matches.forEach(m => { totalMatchLen += m.length; });
+                        // Also strip the matches for the word-level fallback
+                        const freshRe2 = new RegExp(re.source, 'gi');
+                        strippedSentence = strippedSentence.replace(freshRe2, '');
+                    }
+                });
+
+                const coverageRatio = totalMatchLen / trimmed.length;
+
+                if (coverageRatio === 0) {
+                    // No match in this sentence — keep it as-is
+                    cleanSentences.push(trimmed);
+                } else if (coverageRatio > 0.4) {
+                    // Manipulation IS the sentence — drop entirely
+                    // (e.g. "After everything I've done for you!")
+                } else {
+                    // Incidental match — strip matched phrases, keep sentence
+                    // Clean up the stripped version
+                    let cleaned = strippedSentence
+                        .replace(/\s{2,}/g, ' ')
+                        .replace(/\s+([.,!?])/g, '$1')
+                        .replace(/^[.,!?\s]+/, '')
+                        .replace(/\.\s*\./g, '.')
+                        .replace(/,\s*,/g, ',')
+                        .trim();
+                    // Only keep if it still has meaningful content (4+ words)
+                    if (cleaned.split(/\s+/).filter(w => w.length > 1).length >= 4) {
+                        cleanSentences.push(cleaned);
+                    }
+                }
+            });
+
+            let clean = cleanSentences.join(' ').replace(/\s+/g, ' ').trim();
+
+            // If nothing meaningful remains, use a neutral fallback
+            if (clean.length < 25 || clean.split(/\s+/).length < 4) {
+                clean = "I'd like to discuss this with you. Can we talk about it calmly and honestly?";
             }
             return clean;
         }
