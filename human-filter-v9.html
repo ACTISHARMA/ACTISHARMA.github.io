@@ -523,8 +523,10 @@
         .score-number {
             font-size: 2.5rem;
             font-weight: 700;
+            color: var(--accent-cyan);
             background: linear-gradient(90deg, var(--accent-purple), var(--accent-cyan));
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
@@ -1864,6 +1866,8 @@
             whataboutism: { re: /\b(what about (when you|the time you|your)|you (also|did the same|do it too)|at least I (don't|didn't|never)|(that's|that is) rich coming from|look who's talking|pot calling|(you're|you are) one to talk|and what about you|nice try but|let's talk about (you|your)|before you judge|clean your own|check yourself|glass house)\b/gi, engine: 'LOGIC', name: 'Whataboutism', sev: 'medium', decode: 'Redirecting blame or criticism back at you instead of addressing the actual issue.', legal: 'Deflection in legal proceedings can indicate consciousness of guilt or bad faith negotiation.' },
             toxic_positivity: { re: /\b(everything happens for a reason|the universe (is|has)|raise your (vibration|frequency|energy)|stay positive|positive vibes only|good vibes only|negative energy|blocking your (blessings|abundance|manifestation)|manifest|law of attraction|just (be|stay|think) (positive|grateful|happy)|choose (gratitude|happiness|joy)|surround myself with (people who|positive)|match my (frequency|energy|vibration)|your (energy|vibe|attitude) is (blocking|negative|toxic|bringing)|if you (just|would) (believe|trust the process|let go)|meant to be|not meant to be|the universe has a plan|everything (will|is going to) work out|toxic (people|energy|vibes))\b/gi, engine: 'EMOTIONAL', name: 'Toxic Positivity', sev: 'medium', decode: 'Dismissing legitimate emotions by enforcing relentless optimism. Invalidates real pain while positioning the speaker as spiritually superior.', legal: 'Toxic positivity in therapeutic or workplace settings can constitute emotional invalidation and professional negligence.' },
             weaponized_therapy: { re: /\b(I (need to |am going to )?(set|establish|enforce|hold) (a |my )?boundar(y|ies)|triggers? (my|your|their) (trauma|anxiety|response|responsibility)|your triggers|holding space|pour from an empty cup|(protect|protecting) (my|your) (peace|energy|space)|work on your (emotional|anger|self)|emotional (regulation|intelligence|labor)|you (need|should) (therapy|help|a therapist|to work on)|safe space|my (truth|lived experience)|doing the (work|inner work)|I (validate|hear|see) (you|your feelings) but|toxic (for me|to my|energy)|not my (responsibility|problem|job) to (manage|fix|heal|deal with) your)\b/gi, engine: 'EMOTIONAL', name: 'Weaponized Therapy Speak', sev: 'medium', decode: 'Using therapeutic language as a weapon to shut down legitimate concerns while maintaining moral high ground. Real boundaries do not come with ultimatums.', legal: 'Using psychological terminology to deflect legitimate grievances in professional settings may indicate bad faith communication.' },
+            advance_fee: { re: /\b(dear (friend|sir|madam|beloved|one)|I am (writing|contacting) you|my late (husband|wife|father|mother)|sum of \$?[\d,.]+\s*(million|USD|GBP|EUR)|next of kin|beneficiary|inheritance|unclaimed (funds|money|account|estate)|deposit(ed)? (in|with|at) (a |the )?(bank|vault)|send (your|me) (details|information|account|address)|trusted person|confidential|God-?fearing|your (full name|address|phone|bank)|contact (me|my (attorney|lawyer|barrister))|I ('ve |have )?(chosen|selected|picked) you|wire transfer|processing fee|transaction fee|clearance fee|upfront (payment|fee|cost)|pay (a |the )?(small |modest )?(fee|amount|sum)|transfer the (funds|money|sum)|percentage.{0,20}(share|split|yours)|compensation for (your|the)|I (shall|will) give you|share.{0,15}(percentage|ratio|split)|Mrs\.?|Mr\.?|Barrister|Reverend|widow of|diplomat|consignment|trunk box|security company|diplomatic bag|dying wish|last wish|before (I |my )?(death|pass|die))\b/gi, engine: 'BIAS', name: 'Advance-Fee Scam', sev: 'high', decode: 'Classic advance-fee fraud pattern — they promise a fortune in exchange for a small upfront payment. The money doesn\u0027t exist.', legal: 'Advance-fee fraud is a criminal offense under fraud statutes in virtually every jurisdiction worldwide.' },
+            advance_fee_2: { re: /\b(bank of (africa|nigeria|ghana|london|england)|west africa|foreign account|oversea|diplomat(ic)?|consign|trunk box|security vault|courier (service|company)|modalities|next of kin|late client|deceased|probate|your (private|personal) email|send (me |us )?(your|the) (private|personal|direct))\b/gi, engine: 'BIAS', name: 'Nigerian Scam Signals', sev: 'high', decode: 'Contains specific language patterns associated with 419/Nigerian advance-fee fraud.', legal: 'These are textbook indicators of advance-fee fraud (Section 419 of the Nigerian Criminal Code).' },
             moving_goalposts: { re: /\b((that's|that is) not (what I meant|enough|the point)|I never said (that|exactly)|the real issue is|but what about|yes but|okay but (still|what about)|even (so|still|if)|that doesn't (matter|count|change)|beside the point|missing the point|(you're|you are) (missing|avoiding)|not the (point|issue|problem)|changing the|shifting|new (condition|requirement|standard))\b/gi, engine: 'LOGIC', name: 'Moving Goalposts', sev: 'medium', decode: 'Constantly shifting criteria so you can never meet expectations.', legal: 'Changing contract terms after agreement may constitute breach of contract or bad faith dealing.' },
         };
 
@@ -2445,6 +2449,21 @@
                 else if (wordCount < 50 && pCount <= 2) score = Math.min(score, 44);
             }
 
+            // CONTEXT SELECTOR BOOST: user-selected context increases sensitivity
+            const userCtx = document.getElementById('contextSelect')?.value;
+            if (userCtx && userCtx !== 'auto') {
+                // If user explicitly says "stranger" or "sales", boost suspicion on any detected patterns
+                const suspiciousContexts = ['stranger', 'sales', 'social'];
+                if (suspiciousContexts.includes(userCtx) && pCount >= 1) {
+                    score = Math.max(score, Math.round(score * 1.25));
+                }
+                // If user says "boss" or "ex", emotional patterns carry more weight
+                const emotionalContexts = ['boss', 'ex', 'family'];
+                if (emotionalContexts.includes(userCtx) && findings.patterns_found.some(p => p.engine === 'EMOTIONAL')) {
+                    score = Math.max(score, Math.round(score * 1.15));
+                }
+            }
+
             score = Math.min(score, 100);
             // If nothing detected at all, assign a low baseline
             if (findings.patterns_found.length === 0) {
@@ -2596,8 +2615,17 @@
 
         function analyzeMessage() {
             const text = document.getElementById('messageInput').value;
-            // Clear previous results before new analysis
-            document.querySelectorAll('.tab-content').forEach(t => t.innerHTML = '');
+            // Clear previous results before new analysis — reset BOTH content and active states
+            document.querySelectorAll('.tab-content').forEach(t => {
+                t.innerHTML = '';
+                t.classList.remove('active');
+            });
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById('scoreSection').innerHTML = '';
+            document.getElementById('shareSection').innerHTML = '';
+            // Reset X-Ray tab as active
+            const xrayTab = document.getElementById('xrayTab');
+            if (xrayTab) xrayTab.classList.add('active');
             const result = analyze(text);
 
             if (!result) {
@@ -2683,8 +2711,8 @@
                     <div class="tab-subtitle">Tactics detected</div>
                 </button>
                 <button class="tab-btn" onclick="switchTab('profile', this)">
-                    Profile
-                    <div class="tab-subtitle">Psychological breakdown</div>
+                    Playbook
+                    <div class="tab-subtitle">Their strategy decoded</div>
                 </button>
                 <button class="tab-btn" onclick="switchTab('coach', this)">
                     Coach
@@ -2729,7 +2757,7 @@
                 findingsTab.innerHTML = '<p style="color: var(--fg-secondary); padding: 2rem;">No manipulation patterns detected!</p>';
             }
 
-            // Psychological Profile tab
+            // Playbook tab — engaging breakdown of the manipulator's strategy
             const profileTab = document.getElementById('profileTab');
             const enginesUsed = {};
             result.findings.patterns_found.forEach(f => {
@@ -2737,49 +2765,84 @@
             });
             const dtScore = result.darkTriad;
 
+            // Build the "playbook" narrative
+            const playbookMoves = result.findings.patterns_found.slice(0, 5).map((f, i) => {
+                const icons = { high: '\u{1F534}', medium: '\u{1F7E1}', low: '\u{1F7E2}' };
+                return `<div style="display:flex;gap:0.75rem;padding:1rem;background:rgba(167,139,250,0.05);border-radius:8px;border-left:3px solid ${f.severity === 'high' ? '#ff6b7a' : f.severity === 'medium' ? '#ffb23a' : '#6edd89'};">
+                    <div style="font-size:1.5rem;flex-shrink:0;">${icons[f.severity] || '\u26AA'}</div>
+                    <div>
+                        <div style="font-weight:700;color:var(--fg-primary);margin-bottom:0.25rem;">Move ${i+1}: ${f.name}</div>
+                        <div style="color:var(--fg-secondary);font-size:0.9rem;line-height:1.5;">${f.decode}</div>
+                    </div>
+                </div>`;
+            }).join('');
+
+            // Brain target summary
+            const brainTarget = result.kahneman.system1 > result.kahneman.system2
+                ? '\u{1F9E0} Targeting your <strong style="color:#ff6b7a;">gut reaction</strong> — wants you to feel, not think.'
+                : result.kahneman.system2 > 0
+                ? '\u{1F9E0} Targeting your <strong style="color:#ffb23a;">logical brain</strong> — using reason-sounding arguments with hidden hooks.'
+                : '\u{1F9E0} <strong style="color:var(--success);">No obvious brain targeting</strong> — message appears straightforward.';
+
+            // Neuro cocktail
+            const neuroCocktail = result.neuro.length > 0
+                ? `<div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:0.75rem;">${result.neuro.map(n =>
+                    `<span style="padding:0.4rem 0.8rem;background:rgba(0,217,255,0.1);border:1px solid rgba(0,217,255,0.2);border-radius:20px;font-size:0.85rem;color:var(--accent-cyan);">\u{1F9EA} ${n.neuro}: ${n.desc}</span>`
+                ).join('')}</div>`
+                : '<div style="color:var(--fg-secondary);font-size:0.9rem;margin-top:0.5rem;">No neurochemical manipulation detected.</div>';
+
+            // Dark Triad meter
+            const dtTotal = dtScore.machiavellianism + dtScore.narcissism + dtScore.psychopathy;
+            const dtEmoji = dtTotal >= 6 ? '\u{1F608}' : dtTotal >= 3 ? '\u{1F612}' : '\u{1F60C}';
+            const dtLabel = dtTotal >= 6 ? 'High Dark Triad signals' : dtTotal >= 3 ? 'Moderate manipulation personality markers' : 'Low personality red flags';
+
             profileTab.innerHTML = `
-                <div class="profile-grid">
-                    <div class="profile-item">
-                        <div class="profile-label">Thinking System Targeted</div>
-                        <div class="profile-value">${result.kahneman.dominant}</div>
-                        <div class="profile-description">${result.kahneman.system1 > result.kahneman.system2 ? 'This message targets your fast, emotional brain - designed to get a reaction before you think.' : result.kahneman.system2 > 0 ? 'Uses logical-sounding arguments that may still contain hidden manipulation.' : 'Relatively neutral - no strong emotional or logical pressure detected.'}</div>
-                    </div>
-                    <div class="profile-item">
-                        <div class="profile-label">Dark Triad Signals</div>
-                        <div class="profile-value" style="font-size:0.95rem;">
-                            <span style="color:${dtScore.machiavellianism > 1 ? '#ff6b7a' : 'var(--fg-secondary)'}">Machiavelli: ${dtScore.machiavellianism}</span> |
-                            <span style="color:${dtScore.narcissism > 1 ? '#ffb23a' : 'var(--fg-secondary)'}">Narcissism: ${dtScore.narcissism}</span> |
-                            <span style="color:${dtScore.psychopathy > 1 ? '#ff6b7a' : 'var(--fg-secondary)'}">Psychopathy: ${dtScore.psychopathy}</span>
+                <div style="margin-bottom:1.5rem;">
+                    <h3 style="font-family:'Space Grotesk',sans-serif;color:var(--accent-cyan);margin-bottom:0.5rem;">\u{1F3AF} Their Playbook</h3>
+                    <p style="color:var(--fg-secondary);font-size:0.9rem;margin-bottom:1rem;">Here's the step-by-step strategy this message uses on you:</p>
+                    <div style="display:flex;flex-direction:column;gap:0.75rem;">${playbookMoves || '<p style="color:var(--fg-secondary);">No manipulation moves detected.</p>'}</div>
+                </div>
+
+                <div style="padding:1rem;background:rgba(15,15,30,0.5);border-radius:8px;margin-bottom:1.5rem;">
+                    <div style="margin-bottom:0.75rem;line-height:1.6;">${brainTarget}</div>
+                    ${neuroCocktail}
+                </div>
+
+                <div style="padding:1rem;background:rgba(15,15,30,0.5);border-radius:8px;margin-bottom:1.5rem;">
+                    <div style="font-weight:700;color:var(--fg-primary);margin-bottom:0.5rem;">${dtEmoji} Personality Check: ${dtLabel}</div>
+                    <div style="display:flex;gap:1.5rem;flex-wrap:wrap;">
+                        <div style="text-align:center;">
+                            <div style="font-size:1.5rem;font-weight:700;color:${dtScore.machiavellianism > 1 ? '#ff6b7a' : 'var(--fg-secondary)'};">${dtScore.machiavellianism}</div>
+                            <div style="font-size:0.75rem;color:var(--fg-secondary);">Machiavelli</div>
                         </div>
-                        <div class="profile-description">This is a pattern check, not a diagnosis. Higher scores suggest more manipulative intent.</div>
-                    </div>
-                    <div class="profile-item">
-                        <div class="profile-label">Neurochemical Triggers</div>
-                        <div class="profile-value" style="font-size:0.95rem;">${result.neuro.length > 0 ? result.neuro.map(n => n.neuro).join(' + ') : 'None detected'}</div>
-                        <div class="profile-description">${result.neuro.length > 0 ? result.neuro.map(n => n.desc).join('. ') + '.' : 'No obvious neurochemical manipulation patterns found.'}</div>
-                    </div>
-                    <div class="profile-item">
-                        <div class="profile-label">48 Laws of Power</div>
-                        <div class="profile-value" style="font-size:0.85rem;">${result.laws.length > 0 ? result.laws.slice(0,3).join('<br>') : 'No specific laws detected'}</div>
-                        <div class="profile-description">${result.laws.length > 0 ? 'The sender appears to be using these power dynamics.' : 'No Robert Greene power dynamics detected.'}</div>
-                    </div>
-                    <div class="profile-item">
-                        <div class="profile-label">Cognitive Distortions</div>
-                        <div class="profile-value" style="font-size:0.95rem;">${result.distortions.length > 0 ? result.distortions.join(', ') : 'None detected'}</div>
-                        <div class="profile-description">${result.distortions.length > 0 ? 'These thinking errors are present - they may be intentional manipulation or genuine cognitive bias.' : 'No cognitive distortions detected.'}</div>
-                    </div>
-                    <div class="profile-item">
-                        <div class="profile-label">Engine Breakdown</div>
-                        <div class="profile-value" style="font-size:0.85rem;">${Object.entries(enginesUsed).map(([k,v]) => k + ': ' + v).join(' | ') || 'None'}</div>
-                        <div class="profile-description">Shows which manipulation categories are most active in this message.</div>
+                        <div style="text-align:center;">
+                            <div style="font-size:1.5rem;font-weight:700;color:${dtScore.narcissism > 1 ? '#ffb23a' : 'var(--fg-secondary)'};">${dtScore.narcissism}</div>
+                            <div style="font-size:0.75rem;color:var(--fg-secondary);">Narcissism</div>
+                        </div>
+                        <div style="text-align:center;">
+                            <div style="font-size:1.5rem;font-weight:700;color:${dtScore.psychopathy > 1 ? '#ff6b7a' : 'var(--fg-secondary)'};">${dtScore.psychopathy}</div>
+                            <div style="font-size:0.75rem;color:var(--fg-secondary);">Psychopathy</div>
+                        </div>
                     </div>
                 </div>
+
+                ${result.laws.length > 0 ? `
+                <div style="padding:1rem;background:rgba(167,139,250,0.05);border:1px solid rgba(167,139,250,0.15);border-radius:8px;margin-bottom:1.5rem;">
+                    <div style="font-weight:700;color:var(--accent-purple);margin-bottom:0.5rem;">\u{1F4D6} 48 Laws of Power Detected</div>
+                    ${result.laws.slice(0,3).map(l => `<div style="color:var(--fg-secondary);font-size:0.9rem;padding:0.25rem 0;">\u2022 ${l}</div>`).join('')}
+                </div>` : ''}
+
+                ${result.distortions.length > 0 ? `
+                <div style="padding:1rem;background:rgba(255,165,2,0.05);border:1px solid rgba(255,165,2,0.15);border-radius:8px;margin-bottom:1.5rem;">
+                    <div style="font-weight:700;color:#ffb23a;margin-bottom:0.5rem;">\u{1F4A1} Cognitive Distortions Used</div>
+                    <div style="color:var(--fg-secondary);font-size:0.9rem;">${result.distortions.join(' \u2022 ')}</div>
+                </div>` : ''}
+
                 ${result.legalNotes.length > 0 ? `
-                <div style="margin-top:1.5rem;padding:1rem;background:rgba(255,71,87,0.1);border:1px solid rgba(255,71,87,0.2);border-radius:8px;">
-                    <strong style="color:var(--danger);">Legal Advisory</strong>
-                    ${result.legalNotes.map(n => `<p style="color:var(--fg-secondary);margin-top:0.5rem;font-size:0.85rem;">- ${n}</p>`).join('')}
-                </div>
-                ` : ''}
+                <div style="padding:1rem;background:rgba(255,71,87,0.1);border:1px solid rgba(255,71,87,0.2);border-radius:8px;">
+                    <strong style="color:var(--danger);">\u2696\uFE0F Legal Advisory</strong>
+                    ${result.legalNotes.map(n => `<p style="color:var(--fg-secondary);margin-top:0.5rem;font-size:0.85rem;">\u2022 ${n}</p>`).join('')}
+                </div>` : ''}
             `;
 
             // Coach tab &mdash; mirror-mode aware
@@ -3027,6 +3090,39 @@
             setTimeout(() => tooltip.classList.remove('show'), 4000);
         }
 
+        function preprocessImage(file) {
+            return new Promise((resolve) => {
+                const img = new Image();
+                img.onload = () => {
+                    const canvas = document.createElement('canvas');
+                    // Scale up small images for better OCR
+                    const scale = Math.max(1, 1500 / Math.max(img.width, img.height));
+                    canvas.width = img.width * scale;
+                    canvas.height = img.height * scale;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+                    // Convert to grayscale + boost contrast
+                    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                    const d = imageData.data;
+                    for (let i = 0; i < d.length; i += 4) {
+                        // Grayscale
+                        const gray = 0.299 * d[i] + 0.587 * d[i+1] + 0.114 * d[i+2];
+                        // Contrast boost + threshold
+                        const val = gray < 128 ? Math.max(0, gray * 0.6) : Math.min(255, gray * 1.3 + 30);
+                        d[i] = d[i+1] = d[i+2] = val;
+                    }
+                    ctx.putImageData(imageData, 0, 0);
+
+                    canvas.toBlob((blob) => {
+                        resolve(blob || file); // fallback to original if blob fails
+                    }, 'image/png');
+                };
+                img.onerror = () => resolve(file); // fallback to original
+                img.src = URL.createObjectURL(file);
+            });
+        }
+
         async function handleImageUpload(event) {
             const file = event.target.files[0];
             if (!file) return;
@@ -3042,12 +3138,16 @@
             };
             reader.readAsDataURL(file);
 
-            // OCR
-            status.textContent = 'Extracting text...';
+            // OCR with image preprocessing for mobile screenshots
+            status.textContent = 'Processing image...';
             status.style.color = 'var(--accent-cyan)';
 
             try {
-                const result = await Tesseract.recognize(file, 'eng', {
+                // Preprocess: increase contrast and convert to grayscale for better OCR
+                const processedFile = await preprocessImage(file);
+                status.textContent = 'Extracting text...';
+
+                const result = await Tesseract.recognize(processedFile, 'eng', {
                     logger: m => {
                         if (m.status === 'recognizing text') {
                             status.textContent = `Extracting... ${Math.round(m.progress * 100)}%`;
@@ -3173,16 +3273,24 @@
                 const y = 190 + i * 30;
                 const sevColor = p.severity === 'high' ? '#ff6b7a' : p.severity === 'medium' ? '#ffb23a' : '#6edd89';
                 ctx.fillStyle = sevColor;
-                ctx.fillText('&#x25CF;', 210, y);
+                ctx.fillText('\u25CF', 210, y);
                 ctx.fillStyle = '#ccd6f6';
                 ctx.fillText(`${p.name} (${p.severity})`, 230, y);
             });
 
-            // Footer
+            // Description
+            ctx.font = '11px Inter, sans-serif';
+            ctx.fillStyle = '#8892b0';
+            const descLines = wrapText(ctx, 'Paste any message and decode the psychology behind it. No AI, no cloud \u2014 pure regex pattern matching.', 350);
+            descLines.forEach((line, i) => ctx.fillText(line, 210, 280 + i * 16));
+
+            // Footer with link
+            ctx.font = 'bold 12px Inter, sans-serif';
+            ctx.fillStyle = '#00d9ff';
+            ctx.fillText('\u{1F517} aakarshsharma.com/human-filter-v9.html', 30, 350);
             ctx.font = '11px Inter, sans-serif';
             ctx.fillStyle = '#4a5568';
-            ctx.fillText('Built by Aakarsh Sharma &middot; Law &#xD7; Psychology &#xD7; AI', 30, 370);
-            ctx.fillText('Try it: aakarshsharma.com/human-filter-v9.html', 350, 370);
+            ctx.fillText('Built by Aakarsh Sharma \u00B7 Law \u00D7 Psychology \u00D7 AI', 30, 375);
 
             // Share or Download
             const dataUrl = canvas.toDataURL('image/png');
