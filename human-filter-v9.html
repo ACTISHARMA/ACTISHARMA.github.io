@@ -2492,34 +2492,27 @@
 
         function buildRephrase(text, result) {
             let clean = text;
-            const rules = {
-                scarcity: [/(only \d+ (spots?|seats?|left)|limited time|act now|hurry|before (it's|it is) gone|closing soon|(won't|will not) last|running out|going fast)/gi, ''],
-                deadline: [/(by EOD|today only|expires? (today|tomorrow|soon)|in the next \d+ (hours?|minutes?)|(don't|do not) wait|act fast|limited time|clock is ticking|lock.{0,10}(in|now))/gi, ''],
-                fear: [/(URGENT|last warning|final notice|consequences|(you'll|you will) regret|risk everything|too late|never again|(don't|do not) want to regret)/gi, ''],
-                guilt: [/(after everything I('ve| have) done|ungrateful|selfish|you (don't|do not) (care|appreciate|value)|is this how you|I sacrificed|thanks for nothing|clearly I (don't|do not) matter|how could you)/gi, ''],
-                love_bomb: [/(I've never felt this way|(you're|you are) my (soulmate|person|everything)|meant to be|(can't|cannot) live without|you complete me|destiny|universe brought us|twin flame)/gi, ''],
-                flattery_excessive: [/((you're|you are) (so|really|truly|honestly|genuinely|incredibly|absolutely|literally) (smart|talented|brilliant|amazing|wonderful|beautiful|special|unique|gifted)|nobody (else )?(is like you|compares|comes close))/gi, ''],
-                gaslighting: [/((you're|you are) (overreacting|imagining|too sensitive|being dramatic|crazy)|I never said that|that (didn't|did not) happen|calm down|it was just a joke|(can't|cannot) you take a joke)/gi, ''],
-                implicit_threat: [/((I'd|I would) hate to|it would be a shame|think carefully|(wouldn't|would not) want to|others would kill for|easily replaced|your (funeral|call))/gi, ''],
-                passive_aggression: [/((I'll|I will) just (do it myself|stay home|clean up|wait|go to bed|deal with it)|do whatever you want|you always do anyway|but sure|what do I know|(I'm|I am) just your (mother|father)|no (it's|it is) fine|totally fine|I (didn't|did not) want to go anyway|(it's|it is) not like|have fun with your friends)/gi, ''],
-                boundary_violation: [/(only person I trust|figure it out (somehow|yourself)|make it happen|I (wouldn't|would not) ask if it (wasn't|was not) important|last minute but|I know (it's|it is) (a lot|short notice)|I need you to|drop everything|cancel your)/gi, ''],
-                commitment: [/(not fully committed|commit (fully|completely)|no half measures|all in or nothing|believes in the vision)/gi, ''],
-                social_proof: [/(everyone (is|says|knows|agrees|thinks|does|else)|most people|all my friends|nobody else|any reasonable person)/gi, ''],
-                authority: [/(studies show|experts agree|research proves|according to|scientifically proven|doctors recommend)/gi, ''],
-                reciprocity: [/(after all I('ve| have) done|you owe|I helped you|return the favor|remember when I)/gi, ''],
-                liking: [/(you('ve| have) been (chosen|selected|picked)|we see something (special|unique) in you|not everyone gets this)/gi, ''],
-                future_faking: [/(your life is about to (change|transform)|life.?changing|this will change everything)/gi, ''],
-                toxic_positivity: [/(everything happens for a reason|raise your vibration|negative energy|blocking your blessings|just be positive|good vibes only)/gi, ''],
-                weaponized_therapy: [/(set a boundary|triggers my trauma|pour from an empty cup|protect my peace|work on your emotional regulation|you need therapy)/gi, ''],
-            };
+            // Use the SAME regex from PATTERNS to strip manipulation phrases
             result.findings.patterns_found.forEach(f => {
-                if (rules[f.key]) {
-                    clean = clean.replace(rules[f.key][0], rules[f.key][1]);
+                if (PATTERNS[f.key] && PATTERNS[f.key].re) {
+                    // Get the pattern regex and use it to strip matches
+                    const re = PATTERNS[f.key].re;
+                    // Need a fresh regex with global flag
+                    const globalRe = new RegExp(re.source, 'gi');
+                    clean = clean.replace(globalRe, '');
                 }
             });
-            clean = clean.replace(/\s{2,}/g, ' ').replace(/\s+([.,!?])/g, '$1').replace(/^\.\s*/,'').replace(/\.\.+/g,'.').replace(/,,+/g,',').trim();
-            if (clean.length < 20) {
-                clean = "I'd like to discuss this with you. Can we talk about it calmly and honestly?";
+            // Clean up orphaned punctuation, extra spaces, broken sentences
+            clean = clean
+                .replace(/\s{2,}/g, ' ')           // collapse multiple spaces
+                .replace(/\s+([.,!?])/g, '$1')     // remove space before punctuation
+                .replace(/^[.,!?\s]+/, '')          // remove leading punctuation
+                .replace(/\.\s*\./g, '.')           // collapse double periods
+                .replace(/,\s*,/g, ',')             // collapse double commas
+                .replace(/\s+/g, ' ')               // final space cleanup
+                .trim();
+            if (clean.length < 20 || clean.split(' ').length < 4) {
+                clean = "I\'d like to discuss this with you. Can we talk about it calmly and honestly?";
             }
             return clean;
         }
