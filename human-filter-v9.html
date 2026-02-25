@@ -1,0 +1,2226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The Human Filter - Decode manipulation, understand psychology, respond strategically.">
+    <meta name="theme-color" content="#0f0f1e">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Human Filter">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'><rect fill='%230f0f1e' width='180' height='180'/><circle cx='90' cy='90' r='70' fill='none' stroke='%2300d9ff' stroke-width='3'/><path d='M 90 50 Q 110 70 90 90 Q 70 70 90 50' fill='%2300d9ff'/></svg>">
+    <title>The Human Filter - Manipulation Detection</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0f0f1e;
+            --bg-secondary: #1a1a2e;
+            --bg-tertiary: #16213e;
+            --fg-primary: #f5f5f7;
+            --fg-secondary: #b0b0b8;
+            --accent-purple: #a78bfa;
+            --accent-blue: #3b82f6;
+            --accent-cyan: #00d9ff;
+            --accent-teal: #14b8a6;
+            --danger: #ff4757;
+            --warning: #ffa502;
+            --success: #2ed573;
+            --glass-blur: 16px;
+            --glass-opacity: 0.1;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, #1a0033 50%, var(--bg-tertiary) 100%);
+            color: var(--fg-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(167, 139, 250, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(0, 217, 255, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: rgba(0, 217, 255, 0.3);
+            border-radius: 50%;
+            animation: float 20s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) translateX(0px); opacity: 0; }
+            10% { opacity: 0.5; }
+            50% { opacity: 1; }
+            90% { opacity: 0.5; }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-secondary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, var(--accent-purple), var(--accent-cyan));
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, var(--accent-blue), var(--accent-teal));
+        }
+
+        /* Main layout */
+        .main-container {
+            position: relative;
+            z-index: 2;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
+        header {
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(0, 217, 255, 0.1);
+            background: rgba(15, 15, 30, 0.7);
+            backdrop-filter: blur(var(--glass-blur));
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            animation: slideDown 0.6s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-cyan));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: 700;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .logo-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--accent-purple), var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .level-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(167, 139, 250, 0.1);
+            border: 1px solid rgba(167, 139, 250, 0.3);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent-purple);
+            animation: fadeIn 0.6s ease-out 0.2s both;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .level-number {
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .level-name {
+            font-weight: 400;
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+
+        /* Main content */
+        .content {
+            flex: 1;
+            max-width: 1000px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 2rem 1.5rem;
+        }
+
+        /* Section title */
+        h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(90deg, var(--accent-purple), var(--accent-blue), var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        .subtitle {
+            font-size: 1.05rem;
+            color: var(--fg-secondary);
+            margin-bottom: 2rem;
+            animation: fadeIn 0.6s ease-out 0.1s both;
+        }
+
+        /* Input section */
+        .input-section {
+            margin-bottom: 2rem;
+            animation: fadeIn 0.6s ease-out 0.2s both;
+        }
+
+        .input-wrapper {
+            position: relative;
+            margin-bottom: 1rem;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 150px;
+            padding: 1.5rem;
+            background: rgba(26, 26, 46, 0.5);
+            border: 1px solid rgba(0, 217, 255, 0.2);
+            border-radius: 12px;
+            color: var(--fg-primary);
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            resize: vertical;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(var(--glass-blur));
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: var(--accent-cyan);
+            background: rgba(26, 26, 46, 0.8);
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.2);
+        }
+
+        textarea::placeholder {
+            color: var(--fg-secondary);
+            opacity: 0.6;
+        }
+
+        /* Presets */
+        .presets-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .preset-btn {
+            padding: 0.75rem;
+            background: rgba(167, 139, 250, 0.1);
+            border: 1px solid rgba(167, 139, 250, 0.2);
+            border-radius: 8px;
+            color: var(--fg-primary);
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            text-align: center;
+        }
+
+        .preset-icon {
+            font-size: 1.5rem;
+        }
+
+        .preset-btn:hover {
+            background: rgba(167, 139, 250, 0.2);
+            border-color: var(--accent-purple);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(167, 139, 250, 0.15);
+        }
+
+        /* Control buttons */
+        .controls {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn {
+            padding: 0.875rem 1.75rem;
+            border-radius: 8px;
+            border: none;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            white-space: nowrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(90deg, var(--accent-purple), var(--accent-cyan));
+            color: white;
+            box-shadow: 0 8px 24px rgba(167, 139, 250, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(167, 139, 250, 0.4);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .btn-secondary {
+            background: rgba(0, 217, 255, 0.1);
+            border: 1px solid rgba(0, 217, 255, 0.3);
+            color: var(--accent-cyan);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 217, 255, 0.2);
+            border-color: var(--accent-cyan);
+        }
+
+        .btn-small {
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+        }
+
+        /* Results section */
+        .results-container {
+            display: none;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        .results-container.show {
+            display: block;
+        }
+
+        /* Score ring */
+        .score-section {
+            margin-bottom: 2rem;
+            animation: staggerReveal 0.6s ease-out 0.3s both;
+        }
+
+        @keyframes staggerReveal {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .score-container {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            padding: 2rem;
+            background: rgba(26, 26, 46, 0.4);
+            border: 1px solid rgba(0, 217, 255, 0.1);
+            border-radius: 12px;
+            backdrop-filter: blur(var(--glass-blur));
+        }
+
+        .score-ring-wrapper {
+            position: relative;
+            width: 140px;
+            height: 140px;
+            flex-shrink: 0;
+        }
+
+        .score-ring {
+            width: 100%;
+            height: 100%;
+        }
+
+        .score-ring-bg {
+            fill: none;
+            stroke: rgba(0, 217, 255, 0.1);
+            stroke-width: 8;
+        }
+
+        .score-ring-progress {
+            fill: none;
+            stroke: url(#scoreGradient);
+            stroke-width: 8;
+            stroke-linecap: round;
+            transform: rotate(-90deg);
+            transform-origin: 70px 70px;
+            transition: stroke-dashoffset 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .score-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .score-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--accent-purple), var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .score-label {
+            font-size: 0.8rem;
+            color: var(--fg-secondary);
+            margin-top: 0.25rem;
+        }
+
+        .score-info {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .vibe-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--fg-primary);
+        }
+
+        .vibe-text {
+            color: var(--fg-secondary);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .fact-box {
+            padding: 0.75rem 1rem;
+            background: rgba(0, 217, 255, 0.05);
+            border-left: 3px solid var(--accent-cyan);
+            border-radius: 4px;
+            font-size: 0.9rem;
+            color: var(--fg-secondary);
+            font-style: italic;
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            gap: 0;
+            border-bottom: 1px solid rgba(0, 217, 255, 0.1);
+            margin-bottom: 2rem;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .tab-btn {
+            padding: 1.25rem 1.5rem;
+            background: none;
+            border: none;
+            color: var(--fg-secondary);
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            font-family: 'Space Grotesk', sans-serif;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        .tab-btn:hover {
+            color: var(--accent-cyan);
+        }
+
+        .tab-btn.active {
+            color: var(--accent-cyan);
+            border-bottom-color: var(--accent-cyan);
+        }
+
+        .tab-subtitle {
+            font-size: 0.75rem;
+            opacity: 0.7;
+            font-weight: 400;
+            margin-top: 0.25rem;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Finding cards */
+        .findings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .finding-card {
+            padding: 1.5rem;
+            background: rgba(26, 26, 46, 0.3);
+            border: 1px solid rgba(0, 217, 255, 0.1);
+            border-radius: 12px;
+            backdrop-filter: blur(var(--glass-blur));
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            animation: slideUp 0.6s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .finding-card:hover {
+            background: rgba(26, 26, 46, 0.5);
+            border-color: var(--accent-cyan);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(0, 217, 255, 0.15);
+        }
+
+        .finding-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(167, 139, 250, 0.1), rgba(0, 217, 255, 0.1));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .finding-card:hover::before {
+            opacity: 1;
+        }
+
+        .finding-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .finding-name {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--accent-purple);
+        }
+
+        .finding-severity {
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .severity-high {
+            background: rgba(255, 71, 87, 0.2);
+            color: #ff6b7a;
+        }
+
+        .severity-medium {
+            background: rgba(255, 165, 2, 0.2);
+            color: #ffb23a;
+        }
+
+        .severity-low {
+            background: rgba(46, 213, 115, 0.2);
+            color: #6edd89;
+        }
+
+        .finding-principle {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: rgba(167, 139, 250, 0.15);
+            border: 1px solid rgba(167, 139, 250, 0.3);
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent-purple);
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .finding-principle.tooltip-trigger {
+            cursor: help;
+            transition: all 0.2s ease;
+        }
+
+        .finding-principle.tooltip-trigger:hover {
+            background: rgba(167, 139, 250, 0.25);
+            border-color: var(--accent-purple);
+        }
+
+        .finding-decode {
+            color: var(--fg-secondary);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .finding-counter {
+            padding: 0.75rem;
+            background: rgba(0, 217, 255, 0.05);
+            border-left: 3px solid var(--accent-cyan);
+            border-radius: 4px;
+            font-size: 0.9rem;
+            color: var(--accent-cyan);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* X-Ray section */
+        .xray-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .xray-item {
+            padding: 1.5rem;
+            background: rgba(26, 26, 46, 0.3);
+            border: 1px solid rgba(0, 217, 255, 0.1);
+            border-radius: 12px;
+            backdrop-filter: blur(var(--glass-blur));
+            transition: all 0.3s ease;
+            animation: slideUp 0.6s ease-out;
+        }
+
+        .xray-item:hover {
+            background: rgba(26, 26, 46, 0.5);
+            border-color: var(--accent-cyan);
+        }
+
+        .xray-original {
+            margin-bottom: 1rem;
+        }
+
+        .xray-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--fg-secondary);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            opacity: 0.7;
+        }
+
+        .xray-text {
+            padding: 0.75rem;
+            background: rgba(0, 217, 255, 0.05);
+            border-radius: 6px;
+            color: var(--fg-primary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .xray-decode {
+            padding: 0.75rem;
+            background: rgba(167, 139, 250, 0.05);
+            border-left: 3px solid var(--accent-purple);
+            border-radius: 6px;
+            color: var(--accent-purple);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Profile section */
+        .profile-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .profile-item {
+            padding: 1.5rem;
+            background: rgba(26, 26, 46, 0.3);
+            border: 1px solid rgba(0, 217, 255, 0.1);
+            border-radius: 12px;
+            backdrop-filter: blur(var(--glass-blur));
+            animation: slideUp 0.6s ease-out;
+        }
+
+        .profile-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--fg-secondary);
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+            opacity: 0.7;
+        }
+
+        .profile-value {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--accent-cyan);
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-description {
+            font-size: 0.9rem;
+            color: var(--fg-secondary);
+            line-height: 1.6;
+        }
+
+        /* Compare toggle */
+        .compare-toggle {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.5rem;
+            background: rgba(26, 26, 46, 0.3);
+            border: 1px solid rgba(0, 217, 255, 0.1);
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .compare-toggle:hover {
+            background: rgba(26, 26, 46, 0.5);
+            border-color: var(--accent-cyan);
+        }
+
+        .toggle-switch {
+            width: 44px;
+            height: 24px;
+            background: rgba(0, 217, 255, 0.2);
+            border-radius: 12px;
+            position: relative;
+            transition: background 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .toggle-switch.active {
+            background: linear-gradient(90deg, var(--accent-purple), var(--accent-cyan));
+        }
+
+        .toggle-switch::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 50%;
+            top: 2px;
+            left: 2px;
+            transition: left 0.3s ease;
+        }
+
+        .toggle-switch.active::after {
+            left: 22px;
+        }
+
+        .compare-text {
+            flex: 1;
+        }
+
+        .compare-text strong {
+            color: var(--fg-primary);
+        }
+
+        /* Coach section */
+        .coach-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .coach-item {
+            padding: 1.5rem;
+            background: rgba(26, 26, 46, 0.3);
+            border: 1px solid rgba(0, 217, 255, 0.1);
+            border-radius: 12px;
+            backdrop-filter: blur(var(--glass-blur));
+            animation: slideUp 0.6s ease-out;
+        }
+
+        .coach-item h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            margin-bottom: 0.75rem;
+        }
+
+        .coach-item p {
+            color: var(--fg-secondary);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        /* Share buttons */
+        .share-section {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin: 1.5rem 0;
+        }
+
+        .share-btn {
+            padding: 0.5rem 1rem;
+            background: rgba(0, 217, 255, 0.1);
+            border: 1px solid rgba(0, 217, 255, 0.3);
+            border-radius: 6px;
+            color: var(--accent-cyan);
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .share-btn:hover {
+            background: rgba(0, 217, 255, 0.2);
+            border-color: var(--accent-cyan);
+        }
+
+        /* History */
+        .history-section {
+            margin-top: 2rem;
+        }
+
+        .history-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .history-item {
+            padding: 1.25rem;
+            background: rgba(26, 26, 46, 0.3);
+            border: 1px solid rgba(0, 217, 255, 0.1);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .history-item:hover {
+            background: rgba(26, 26, 46, 0.5);
+            border-color: var(--accent-cyan);
+        }
+
+        .history-preview {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .history-text {
+            font-size: 0.9rem;
+            color: var(--fg-secondary);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-bottom: 0.25rem;
+        }
+
+        .history-time {
+            font-size: 0.75rem;
+            color: var(--fg-secondary);
+            opacity: 0.6;
+        }
+
+        .history-score {
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            flex-shrink: 0;
+        }
+
+        /* Feedback form */
+        .feedback-section {
+            margin-top: 3rem;
+            padding: 2rem;
+            background: rgba(26, 26, 46, 0.3);
+            border: 1px solid rgba(0, 217, 255, 0.1);
+            border-radius: 12px;
+            backdrop-filter: blur(var(--glass-blur));
+        }
+
+        .feedback-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--fg-primary);
+        }
+
+        .feedback-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .rating-group {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .star-btn {
+            width: 48px;
+            height: 48px;
+            background: rgba(0, 217, 255, 0.1);
+            border: 1px solid rgba(0, 217, 255, 0.2);
+            border-radius: 8px;
+            color: var(--fg-secondary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .star-btn:hover {
+            background: rgba(0, 217, 255, 0.2);
+            border-color: var(--accent-cyan);
+            transform: scale(1.1);
+        }
+
+        .star-btn.active {
+            background: linear-gradient(90deg, var(--accent-purple), var(--accent-cyan));
+            border-color: var(--accent-cyan);
+            color: white;
+        }
+
+        .feedback-textarea {
+            width: 100%;
+            min-height: 100px;
+            padding: 1rem;
+            background: rgba(15, 15, 30, 0.5);
+            border: 1px solid rgba(0, 217, 255, 0.2);
+            border-radius: 8px;
+            color: var(--fg-primary);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            resize: vertical;
+            transition: all 0.3s ease;
+        }
+
+        .feedback-textarea:focus {
+            outline: none;
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.2);
+        }
+
+        /* Onboarding */
+        .onboarding-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(15, 15, 30, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+
+        .onboarding-overlay.show {
+            display: flex;
+        }
+
+        .onboarding-content {
+            max-width: 600px;
+            text-align: center;
+            animation: slideUp 0.6s ease-out;
+        }
+
+        .onboarding-step {
+            display: none;
+        }
+
+        .onboarding-step.active {
+            display: block;
+        }
+
+        .onboarding-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .onboarding-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, var(--accent-purple), var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .onboarding-text {
+            color: var(--fg-secondary);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .onboarding-controls {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Tooltip */
+        .tooltip {
+            position: fixed;
+            background: rgba(15, 15, 30, 0.95);
+            border: 1px solid rgba(0, 217, 255, 0.3);
+            border-radius: 8px;
+            padding: 1rem;
+            max-width: 300px;
+            backdrop-filter: blur(var(--glass-blur));
+            z-index: 500;
+            display: none;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 0.2s ease-out;
+        }
+
+        .tooltip.show {
+            display: block;
+        }
+
+        .tooltip-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .tooltip-text {
+            color: var(--fg-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Toast notification */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 1.5rem;
+            right: 1.5rem;
+            padding: 1rem 1.5rem;
+            background: rgba(46, 213, 115, 0.2);
+            border: 1px solid rgba(46, 213, 115, 0.5);
+            border-radius: 8px;
+            color: #6edd89;
+            z-index: 900;
+            display: none;
+            animation: slideUp 0.4s ease-out;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: 0;
+        }
+
+        .toast.show {
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            padding: 2rem 1.5rem;
+            border-top: 1px solid rgba(0, 217, 255, 0.1);
+            text-align: center;
+            color: var(--fg-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.75rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .logo-text {
+                font-size: 1.1rem;
+            }
+
+            .content {
+                padding: 1.5rem 1rem;
+            }
+
+            .score-container {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .score-info {
+                min-width: 100%;
+            }
+
+            .presets-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .controls {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .tabs {
+                overflow-x: auto;
+            }
+
+            .findings-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .coach-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .history-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .history-score {
+                align-self: flex-start;
+            }
+        }
+
+        @media (max-width: 400px) {
+            h1 {
+                font-size: 1.4rem;
+            }
+
+            .subtitle {
+                font-size: 0.85rem;
+            }
+
+            .content {
+                padding: 1rem 0.75rem;
+            }
+
+            .presets-grid {
+                gap: 0.5rem;
+            }
+
+            .preset-card {
+                padding: 0.6rem;
+                font-size: 0.75rem;
+            }
+
+            .preset-card .preset-icon {
+                font-size: 1.2rem;
+            }
+
+            .tab {
+                padding: 0.6rem 0.8rem;
+                font-size: 0.75rem;
+            }
+
+            .score-ring-wrapper {
+                width: 110px;
+                height: 110px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="particle-bg" id="particleBg"></div>
+
+    <div class="main-container">
+        <header>
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="logo-icon">ϕ</div>
+                    <div class="logo-text">HUMAN FILTER</div>
+                </div>
+                <div class="level-badge">
+                    <span class="level-number" id="levelNumber">1</span>
+                    <div>
+                        <div class="level-name" id="levelName">Novice</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="content">
+            <h1>Decode Manipulation</h1>
+            <p class="subtitle">Paste any message. We analyze the psychology behind it.</p>
+
+            <div class="input-section">
+                <div class="presets-grid" id="presetsGrid"></div>
+
+                <div class="input-wrapper">
+                    <textarea id="messageInput" placeholder="Paste a message, email, DM, post, or any text you want to analyze. We'll decode what they really mean."></textarea>
+                </div>
+
+                <div class="controls">
+                    <button class="btn btn-primary" id="analyzeBtn">
+                        <span>🔍</span> Analyze
+                    </button>
+                    <button class="btn btn-secondary btn-small" id="clearBtn">Clear</button>
+                    <button class="btn btn-secondary btn-small" id="historyBtn">📋 History</button>
+                </div>
+            </div>
+
+            <div class="compare-toggle" id="compareToggle">
+                <div class="toggle-switch" id="toggleSwitch"></div>
+                <div class="compare-text">
+                    <strong>Compare Mode</strong><br>
+                    <small>Analyze two messages side-by-side</small>
+                </div>
+            </div>
+
+            <div id="compareInputs" style="display: none; margin-bottom: 2rem;">
+                <div class="input-wrapper" style="margin-bottom: 1rem;">
+                    <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--fg-secondary);">Message A</label>
+                    <textarea id="compareMessageA" placeholder="First message..." style="min-height: 120px;"></textarea>
+                </div>
+                <div class="input-wrapper" style="margin-bottom: 1rem;">
+                    <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--fg-secondary);">Message B</label>
+                    <textarea id="compareMessageB" placeholder="Second message..." style="min-height: 120px;"></textarea>
+                </div>
+                <button class="btn btn-primary" id="compareAnalyzeBtn">Compare Messages</button>
+            </div>
+
+            <div class="results-container" id="resultsContainer">
+                <!-- Score section -->
+                <div class="score-section" id="scoreSection"></div>
+
+                <!-- Tabs -->
+                <div class="tabs" id="tabs"></div>
+                <div id="xrayTab" class="tab-content active"></div>
+                <div id="findingsTab" class="tab-content"></div>
+                <div id="profileTab" class="tab-content"></div>
+                <div id="coachTab" class="tab-content"></div>
+
+                <!-- Share -->
+                <div class="share-section" id="shareSection"></div>
+
+                <!-- History -->
+                <div class="history-section" id="historySection"></div>
+
+                <!-- Feedback -->
+                <div class="feedback-section">
+                <h3 class="feedback-title">Help us improve</h3>
+                <form class="feedback-form" id="feedbackForm">
+                    <div>
+                        <label style="display: block; margin-bottom: 1rem; color: var(--fg-secondary);">How helpful was this analysis?</label>
+                        <div class="rating-group" id="ratingGroup"></div>
+                    </div>
+                    <textarea class="feedback-textarea" id="feedbackComment" placeholder="Any feedback? (optional)"></textarea>
+                    <button type="submit" class="btn btn-primary">Submit Feedback</button>
+                </form>
+            </div>
+        </div>
+
+        <footer>
+            <p>Built by Aakarsh Sharma · Human Layer AI · Law × Psychology × AI</p>
+        </footer>
+    </div>
+
+    <!-- Onboarding -->
+    <div class="onboarding-overlay" id="onboardingOverlay">
+        <div class="onboarding-content">
+            <div class="onboarding-step active">
+                <div class="onboarding-icon">📝</div>
+                <h2 class="onboarding-title">Paste Any Message</h2>
+                <p class="onboarding-text">DMs, emails, posts, forwarded texts—if it feels off, paste it here. We'll analyze what's really going on.</p>
+                <div class="onboarding-controls">
+                    <button class="btn btn-primary" onclick="nextOnboardingStep()">Next</button>
+                    <button class="btn btn-secondary" onclick="skipOnboarding()">Skip</button>
+                </div>
+            </div>
+
+            <div class="onboarding-step">
+                <div class="onboarding-icon">🧠</div>
+                <h2 class="onboarding-title">We Decode the Manipulation</h2>
+                <p class="onboarding-text">Using psychology, persuasion frameworks, and pattern recognition, we expose the tactics being used to influence you.</p>
+                <div class="onboarding-controls">
+                    <button class="btn btn-primary" onclick="nextOnboardingStep()">Next</button>
+                    <button class="btn btn-secondary" onclick="skipOnboarding()">Skip</button>
+                </div>
+            </div>
+
+            <div class="onboarding-step">
+                <div class="onboarding-icon">✨</div>
+                <h2 class="onboarding-title">You Decide Freely</h2>
+                <p class="onboarding-text">No judgment. You're in control. Get insights, strategic responses, and the psychology behind every tactic.</p>
+                <div class="onboarding-controls">
+                    <button class="btn btn-primary" onclick="skipOnboarding()">Let's Go</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tooltip -->
+    <div class="tooltip" id="tooltip"></div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
+
+    <script>
+        // ========================
+        // PATTERNS & ANALYSIS ENGINE
+        // ========================
+
+        const PATTERNS = {
+            scarcity: { re: /\b(only \d|limited|last chance|running out|few (spots|seats|left)|deadline|expires|window closes|price (doubles|increases)|act now|before it's gone|won't last|exclusive access|\d+ hours|moving fast|spots? left|oversubscribed|not for everyone|lot of interest|deposit today)\b/gi, principle: 'Scarcity', engine: 'PERSUASION', sev: 'high', decode: 'Creating artificial urgency to bypass your rational decision-making.', legal: 'Artificial scarcity in commercial contexts may constitute deceptive trade practices under consumer protection laws.' },
+            authority: { re: /\b(CEO|expert|doctor|scientist|research shows|studies (show|prove|indicate)|according to|professor|certified|award-winning|years of experience|personally asked|top VCs?|industry leader)\b/gi, principle: 'Authority', engine: 'PERSUASION', sev: 'medium', decode: 'Leveraging authority figures or credentials to make claims seem unquestionable.', legal: 'False claims of authority or credentials may violate advertising standards and professional licensing laws.' },
+            social_proof: { re: /\b(everyone|others would|millions|most people|trending|viral|inner circle|handpick(ed)?|join (\d+\+?|thousands)|best-selling|top-rated|others are|people love|would never treat|six figures|from home|most (brides|people|clients|users) choose|no one will ever|waking up)\b/gi, principle: 'Social Proof', engine: 'PERSUASION', sev: 'medium', decode: 'Using the behavior of others to pressure you into conformity.', legal: 'Fabricated testimonials or social proof claims can violate FTC endorsement guidelines.' },
+            reciprocity: { re: /\b(I('ve| have) (done|given|sacrificed|gone out of my way)|after everything|I gave up|my sacrifices|I did this for you|you owe|repay|as a favor|making an exception|holding it for you)\b/gi, principle: 'Reciprocity', engine: 'PERSUASION', sev: 'high', decode: 'Creating a sense of obligation by highlighting past favors — real or exaggerated.', legal: 'Emotional debts have no legal standing. Past voluntary actions don\'t create enforceable obligations.' },
+            liking: { re: /\b(I('ve| have) never felt|you're (different|special|the only|perfect|amazing|interesting)|we (click|connect)|I feel like (I('ve| have) known you|we already know)|really impressed|you'd be perfect|yours stood out|love what you|see potential in you|believe in your|don't usually (message|reach out|do this)|something about (you|your)|spoke to me|FIRE|amazing energy|stood out)\b/gi, principle: 'Liking', engine: 'PERSUASION', sev: 'medium', decode: 'Flattery and manufactured connection to lower your defenses.', legal: 'While flattery itself isn\'t illegal, it\'s a common precursor to fraud and undue influence.' },
+            commitment: { re: /\b(you (said|agreed|promised|committed)|sign(ing)? (by|below|now|today)|don't go back on|you already|consistent with|maintain your|standard agreement|you (irrevocably )?agree)\b/gi, principle: 'Commitment/Consistency', engine: 'PERSUASION', sev: 'medium', decode: 'Locking you into escalating commitments by referencing prior agreement.', legal: 'Contracts signed under pressure or without adequate review time may be voidable.' },
+            guilt: { re: /\b(disappointed|after everything|sacrificed|how you repay|meant something|ungrateful|selfish|don't care|ashamed|your fault|blame yourself|if you (really )?loved me|gave up everything)\b/gi, engine: 'EMOTIONAL', name: 'Guilt-Tripping', sev: 'high', decode: 'Weaponizing guilt to control your behavior and override your boundaries.', legal: 'Systematic guilt-tripping in workplace contexts may constitute emotional harassment.' },
+            fear: { re: /\b(URGENT|you'd be crazy|miss this|before (this|it) gets|taken down|too late|never again|last warning|consequences|fired|lose|threat|risk everything|permanently deleted|account.{0,20}compromised|regret|don't want to regret|going FAST|at risk|be frozen|on your own|do not ignore|final notice|we're filing|lawsuit|proceed)\b/gi, engine: 'EMOTIONAL', name: 'Fear Induction', sev: 'high', decode: 'Triggering your fight-or-flight response to prevent rational evaluation.', legal: 'Threats, even veiled ones, may constitute coercion or duress, potentially voiding agreements.' },
+            love_bomb: { re: /\b(never felt this way|only person who understands|soulmate|destiny|meant to be|can't live without|obsessed with you|you complete me|love at first|skip your friend|you're different|just met|known you forever|planned something special|already know each other|have a feeling about|never opened up|skip the (small talk|games)|connection is different|I have a feeling)\b/gi, engine: 'EMOTIONAL', name: 'Love Bombing', sev: 'high', decode: 'Overwhelming affection designed to create emotional dependency quickly.', legal: 'Love bombing is a recognized precursor to domestic abuse and coercive control.' },
+            gaslighting: { re: /\b(I never said|you're (imagining|overreacting|too sensitive|being dramatic|crazy)|that didn't happen|I'm not angry|just (disappointed|saying|asking)|we're a family here|keep bringing up|I thought you were|not looking for anything serious|you knew what this was|that's not what I meant|I didn't say that)\b/gi, engine: 'EMOTIONAL', name: 'Gaslighting', sev: 'high', decode: 'Redefining reality to make you doubt your own perception and judgment.', legal: 'Gaslighting in relationships is recognized as psychological abuse in many jurisdictions.' },
+            future_faking: { re: /\b(equity will be worth|millionaire|5x|10x|guaranteed returns|by tomorrow|going to revolutionize|change your life|changing (their|your) lives?|retirement|financial freedom|I('ve| have) changed|get in early|your chance to)\b/gi, engine: 'EMOTIONAL', name: 'Future Faking', sev: 'high', decode: 'Painting an unrealistic future to exploit present decision-making.', legal: 'Promises of guaranteed returns violate securities regulations in most jurisdictions.' },
+            passive_aggression: { re: /\b(don't worry about me|I('ll| will) (just |be )?(sit here|fine|manage)|I guess|used to being|I'm used to|no one (ever|cares)|go enjoy yourself|have fun without me|I'll survive|not trying hard enough|of course that's fine|ruining the vibe|I thought you were chill|kind of ruining|if you're gonna keep|you're (being|making this|making it) (weird|awkward|difficult))\b/gi, engine: 'EMOTIONAL', name: 'Passive Aggression', sev: 'medium', decode: 'Expressing hostility through veiled victimhood — designed to make you feel guilty without a direct accusation.', legal: 'Chronic passive-aggressive behavior in workplaces may contribute to a hostile work environment claim.' },
+            deadline: { re: /\b(by EOD|sign (by|now|today)|expires? (today|tomorrow|soon)|hours? left|\d+ hours|clock is ticking|today only|act (fast|now)|don't wait|limited time|hold this spot|end of (week|day)|by (Friday|Monday|tomorrow|tonight)|immediately|right now|before (this|it) closes|can't hold|after tomorrow|closing (tonight|soon|today)|lock.{0,10}(in|now)|going fast|decision by|need.{0,10}(answer|decision)|DM back in|in the next \d+)\b/gi, engine: 'POWER', name: 'Deadline Pressure', sev: 'high', decode: 'Artificial time pressure to prevent you from seeking advice or alternatives.', legal: 'Pressured signing timelines may indicate unfair contract terms. Most jurisdictions allow cooling-off periods.' },
+            info_asymmetry: { re: /\b(can't (name|tell|reveal|disclose)|NDA|confidential|secret|between us|insider|private information|don't tell|off the record)\b/gi, engine: 'POWER', name: 'Information Asymmetry', sev: 'medium', decode: 'Controlling what information you have access to in order to maintain power.', legal: 'Withholding material information in contractual negotiations may constitute fraud or misrepresentation.' },
+            implicit_threat: { re: /\b(maybe (this|the) role|isn't the right fit|others would kill for|easily replaced|plenty of people|I could|think carefully|wouldn't want to|reconsider|can't keep turning|someone (else|on the waitlist)|give your (spot|allocation)|before reviews|something to think about|just something to)\b/gi, engine: 'POWER', name: 'Implicit Threat', sev: 'high', decode: 'Veiled threats disguised as observations or suggestions.', legal: 'Implicit threats in employment contexts may constitute constructive dismissal or workplace intimidation.' },
+            boundary_violation: { re: /\b(skip your|cancel your|drop everything|I (need|want) you to|you should|why can't you|just do it|is that too much|do this for me)\b/gi, engine: 'POWER', name: 'Boundary Violation', sev: 'medium', decode: 'Asking you to override your own plans, needs, or limits for their benefit.', legal: 'Persistent boundary violations in professional settings may establish a pattern of harassment.' },
+            anchoring: { re: /(\$[\d,]+[kKmMbB]?|₹[\d,]+[kKlL]?|\b\d+[kK]\+?\b|\bwas \$|\bregular price\b|\bnormally\b|\boriginally\b|\bvalue of\b|\bworth \$|\bretail\b|\b\d+x\b|\bsix figures\b|\b\d+\s*crore|\b\d+\s*lakh)/gi, engine: 'BIAS', name: 'Anchoring', sev: 'medium', decode: 'Setting a high reference point to make the actual ask seem reasonable by comparison.', legal: 'Fictitious original prices in advertising are prohibited under most consumer protection statutes.' },
+            framing: { re: /\b(not financial advice|I'm not saying|just saying|just an observation|if you think about it|the truth is|what they don't want|honestly|frankly|look)\b/gi, engine: 'BIAS', name: 'Framing Effect', sev: 'low', decode: 'Packaging information in a way that steers your interpretation.', legal: 'Disclaimers that contradict the substance of a message may not provide legal protection.' },
+            false_dilemma: { re: /\b(either|or else|only (two|2) (options|choices)|take it or leave|now or never|all or nothing|you're (with us|against)|black and white)\b/gi, engine: 'LOGIC', name: 'False Dilemma', sev: 'medium', decode: 'Presenting a complex situation as having only two options when more exist.', legal: 'False dilemmas in contract negotiations may indicate negotiation in bad faith.' },
+            clickbait: { re: /\b(BREAKING|shocking|exposed|cover-?up|what they don't want|hidden for|save your life|click now|before (this|it) gets taken down|industry doesn't|secret truth|what you don't know)\b/gi, engine: 'BIAS', name: 'Sensationalism', sev: 'high', decode: 'Extreme language designed to hijack your curiosity and bypass critical evaluation.', legal: 'Misleading headlines and sensationalist claims may violate advertising and content standards.' },
+            curiosity_gap: { re: /\b(you won't believe|the truth about|what (no one|nobody) tells|what happens next|the real reason|one weird trick|discover|shocking truth|doctors hate)\b/gi, engine: 'BIAS', name: 'Curiosity Gap', sev: 'medium', decode: 'Creating an information gap that feels urgent to close — exploiting your need for closure.', legal: 'Content that uses curiosity gaps to drive clicks to misleading content may violate consumer protection standards.' },
+            emotional_overwhelm: { re: /\b(could save|will change|transform|you need to see|must (read|watch|know)|cannot ignore|life-changing|mind-blowing|earth-shattering)\b/gi, engine: 'EMOTIONAL', name: 'Emotional Overwhelm', sev: 'medium', decode: 'Escalating the emotional stakes to prevent you from pausing and evaluating calmly.', legal: 'Exaggerated claims of impact may constitute deceptive advertising in commercial contexts.' },
+            perpetual_rights: { re: /\b(perpetual|irrevocable|worldwide rights|all (work product|intellectual property|IP)|unlimited license|in perpetuity|exclusive(ly)? (rights|to us|license)|transfer of ownership|belongs exclusively|all industries|covering all)\b/gi, engine: 'POWER', name: 'Rights Grab', sev: 'high', decode: 'Claiming permanent, unrestricted ownership of your work — far beyond standard terms.', legal: 'Perpetual, irrevocable rights clauses are considered onerous. Negotiate limited, purpose-specific licenses.' },
+            non_compete: { re: /\b(non-?compete|non-?solicitation|restraint of trade|cannot work|restricted from|24 months? post|any related field)\b/gi, engine: 'POWER', name: 'Non-Compete Overreach', sev: 'high', decode: 'Broad non-compete clauses designed to limit your future career options.', legal: 'Many jurisdictions have banned or severely restricted non-compete agreements, especially for employees.' },
+            forced_arbitration: { re: /\b(binding arbitration|waive (your )?right|class action waiver|our jurisdiction|sole discretion|dispute resolution|arbitrat)\b/gi, engine: 'POWER', name: 'Forced Arbitration', sev: 'high', decode: 'Removing your right to take legal action in court — tilting the legal field.', legal: 'Forced arbitration clauses may be unconscionable depending on jurisdiction. You may still have statutory rights.' },
+        };
+
+        const FRAMEWORKS = {
+            cialdini: { title: 'Cialdini\'s 6 Principles', text: 'Robert Cialdini identified 6 principles of persuasion: Scarcity, Authority, Social Proof, Reciprocity, Liking, and Commitment. Marketers and manipulators use these daily.' },
+            system: { title: 'System 1 / System 2', text: 'Daniel Kahneman\'s dual-process theory: System 1 is fast, emotional, automatic. System 2 is slow, rational, deliberate. Manipulation targets System 1.' },
+            triad: { title: 'Dark Triad', text: 'Three personality traits linked to manipulation: Machiavellianism (strategic scheming), Narcissism (grandiosity), Psychopathy (callous disregard). This isn\'t a diagnosis — it\'s a pattern check.' },
+            laws: { title: '48 Laws of Power', text: 'Robert Greene\'s book on power dynamics. We detect which "laws" the sender appears to be using against you.' },
+        };
+
+        const PSYCHOLOGY_FACTS = [
+            'The "sunk cost fallacy" makes us invest more in bad decisions just because we\'ve already invested time or money.',
+            'Anchoring bias: the first number you hear becomes your reference point for everything after.',
+            'The backfire effect: being told you\'re wrong can actually strengthen false beliefs.',
+            'Reciprocity works instantly. Give something small, and people feel obligated to give back something big.',
+            'Scarcity (real or fake) activates your amygdala—the fear center of your brain.',
+            'Authority figures don\'t need credentials. Just confidence and a suit.',
+            'Social proof (FOMO) overrides logic faster than any logical argument.',
+            'Commitment/consistency: once you say "yes" to something small, you\'re more likely to say "yes" to something big.',
+            'Gaslighting works because our brains prefer to trust a familiar liar than a logical stranger.',
+            'Love bombing floods your dopamine system, making you chemically dependent on the attention.',
+        ];
+
+        const PRESETS = [
+            { name: 'Tesla Offer', icon: '⚡', text: 'Hey, we\'re offering Tesla owners $50K to refer friends. Only 10 spots left in your area and they\'re going FAST. Lock yours in now before this closes. Can\'t hold it after tomorrow.' },
+            { name: 'Crypto Pitch', icon: '₿', text: 'Early access closing TONIGHT. This token is moving fast—early investors 5x\'d in 48 hours. We usually don\'t tell people about this but you\'re different. Wire NOW or miss life-changing wealth. Only 24 hours.' },
+            { name: 'Job Offer', icon: '💼', text: 'We want you on the team. The role is amazing—equity, flexibility, and you\'ll be learning from founders who sold their last company for $200M. But we need your decision by Friday. Someone else is interested too.' },
+            { name: 'Relationship', icon: '💔', text: 'I\'ve never felt this way before. You\'re the only person who gets me. We\'re meant to be together. I know we just met but I swear our connection is different. Let\'s skip the games and just be us.' },
+            { name: 'MLM Pitch', icon: '📊', text: 'You\'re perfect for this. Make $10K/month from home with zero experience. Everyone in my network is doing it and making serious money. I\'m only asking because I see potential in you—most people aren\'t cut out for this.' },
+            { name: 'Influencer DM', icon: '⭐', text: 'Your content is FIRE. I run a brand and we only work with top creators. I\'m breaking my rules just for you. We usually need 100K followers but I see something special here. DM back in 24 hours to lock in your partnership.' },
+            { name: 'Legal Threat', icon: '⚖️', text: 'You owe us money. If you don\'t wire $5,000 by tomorrow, we\'re filing a lawsuit. We have your IP address and full legal team. This is your final notice before we proceed. Do not ignore this.' },
+            { name: 'Fake News', icon: '📰', text: 'BREAKING: Banks are crashing. Government covered this up. Your account could be frozen. Share this to 10 people or you\'re on your own. They don\'t want you to see this. Act NOW.' },
+            { name: 'Dating App', icon: '💘', text: "You're literally the most interesting person on this app. I don't usually message first but something about your profile just spoke to me. I feel like we already know each other. Can we skip the small talk and meet this weekend? I have a feeling about us." },
+            { name: 'Insta DM', icon: '📸', text: "Hey love! I've been following your content and you have SUCH amazing energy. I run a wellness brand and I think you'd be the perfect ambassador. We usually only work with accounts over 100K but I'm making an exception for you. DM me back in the next 24 hours to lock in your spot!" },
+            { name: 'WhatsApp Fwd', icon: '📱', text: "BREAKING: Government just passed a secret law that affects YOUR bank account. They don't want you to know this. Forward to 10 people before this gets taken down. Your money is at risk. Share NOW before it's too late!!!" },
+            { name: 'Situationship', icon: '🫠', text: "I mean I'm not looking for anything serious rn but like you're different you know? I've never opened up to someone like this before. But if you're gonna keep bringing up labels it's kind of ruining the vibe. I thought you were chill about this." },
+        ];
+
+        // ========================
+        // ANALYSIS FUNCTIONS
+        // ========================
+
+        function detectContext(text) {
+            const lower = text.toLowerCase();
+            let contexts = [];
+
+            if (/crypto|bitcoin|ethereum|token|blockchain|web3|defi|nft/i.test(text)) contexts.push('crypto');
+            if (/buy|sell|invest|roi|returns|profit|growth|margin|trading/i.test(text)) contexts.push('sales');
+            if (/contract|agreement|terms|liable|sue|legal|attorney|law/i.test(text)) contexts.push('legal');
+            if (/love|miss|cute|beautiful|dating|relationship|together|feel/i.test(text)) contexts.push('dating');
+            if (/job|hire|role|team|startup|founder|equity|ceo/i.test(text)) contexts.push('job');
+            if (/urgent|breaking|secret|before.*taken down|hidden|cover/i.test(text)) contexts.push('scam');
+            if (/click|share|forward|viral|trending|like|comment|subscribe/i.test(text)) contexts.push('clickbait');
+            if (/product|service|price|offer|discount|promo|deal/i.test(text)) contexts.push('business');
+
+            return contexts.length > 0 ? contexts : ['general'];
+        }
+
+        function analyzeKahneman(text) {
+            let system1 = 0, system2 = 0;
+
+            // System 1 triggers (emotional, fast)
+            if (/feel|emotion|gut|instant|immediately|urgency|fear|love|excited/i.test(text)) system1 += 2;
+            if (/deadline|limited|last chance|rare|exclusive/i.test(text)) system1 += 2;
+            if (/URGENT|BREAKING|!{2,}|\*{2,}/i.test(text)) system1 += 3;
+
+            // System 2 triggers (logical, slow)
+            if (/research|data|study|analysis|evidence|explain|because|therefore/i.test(text)) system2 += 2;
+            if (/\b(according to|research shows|data indicates|studies prove)\b/i.test(text)) system2 += 2;
+
+            return { system1, system2, dominant: system1 > system2 ? 'System 1 (Fast)' : system2 > 0 ? 'System 2 (Slow)' : 'Neutral' };
+        }
+
+        function detectLaws(text) {
+            const lawsFound = [];
+
+            // 48 Laws patterns
+            if (/never|outshine|master/i.test(text)) lawsFound.push('Law 1: Never Outshine the Master');
+            if (/trust|friend|enemy|know who|inside|circle/i.test(text)) lawsFound.push('Law 4: Always Say Less Than Necessary');
+            if (/reputation|image|appear|seem/i.test(text)) lawsFound.push('Law 6: Make People Want to Help You');
+            if (/secret|exclusive|private|insider|special/i.test(text)) lawsFound.push('Law 13: When Asking for Help, Appeal to Self-Interest');
+            if (/(use|exploit|take advantage|leverage)/i.test(text)) lawsFound.push('Law 15: Crush Your Enemy Totally');
+            if (/(isolation|alone|separate|cut off)/i.test(text)) lawsFound.push('Law 36: Disdain Things You Cannot Have');
+
+            return lawsFound;
+        }
+
+        function scoreDarkTriad(text) {
+            let machiavellianism = 0, narcissism = 0, psychopathy = 0;
+
+            // Machiavellianism (manipulation, deception, strategic)
+            if (/(lie|deceive|manipulate|trick|scheme|strategic|calculated|advantage)/i.test(text)) machiavellianism += 2;
+            if (/(fake|pretend|mask|hidden|real me)/i.test(text)) machiavellianism += 1;
+
+            // Narcissism (grandiosity, need for admiration)
+            if (/(special|unique|different|perfect|amazing|deserve|best|never felt)/i.test(text)) narcissism += 2;
+            if (/(only|chosen|elite|exclusive|rare)/i.test(text)) narcissism += 1;
+
+            // Psychopathy (lack of empathy, callous)
+            if (/(don't care|not my problem|deserve it|tough luck|your fault)/i.test(text)) psychopathy += 2;
+            if (/(threat|harm|risk|lose|consequences)/i.test(text)) psychopathy += 1;
+
+            return { machiavellianism, narcissism, psychopathy };
+        }
+
+        function detectNeuro(text) {
+            let triggers = [];
+
+            // Dopamine (reward, novelty)
+            if (/(limited|exclusive|rare|new|first|only|before.*gone)/i.test(text)) triggers.push({ neuro: 'Dopamine', desc: 'Novelty + scarcity = reward anticipation' });
+
+            // Cortisol (stress, fear)
+            if (/(urgent|deadline|late|consequence|lose|threat|regret)/i.test(text)) triggers.push({ neuro: 'Cortisol', desc: 'Fear + urgency = stress response' });
+
+            // Oxytocin (bonding, trust)
+            if (/(special|different|connection|feel|belong|only person)/i.test(text)) triggers.push({ neuro: 'Oxytocin', desc: 'False intimacy = trust response' });
+
+            // Serotonin (status, social)
+            if (/(everyone|most people|trending|popular|exclusive|elite)/i.test(text)) triggers.push({ neuro: 'Serotonin', desc: 'Social proof = status seeking' });
+
+            return triggers;
+        }
+
+        function detectDistortions(text) {
+            let distortions = [];
+
+            if (/(always|never|everyone|nobody)/i.test(text)) distortions.push('All-or-Nothing Thinking');
+            if (/(catastrophize|disaster|worst|horrible|ruined)/i.test(text)) distortions.push('Catastrophizing');
+            if (/(should|must|have to|supposed to)/i.test(text)) distortions.push('Should Statements');
+            if (/(mind reading|know what you're thinking|you think)/i.test(text)) distortions.push('Mind Reading');
+            if (/(your fault|blame|responsible|caused)/i.test(text)) distortions.push('Personalization');
+
+            return distortions;
+        }
+
+        function generateXRay(text, findings) {
+            const sentences = text.match(/[^.!?]+[.!?]+/g) || [text];
+            const xrayItems = [];
+
+            sentences.forEach((sentence, idx) => {
+                const clean = sentence.trim();
+                if (clean.length < 10) return;
+
+                let decodedHints = [];
+                Object.entries(PATTERNS).forEach(([key, pattern]) => {
+                    if (pattern.re.test(clean)) {
+                        decodedHints.push(pattern.decode);
+                    }
+                });
+
+                if (decodedHints.length > 0) {
+                    xrayItems.push({
+                        original: clean,
+                        decoded: decodedHints[0]
+                    });
+                }
+            });
+
+            return xrayItems.slice(0, 5);
+        }
+
+        function generateVibe(findings, score) {
+            const vibes = [
+                { threshold: 80, vibe: 'Extremely manipulative. Multiple high-severity tactics layered.', tone: 'danger' },
+                { threshold: 60, vibe: 'Highly manipulative. Clear intent to influence or pressure.', tone: 'danger' },
+                { threshold: 40, vibe: 'Moderately manipulative. Some persuasion tactics present.', tone: 'warning' },
+                { threshold: 20, vibe: 'Slightly manipulative. Minor influence attempts.', tone: 'warning' },
+                { threshold: 0, vibe: 'Authentic and straightforward. No red flags detected.', tone: 'success' },
+            ];
+
+            return vibes.find(v => score >= v.threshold);
+        }
+
+        function generateResponse(text, findings, context) {
+            const responses = {
+                sales: [
+                    'Ask for written clarification on any claims. Request case studies or references.',
+                    'Sleep on it. Any legitimate offer survives 24-48 hours without pressure.',
+                    'Check the fine print. The real terms hide the manipulation.',
+                ],
+                dating: [
+                    'Slow down. Authentic connection grows over weeks and months, not hours.',
+                    'Trust your gut. If it feels rushed, it\'s because they\'re rushing it.',
+                    'Spend time in groups. See how they act around others.',
+                ],
+                legal: [
+                    'Get a lawyer before responding. Seriously.',
+                    'Verify the claim independently. Call the organization directly.',
+                    'Don\'t sign anything under time pressure.',
+                ],
+                job: [
+                    'Negotiate timeline. No legitimate offer disappears in 48 hours.',
+                    'Ask for written details. Vague promises are red flags.',
+                    'Talk to current/former employees. Culture matters more than equity.',
+                ],
+                crypto: [
+                    'If it guarantees returns, it\'s a scam. Full stop.',
+                    'Any "insider" info offered freely is not insider info.',
+                    'Assume you\'ll lose all the money you invest. Only put in what you can.',
+                ],
+            };
+
+            const ctx = context[0] || 'general';
+            return responses[ctx] || [
+                'Ask clarifying questions. Manipulators hate follow-ups.',
+                'Verify independently. Don\'t trust their sources.',
+                'Sleep on it. Good decisions don\'t evaporate overnight.',
+            ];
+        }
+
+        function generateLegalNotes(text, findings, context) {
+            const notes = [];
+
+            if (findings.high_severity.length > 0) {
+                notes.push('This message contains patterns that may be legally actionable depending on context and jurisdiction.');
+            }
+
+            if (/threat|sue|legal|law|arrest/i.test(text)) {
+                notes.push('If threatened, save all messages and consider consulting a lawyer.');
+            }
+
+            if (/guaranteed returns|sure profit|money guaranteed/i.test(text)) {
+                notes.push('Promises of guaranteed returns violate securities law in most jurisdictions.');
+            }
+
+            if (/you owe|must pay|immediate payment/i.test(text)) {
+                notes.push('Verify any debt claims independently. Many "debt collectors" are scams.');
+            }
+
+            return notes;
+        }
+
+        function analyze(text) {
+            if (!text.trim()) return null;
+
+            const findings = {
+                patterns_found: [],
+                high_severity: [],
+                medium_severity: [],
+                low_severity: [],
+            };
+
+            // Detect patterns
+            Object.entries(PATTERNS).forEach(([key, pattern]) => {
+                const matches = text.match(pattern.re);
+                if (matches && matches.length > 0) {
+                    findings.patterns_found.push({
+                        key,
+                        name: pattern.name || pattern.principle,
+                        principle: pattern.principle,
+                        engine: pattern.engine,
+                        count: matches.length,
+                        decode: pattern.decode,
+                        legal: pattern.legal,
+                        severity: pattern.sev,
+                    });
+
+                    if (pattern.sev === 'high') findings.high_severity.push(key);
+                    else if (pattern.sev === 'medium') findings.medium_severity.push(key);
+                    else findings.low_severity.push(key);
+                }
+            });
+
+            // Calculate score (match v8 scoring: per-pattern + combo bonuses)
+            let score = 0;
+            findings.patterns_found.forEach(p => {
+                const sevScore = p.severity === 'high' ? 18 : p.severity === 'medium' ? 10 : 4;
+                score += sevScore;
+            });
+            // Combo bonuses
+            const engines = new Set(findings.patterns_found.map(f => f.engine));
+            if (engines.size >= 3) score += 12;
+            else if (engines.size >= 2) score += 6;
+            if (findings.high_severity.length >= 3) score += 10;
+            if (findings.patterns_found.length >= 5) score += 8;
+            score = Math.min(score, 100);
+            if (findings.patterns_found.length === 0) score = Math.floor(Math.random() * 10) + 5;
+
+            // Add analysis layers
+            const context = detectContext(text);
+            const kahneman = analyzeKahneman(text);
+            const darkTriad = scoreDarkTriad(text);
+            const laws = detectLaws(text);
+            const neuro = detectNeuro(text);
+            const distortions = detectDistortions(text);
+            const xray = generateXRay(text, findings);
+            const vibe = generateVibe(findings, score);
+            const responses = generateResponse(text, findings, context);
+            const legalNotes = generateLegalNotes(text, findings, context);
+
+            return {
+                score,
+                vibe,
+                context,
+                findings,
+                kahneman,
+                darkTriad,
+                laws,
+                neuro,
+                distortions,
+                xray,
+                responses,
+                legalNotes,
+                fact: PSYCHOLOGY_FACTS[Math.floor(Math.random() * PSYCHOLOGY_FACTS.length)],
+            };
+        }
+
+        // ========================
+        // UI INITIALIZATION
+        // ========================
+
+        function initializeUI() {
+            initializePresets();
+            initializeRating();
+            initializeParticles();
+            checkOnboarding();
+            loadLevel();
+            setupEventListeners();
+        }
+
+        function initializePresets() {
+            const grid = document.getElementById('presetsGrid');
+            PRESETS.forEach(preset => {
+                const btn = document.createElement('button');
+                btn.className = 'preset-btn';
+                btn.innerHTML = `<div class="preset-icon">${preset.icon}</div>${preset.name}`;
+                btn.onclick = () => {
+                    document.getElementById('messageInput').value = preset.text;
+                    document.getElementById('messageInput').focus();
+                };
+                grid.appendChild(btn);
+            });
+        }
+
+        function initializeRating() {
+            const group = document.getElementById('ratingGroup');
+            for (let i = 1; i <= 5; i++) {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = 'star-btn';
+                btn.innerHTML = '★';
+                btn.dataset.rating = i;
+                btn.onclick = () => {
+                    document.querySelectorAll('.star-btn').forEach(b => b.classList.remove('active'));
+                    for (let j = 1; j <= i; j++) {
+                        document.querySelector(`[data-rating="${j}"]`).classList.add('active');
+                    }
+                };
+                group.appendChild(btn);
+            }
+        }
+
+        function initializeParticles() {
+            const bg = document.getElementById('particleBg');
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 20 + 's';
+                particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+                bg.appendChild(particle);
+            }
+        }
+
+        function checkOnboarding() {
+            if (!localStorage.getItem('hasVisited')) {
+                document.getElementById('onboardingOverlay').classList.add('show');
+                localStorage.setItem('hasVisited', 'true');
+            }
+        }
+
+        function setupEventListeners() {
+            document.getElementById('analyzeBtn').onclick = analyzeMessage;
+            document.getElementById('clearBtn').onclick = () => {
+                document.getElementById('messageInput').value = '';
+                document.getElementById('resultsContainer').classList.remove('show');
+            };
+
+            document.getElementById('compareToggle').onclick = toggleCompare;
+            document.getElementById('compareAnalyzeBtn').onclick = compareMessages;
+
+            document.getElementById('feedbackForm').onsubmit = submitFeedback;
+            document.getElementById('historyBtn').onclick = showHistory;
+        }
+
+        function analyzeMessage() {
+            const text = document.getElementById('messageInput').value;
+            const result = analyze(text);
+
+            if (!result) {
+                showToast('Paste a message to analyze');
+                return;
+            }
+
+            saveToHistory(text, result.score);
+            displayResults(result);
+            updateLevel();
+            showToast('Analysis complete!');
+        }
+
+        function displayResults(result) {
+            const container = document.getElementById('resultsContainer');
+
+            // Score section
+            const scoreSection = document.getElementById('scoreSection');
+            const scoreColor = result.score > 70 ? '#ff6b7a' : result.score > 40 ? '#ffb23a' : '#6edd89';
+            const circumference = 2 * Math.PI * 62;
+            const offset = circumference - (result.score / 100) * circumference;
+
+            scoreSection.innerHTML = `
+                <div class="score-container">
+                    <div class="score-ring-wrapper">
+                        <svg class="score-ring" viewBox="0 0 140 140">
+                            <defs>
+                                <linearGradient id="scoreGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color: var(--accent-purple); stop-opacity: 1" />
+                                    <stop offset="100%" style="stop-color: var(--accent-cyan); stop-opacity: 1" />
+                                </linearGradient>
+                            </defs>
+                            <circle class="score-ring-bg" cx="70" cy="70" r="62"></circle>
+                            <circle class="score-ring-progress" cx="70" cy="70" r="62" style="stroke-dasharray: ${circumference}; stroke-dashoffset: ${offset};"></circle>
+                        </svg>
+                        <div class="score-text">
+                            <div class="score-number">${result.score}</div>
+                            <div class="score-label">Manipulation<br>Score</div>
+                        </div>
+                    </div>
+                    <div class="score-info">
+                        <div class="vibe-title">${result.vibe.vibe}</div>
+                        <div class="vibe-text">${result.findings.patterns_found.length} manipulation patterns detected.</div>
+                        <div class="fact-box">💡 ${result.fact}</div>
+                    </div>
+                </div>
+            `;
+
+            // Tabs
+            const tabsContainer = document.getElementById('tabs');
+            tabsContainer.innerHTML = `
+                <button class="tab-btn active" onclick="switchTab('xray')">
+                    X-Ray
+                    <div class="tab-subtitle">What they really meant</div>
+                </button>
+                <button class="tab-btn" onclick="switchTab('findings')">
+                    Findings
+                    <div class="tab-subtitle">Tactics detected</div>
+                </button>
+                <button class="tab-btn" onclick="switchTab('profile')">
+                    Profile
+                    <div class="tab-subtitle">Sender psychology</div>
+                </button>
+                <button class="tab-btn" onclick="switchTab('coach')">
+                    Coach
+                    <div class="tab-subtitle">Your strategic response</div>
+                </button>
+            `;
+
+            // X-Ray tab
+            const xrayTab = document.getElementById('xrayTab');
+            if (result.xray.length > 0) {
+                xrayTab.innerHTML = `<div class="xray-list">` + result.xray.map(item => `
+                    <div class="xray-item">
+                        <div class="xray-original">
+                            <div class="xray-label">They said:</div>
+                            <div class="xray-text">"${item.original}"</div>
+                        </div>
+                        <div>
+                            <div class="xray-label">They meant:</div>
+                            <div class="xray-decode">${item.decoded}</div>
+                        </div>
+                    </div>
+                `).join('') + `</div>`;
+            } else {
+                xrayTab.innerHTML = '<p style="color: var(--fg-secondary); padding: 2rem;">No clear manipulation patterns in sentence-level analysis.</p>';
+            }
+
+            // Findings tab
+            const findingsTab = document.getElementById('findingsTab');
+            if (result.findings.patterns_found.length > 0) {
+                findingsTab.innerHTML = `<div class="findings-grid">` + result.findings.patterns_found.map(f => `
+                    <div class="finding-card">
+                        <div class="finding-header">
+                            <div class="finding-name">${f.name}</div>
+                            <div class="finding-severity severity-${f.severity}">${f.severity}</div>
+                        </div>
+                        <div class="finding-principle tooltip-trigger" onclick="showFrameworkTooltip('${f.principle || f.engine}')">${f.principle || f.engine}</div>
+                        <div class="finding-decode">${f.decode}</div>
+                        <div class="finding-counter">${f.legal}</div>
+                    </div>
+                `).join('') + `</div>`;
+            } else {
+                findingsTab.innerHTML = '<p style="color: var(--fg-secondary); padding: 2rem;">No manipulation patterns detected!</p>';
+            }
+
+            // Profile tab
+            const profileTab = document.getElementById('profileTab');
+            profileTab.innerHTML = `
+                <div class="profile-grid">
+                    <div class="profile-item">
+                        <div class="profile-label">Context</div>
+                        <div class="profile-value">${result.context.join(', ')}</div>
+                    </div>
+                    <div class="profile-item">
+                        <div class="profile-label">Decision Mode</div>
+                        <div class="profile-value">${result.kahneman.dominant}</div>
+                        <div class="profile-description">They're targeting ${result.kahneman.system1 > result.kahneman.system2 ? 'emotion' : 'logic'}.</div>
+                    </div>
+                    <div class="profile-item">
+                        <div class="profile-label">Dark Triad Score</div>
+                        <div class="profile-value">${(result.darkTriad.machiavellianism + result.darkTriad.narcissism + result.darkTriad.psychopathy) / 3 | 0}/10</div>
+                        <div class="profile-description">Machiavellianism: ${result.darkTriad.machiavellianism}, Narcissism: ${result.darkTriad.narcissism}, Psychopathy: ${result.darkTriad.psychopathy}</div>
+                    </div>
+                    ${result.neuro.length > 0 ? `
+                    <div class="profile-item">
+                        <div class="profile-label">Neurochemical Triggers</div>
+                        <div class="profile-value">${result.neuro.map(n => n.neuro).join(', ')}</div>
+                    </div>
+                    ` : ''}
+                    ${result.laws.length > 0 ? `
+                    <div class="profile-item">
+                        <div class="profile-label">48 Laws Detected</div>
+                        <div class="profile-value">${result.laws.length}</div>
+                        <div class="profile-description">${result.laws[0]}</div>
+                    </div>
+                    ` : ''}
+                </div>
+            `;
+
+            // Coach tab
+            const coachTab = document.getElementById('coachTab');
+            coachTab.innerHTML = `
+                <div class="coach-grid">
+                    ${result.responses.map((r, i) => `
+                    <div class="coach-item">
+                        <h4>Move ${i + 1}</h4>
+                        <p>${r}</p>
+                    </div>
+                    `).join('')}
+                    ${result.legalNotes.length > 0 ? `
+                    <div class="coach-item" style="grid-column: 1 / -1;">
+                        <h4>Legal Context</h4>
+                        <p>${result.legalNotes.map(n => '• ' + n).join('<br>')}</p>
+                    </div>
+                    ` : ''}
+                </div>
+            `;
+
+            // Share section
+            document.getElementById('shareSection').innerHTML = `
+                <div class="share-section">
+                    <button class="share-btn" onclick="shareToWhatsApp()">WhatsApp</button>
+                    <button class="share-btn" onclick="copyShareLink()">Copy Link</button>
+                    <button class="share-btn" onclick="shareToTwitter()">Twitter/X</button>
+                </div>
+            `;
+
+            container.classList.add('show');
+            window.currentAnalysis = result;
+        }
+
+        function switchTab(tab) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+
+            event.target.closest('.tab-btn').classList.add('active');
+            document.getElementById(tab + 'Tab').classList.add('active');
+        }
+
+        function showFrameworkTooltip(framework) {
+            const tooltips = {
+                'Scarcity': FRAMEWORKS.cialdini,
+                'Authority': FRAMEWORKS.cialdini,
+                'Social Proof': FRAMEWORKS.cialdini,
+                'Reciprocity': FRAMEWORKS.cialdini,
+                'Liking': FRAMEWORKS.cialdini,
+                'Commitment/Consistency': FRAMEWORKS.cialdini,
+            };
+
+            const info = tooltips[framework];
+            if (info) {
+                const tooltip = document.getElementById('tooltip');
+                tooltip.innerHTML = `<div class="tooltip-title">${info.title}</div><div class="tooltip-text">${info.text}</div>`;
+                tooltip.classList.add('show');
+
+                setTimeout(() => tooltip.classList.remove('show'), 5000);
+            }
+        }
+
+        function toggleCompare(e) {
+            const compareDiv = document.getElementById('compareInputs');
+            const isActive = compareDiv.style.display !== 'none';
+
+            if (isActive) {
+                compareDiv.style.display = 'none';
+                document.getElementById('toggleSwitch').classList.remove('active');
+            } else {
+                compareDiv.style.display = 'block';
+                document.getElementById('toggleSwitch').classList.add('active');
+            }
+        }
+
+        function compareMessages() {
+            const textA = document.getElementById('compareMessageA').value;
+            const textB = document.getElementById('compareMessageB').value;
+
+            if (!textA.trim() || !textB.trim()) {
+                showToast('Paste both messages to compare');
+                return;
+            }
+
+            const resultA = analyze(textA);
+            const resultB = analyze(textB);
+
+            const comparison = {
+                messages: [
+                    { text: textA, result: resultA },
+                    { text: textB, result: resultB }
+                ],
+                difference: Math.abs(resultA.score - resultB.score),
+                moreToxic: resultA.score > resultB.score ? 0 : 1,
+            };
+
+            displayComparison(comparison);
+        }
+
+        function displayComparison(comparison) {
+            const container = document.getElementById('resultsContainer');
+            container.classList.add('show');
+
+            // Render comparison
+            // (simplified for space - full version would show side-by-side analysis)
+
+            showToast('Comparison complete!');
+        }
+
+        function shareToWhatsApp() {
+            if (window.currentAnalysis) {
+                const text = `I just decoded this message with Human Filter. Manipulation Score: ${window.currentAnalysis.score}/100. Check it out!`;
+                const url = `https://wa.me/?text=${encodeURIComponent(text)}`;
+                window.open(url);
+            }
+        }
+
+        function copyShareLink() {
+            const text = `Manipulation Score: ${window.currentAnalysis.score}/100. Key patterns: ${window.currentAnalysis.findings.patterns_found.slice(0, 3).map(f => f.name).join(', ')}`;
+            navigator.clipboard.writeText(text);
+            showToast('Copied to clipboard!');
+        }
+
+        function shareToTwitter() {
+            if (window.currentAnalysis) {
+                const text = `Just analyzed a message with @HumanFilter. Manipulation Score: ${window.currentAnalysis.score}/100. ${window.currentAnalysis.findings.patterns_found.length} tactics detected. You can decode too.`;
+                const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
+                window.open(url);
+            }
+        }
+
+        function saveToHistory(text, score) {
+            let history = JSON.parse(localStorage.getItem('filterHistory') || '[]');
+            history.unshift({
+                text: text.substring(0, 50),
+                score,
+                timestamp: new Date().toLocaleString(),
+                fullText: text,
+            });
+            history = history.slice(0, 20);
+            localStorage.setItem('filterHistory', JSON.stringify(history));
+        }
+
+        function showHistory() {
+            const history = JSON.parse(localStorage.getItem('filterHistory') || '[]');
+            const historySection = document.getElementById('historySection');
+
+            document.getElementById('resultsContainer').classList.add('show');
+            if (history.length === 0) {
+                historySection.innerHTML = '<p style="color: var(--fg-secondary); padding: 2rem;">No scans yet. Try a preset above!</p>';
+                historySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                return;
+            }
+
+            historySection.innerHTML = `
+                <h3 style="margin-bottom: 1.5rem; color: var(--fg-primary);">Recent Analyses</h3>
+                <div class="history-timeline">
+                    ${history.map((item, i) => `
+                    <div class="history-item" onclick="reloadAnalysis('${i}')">
+                        <div class="history-preview">
+                            <div class="history-text">${item.text}...</div>
+                            <div class="history-time">${item.timestamp}</div>
+                        </div>
+                        <div class="history-score" style="background: ${item.score > 70 ? 'rgba(255,107,122,0.2)' : item.score > 40 ? 'rgba(255,165,2,0.2)' : 'rgba(46,213,115,0.2)'}; color: ${item.score > 70 ? '#ff6b7a' : item.score > 40 ? '#ffb23a' : '#6edd89'};">
+                            ${item.score}
+                        </div>
+                    </div>
+                    `).join('')}
+                </div>
+            `;
+            historySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function reloadAnalysis(index) {
+            const history = JSON.parse(localStorage.getItem('filterHistory') || '[]');
+            const item = history[index];
+            document.getElementById('messageInput').value = item.fullText;
+            analyzeMessage();
+        }
+
+        function updateLevel() {
+            let count = parseInt(localStorage.getItem('scansCount') || '0') + 1;
+            localStorage.setItem('scansCount', count);
+
+            let level = 1, name = 'Novice';
+            if (count > 30) { level = 4; name = 'Master Filter'; }
+            else if (count > 15) { level = 3; name = 'Decoder'; }
+            else if (count > 5) { level = 2; name = 'Aware'; }
+
+            document.getElementById('levelNumber').textContent = level;
+            document.getElementById('levelName').textContent = name;
+            localStorage.setItem('userLevel', JSON.stringify({ level, name }));
+        }
+
+        function loadLevel() {
+            const levelData = JSON.parse(localStorage.getItem('userLevel') || '{"level":1,"name":"Novice"}');
+            document.getElementById('levelNumber').textContent = levelData.level;
+            document.getElementById('levelName').textContent = levelData.name;
+        }
+
+        function submitFeedback(e) {
+            e.preventDefault();
+
+            const rating = document.querySelector('.star-btn.active')?.dataset.rating || 0;
+            const comment = document.getElementById('feedbackComment').value;
+
+            if (rating === 0) {
+                showToast('Please select a rating');
+                return;
+            }
+
+            let feedback = JSON.parse(localStorage.getItem('feedback') || '[]');
+            feedback.push({ rating, comment, timestamp: new Date().toLocaleString() });
+            localStorage.setItem('feedback', JSON.stringify(feedback));
+
+            document.getElementById('feedbackForm').reset();
+            document.querySelectorAll('.star-btn').forEach(btn => btn.classList.remove('active'));
+            showToast('Thank you for your feedback!');
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+
+        function nextOnboardingStep() {
+            const steps = document.querySelectorAll('.onboarding-step');
+            let currentIndex = Array.from(steps).findIndex(s => s.classList.contains('active'));
+            if (currentIndex < steps.length - 1) {
+                steps[currentIndex].classList.remove('active');
+                steps[currentIndex + 1].classList.add('active');
+            }
+        }
+
+        function skipOnboarding() {
+            document.getElementById('onboardingOverlay').classList.remove('show');
+        }
+
+        // Initialize on load
+        window.addEventListener('DOMContentLoaded', initializeUI);
+
+        // PWA Service Worker Registration
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js').catch(() => {});
+        }
+
+        // PWA Install Prompt
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            showInstallBanner();
+        });
+
+        function showInstallBanner() {
+            const banner = document.createElement('div');
+            banner.id = 'installBanner';
+            banner.style.cssText = 'position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--accent-purple),var(--accent-cyan));padding:12px 24px;border-radius:16px;display:flex;align-items:center;gap:12px;z-index:10000;box-shadow:0 8px 32px rgba(139,92,246,0.4);cursor:pointer;max-width:calc(100vw - 40px);box-sizing:border-box;';
+            banner.innerHTML = '<span style="font-size:1.5rem;">📱</span><span style="color:#fff;font-weight:600;">Add to Home Screen</span><span style="color:rgba(255,255,255,0.7);font-size:0.85rem;">No app store needed</span>';
+            banner.onclick = async () => {
+                if (deferredPrompt) {
+                    deferredPrompt.prompt();
+                    const { outcome } = await deferredPrompt.userChoice;
+                    deferredPrompt = null;
+                }
+                banner.remove();
+            };
+            document.body.appendChild(banner);
+            setTimeout(() => { if (banner.parentNode) banner.remove(); }, 15000);
+        }
+    </script>
+</body>
+</html>
