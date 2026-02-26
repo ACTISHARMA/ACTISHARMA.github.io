@@ -1789,6 +1789,7 @@
                     <span class="upload-status" id="uploadStatus"></span>
                     <img id="uploadPreview" class="upload-preview" style="display:none;">
                     <button id="uploadClearBtn" style="display:none;padding:0.4rem 0.8rem;background:rgba(255,71,87,0.15);border:1px solid rgba(255,71,87,0.3);border-radius:6px;color:#ff6b7a;cursor:pointer;font-size:0.8rem;font-weight:600;" onclick="clearUpload()">&#10005; Clear</button>
+                    <button id="speakerToggleBtn" style="display:none;padding:0.4rem 0.8rem;background:rgba(106,90,205,0.15);border:1px solid rgba(106,90,205,0.4);border-radius:6px;color:#b8b0ff;cursor:pointer;font-size:0.8rem;font-weight:600;" onclick="toggleSpeakerView()">&#x1F465; Show Full Chat</button>
                 </div>
 
                 <div class="controls">
@@ -3243,12 +3244,32 @@
 
                 const extractedText = result.data.text.trim();
                 if (extractedText) {
-                    document.getElementById('messageInput').value = extractedText;
-                    status.textContent = `&#x2713; Extracted ${extractedText.split(' ').length} words`;
-                    document.getElementById('uploadClearBtn').style.display = 'inline-block';
-                    status.style.color = 'var(--success)';
-                    showToast('Text extracted! Click Analyze.');
-                } else {
+                    // Try WhatsApp dual-speaker detection
+                    const speakerResult = separateWhatsAppSpeakers(extractedText);
+                    if (speakerResult.detected && speakerResult.themText) {
+                        // Show speaker isolation UI
+                        document.getElementById('messageInput').value = speakerResult.themText;
+                        const speakerNames = speakerResult.speakers.filter(s => s !== 'You').join(', ');
+                        status.innerHTML = `&#x2713; Chat detected: ${speakerResult.speakerBreakdown}<br>
+                            <span style="color:var(--accent-cyan);font-size:0.85rem;">
+                            Analyzing <strong>${speakerNames || 'other person'}</strong>'s messages only (your messages excluded for accuracy)
+                            </span>`;
+                        document.getElementById('uploadClearBtn').style.display = 'inline-block';
+                        status.style.color = 'var(--success)';
+                        // Store full context and show toggle button
+                        window.__speakerIsolation = speakerResult;
+                        const toggleBtn = document.getElementById('speakerToggleBtn');
+                        toggleBtn.style.display = 'inline-block';
+                        toggleBtn.dataset.view = 'them';
+                        showToast('Chat speakers separated! Analyzing their messages.');
+                    } else {
+                        document.getElementById('messageInput').value = extractedText;
+                        status.textContent = `\u2713 Extracted ${extractedText.split(' ').length} words`;
+                        document.getElementById('uploadClearBtn').style.display = 'inline-block';
+                        status.style.color = 'var(--success)';
+                        showToast('Text extracted! Click Analyze.');
+                    }
+                } else {} else {
                     status.textContent = 'No text found in image';
                     document.getElementById('uploadClearBtn').style.display = 'inline-block';
                     status.style.color = 'var(--warning)';
@@ -3260,11 +3281,113 @@
             }
         }
 
+        // === WhatsApp Dual-Speaker Context Isolation ===
+        // Detects two speakers in OCR'd WhatsApp screenshots and separates them
+        function separateWhatsAppSpeakers(ocrText) {
+            const lines = ocrText.split('\n').map(l => l.trim()).filter(Boolean);
+
+            // Pattern 1: "Name HH:MM AM/PM" or "Name HH:MM" (WhatsApp header lines)
+            const headerRe = /^([A-Za-z\s\u0900-\u097F]+?)\s+(\d{1,2}[:.]\d{2}(?:\s*[AaPp][Mm])?)\s*$/;
+            // Pattern 2: "[HH:MM AM/PM] Name:" or "[HH:MM] Name:"
+            const bracketRe = /^\[?\s*(\d{1,2}[:.]\d{2}(?:\s*[AaPp][Mm])?)\s*\]?\s*([A-Za-z\s\u0900-\u097F]+?)\s*:/;
+            // Pattern 3: "Name:" at start of line (simpler chat format)
+            const simpleRe = /^([A-Za-z\s\u0900-\u097F]{2,20})\s*:/;
+            // Pattern 4: Date-prefixed "[DD/MM/YY, HH:MM] Name:"
+            const dateRe = /^\[?\d{1,2}[\/\-]\d{1,2}[\/\-]\d{2,4},?\s*\d{1,2}[:.]\d{2}(?:\s*[AaPp][Mm])?\]?\s*-?\s*([A-Za-z\s\u0900-\u097F]+?)\s*:/;
+
+            const speakerMap = {};
+            let currentSpeaker = null;
+            const messages = [];
+
+            for (let i = 0; i < lines.length; i++) {
+                const line = lines[i];
+                let detectedSpeaker = null;
+                let messageStart = null;
+                let m;
+                if ((m = line.match(dateRe))) {
+                    detectedSpeaker = m[1].trim();
+                    messageStart = line.substring(m[0].length).trim();
+                } else if ((m = line.match(bracketRe))) {
+                    detectedSpeaker = m[2].trim();
+                    messageStart = line.substring(m[0].length).trim();
+                } else if ((m = line.match(headerRe))) {
+                    detectedSpeaker = m[1].trim();
+                    messageStart = '';
+                } else if ((m = line.match(simpleRe)) && Object.keys(speakerMap).length < 5) {
+                    detectedSpeaker = m[1].trim();
+                    messageStart = line.substring(m[0].length).trim();
+                }
+
+                if (detectedSpeaker) {
+                    const isYou = /^(you|me|myself)$/i.test(detectedSpeaker);
+                    const normalized = isYou ? '__YOU__' : detectedSpeaker.toLowerCase();
+                    speakerMap[normalized] = (speakerMap[normalized] || 0) + 1;
+                    currentSpeaker = normalized;
+                    if (messageStart) {
+                        messages.push({ speaker: currentSpeaker, text: messageStart });
+                    }
+                } else if (currentSpeaker) {
+                    messages.push({ speaker: currentSpeaker, text: line });
+                } else {
+                    messages.push({ speaker: '__UNKNOWN__', text: line });
+                }
+            }
+
+            const speakers = Object.keys(speakerMap).filter(s => s !== '__UNKNOWN__');
+            if (speakers.length < 2) {
+                return { detected: false, fullText: ocrText, speakers: [] };
+            }
+
+            let youKey = speakers.find(s => s === '__YOU__');
+            let themKeys = speakers.filter(s => s !== '__YOU__');
+
+            if (!youKey && speakers.length === 2) {
+                const [a, b] = speakers;
+                if (speakerMap[a] <= speakerMap[b]) {
+                    youKey = a; themKeys = [b];
+                } else {
+                    youKey = b; themKeys = [a];
+                }
+            }
+
+            const themMessages = messages.filter(m => themKeys.includes(m.speaker)).map(m => m.text).join(' ');
+            const youMessages = messages.filter(m => m.speaker === youKey).map(m => m.text).join(' ');
+
+            return {
+                detected: true,
+                speakers: speakers.map(s => s === '__YOU__' ? 'You' : s),
+                youKey, themKeys, themText: themMessages, youText: youMessages,
+                fullText: ocrText, messageCount: messages.length,
+                speakerBreakdown: Object.entries(speakerMap)
+                    .map(([k, v]) => `${k === '__YOU__' ? 'You' : k}: ${v} messages`).join(', ')
+            };
+        }
+
+        function toggleSpeakerView() {
+            const btn = document.getElementById('speakerToggleBtn');
+            const input = document.getElementById('messageInput');
+            const iso = window.__speakerIsolation;
+            if (!iso) return;
+            if (btn.dataset.view === 'them') {
+                input.value = iso.fullText;
+                btn.innerHTML = '&#x1F465; Analyze Their Messages Only';
+                btn.dataset.view = 'full';
+                showToast('Showing full conversation');
+            } else {
+                input.value = iso.themText;
+                btn.innerHTML = '&#x1F465; Show Full Chat';
+                btn.dataset.view = 'them';
+                showToast('Showing only their messages');
+            }
+        }
+
         function clearUpload() {
             document.getElementById('imageUpload').value = '';
             document.getElementById('uploadPreview').style.display = 'none';
             document.getElementById('uploadStatus').textContent = '';
             document.getElementById('uploadClearBtn').style.display = 'none';
+            document.getElementById('speakerToggleBtn').style.display = 'none';
+            window.__speakerIsolation = null;
         }
 
         function generateSuggestedReply(context, findings) {
