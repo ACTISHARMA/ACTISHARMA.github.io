@@ -220,7 +220,8 @@ footer p{font-size:.85rem;color:var(--text);margin:0}
 .ig-reel-embed{position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--border);background:var(--bg-card);aspect-ratio:9/16;max-height:480px}
 .ig-reel-embed iframe{width:100%;height:100%;border:none}
 @media(max-width:900px){.ig-reels-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:500px){.ig-reels-grid{grid-template-columns:1fr;max-width:320px;margin-left:auto;margin-right:auto}}
+@media(max-width:500px){.ig-reels-grid{grid-template-columns:repeat(2,1fr);max-width:100%}.ig-reel-embed{max-height:250px}}
+@media(max-width:768px){.ig-reels-grid:not(.ig-archive) .ig-reel-embed:nth-child(n+3){display:none}}
 
 /* Pricing responsive */
 @media(max-width:768px){#services [style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}}
@@ -562,7 +563,7 @@ footer p{font-size:.85rem;color:var(--text);margin:0}
         <div style="color:var(--text);font-size:.8rem;margin-top:.25rem">Rajasthan Judicial Services Examination</div>
     </div>
 </div>
-<style>@media(max-width:768px){#miscellaneous [style*="grid-template-columns:repeat(3"]{grid-template-columns:1fr!important}}</style>
+<style>@media(max-width:768px){#miscellaneous [style*="grid-template-columns:repeat(3"]{grid-template-columns:1fr!important}#miscellaneous [style*="grid-template-columns:repeat(2"]{grid-template-columns:1fr!important}}</style>
 
 <!-- COPYWRITING ADS -->
 <h3 class="content-subhead" id="copywriting">Copywriting &amp; Spec Ads</h3>
@@ -590,7 +591,7 @@ footer p{font-size:.85rem;color:var(--text);margin:0}
 
 <!-- INSTAGRAM REELS ARCHIVE -->
 <h3 class="content-subhead">Instagram &amp; Video Archive</h3>
-<div class="ig-reels-grid" style="grid-template-columns:repeat(5,1fr)">
+<div class="ig-reels-grid ig-archive" style="grid-template-columns:repeat(5,1fr)">
     <div class="ig-reel-embed"><iframe src="https://www.instagram.com/reel/DL2Y4YDzym6/embed/" loading="lazy" allowfullscreen></iframe></div>
     <div class="ig-reel-embed"><iframe src="https://www.instagram.com/reel/CdXP8_OJnzd/embed/" loading="lazy" allowfullscreen></iframe></div>
     <div class="ig-reel-embed"><iframe src="https://www.instagram.com/tv/CYS9_93pny3/embed/" loading="lazy" allowfullscreen></iframe></div>
@@ -602,7 +603,10 @@ footer p{font-size:.85rem;color:var(--text);margin:0}
     <div class="ig-reel-embed"><iframe src="https://www.instagram.com/p/CWLVfuXDam6/embed/" loading="lazy" allowfullscreen></iframe></div>
     <div class="ig-reel-embed"><iframe src="https://www.instagram.com/reel/CpwNo-6JgXX/embed/" loading="lazy" allowfullscreen></iframe></div>
 </div>
-<style>@media(max-width:900px){.ig-reels-grid[style*="repeat(5"]{grid-template-columns:repeat(2,1fr)!important}}@media(max-width:500px){.ig-reels-grid[style*="repeat(5"]{grid-template-columns:1fr!important;max-width:320px;margin-left:auto;margin-right:auto}}</style>
+<style>
+@media(max-width:900px){.ig-archive{grid-template-columns:repeat(2,1fr)!important}}
+@media(max-width:768px){.ig-archive{grid-template-columns:repeat(2,1fr)!important}.ig-archive .ig-reel-embed{max-height:240px}.ig-archive .ig-reel-embed:nth-child(n+5){display:none}}
+</style>
 <div style="text-align:center;margin-top:1.5rem"><a href="https://instagram.com/humanlayerai" target="_blank" class="btn btn-outline">Follow @humanlayerai &rarr;</a></div>
 
 </div>
