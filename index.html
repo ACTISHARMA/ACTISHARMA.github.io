@@ -47,6 +47,7 @@ a:hover{opacity:.85}
 section{padding:100px 20px}
 .reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
 .reveal.active{opacity:1;transform:translateY(0)}
+@media(max-width:768px){.reveal{opacity:1!important;transform:none!important}}
 
 /* ===== BUTTONS ===== */
 .btn{display:inline-flex;align-items:center;gap:.5rem;padding:12px 24px;border-radius:8px;font-weight:600;font-size:.95rem;text-decoration:none;cursor:pointer;border:none;transition:var(--tr);font-family:var(--font)}
@@ -697,7 +698,7 @@ hamburger.addEventListener('click',()=>{hamburger.classList.toggle('active');mob
 document.querySelectorAll('.mobile-menu a').forEach(a=>a.addEventListener('click',()=>{hamburger.classList.remove('active');mobileMenu.classList.remove('active')}));
 
 // Scroll reveal
-const revealObserver=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('active');revealObserver.unobserve(e.target)}})},{threshold:0.1});
+const revealObserver=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('active');revealObserver.unobserve(e.target)}})},{threshold:0.01,rootMargin:'0px 0px 100px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el));
 
 // Copywriting lightbox
